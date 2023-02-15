@@ -42,23 +42,21 @@ public class reviewDAO {
 			
 			//게시판 DB입력
 			
-			sql = "insert into review(RE_num,S_id,RE_writer,RE_title,RE_text,RE_createtime,RE_view,"
-					+ "RE_img1,RE_delivery,RE_manner,RE_ProductStatus,RE_fast,RE_time) value (?,?,?,?,?,?,?,?,?,?,?,?,?)";//13개
+			sql = "insert into review value (?,?,?,?,?,?,?,?,?,?,?,?)";//12개
 			pstmt = con.prepareStatement(sql);
 			
 			pstmt.setInt(1, rE_id);
 			pstmt.setInt(2, 1);//test값 (판매번호)
-			pstmt.setString(3, dto.getRE_writer());
-			pstmt.setString(4, dto.getRE_title());
-			pstmt.setString(5, dto.getRE_text());
-			pstmt.setTimestamp(6, dto.getRE_createtime());
-			pstmt.setInt(7, dto.getRE_view());
-			pstmt.setString(8, dto.getRE_img1());
-			pstmt.setString(9, dto.getRE_delivery());
-			pstmt.setString(10, dto.getRE_manner());
-			pstmt.setString(11, dto.getRE_ProductStatus());
-			pstmt.setString(12, dto.getRE_fast());
-			pstmt.setString(13, dto.getRE_time());
+			pstmt.setString(3, dto.getRE_title());
+			pstmt.setString(4, dto.getRE_text());
+			pstmt.setTimestamp(5, dto.getRE_createtime());
+			pstmt.setString(6, dto.getRE_img1());
+			pstmt.setString(7, dto.getRE_delivery());
+			pstmt.setString(8, dto.getRE_manner());
+			pstmt.setString(9, dto.getRE_ProductStatus());
+			pstmt.setString(10, dto.getRE_fast());
+			pstmt.setString(11, dto.getRE_time());
+			pstmt.setString(12, dto.getRE_writer());
 			
 			pstmt.executeUpdate();
 			
@@ -97,7 +95,6 @@ public class reviewDAO {
 				dto.setRE_img1(rs.getString("RE_img1"));
 				dto.setRE_title(rs.getString("RE_title"));
 				dto.setRE_createtime(rs.getTimestamp("RE_createtime"));
-				dto.setRE_view(rs.getInt("RE_view"));
 				dto.setRE_writer(rs.getString("RE_writer"));
 				dto.setRE_text(rs.getString("RE_text"));
 				dto.setRE_delivery(rs.getString("RE_delivery"));
@@ -144,7 +141,6 @@ public class reviewDAO {
 				dto.setRE_title(rs.getString("RE_title"));
 				dto.setRE_writer(rs.getString("RE_writer"));
 				dto.setRE_createtime(rs.getTimestamp("RE_createtime"));
-				dto.setRE_view(rs.getInt("RE_view"));
 				dto.setRE_text(rs.getString("RE_text"));
 				dto.setRE_delivery(rs.getString("RE_delivery"));
 				dto.setRE_manner (rs.getString("RE_manner"));
