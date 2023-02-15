@@ -24,8 +24,8 @@
     	var img_icon = new Array(); 
     	img_icon[0] = new Image(); 
     	img_icon[1] = new Image();
-    	img_icon[0].src = "heart.png"; 
-    	img_icon[1].src = "fullheart.png"; 
+    	img_icon[0].src = "sell/heart.png"; 
+    	img_icon[1].src = "sell/fullheart.png"; 
     	
     function hartToggle(){
     	document.all.icon_btn.src = (set_state ? img_icon[0].src : img_icon[1].src);
@@ -80,7 +80,7 @@
 	
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 	
-	ArrayList<SellDTO> sellList = (ArrayList<SellDTO>)request.getAttribute("sellList");
+	ArrayList<SellDTO> sellouterList = (ArrayList<SellDTO>)request.getAttribute("sellouterList");
 
 	int currentPage = (Integer)request.getAttribute("currentPage");
 	int startPage = (Integer)request.getAttribute("startPage");
@@ -92,21 +92,21 @@
 <table>
 	<tr> <!--  테이블................1칸 -->
 	<%
-	for(int i=0; i<sellList.size();i++){
-		SellDTO dto = sellList.get(i);
+	for(int i=0; i<sellouterList.size();i++){
+		SellDTO dto = sellouterList.get(i);
 	
 	%>
 		<td>
 			<table class="item-table">
 				<tr>
 					<td colspan="2" class="S_img"><a href="SellOuterDetails.sell?S_num=<%=dto.getS_num()%>" >
-					<img src="img/sell/<%=dto.getS_img() %>" width=300px height=300px class="goodsImg"></td>
+					<img src="img/sell/<%=dto.getS_img() %>" width=300px height=300px class="goodsImg"></a></td>
 				</tr>
 				<tr>
-					<td colspan="2" class="S_title" > <a href="SellOuterDetails.sell?S_num=<%=dto.getS_num()%>" > <%=dto.getS_title()%></td> <!-- 제목 -->
+					<td colspan="2" class="S_title" > <a href="SellOuterDetails.sell?S_num=<%=dto.getS_num()%>" > <%=dto.getS_title()%></a></td> <!-- 제목 -->
 				</tr>
 				<tr>
-					<td class="price"><%=dto.getS_price()%>원</td> <td align="right" class="like_id"><input type="image" name="button"  class="heart" src="heart.png" onclick="hartToggle()">
+					<td class="price"><%=dto.getS_price()%>원</td> <td align="right" class="like_id"><input type="image" name="button"  class="heart" src="sell/heart.png" onclick="hartToggle()">
 				</tr>
 				<%-- <tr>
 					<td class="S_sido1"><%=dto.getS_sido1()%></td> <td class="S_gugun1"><%=dto.getS_gugun1()%></td> <!-- 구군 -->
@@ -120,7 +120,7 @@
 						else if(dto.getS_send2()!=null){%> <%= "<b>직거래</b>"%><%}%> </td> <!-- 선호거래유형 -->
 				</tr>
 				<tr>
-					<td colspan="2"> <% if(dto.getS_send2()!=null){%> <img src="location_icon.png" class="location"><%= dto.getS_sido1()%> <%= dto.getS_gugun1()%><%} else { %>　<%}%> </td>
+					<td colspan="2"> <% if(dto.getS_send2()!=null){%> <img src="sell/location_icon.png" class="location"><%= dto.getS_sido1()%> <%= dto.getS_gugun1()%><%} else { %>　<%}%> </td>
 					<!-- else에 안보이는 공백문자있어요 지우지마세요 지우면 정렬깨짐 -->
 				</tr>
 			</table>
@@ -145,16 +145,10 @@
 					</div>
 				<!--  페이지 번호  -->
 				<%
-				
-				if(startPage>pageBlock){
-					%>
-					<a href="outer.jsp?pageNum=<%=startPage-pageBlock%>"> [10페이지 이전]</a>
-					<%
-				}
-				
+
 				for(int i=startPage;i<=endPage;i++){
 					%>
-					<a href="outer.jsp?pageNum=<%=i%>"><%=i%></a>
+					<a href="Outer.sell?pageNum=<%=i%>"><%=i%></a>
 					<%
 				}
 				

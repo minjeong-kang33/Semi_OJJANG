@@ -45,16 +45,31 @@ public class SellFrontController extends HttpServlet {
 		} // 강민정
 
 		else if (sPath.equals("/Shirts.sell")) {
-			
-		} 
+			action = new SellShirtsList();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} // 강민정
 
 		else if (sPath.equals("/Pants.sell")) {
-			
-		} 
+			action = new SellPantsList();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} // 강민정
 
 		else if (sPath.equals("/Dress.sell")) {
-			
-		} 
+			action = new SellDressList();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} // 강민정
 
 		else if (sPath.equals("/SellInsertForm.sell")) {
 			forward=new ActionForward();
@@ -82,6 +97,33 @@ public class SellFrontController extends HttpServlet {
 
 		else if (sPath.equals("/SellOuterDetails.sell")) {
 			action = new SellOuterDetails();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} // 강민정
+		
+		else if (sPath.equals("/SellShirtsDetails.sell")) {
+			action = new SellShirtsDetails();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} // 강민정
+		
+		else if (sPath.equals("/SellPantsDetails.sell")) {
+			action = new SellPantsDetails();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} // 강민정
+		
+		else if (sPath.equals("/SellDressDetails.sell")) {
+			action = new SellDressDetails();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
@@ -116,15 +158,15 @@ public class SellFrontController extends HttpServlet {
 			}
 		} // 강민정
 
-		else if (sPath.equals("/SellDetails.sell")) {
-			action = new SellOuterDetails();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} // 강민정
-
+		/*
+		 * else if (sPath.equals("/SellDetails.sell")) { action = new
+		 * SellOuterDetails(); try { forward = action.execute(request, response); }
+		 * catch (Exception e) { e.printStackTrace(); } } // 강민정  // 이건 필요없을지도.. 문제있으면 살려요
+		 */
+		
+		
+		
+		
 		/* 여기 위까지 if문 작성 */
 
 		if (forward != null) {
