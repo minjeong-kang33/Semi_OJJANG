@@ -108,6 +108,13 @@ public class MypageFrontController extends HttpServlet{
 				forward=action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
+			}//박은지		
+		}else if(sPath.equals("/Likelist.moi")) {
+			action=new Likelist();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
 			}//박은지
 		
 			

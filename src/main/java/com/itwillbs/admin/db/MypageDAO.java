@@ -212,37 +212,37 @@ public class MypageDAO {
 
 	
 	//likelist
-	public ArrayList<SellDTO> likeHistory(String M_id) {
-		ArrayList<SellDTO> likeHistory=new ArrayList<SellDTO>();
-		Connection con=null;
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		try {
-			con=getConnection();
-			String sql= "select s.S_num, s.M_id, s.S_category, s.S_title, s.S_text, s.S_price from sell s join likes l on s.S_num=l.S_num where l.M_id=?"; 
-			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, M_id);
-			rs=pstmt.executeQuery();
-			while(rs.next()) {
-				SellDTO dto=new SellDTO();
-				dto.setS_num(rs.getInt("S_num"));
-				dto.setM_id(rs.getString("M_id"));
-				dto.setS_category(rs.getString("S_category"));
-				dto.setS_title(rs.getString("S_title"));
-				dto.setS_text(rs.getString("S_text"));
-				dto.setS_price(rs.getInt("S_price"));
-			
-				likeHistory.add(dto);
-			}
-		}catch(Exception e) {
-			e.printStackTrace();
-		}finally {
-			if(con!=null) try {con.close();} catch (Exception e2) {}
-			if(pstmt!=null) try {pstmt.close();} catch (Exception e2) {}
-			if(rs!=null) try {rs.close();} catch (Exception e2) {}
-		}
-		return likeHistory;
-	}
+//	public ArrayList<SellDTO> likeHistory(String M_id) {
+//		ArrayList<SellDTO> likeHistory=new ArrayList<SellDTO>();
+//		Connection con=null;
+//		PreparedStatement pstmt=null;
+//		ResultSet rs=null;
+//		try {
+//			con=getConnection();
+//			String sql= "select s.S_num, s.M_id, s.S_category, s.S_title, s.S_text, s.S_price from sell s join likes l on s.S_num=l.S_num where l.M_id=?"; 
+//			pstmt=con.prepareStatement(sql);
+//			pstmt.setString(1, M_id);
+//			rs=pstmt.executeQuery();
+//			while(rs.next()) {
+//				SellDTO dto=new SellDTO();
+//				dto.setS_num(rs.getInt("S_num"));
+//				dto.setM_id(rs.getString("M_id"));
+//				dto.setS_category(rs.getString("S_category"));
+//				dto.setS_title(rs.getString("S_title"));
+//				dto.setS_text(rs.getString("S_text"));
+//				dto.setS_price(rs.getInt("S_price"));
+//			
+//				likeHistory.add(dto);
+//			}
+//		}catch(Exception e) {
+//			e.printStackTrace();
+//		}finally {
+//			if(con!=null) try {con.close();} catch (Exception e2) {}
+//			if(pstmt!=null) try {pstmt.close();} catch (Exception e2) {}
+//			if(rs!=null) try {rs.close();} catch (Exception e2) {}
+//		}
+//		return likeHistory;
+//	}
 
 	
 	//likePro_getLike
@@ -300,88 +300,88 @@ public class MypageDAO {
 	
 	//===========================글 쓴 내역
 	
-	public ArrayList<SellDTO> WriteHistoryS(String M_id){
-		ArrayList<SellDTO> WriteHistoryS=new ArrayList<SellDTO>();
-		Connection con =null;
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		try {
-			con=getConnection();
-			String sql="select * from sell where M_id=?";
-			
-			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, M_id);
-			
-			rs=pstmt.executeQuery();	
-
-			while(rs.next()) {
-				
-				SellDTO dto=new SellDTO();
-				dto.setS_num(rs.getInt("S_num"));
-				dto.setS_price(rs.getInt("S_price"));
-				dto.setM_id(rs.getString("M_id"));
-				dto.setS_title(rs.getString("S_title"));
-				dto.setS_text(rs.getString("S_text"));
-				dto.setS_like(rs.getInt("S_like"));
-				dto.setS_view(rs.getInt("S_view"));
-				dto.setS_category(rs.getString("S_category"));
-				dto.setS_send1(rs.getString("S_send1"));	
-				dto.setS_send2(rs.getString("S_send2"));
-				dto.setS_createdate(rs.getTimestamp("S_createdate"));
-				dto.setS_category(rs.getString("S_category"));
-				
-				WriteHistoryS.add(dto);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			
-			if(rs!=null) try { rs.close();} catch (Exception e2) {}
-			if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
-			if(con!=null) try { con.close();} catch (Exception e2) {}
-		}
-		return WriteHistoryS;
-	} //WriteHistoryS 끝
+//	public ArrayList<SellDTO> WriteHistoryS(String M_id){
+//		ArrayList<SellDTO> WriteHistoryS=new ArrayList<SellDTO>();
+//		Connection con =null;
+//		PreparedStatement pstmt=null;
+//		ResultSet rs=null;
+//		try {
+//			con=getConnection();
+//			String sql="select * from sell where M_id=?";
+//			
+//			pstmt=con.prepareStatement(sql);
+//			pstmt.setString(1, M_id);
+//			
+//			rs=pstmt.executeQuery();	
+//
+//			while(rs.next()) {
+//				
+//				SellDTO dto=new SellDTO();
+//				dto.setS_num(rs.getInt("S_num"));
+//				dto.setS_price(rs.getInt("S_price"));
+//				dto.setM_id(rs.getString("M_id"));
+//				dto.setS_title(rs.getString("S_title"));
+//				dto.setS_text(rs.getString("S_text"));
+//				dto.setS_like(rs.getInt("S_like"));
+//				dto.setS_view(rs.getInt("S_view"));
+//				dto.setS_category(rs.getString("S_category"));
+//				dto.setS_send1(rs.getString("S_send1"));	
+//				dto.setS_send2(rs.getString("S_send2"));
+//				dto.setS_createdate(rs.getTimestamp("S_createdate"));
+//				dto.setS_category(rs.getString("S_category"));
+//				
+//				WriteHistoryS.add(dto);
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}finally {
+//			
+//			if(rs!=null) try { rs.close();} catch (Exception e2) {}
+//			if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
+//			if(con!=null) try { con.close();} catch (Exception e2) {}
+//		}
+//		return WriteHistoryS;
+//	} //WriteHistoryS 끝
 	
 	
-	public ArrayList<BuyDTO> WriteHistoryB(String M_id){
-		ArrayList<BuyDTO> WriteHistoryB=new ArrayList<BuyDTO>();
-		Connection con =null;
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		try {
-			con=getConnection();
-			String sql="select * from buy where M_id=?";
-			
-			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, M_id);
-			
-			rs=pstmt.executeQuery();	
-
-			while(rs.next()) {
-				
-				BuyDTO dto=new BuyDTO();
-				dto.setM_id(rs.getString("M_id"));
-				dto.setB_num(rs.getInt("B_num"));
-				dto.setB_category(rs.getString("B_category"));
-				dto.setB_title(rs.getString("B_title"));
-				dto.setB_text(rs.getString("B_text"));
-				dto.setB_view(rs.getInt("B_view"));
-				dto.setB_img(rs.getString("B_img"));
-			
-				
-				WriteHistoryB.add(dto);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			
-			if(rs!=null) try { rs.close();} catch (Exception e2) {}
-			if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
-			if(con!=null) try { con.close();} catch (Exception e2) {}
-		}
-		return WriteHistoryB;
-	} //WriteHistoryB 끝
+//	public ArrayList<BuyDTO> WriteHistoryB(String M_id){
+//		ArrayList<BuyDTO> WriteHistoryB=new ArrayList<BuyDTO>();
+//		Connection con =null;
+//		PreparedStatement pstmt=null;
+//		ResultSet rs=null;
+//		try {
+//			con=getConnection();
+//			String sql="select * from buy where M_id=?";
+//			
+//			pstmt=con.prepareStatement(sql);
+//			pstmt.setString(1, M_id);
+//			
+//			rs=pstmt.executeQuery();	
+//
+//			while(rs.next()) {
+//				
+//				BuyDTO dto=new BuyDTO();
+//				dto.setM_id(rs.getString("M_id"));
+//				dto.setB_num(rs.getInt("B_num"));
+//				dto.setB_category(rs.getString("B_category"));
+//				dto.setB_title(rs.getString("B_title"));
+//				dto.setB_text(rs.getString("B_text"));
+//				dto.setB_view(rs.getInt("B_view"));
+//				dto.setB_img(rs.getString("B_img"));
+//			
+//				
+//				WriteHistoryB.add(dto);
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}finally {
+//			
+//			if(rs!=null) try { rs.close();} catch (Exception e2) {}
+//			if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
+//			if(con!=null) try { con.close();} catch (Exception e2) {}
+//		}
+//		return WriteHistoryB;
+//	} //WriteHistoryB 끝
 	
 	public ArrayList<BuyDTO> WriteHistoryB2(String M_id){
 		ArrayList<BuyDTO> WriteHistoryB2=new ArrayList<BuyDTO>();
@@ -565,6 +565,40 @@ public class MypageDAO {
 		return buyList;
 	}
 	
+	public ArrayList<SellDTO> likeList(int startRow, int pageSize,String M_id) {
+		ArrayList<SellDTO> likeList=new ArrayList<SellDTO>();
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=getConnection();
+			String sql= "select s.S_num, s.M_id, s.S_category, s.S_title, s.S_text, s.S_price from sell s join likes l on s.S_num=l.S_num where l.M_id=?  order by S_num desc limit ?,?"; 
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, M_id);
+			pstmt.setInt(2, startRow-1);
+			pstmt.setInt(3, pageSize);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				SellDTO dto=new SellDTO();
+				dto.setS_num(rs.getInt("S_num"));
+				dto.setM_id(rs.getString("M_id"));
+				dto.setS_category(rs.getString("S_category"));
+				dto.setS_title(rs.getString("S_title"));
+				dto.setS_text(rs.getString("S_text"));
+				dto.setS_price(rs.getInt("S_price"));
+			
+				likeList.add(dto);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(con!=null) try {con.close();} catch (Exception e2) {}
+			if(pstmt!=null) try {pstmt.close();} catch (Exception e2) {}
+			if(rs!=null) try {rs.close();} catch (Exception e2) {}
+		}
+		return likeList;
+	}
+
 	public int getsellCount() {
 		int count=0;
 		Connection con =null;

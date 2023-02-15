@@ -133,7 +133,8 @@ if(M_id != null){
 %>
    <button type="button" class="btn btn-dark" onclick="fun1('<%=dto.getM_id()%>','<%=dto.getS_num() %>','sell','<%=dto.getS_title() %>')" style="float:right"> 신고하기</button>
    <button type="button" class="btn btn-dark" onclick="history.back()" style="float:right">글목록</button>
-	<button onclick="location.href='Mypage/likePro.jsp'">찜하기</button>
+   <button type="button" class="btn btn-dark" onclick="location.href='LikePro.like?S_num=<%=dto.getS_num() %>'" style="float:right">찜하기</button>
+
 	
 </div>
 
