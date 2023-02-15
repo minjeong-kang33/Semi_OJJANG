@@ -11,12 +11,12 @@ MemberDTO dto=new MemberDTO();
 if(M_id != null){
 			%>			
 <div id="logout" class=logout><%=M_id%> 님 | 
-                <a href="../logout/logout.jsp">로그아웃</a> </div>			
+                <a href="MemberLogout.me">로그아웃</a> </div>			
 			<%
 }else{
 	%>
-<div id="logout" class=logout><a href="../login/loginForm.jsp">로그인</a> | 
-                <a href="../join/joinForm.jsp">회원가입</a></div>	
+<div id="logout" class=logout><a href="MemberLoginForm.me">로그인</a> | 
+                <a href="MemberJoinForm.me">회원가입</a></div>	
 	<%		
 }
 %>
@@ -71,12 +71,12 @@ for(int i=0; i<list.size(); i++){
                
                <!-- ***** 상단 바 메뉴 시작 ***** -->
                <ul class="nav">
-                  <li><a href="../top.jsp" class="active">홈</a></li>
-                  <li><a href="../sell/outer.jsp">아우터</a></li>
-                  <li><a href="../sell/shirts.jsp">상의</a></li>
-                  <li><a href="../sell/pants.jsp">하의</a></li>
-                  <li><a href="../sell/dress.jsp">원피스</a></li>
-                  <li><a href="../buy/buyList.jsp">삽니다</a></li>
+                  <li><a href="Main.me" class="active">홈</a></li>
+                  <li><a href="Outer.sell">아우터</a></li>
+                  <li><a href="Shirts.sell">상의</a></li>
+                  <li><a href="Pants.sell">하의</a></li>
+                  <li><a href="Dress.sell">원피스</a></li>
+                  <li><a href="BuyList.buy">삽니다</a></li>
                   
                   
 <!-- **** 로그인 한 경우에만 보이는 메뉴 시작 **** -->                  
@@ -96,9 +96,10 @@ for(int i=0; i<list.size(); i++){
                         <li><a href="#">거래후기</a></li>
                      </ul></li>
                      
-                     <!-- 대화기능에는 링크 걸지않기 -->
-                   <li class="submenu"><a href="#">대화기능</a>
+                     <!-- 커뮤니티에는 링크 걸지않기 -->
+                   <li class="submenu"><a href="#">커뮤니티</a>
                       <ul>
+                      	 <li><a href="ReviewList.rev">리뷰보기</a></li>	
       					 <li><a href="javascript:void(window.open('../find.jsp', '판매자찾기','width=400, height=400'))">판매자찾기</a></li>
 						 <li><a href="javascript:void(window.open('../box.jsp', '메세지함','width=400, height=400'))">메세지함</a></li>
                      </ul>
@@ -123,6 +124,7 @@ for(int i=0; i<list.size(); i++){
                      <ul>
                         <li><a href="#">회사소개</a></li>
                         <li><a href="#">QnA</a></li>
+                        <li><a href="MemberLoginForm.me">임시로그인</a></li>
                      </ul>
                 </li>
 				<%		

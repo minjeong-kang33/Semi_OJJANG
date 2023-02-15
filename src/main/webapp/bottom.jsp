@@ -20,10 +20,10 @@
          <div class="col-lg-3">
             <h4>Categories</h4>
             <ul>
-               <li><a href="../sell/outer.jsp">Outer</a></li>
-               <li><a href="../sell/shirts.jsp">Top</a></li>
-               <li><a href="../sell/pants.jsp">Pants</a></li>
-               <li><a href="../sell/dress.jsp">Dress</a></li>
+               <li><a href="Outer.sell">Outer</a></li>
+               <li><a href="Shirts.sell">Top</a></li>
+               <li><a href="Pants.sell">Pants</a></li>
+               <li><a href="Dress.sell">Dress</a></li>
             </ul>
          </div>
          <%
