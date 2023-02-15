@@ -65,7 +65,7 @@ public class SellDAO {
 			}
 			return;
 		} //insertSellBoard 끝 (글번호 부여하면서 입력된 내용을 등록)
-		
+	
 	public ArrayList<SellDTO> getsellList(int startRow, int pageSize){
 		Connection con =null;
 		PreparedStatement pstmt=null;
@@ -97,7 +97,7 @@ public class SellDAO {
 				dto.setS_gugun1(rs.getString("S_gugun1"));	
 				dto.setS_createdate(rs.getTimestamp("S_createdate"));
 				dto.setS_category(rs.getString("S_category"));
-				dto.setS_category(rs.getString("S_img"));
+				dto.setS_img(rs.getString("S_img"));
 				
 				sellList.add(dto);
 			}
@@ -110,8 +110,191 @@ public class SellDAO {
 			if(con!=null) try { con.close();} catch (Exception e2) {}
 		}
 		return sellList;
-	} // getsellList 끝 (글목록에서 사용)
+	} // sellList 끝 (메인 글목록에서 사용)
 	
+	public ArrayList<SellDTO> getsellOuterList(int startRow, int pageSize){
+		Connection con =null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		ArrayList<SellDTO> sellOuterList=new ArrayList<SellDTO>();
+		try {
+			con=getConnection();
+			String sql="select * from sell where S_category = 'outer' order by S_num desc limit ?, ?";
+			
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, startRow-1);
+			pstmt.setInt(2, pageSize);
+			
+			rs=pstmt.executeQuery();	
+
+			while(rs.next()) {
+				SellDTO dto=new SellDTO();
+				dto.setS_num(rs.getInt("S_num"));
+				dto.setM_id(rs.getString("M_id"));
+				dto.setS_title(rs.getString("S_title"));
+				dto.setS_price(rs.getInt("S_price"));
+				dto.setS_text(rs.getString("S_text"));
+				dto.setS_like(rs.getInt("S_like"));
+				dto.setS_view(rs.getInt("S_view"));
+				dto.setS_send1(rs.getString("S_send1"));		
+				dto.setS_send2(rs.getString("S_send2"));	
+				dto.setS_sido1(rs.getString("S_sido1"));	
+				dto.setS_gugun1(rs.getString("S_gugun1"));	
+				dto.setS_createdate(rs.getTimestamp("S_createdate"));
+				dto.setS_category(rs.getString("S_category"));
+				dto.setS_img(rs.getString("S_img"));
+				
+				sellOuterList.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			
+			if(rs!=null) try { rs.close();} catch (Exception e2) {}
+			if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
+			if(con!=null) try { con.close();} catch (Exception e2) {}
+		}
+		return sellOuterList;
+	} // sellOuterList 끝 (outer 글목록에서 사용)
+	
+	public ArrayList<SellDTO> getsellShirtsList(int startRow, int pageSize){
+		Connection con =null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		ArrayList<SellDTO> sellShirtsList=new ArrayList<SellDTO>();
+		try {
+			con=getConnection();
+			String sql="select * from sell where S_category = 'shirts' order by S_num desc limit ?, ?";
+			
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, startRow-1);
+			pstmt.setInt(2, pageSize);
+			
+			rs=pstmt.executeQuery();	
+
+			while(rs.next()) {
+				SellDTO dto=new SellDTO();
+				dto.setS_num(rs.getInt("S_num"));
+				dto.setM_id(rs.getString("M_id"));
+				dto.setS_title(rs.getString("S_title"));
+				dto.setS_price(rs.getInt("S_price"));
+				dto.setS_text(rs.getString("S_text"));
+				dto.setS_like(rs.getInt("S_like"));
+				dto.setS_view(rs.getInt("S_view"));
+				dto.setS_send1(rs.getString("S_send1"));		
+				dto.setS_send2(rs.getString("S_send2"));	
+				dto.setS_sido1(rs.getString("S_sido1"));	
+				dto.setS_gugun1(rs.getString("S_gugun1"));	
+				dto.setS_createdate(rs.getTimestamp("S_createdate"));
+				dto.setS_category(rs.getString("S_category"));
+				dto.setS_img(rs.getString("S_img"));
+				
+				sellShirtsList.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			
+			if(rs!=null) try { rs.close();} catch (Exception e2) {}
+			if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
+			if(con!=null) try { con.close();} catch (Exception e2) {}
+		}
+		return sellShirtsList;
+	} // sellShirtsList 끝 (Shirts 글목록에서 사용)
+	
+	public ArrayList<SellDTO> getsellPantsList(int startRow, int pageSize){
+		Connection con =null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		ArrayList<SellDTO> sellPantsList=new ArrayList<SellDTO>();
+		try {
+			con=getConnection();
+			String sql="select * from sell where S_category = 'pants' order by S_num desc limit ?, ?";
+			
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, startRow-1);
+			pstmt.setInt(2, pageSize);
+			
+			rs=pstmt.executeQuery();	
+
+			while(rs.next()) {
+				SellDTO dto=new SellDTO();
+				dto.setS_num(rs.getInt("S_num"));
+				dto.setM_id(rs.getString("M_id"));
+				dto.setS_title(rs.getString("S_title"));
+				dto.setS_price(rs.getInt("S_price"));
+				dto.setS_text(rs.getString("S_text"));
+				dto.setS_like(rs.getInt("S_like"));
+				dto.setS_view(rs.getInt("S_view"));
+				dto.setS_send1(rs.getString("S_send1"));		
+				dto.setS_send2(rs.getString("S_send2"));	
+				dto.setS_sido1(rs.getString("S_sido1"));	
+				dto.setS_gugun1(rs.getString("S_gugun1"));	
+				dto.setS_createdate(rs.getTimestamp("S_createdate"));
+				dto.setS_category(rs.getString("S_category"));
+				dto.setS_img(rs.getString("S_img"));
+				
+				sellPantsList.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			
+			if(rs!=null) try { rs.close();} catch (Exception e2) {}
+			if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
+			if(con!=null) try { con.close();} catch (Exception e2) {}
+		}
+		return sellPantsList;
+	} // sellPantsList 끝 (Pants 글목록에서 사용)
+	
+	public ArrayList<SellDTO> getsellDressList(int startRow, int pageSize){
+		Connection con =null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		ArrayList<SellDTO> sellDressList=new ArrayList<SellDTO>();
+		try {
+			con=getConnection();
+			String sql="select * from sell where S_category = 'dress' order by S_num desc limit ?, ?";
+			
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, startRow-1);
+			pstmt.setInt(2, pageSize);
+			
+			rs=pstmt.executeQuery();	
+
+			while(rs.next()) {
+				SellDTO dto=new SellDTO();
+				dto.setS_num(rs.getInt("S_num"));
+				dto.setM_id(rs.getString("M_id"));
+				dto.setS_title(rs.getString("S_title"));
+				dto.setS_price(rs.getInt("S_price"));
+				dto.setS_text(rs.getString("S_text"));
+				dto.setS_like(rs.getInt("S_like"));
+				dto.setS_view(rs.getInt("S_view"));
+				dto.setS_send1(rs.getString("S_send1"));		
+				dto.setS_send2(rs.getString("S_send2"));	
+				dto.setS_sido1(rs.getString("S_sido1"));	
+				dto.setS_gugun1(rs.getString("S_gugun1"));	
+				dto.setS_createdate(rs.getTimestamp("S_createdate"));
+				dto.setS_category(rs.getString("S_category"));
+				dto.setS_img(rs.getString("S_img"));
+				
+				sellDressList.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			
+			if(rs!=null) try { rs.close();} catch (Exception e2) {}
+			if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
+			if(con!=null) try { con.close();} catch (Exception e2) {}
+		}
+		return sellDressList;
+	} // sellDressList 끝 (Dress 글목록에서 사용)
 	
 	public int getSellBoardCount() {
 		int count = 0;

@@ -7,11 +7,11 @@ import javax.servlet.http.HttpSession;
 import com.itwillbs.sell.db.SellDAO;
 import com.itwillbs.sell.db.SellDTO;
 
-public class SellOuterDetails implements Action {
+public class SellPantsDetails implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("SellOuterDetails execute()");
+		System.out.println("SellPantsDetails execute()");
 
 		int S_num = Integer.parseInt(request.getParameter("S_num"));
 
