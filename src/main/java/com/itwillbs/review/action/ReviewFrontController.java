@@ -8,9 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.itwillbs.member.action.Action;
-import com.itwillbs.member.action.ActionForward;
-
 public class ReviewFrontController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,20 +25,26 @@ public class ReviewFrontController extends HttpServlet{
 		System.out.println("가상주소 : "+request.getServletPath());
 		String sPath=request.getServletPath();
 		
-		ActionForward forward=null;
 		Action action=null;
+		ActionForward forward=null;
 		
 		/* 리뷰/후기 관련 가상주소 .rev 입니다!! */
 		/* 여기 아래부터 if문 작성. 각 if이 끝나는 괄호 뒤에는 작성자 이름 함께 적기 */
 		
-		
-		
-		
-		
-		
-		
+		if(sPath.equals("/ReviewList.rev")) {
+	    	  action = new ReviewList();
+	    	  try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			} // 리뷰 리스트 조회 (승민)
+	         
+	    	  
+	    	  
+	    	  
+	    	  
+	    	  
 		/* 여기 위까지 if문 작성 */
-		
 		if(forward != null) {
 			//이동방식비교
 			if(forward.isRedirect()==true) {
@@ -51,6 +54,8 @@ public class ReviewFrontController extends HttpServlet{
 				request.getRequestDispatcher(forward.getPath());
 		        dispatcher.forward(request, response);
 			}
+		}
+		
 		}//이동방식
 		
 	}//doProcess()
