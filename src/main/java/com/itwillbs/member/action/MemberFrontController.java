@@ -38,8 +38,21 @@ public class MemberFrontController extends HttpServlet{
 			
 		} //강민정
 		
+		else if(sPath.equals("/MemberLoginForm.me")) {
+			forward=new ActionForward();
+			forward.setPath("login/loginForm.jsp");
+			forward.setRedirect(false);
+			
+		} //강민정
 		
-		
+		else if(sPath.equals("/MemberLoginPro.me")) {
+			action = new MemberLoginPro();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} //강민정
 		
 		
 		

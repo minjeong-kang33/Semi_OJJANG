@@ -8,51 +8,136 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.itwillbs.member.action.Action;
-import com.itwillbs.member.action.ActionForward;
 
-public class SellFrontController extends HttpServlet{
+public class SellFrontController extends HttpServlet {
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		System.out.println("SellFrontController doGet()");
 		doProcess(request, response);
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		System.out.println("SellFrontController doPost()");
 		doProcess(request, response);
 	}
-	
-	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("가상주소 : "+request.getServletPath());
-		String sPath=request.getServletPath();
-		
-		ActionForward forward=null;
-		Action action=null;
-		
+
+	protected void doProcess(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		System.out.println("가상주소 : " + request.getServletPath());
+		String sPath = request.getServletPath();
+
+		ActionForward forward = null;
+		Action action = null;
+
 		/* 팝니다 게시판 관련 가상주소 .sell 입니다!! */
 		/* 여기 아래부터 if문 작성. 각 if이 끝나는 괄호 뒤에는 작성자 이름 함께 적기 */
-		
-		
-		
-		
-		
-		
-		
-		/* 여기 위까지 if문 작성 */
-		
-		if(forward != null) {
-			//이동방식비교
-			if(forward.isRedirect()==true) {
-				response.sendRedirect(forward.getPath());
-			}else {
-				RequestDispatcher dispatcher=
-				request.getRequestDispatcher(forward.getPath());
-		        dispatcher.forward(request, response);
+
+		if (sPath.equals("/Outer.sell")) {
+			action = new SellOuterList();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-		}//이동방식
-		
-	}//doProcess()
-	
-}//클래스
+		} // 강민정
+
+		else if (sPath.equals("/Shirts.sell")) {
+			
+		} 
+
+		else if (sPath.equals("/Pants.sell")) {
+			
+		} 
+
+		else if (sPath.equals("/Dress.sell")) {
+			
+		} 
+
+		else if (sPath.equals("/SellInsertForm.sell")) {
+			forward=new ActionForward();
+			forward.setPath("sell/sellInsertForm.jsp");
+			forward.setRedirect(false);
+		} 
+
+		else if (sPath.equals("/SellInsertPro.sell")) {
+			action = new SellInsertPro();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} // 강민정
+
+		else if (sPath.equals("/SellInsertPro.sell")) {
+			action = new SellInsertPro();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} // 강민정
+
+		else if (sPath.equals("/SellOuterDetails.sell")) {
+			action = new SellOuterDetails();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} // 강민정
+
+		else if (sPath.equals("/SellEditForm.sell")) {
+			action = new SellEditForm();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} // 강민정
+
+		else if (sPath.equals("/SellEditPro.sell")) {
+			action = new SellEditPro();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} // 강민정
+
+		else if (sPath.equals("/SellDelete.sell")) {
+			action = new SellDeletePro();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} // 강민정
+
+		else if (sPath.equals("/SellDetails.sell")) {
+			action = new SellOuterDetails();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} // 강민정
+
+		/* 여기 위까지 if문 작성 */
+
+		if (forward != null) {
+			// 이동방식비교
+			if (forward.isRedirect() == true) {
+				response.sendRedirect(forward.getPath());
+			} else {
+				RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath());
+				dispatcher.forward(request, response);
+			}
+		} // 이동방식
+
+	}// doProcess()
+
+}
+// 클래스
