@@ -42,34 +42,81 @@ public class MypageFrontController extends HttpServlet{
 				forward=action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
-			}
+			} //박은지
+			
 		}else if(sPath.equals("/ProfileUpdatePro.moi")) {
 			action=new ProfileUpdatePro();
 			try {
 				forward=action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
-			}
+			}//박은지
+			
 		}else if(sPath.equals("/PwUpdateForm.moi")) {
 			action=new PwUpdateForm();
 			try {
 				forward=action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
-			}
+			}//박은지
+			
 		}else if(sPath.equals("/PwUpdatePro.moi")) {
 			action=new PwUpdatePro();
 			try {
 				forward=action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
-			}
-		}
+			}//박은지
+		}else if(sPath.equals("/Profile.moi")) {
+			action=new Profile();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}//박은지
+		}else if(sPath.equals("/Buyhistory.moi")) {
+			action=new Buyhistory();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}//박은지
+		}else if(sPath.equals("/Sellhistory.moi")) {
+			action=new Sellhistory();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}//박은지
+		}else if(sPath.equals("/Writehistory.moi")) {
+			action=new Writehistory();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}//박은지
+		}else if(sPath.equals("/WritehistoryB.moi")) {
+			action=new WritehistoryB();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}//박은지
+		}else if(sPath.equals("/WritehistoryS.moi")) {
+			action=new WritehistoryS();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}//박은지
+		
 			
-		
-		
-		
-		
+			
+			
+			
+			
+			
+		}
 		/* 여기 위까지 if문 작성 */
 		
 		if(forward != null) {
