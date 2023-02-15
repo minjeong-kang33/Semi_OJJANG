@@ -1,0 +1,68 @@
+@charset "UTF-8";
+
+h2 {
+	margin-top: 180px;
+}
+
+.down-content{
+	margin-top: 20px;
+}
+
+
+
+
+.RE_title {
+	height: 30px;
+	width: 400px;
+}
+
+.RE_text {
+	width: 400px;
+}
+
+
+
+.section-heading {
+	height: 50px;
+}
+
+textarea{
+	display: flex;
+	resize: none;
+}
+
+table{
+	border-collapse: separate;
+	border-spacing: 20px 10px;
+	margin: 0 auto;
+}
+
+
+
+.row{
+	
+	margin-left:200px;
+}
+
+.line{
+	
+	border-bottom: 1px solid red;
+}
+
+
+.btn {
+	margin-left: 650px;
+}
+
+span {
+	border-radius: 3px;
+	margin-left: 3px;
+	margin-bottom : 10px;
+	padding: 0px 3px;
+}
+
+.RE_img_st {
+	width: 250px;
+	height: 250px;
+}
+

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>Model2</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+  </welcome-file-list>
+  
+  <!-- 회원 관련 -->
+  <servlet>
+  	<servlet-name>MemberFrontController</servlet-name>
+  	<servlet-class>com.itwillbs.member.action.MemberFrontController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+   <servlet-name>MemberFrontController</servlet-name>
+   <url-pattern>*.me</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 관리자 관련 -->
+  <servlet>
+   <servlet-name>AdminFrontController</servlet-name>
+   <servlet-class>com.itwillbs.admin.action.AdminFrontController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+   <servlet-name>AdminFrontController</servlet-name>
+   <url-pattern>*.ad</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 삽니다 게시판 관련 -->
+  <servlet>
+   <servlet-name>BuyFrontController</servlet-name>
+   <servlet-class>com.itwillbs.buy.action.BuyFrontController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+   <servlet-name>BuyFrontController</servlet-name>
+   <url-pattern>*.buy</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 팝니다 게시판 관련 -->
+  <servlet>
+   <servlet-name>SellFrontController</servlet-name>
+   <servlet-class>com.itwillbs.sell.action.SellFrontController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+   <servlet-name>SellFrontController</servlet-name>
+   <url-pattern>*.sell</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 채팅 관련 -->
+  <servlet>
+   <servlet-name>ChatFrontController</servlet-name>
+   <servlet-class>com.itwillbs.chat.action.ChatFrontController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+   <servlet-name>ChatFrontController</servlet-name>
+   <url-pattern>*.ch</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 댓글 관련 -->
+  <servlet>
+   <servlet-name>CommentFrontController</servlet-name>
+   <servlet-class>com.itwillbs.comment.action.CommentFrontController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+   <servlet-name>CommentFrontController</servlet-name>
+   <url-pattern>*.cmt</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 거래내역 관련 -->
+  <servlet>
+   <servlet-name>DealFrontController</servlet-name>
+   <servlet-class>com.itwillbs.deal.action.DealFrontController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+   <servlet-name>DealFrontController</servlet-name>
+   <url-pattern>*.deal</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 찜목록 관련 -->
+  <servlet>
+   <servlet-name>LikeFrontController</servlet-name>
+   <servlet-class>com.itwillbs.like.action.LikeFrontController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+   <servlet-name>LikeFrontController</servlet-name>
+   <url-pattern>*.like</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 신고하기 관련 -->
+  <servlet>
+   <servlet-name>ReportFrontController</servlet-name>
+   <servlet-class>com.itwillbs.report.action.ReportFrontController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+   <servlet-name>ReportFrontController</servlet-name>
+   <url-pattern>*.rpt</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 리뷰/후기 관련 -->
+  <servlet>
+   <servlet-name>ReviewFrontController</servlet-name>
+   <servlet-class>com.itwillbs.review.action.ReviewFrontController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+   <servlet-name>ReviewFrontController</servlet-name>
+   <url-pattern>*.rev</url-pattern>
+  </servlet-mapping>
+  
+</web-app>

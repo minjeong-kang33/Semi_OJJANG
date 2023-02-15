@@ -1,0 +1,68 @@
+@charset "UTF-8";
+
+.BuyInsert {
+	margin-top: 20px;
+	margin-left: 35%;
+}
+
+#buyBoard {
+	margin-top: 12%;
+}
+
+input[type=radio] {
+	display: none;
+}
+
+input[type=radio]+label.btn {
+	padding: 5px 10px;
+	margin: 5px 10px;
+	display: inline-block;
+	text-transform: uppercase;
+	font-weight: 500;
+	outline: none;
+	position: relative;
+	background: #F2F2F2;
+	color: black;
+	transition: none;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+input[type=radio]:checked+label.btn {
+	background: #9FC9F3;
+}
+
+input[type=checkbox] {
+	display: none;
+}
+
+input[type=checkbox]+label.btn {
+	padding: 5px 10px;
+	margin: 5px 10px;
+	display: inline-block;
+	text-transform: uppercase;
+	font-weight: 500;
+	outline: none;
+	position: relative;
+	transition: all 0.3s;
+	background: #F2F2F2;
+	color: black;
+	transition: none;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+input[type=checkbox]:checked+label.btn {
+	background: #9FC9F3;
+}
+
+
+.button1 {
+	margin-left: 43%;
+}
+.button2 {
+	margin-left: 80%;
+	background-color: pink;
+}

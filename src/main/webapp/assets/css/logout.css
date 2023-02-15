@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+.logout{
+margin-top:10px;
+position: absolute;
+/* margin-right:1300px; */
+margin-left:1300px;
+
+}
+
+a:link {
+  color : black;
+  text-decoration:none;
+}
+a:visited {
+  color : black;
+  text-decoration: none;
+}
+a:hover {
+  color : gray;
+  text-decoration: underline;
+}
