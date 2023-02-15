@@ -479,7 +479,7 @@ public class MypageDAO {
 		
 			con=getConnection();
 
-			String sql="select * from board order by num desc limit ?,?";
+			String sql="select * from sell order by S_num desc limit ?,?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, startRow-1);
 			pstmt.setInt(2, pageSize);
@@ -529,7 +529,7 @@ public class MypageDAO {
 		
 			con=getConnection();
 
-			String sql="select * from board order by num desc limit ?,?";
+			String sql="select * from buy order by B_num desc limit ?,?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, startRow-1);
 			pstmt.setInt(2, pageSize);
