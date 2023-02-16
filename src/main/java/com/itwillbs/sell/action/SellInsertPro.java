@@ -40,6 +40,10 @@ public class SellInsertPro implements Action{
 		String S_category = multi.getParameter("S_category");
 		String S_img = multi.getFilesystemName("S_img");
 		
+		if(S_img == null) { 
+			S_img = "otzang_logo_top.png";
+		}
+		
 		SellDTO dto = new SellDTO();
 		
 		dto.setM_id(M_id);
