@@ -78,7 +78,7 @@
   
    <servlet>
    <servlet-name>ChatSubmitServlet</servlet-name>
-   <servlet-class>chat.ChatSubmitServlet</servlet-class>
+   <servlet-class>com.itwillbs.chat.db.ChatSubmitServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ChatSubmitServlet</servlet-name>
@@ -86,7 +86,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>ChatListServlet</servlet-name>
-    <servlet-class>chat.ChatListServlet</servlet-class>
+    <servlet-class>com.itwillbs.chat.db.ChatListServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ChatListServlet</servlet-name>
@@ -102,7 +102,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>ChatUnreadServlet</servlet-name>
-    <servlet-class>chat.ChatUnreadServlet</servlet-class>
+    <servlet-class>com.itwillbs.chat.db.ChatUnreadServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ChatUnreadServlet</servlet-name>
@@ -110,7 +110,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>ChatBoxServlet</servlet-name>
-    <servlet-class>chat.ChatBoxServlet</servlet-class>
+    <servlet-class>com.itwillbs.chat.db.ChatBoxServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ChatBoxServlet</servlet-name>
