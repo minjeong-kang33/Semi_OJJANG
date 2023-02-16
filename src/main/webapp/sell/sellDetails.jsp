@@ -20,6 +20,7 @@
 <link href="assets/css/sellDetails.css" rel="stylesheet" type="text/css">
 <link href="assets/css/buy.css" rel="stylesheet" type="text/css">
 <meta charset="UTF-8">
+<title>중고 의류거래: 옺장</title>
 <script type="text/javascript">
 function fun1(M_id, S_num, R_category, S_title) {
 	   
@@ -151,14 +152,20 @@ function fun1(M_id, S_num, R_category, S_title) {
 			// 세션값=id와 글쓴이가 일치해야만 글수정, 글삭제 표시
 			if (M_id.equals("admin")) {
 		%>
-<input type="button" class="btn btn-dark" value="글삭제" onclick="location.href='SellDelete.sell?S_num=<%=dto.getS_num() %>'"> 
+		<input type="button" class="btn btn-dark" value="글삭제"
+			onclick="location.href='SellDelete.sell?S_num=<%=dto.getS_num()%>'">
 		<%
 		}
 		}
 		%>
-		<button type="button" class="btn btn-dark" onclick="fun1('<%=dto.getM_id()%>','<%=dto.getS_num() %>','<%=dto.getS_category() %>','<%=dto.getS_title() %>')" style="float:right"> 신고하기</button>
-   <button type="button" class="btn btn-dark" onclick="history.back()" style="float:right">글목록</button>
-         <button type="button" class="btn btn-dark" onclick="location.href='LikePro.like?S_num=<%=dto.getS_num() %>'">찜하기</button>
+
+		<button type="button" class="btn btn-dark"
+			onclick="fun1('<%=dto.getM_id()%>','<%=dto.getS_num()%>','sell','<%=dto.getS_title()%>')"
+			style="float: right">신고하기</button>
+		<button type="button" class="btn btn-dark" onclick="history.back()"
+			style="float: right">글목록</button>
+		<button type="button" class="btn btn-dark" onclick="location.href='LikePro.like?S_num=<%=dto.getS_num() %>'">찜하기</button>
+
 
 	</div>
 

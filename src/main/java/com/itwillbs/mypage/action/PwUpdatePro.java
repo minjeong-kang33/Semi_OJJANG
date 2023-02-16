@@ -32,7 +32,7 @@ public class PwUpdatePro implements Action {
 		if(dto!=null) {
 			dao.updatePw(updatePwDto);
 			forward=new ActionForward();
-			forward.setPath("MemberMain.me");
+			forward.setPath("Main.me");
 			forward.setRedirect(true);
 		} else {
 			response.setContentType("text/html; charset=UTF-8");
@@ -45,7 +45,7 @@ public class PwUpdatePro implements Action {
 			
 			forward=null;
 		}
-		return null;
+		return forward;
 	}
 
 }

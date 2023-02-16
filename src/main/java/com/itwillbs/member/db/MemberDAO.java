@@ -102,7 +102,7 @@ public class MemberDAO {
 				dto.setM_address2(rs.getString("M_address2"));
 				dto.setM_email(rs.getString("M_email"));
 				dto.setM_createdate(rs.getTimestamp("M_createdate"));
-				dto.setM_play(rs.getInt("M_play"));
+				dto.setM_play(rs.getString("M_play"));
 				dto.setM_admin(rs.getString("M_admin"));
 				dto.setM_phone(rs.getString("M_phone"));
 			}
