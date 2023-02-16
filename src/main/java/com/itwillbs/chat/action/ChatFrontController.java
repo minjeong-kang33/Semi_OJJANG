@@ -33,6 +33,29 @@ public class ChatFrontController extends HttpServlet{
 		
 		/* 채팅창관련 가상주소 .ch 입니다!! */
 		/* 여기 아래부터 if문 작성. 각 if이 끝나는 괄호 뒤에는 작성자 이름 함께 적기 */
+
+		
+		
+		 if(sPath.equals("/chat.ch")) {
+			forward=new ActionForward();
+			forward.setPath("/chat.jsp");
+			forward.setRedirect(false);
+			
+		} //신영환
+		
+		else if(sPath.equals("/box.ch")) {
+			forward=new ActionForward();
+			forward.setPath("/box.jsp");
+			forward.setRedirect(false);
+			
+		} //신영환
+		
+		else if(sPath.equals("/find.ch")) {
+			forward=new ActionForward();
+			forward.setPath("/find.jsp");
+			forward.setRedirect(false);
+			
+		} //신영환
 		
 		
 		

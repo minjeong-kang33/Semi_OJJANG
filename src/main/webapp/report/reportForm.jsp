@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>신고하기</title>
-<link rel="stylesheet" type="text/css" href="reportWrite.css"/>
+<link rel="stylesheet" type="text/css" href="../assets/css/reportForm.css"/>
 
 
 <script type="text/javascript">
@@ -42,13 +42,13 @@ if(M_id==null){
 
 <%-- 신고하기 폼 --%>
 <div class="reportForm">
-	<form action="reportWritePro.jsp" method="post" name="reportWriteBox">
+	<form action="ReportPro.rpv" method="post" name="reportWriteBox">
 	<input type="hidden" name="M_id" value="<%=M_id %>">
  	<input type="hidden" name="R_id" value="<%=R_id %>">
 	<input type="hidden" name="R_writeNum" value="<%=R_writeNum %>">
 	<input type="hidden" name="R_category" value="<%=R_category %>">
 	<input type="hidden" name="R_title" value="<%=R_title %>">
-	<span class="reportInfo"><img src="assets/images/danger.png" class="dangerIcon">  클릭하여 신고 이유를 선택해 주세요.</span> 
+	<span class="reportInfo"><img src="../assets/images/danger.png" class="dangerIcon">  클릭하여 신고 이유를 선택해 주세요.</span> 
 	<select id="selectBox" name="R_type">
 		<option value=""> -- 선택하세요 --</option>
 		<option value="회원비난/비하"> 회원비난/비하 </option>

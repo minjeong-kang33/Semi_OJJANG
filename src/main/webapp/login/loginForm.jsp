@@ -4,7 +4,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 </head>
 <body>
 <head>
@@ -18,6 +17,7 @@
 </head>
 <body>
 	<div class="select"></div>
+
 	<br>
 	<br>
 
@@ -65,8 +65,8 @@
 	<br>
 	<footer class="footer">
 		<div class="footer-info">
-			<a href="" onclick="find()">아이디/비밀번호찾기 |</a> <a href="join/joinForm.jsp">회원가입</a>
-<script type="text/javascript">
+			<a href="" onclick="find()">아이디/비밀번호찾기 |</a> <a href="MemberJoinForm.me">회원가입</a>
+			<script type="text/javascript">
 				function find() {
 					window.open("findID.jsp", "nickwin",
 							"width=400, height=350");
@@ -75,4 +75,5 @@
 		</div>
 	</footer>
 </body>
+
 </html>

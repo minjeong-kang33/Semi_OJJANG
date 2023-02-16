@@ -13,7 +13,6 @@ import com.itwillbs.buy.db.BuyDTO;
 import com.itwillbs.member.db.MemberDTO;
 import com.itwillbs.sell.db.SellDTO;
 
-
 public class AdminDAO {
 	
 	public Connection getConnection() throws Exception {
@@ -32,7 +31,7 @@ public class AdminDAO {
 		MemberDTO dto=null;
 		try {
 			con=getConnection();
-			String sql="select * from member order by M_play, M_id limit ?, ?";
+			String sql="select * from member order by M_play desc, M_id limit ?, ?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, startRow-1);
 			pstmt.setInt(2, pageSize);
@@ -43,7 +42,7 @@ public class AdminDAO {
 				dto.setM_name(rs.getString("M_name"));
 				dto.setM_nick(rs.getString("M_nick"));
 				dto.setM_createdate(rs.getTimestamp("M_createdate"));
-				dto.setM_play(rs.getInt("M_play"));
+				dto.setM_play(rs.getString("M_play"));
 				adUserList.add(dto);
 			}
 		}catch(Exception e) {
@@ -98,7 +97,7 @@ public class AdminDAO {
 				dto.setM_name(rs.getString("M_name"));
 				dto.setM_nick(rs.getString("M_nick"));
 				dto.setM_createdate(rs.getTimestamp("M_createdate"));
-				dto.setM_play(rs.getInt("M_play"));
+				dto.setM_play(rs.getString("M_play"));
 				adUserListPro.add(dto);
 			}
 		}catch(Exception e) {
@@ -118,7 +117,7 @@ public class AdminDAO {
 		ResultSet rs=null;
 		try {
 			con=getConnection();
-			String sql="select * from member where M_play in ('3', '4') order by M_id limit ?, ?";
+			String sql="select * from member where M_play in ('탈퇴', '강퇴') order by M_id limit ?, ?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, startRow-1);
 			pstmt.setInt(2, pageSize);
@@ -129,7 +128,7 @@ public class AdminDAO {
 				dto.setM_name(rs.getString("M_name"));
 				dto.setM_nick(rs.getString("M_nick"));
 				dto.setM_createdate(rs.getTimestamp("M_createdate"));
-				dto.setM_play(rs.getInt("M_play"));
+				dto.setM_play(rs.getString("M_play"));
 				adOutList.add(dto);
 			}
 		}catch(Exception e) {
@@ -149,7 +148,7 @@ public class AdminDAO {
 		int count=0;
 		try {
 			con=getConnection();
-			String sql="select count(*) from member where M_play in ('3', '4')";
+			String sql="select count(*) from member where M_play in ('탈퇴', '강퇴')";
 			pstmt=con.prepareStatement(sql);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
@@ -171,7 +170,7 @@ public class AdminDAO {
 		ResultSet rs=null;
 		try {
 			con=getConnection();
-			String sql="select * from member where M_play in ('3', '4')";
+			String sql="select * from member where M_play in ('탈퇴', '강퇴')";
 			if(info.equals("M_id")) {sql+="and M_id like ?";}
 			else if(info.equals("M_name")) {sql+="and M_name like ?";}
 			else if(info.equals("M_nick")) {sql+="and M_nick like ?";}
@@ -184,7 +183,7 @@ public class AdminDAO {
 				dto.setM_name(rs.getString("M_name"));
 				dto.setM_nick(rs.getString("M_nick"));
 				dto.setM_createdate(rs.getTimestamp("M_createdate"));
-				dto.setM_play(rs.getInt("M_play"));
+				dto.setM_play(rs.getString("M_play"));
 				adOutListPro.add(dto);
 			}
 		}catch(Exception e) {
@@ -204,7 +203,7 @@ public class AdminDAO {
 		ResultSet rs=null;
 		try {
 			con=getConnection();
-			String sql="select * from member where M_play='2' order by M_id limit ?, ?";
+			String sql="select * from member where M_play='신고' order by M_id limit ?, ?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, startRow-1);
 			pstmt.setInt(2, pageSize);
@@ -215,7 +214,7 @@ public class AdminDAO {
 				dto.setM_name(rs.getString("M_name"));
 				dto.setM_nick(rs.getString("M_nick"));
 				dto.setM_createdate(rs.getTimestamp("M_createdate"));
-				dto.setM_play(rs.getInt("M_play"));
+				dto.setM_play(rs.getString("M_play"));
 				adUserReportList.add(dto);
 			}
 		}catch(Exception e) {
@@ -235,7 +234,7 @@ public class AdminDAO {
 		int count=0;
 		try {
 			con=getConnection();
-			String sql="select count(*) from member where M_play='2'";
+			String sql="select count(*) from member where M_play='신고'";
 			pstmt=con.prepareStatement(sql);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
@@ -257,7 +256,7 @@ public class AdminDAO {
 		ResultSet rs=null;
 		try {
 			con=getConnection();
-			String sql="select * from member where M_play='2'";
+			String sql="select * from member where M_play='신고'";
 			if(info.equals("M_id")) {sql+="and M_id like ?";}
 			else if(info.equals("M_name")) {sql+="and M_name like ?";}
 			else if(info.equals("M_nick")) {sql+="and M_nick like ?";}
@@ -270,7 +269,7 @@ public class AdminDAO {
 				dto.setM_name(rs.getString("M_name"));
 				dto.setM_nick(rs.getString("M_nick"));
 				dto.setM_createdate(rs.getTimestamp("M_createdate"));
-				dto.setM_play(rs.getInt("M_play"));
+				dto.setM_play(rs.getString("M_play"));
 				adUserReportListPro.add(dto);
 			}
 		}catch(Exception e) {
@@ -288,7 +287,7 @@ public class AdminDAO {
 		PreparedStatement pstmt=null;
 		try {
 			con=getConnection();
-			String sql="update member set M_play=3 where M_id=?";
+			String sql="update member set M_play='강퇴' where M_id=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, M_id);
 			pstmt.execute();

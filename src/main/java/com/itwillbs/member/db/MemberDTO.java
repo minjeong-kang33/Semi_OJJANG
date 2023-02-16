@@ -13,10 +13,17 @@ public class MemberDTO {
 	private String M_address2;
 	private String M_email;
 	private Timestamp M_createdate;
-	private int M_play;
+	private String M_play;
 	private String M_admin;
+	private String M_Profile;
 	
 	
+	public String getM_Profile() {
+		return M_Profile;
+	}
+	public void setM_Profile(String m_Profile) {
+		M_Profile = m_Profile;
+	}
 	public String getM_id() {
 		return M_id;
 	}
@@ -77,10 +84,10 @@ public class MemberDTO {
 	public void setM_createdate(Timestamp m_createdate) {
 		M_createdate = m_createdate;
 	}
-	public int getM_play() {
+	public String getM_play() {
 		return M_play;
 	}
-	public void setM_play(int m_play) {
+	public void setM_play(String m_play) {
 		M_play = m_play;
 	}
 	public String getM_admin() {
