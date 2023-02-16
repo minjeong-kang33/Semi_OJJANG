@@ -67,6 +67,7 @@ public class MypageFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}//박은지
+			
 		}else if(sPath.equals("/Profile.moi")) {
 			action=new Profile();
 			try {
@@ -74,16 +75,28 @@ public class MypageFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}//박은지
+			
 		}else if(sPath.equals("/Buyhistory.moi")) {
-			forward=new ActionForward();
-			forward.setPath("Mypage/buyHistory.jsp");
-			forward.setRedirect(false);
-			//박은지
+			action=new Buyhistory();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}//박은지	
+			
 		}else if(sPath.equals("/Sellhistory.moi")) {
-			forward=new ActionForward();
-			forward.setPath("Mypage/sellHistory.jsp");
-			forward.setRedirect(false);
+			action=new Sellhistory();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}//박은지	
+			
+//			forward=new ActionForward();
+//			forward.setPath("Mypage/sellHistory.jsp");
+//			forward.setRedirect(false);
 			//박은지
+			
 		}else if(sPath.equals("/Writehistory.moi")) {
 			action=new Writehistory();
 			try {
@@ -91,6 +104,7 @@ public class MypageFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}//박은지
+			
 		}else if(sPath.equals("/WritehistoryB.moi")) {
 			action=new WritehistoryB();
 			try {
@@ -98,13 +112,15 @@ public class MypageFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}//박은지
+			
 		}else if(sPath.equals("/WritehistoryS.moi")) {
 			action=new WritehistoryS();
 			try {
 				forward=action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
-			}//박은지		
+			}//박은지	
+			
 		}else if(sPath.equals("/Likelist.moi")) {
 			action=new Likelist();
 			try {

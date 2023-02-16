@@ -56,138 +56,137 @@ public class MypageDAO {
 				if (pstmt != null) try {pstmt.close();} catch (Exception e2) {}
 				if (con != null) try {con.close();} catch (Exception e2) {}
 				if (rs != null) try {rs.close();} catch (Exception e2) {}
-			}
-		
+			}		
 	}
 	
 	//판매내역1
-	public ArrayList<SellDTO> sellHistory(String M_id) {
-		ArrayList<SellDTO> sellHistory=new ArrayList<SellDTO>();
-		Connection con=null;
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		try {
-			con=getConnection();
-			String sql="select * from sell where M_id in ( select M_id from deal where M_id=?)";
-			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, M_id);
-			rs=pstmt.executeQuery();
-			while(rs.next()) {
-				SellDTO dto=new SellDTO();
-				dto.setS_title(rs.getString("S_title"));
-				dto.setS_price(rs.getInt("S_price"));		
-				dto.setS_category(rs.getString("S_category"));
-				dto.setS_num(rs.getInt("S_num"));
-				sellHistory.add(dto);
-			}
-		}catch(Exception e) {
-			e.printStackTrace();
-		}finally {
-			if(con!=null) try {con.close();} catch (Exception e2) {}
-			if(pstmt!=null) try {pstmt.close();} catch (Exception e2) {}
-			if(rs!=null) try {rs.close();} catch (Exception e2) {}
-		}
-		return sellHistory;
-	};
+//	public ArrayList<SellDTO> sellHistory(String M_id) {
+//		ArrayList<SellDTO> sellHistory=new ArrayList<SellDTO>();
+//		Connection con=null;
+//		PreparedStatement pstmt=null;
+//		ResultSet rs=null;
+//		try {
+//			con=getConnection();
+//			String sql="select * from sell where M_id in ( select M_id from deal where M_id=?)";
+//			pstmt=con.prepareStatement(sql);
+//			pstmt.setString(1, M_id);
+//			rs=pstmt.executeQuery();
+//			while(rs.next()) {
+//				SellDTO dto=new SellDTO();
+//				dto.setS_title(rs.getString("S_title"));
+//				dto.setS_price(rs.getInt("S_price"));		
+//				dto.setS_category(rs.getString("S_category"));
+//				dto.setS_num(rs.getInt("S_num"));
+//				sellHistory.add(dto);
+//			}
+//		}catch(Exception e) {
+//			e.printStackTrace();
+//		}finally {
+//			if(con!=null) try {con.close();} catch (Exception e2) {}
+//			if(pstmt!=null) try {pstmt.close();} catch (Exception e2) {}
+//			if(rs!=null) try {rs.close();} catch (Exception e2) {}
+//		}
+//		return sellHistory;
+//	};
 	
 	
 	//판매내역2
-	public ArrayList<DealDTO> dealHistory(String M_id) {
-		ArrayList<DealDTO> dealHistory=new ArrayList<DealDTO>();
-		Connection con=null;
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		try {
-			con=getConnection();
-			String sql= "select D_buy, D_date from deal where M_id in (select M_id from sell where M_id=?)";
-			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, M_id);
-			rs=pstmt.executeQuery();
-			while(rs.next()) {
-				DealDTO dto=new DealDTO();
-				dto.setD_buy(rs.getString("D_buy"));
-				dto.setD_date(rs.getTimestamp("D_date"));
-			
-				dealHistory.add(dto);
-			}
-		}catch(Exception e) {
-			e.printStackTrace();
-		}finally {
-			if(con!=null) try {con.close();} catch (Exception e2) {}
-			if(pstmt!=null) try {pstmt.close();} catch (Exception e2) {}
-			if(rs!=null) try {rs.close();} catch (Exception e2) {}
-		}
-		return dealHistory;
-	}
+//	public ArrayList<DealDTO> dealHistory(String M_id) {
+//		ArrayList<DealDTO> dealHistory=new ArrayList<DealDTO>();
+//		Connection con=null;
+//		PreparedStatement pstmt=null;
+//		ResultSet rs=null;
+//		try {
+//			con=getConnection();
+//			String sql= "select D_buy, D_date from deal where M_id in (select M_id from sell where M_id=?)";
+//			pstmt=con.prepareStatement(sql);
+//			pstmt.setString(1, M_id);
+//			rs=pstmt.executeQuery();
+//			while(rs.next()) {
+//				DealDTO dto=new DealDTO();
+//				dto.setD_buy(rs.getString("D_buy"));
+//				dto.setD_date(rs.getTimestamp("D_date"));
+//			
+//				dealHistory.add(dto);
+//			}
+//		}catch(Exception e) {
+//			e.printStackTrace();
+//		}finally {
+//			if(con!=null) try {con.close();} catch (Exception e2) {}
+//			if(pstmt!=null) try {pstmt.close();} catch (Exception e2) {}
+//			if(rs!=null) try {rs.close();} catch (Exception e2) {}
+//		}
+//		return dealHistory;
+//	}
 	
 
 	
 
 	//buyHistory_dealListS
-	public ArrayList<SellDTO> dealListS(String M_id) {
-		ArrayList<SellDTO> dealListS=new ArrayList<SellDTO>();
-		Connection con=null;
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		try {
-			con=getConnection();
-			String sql="select* from sell where S_num in ( select S_num from deal where D_buy=?)";
-			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, M_id);
-			rs=pstmt.executeQuery();
-			while(rs.next()) {
-				SellDTO dto=new SellDTO();
-				dto.setM_id(rs.getString("M_id"));
-				dto.setS_title(rs.getString("S_title"));
-				dto.setS_price(rs.getInt("S_price"));		
-				dto.setS_category(rs.getString("S_category"));
-				dto.setS_num(rs.getInt("S_num"));
-				dealListS.add(dto);
-			}
-		}catch(Exception e) {
-			e.printStackTrace();
-		}finally {
-			if(con!=null) try {con.close();} catch (Exception e2) {}
-			if(pstmt!=null) try {pstmt.close();} catch (Exception e2) {}
-			if(rs!=null) try {rs.close();} catch (Exception e2) {}
-		}
-		return dealListS;
-	}
+//	public ArrayList<SellDTO> dealListS(String M_id) {
+//		ArrayList<SellDTO> dealListS=new ArrayList<SellDTO>();
+//		Connection con=null;
+//		PreparedStatement pstmt=null;
+//		ResultSet rs=null;
+//		try {
+//			con=getConnection();
+//			String sql="select* from sell where S_num in ( select S_num from deal where D_buy=?)";
+//			pstmt=con.prepareStatement(sql);
+//			pstmt.setString(1, M_id);
+//			rs=pstmt.executeQuery();
+//			while(rs.next()) {
+//				SellDTO dto=new SellDTO();
+//				dto.setM_id(rs.getString("M_id"));
+//				dto.setS_title(rs.getString("S_title"));
+//				dto.setS_price(rs.getInt("S_price"));		
+//				dto.setS_category(rs.getString("S_category"));
+//				dto.setS_num(rs.getInt("S_num"));
+//				dealListS.add(dto);
+//			}
+//		}catch(Exception e) {
+//			e.printStackTrace();
+//		}finally {
+//			if(con!=null) try {con.close();} catch (Exception e2) {}
+//			if(pstmt!=null) try {pstmt.close();} catch (Exception e2) {}
+//			if(rs!=null) try {rs.close();} catch (Exception e2) {}
+//		}
+//		return dealListS;
+//	}
 
-	public ArrayList<DealDTO> dealListB(String M_id){
-		ArrayList<DealDTO> dealListB=new ArrayList<DealDTO>();
-		Connection con =null;
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		try {
-			con=getConnection();
-			String sql="select * from deal where D_buy=?";
-			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, M_id);
-			
-			rs=pstmt.executeQuery();	
-
-			while(rs.next()) {
-				
-				DealDTO dto=new DealDTO();
-				dto.setD_num(rs.getInt("D_num"));
-				dto.setS_num(rs.getInt("S_num"));
-				dto.setM_id(rs.getString("M_id"));
-				dto.setD_buy(rs.getString("D_buy"));
-				dto.setD_date(rs.getTimestamp("D_date"));
-				
-				dealListB.add(dto);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			
-			if(rs!=null) try { rs.close();} catch (Exception e2) {}
-			if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
-			if(con!=null) try { con.close();} catch (Exception e2) {}
-		}
-		return dealListB;
-	}
+//	public ArrayList<DealDTO> dealListB(String M_id){
+//		ArrayList<DealDTO> dealListB=new ArrayList<DealDTO>();
+//		Connection con =null;
+//		PreparedStatement pstmt=null;
+//		ResultSet rs=null;
+//		try {
+//			con=getConnection();
+//			String sql="select * from deal where D_buy=?";
+//			pstmt=con.prepareStatement(sql);
+//			pstmt.setString(1, M_id);
+//			
+//			rs=pstmt.executeQuery();	
+//
+//			while(rs.next()) {
+//				
+//				DealDTO dto=new DealDTO();
+//				dto.setD_num(rs.getInt("D_num"));
+//				dto.setS_num(rs.getInt("S_num"));
+//				dto.setM_id(rs.getString("M_id"));
+//				dto.setD_buy(rs.getString("D_buy"));
+//				dto.setD_date(rs.getTimestamp("D_date"));
+//				
+//				dealListB.add(dto);
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}finally {
+//			
+//			if(rs!=null) try { rs.close();} catch (Exception e2) {}
+//			if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
+//			if(con!=null) try { con.close();} catch (Exception e2) {}
+//		}
+//		return dealListB;
+//	}
 	
 	//================like===========================================
 	
@@ -334,89 +333,7 @@ public class MypageDAO {
 	
 	
 	//===========================글 쓴 내역
-	
-//	public ArrayList<SellDTO> WriteHistoryS(String M_id){
-//		ArrayList<SellDTO> WriteHistoryS=new ArrayList<SellDTO>();
-//		Connection con =null;
-//		PreparedStatement pstmt=null;
-//		ResultSet rs=null;
-//		try {
-//			con=getConnection();
-//			String sql="select * from sell where M_id=?";
-//			
-//			pstmt=con.prepareStatement(sql);
-//			pstmt.setString(1, M_id);
-//			
-//			rs=pstmt.executeQuery();	
-//
-//			while(rs.next()) {
-//				
-//				SellDTO dto=new SellDTO();
-//				dto.setS_num(rs.getInt("S_num"));
-//				dto.setS_price(rs.getInt("S_price"));
-//				dto.setM_id(rs.getString("M_id"));
-//				dto.setS_title(rs.getString("S_title"));
-//				dto.setS_text(rs.getString("S_text"));
-//				dto.setS_like(rs.getInt("S_like"));
-//				dto.setS_view(rs.getInt("S_view"));
-//				dto.setS_category(rs.getString("S_category"));
-//				dto.setS_send1(rs.getString("S_send1"));	
-//				dto.setS_send2(rs.getString("S_send2"));
-//				dto.setS_createdate(rs.getTimestamp("S_createdate"));
-//				dto.setS_category(rs.getString("S_category"));
-//				
-//				WriteHistoryS.add(dto);
-//			}
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}finally {
-//			
-//			if(rs!=null) try { rs.close();} catch (Exception e2) {}
-//			if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
-//			if(con!=null) try { con.close();} catch (Exception e2) {}
-//		}
-//		return WriteHistoryS;
-//	} //WriteHistoryS 끝
-	
-	
-//	public ArrayList<BuyDTO> WriteHistoryB(String M_id){
-//		ArrayList<BuyDTO> WriteHistoryB=new ArrayList<BuyDTO>();
-//		Connection con =null;
-//		PreparedStatement pstmt=null;
-//		ResultSet rs=null;
-//		try {
-//			con=getConnection();
-//			String sql="select * from buy where M_id=?";
-//			
-//			pstmt=con.prepareStatement(sql);
-//			pstmt.setString(1, M_id);
-//			
-//			rs=pstmt.executeQuery();	
-//
-//			while(rs.next()) {
-//				
-//				BuyDTO dto=new BuyDTO();
-//				dto.setM_id(rs.getString("M_id"));
-//				dto.setB_num(rs.getInt("B_num"));
-//				dto.setB_category(rs.getString("B_category"));
-//				dto.setB_title(rs.getString("B_title"));
-//				dto.setB_text(rs.getString("B_text"));
-//				dto.setB_view(rs.getInt("B_view"));
-//				dto.setB_img(rs.getString("B_img"));
-//			
-//				
-//				WriteHistoryB.add(dto);
-//			}
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}finally {
-//			
-//			if(rs!=null) try { rs.close();} catch (Exception e2) {}
-//			if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
-//			if(con!=null) try { con.close();} catch (Exception e2) {}
-//		}
-//		return WriteHistoryB;
-//	} //WriteHistoryB 끝
+
 	
 	public ArrayList<BuyDTO> WriteHistoryB2(String M_id){
 		ArrayList<BuyDTO> WriteHistoryB2=new ArrayList<BuyDTO>();
@@ -502,7 +419,7 @@ public class MypageDAO {
 	}
 	
 	
-	//============================페이징
+//============================페이징
 	
 	public ArrayList<SellDTO> sellList(int startRow, int pageSize){
 		System.out.println("SellDAO sellList()");
@@ -551,7 +468,7 @@ public class MypageDAO {
 			if(con!=null) try { con.close();} catch (Exception e2) {}
 		}
 		return sellList;
-	}//
+	}
 	
 	
 	public ArrayList<BuyDTO> buyList(int startRow, int pageSize){
@@ -633,7 +550,148 @@ public class MypageDAO {
 		}
 		return likeList;
 	}
-
+	
+	//구매리스트
+	public ArrayList<DealDTO> dealListB1(int startRow, int pageSize,String M_id) {
+		ArrayList<DealDTO> dealListB1=new ArrayList<DealDTO>();
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=getConnection();
+			String sql= "select * from deal where D_buy=? order by S_num desc limit ?,?"; 
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, M_id);
+			pstmt.setInt(2, startRow-1);
+			pstmt.setInt(3, pageSize);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				DealDTO dto=new DealDTO();
+				dto.setD_num(rs.getInt("D_num"));
+				dto.setS_num(rs.getInt("S_num"));
+				dto.setM_id(rs.getString("M_id"));
+				dto.setD_buy(rs.getString("D_buy"));
+				dto.setD_date(rs.getTimestamp("D_date"));
+				
+				dealListB1.add(dto);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(con!=null) try {con.close();} catch (Exception e2) {}
+			if(pstmt!=null) try {pstmt.close();} catch (Exception e2) {}
+			if(rs!=null) try {rs.close();} catch (Exception e2) {}
+		}
+		return dealListB1;
+	}
+	
+	//구매리스트
+	public ArrayList<SellDTO> dealListS1(int startRow, int pageSize,String M_id) {
+		ArrayList<SellDTO> dealListS1=new ArrayList<SellDTO>();
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=getConnection();
+			String sql= "select * from sell where S_num in ( select S_num from deal where D_buy=?) order by S_num desc limit ?,?"; 
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, M_id);
+			pstmt.setInt(2, startRow-1);
+			pstmt.setInt(3, pageSize);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				SellDTO dto=new SellDTO();
+				dto.setS_num(rs.getInt("S_num"));
+				dto.setM_id(rs.getString("M_id"));
+				dto.setS_category(rs.getString("S_category"));
+				dto.setS_title(rs.getString("S_title"));
+				dto.setS_text(rs.getString("S_text"));
+				dto.setS_price(rs.getInt("S_price"));
+				
+				dealListS1.add(dto);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(con!=null) try {con.close();} catch (Exception e2) {}
+			if(pstmt!=null) try {pstmt.close();} catch (Exception e2) {}
+			if(rs!=null) try {rs.close();} catch (Exception e2) {}
+		}
+		return dealListS1;
+	}
+	
+	//판매리스트 
+	public ArrayList<DealDTO> dealHistory1(int startRow, int pageSize,String M_id) {
+		ArrayList<DealDTO> dealHistory1=new ArrayList<DealDTO>();
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=getConnection();
+			String sql= "select * from deal where M_id in (select M_id from sell where M_id=?) order by S_num desc limit ?,?"; 
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, M_id);
+			pstmt.setInt(2, startRow-1);
+			pstmt.setInt(3, pageSize);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				DealDTO dto=new DealDTO();
+				dto.setD_num(rs.getInt("D_num"));
+				dto.setS_num(rs.getInt("S_num"));
+				dto.setM_id(rs.getString("M_id"));
+				dto.setD_buy(rs.getString("D_buy"));
+				dto.setD_date(rs.getTimestamp("D_date"));
+			
+				dealHistory1.add(dto);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(con!=null) try {con.close();} catch (Exception e2) {}
+			if(pstmt!=null) try {pstmt.close();} catch (Exception e2) {}
+			if(rs!=null) try {rs.close();} catch (Exception e2) {}
+		}
+		return dealHistory1;
+	}
+	
+	//판매리스트
+	public ArrayList<SellDTO> sellHistory1(int startRow, int pageSize,String M_id) {
+		ArrayList<SellDTO> sellHistory1=new ArrayList<SellDTO>();
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=getConnection();
+			String sql= ("select * from sell where M_id in ( select M_id from deal where M_id=?)  order by S_num desc limit ?,?"); 
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, M_id);
+			pstmt.setInt(2, startRow-1);
+			pstmt.setInt(3, pageSize);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				SellDTO dto=new SellDTO();
+				dto.setS_num(rs.getInt("S_num"));
+				dto.setM_id(rs.getString("M_id"));
+				dto.setS_category(rs.getString("S_category"));
+				dto.setS_title(rs.getString("S_title"));
+				dto.setS_text(rs.getString("S_text"));
+				dto.setS_price(rs.getInt("S_price"));
+			
+				sellHistory1.add(dto);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(con!=null) try {con.close();} catch (Exception e2) {}
+			if(pstmt!=null) try {pstmt.close();} catch (Exception e2) {}
+			if(rs!=null) try {rs.close();} catch (Exception e2) {}
+		}
+		return sellHistory1;
+	}
+	
+// Count=============================================================
+	
+	
 	public int getsellCount() {
 		int count=0;
 		Connection con =null;
@@ -661,6 +719,8 @@ public class MypageDAO {
 		}
 		return count;
 	}
+	
+	
 	
 	public int getbuyCount() {
 		int count=0;
@@ -691,6 +751,91 @@ public class MypageDAO {
 	}
 	
 	
+	public int getlikeCount(String M_id) {
+		int count=0;
+		Connection con =null;
+		PreparedStatement pstmt=null;	
+		ResultSet rs=null;
+		try {
+			
+			con=getConnection();
+			
+			String sql="select count(*) from like where M_id=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, M_id);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()){
+				count=rs.getInt("count(*)");				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			// 예외 상관없이 마무리작업 => 객체생성한 기억장소 해제
+			if(rs!=null) try { rs.close();} catch (Exception e2) {}
+			if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
+			if(con!=null) try { con.close();} catch (Exception e2) {}
+		}
+		return count;
+	}
+	
+	
+	//연습
+	public int getdealCount(String M_id) {
+		int count=0;
+		Connection con =null;
+		PreparedStatement pstmt=null;	
+		ResultSet rs=null;
+		try {
+			
+			con=getConnection();
+			
+			String sql="select count(*) from deal where D_buy=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, M_id);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()){
+				count=rs.getInt("count(*)");				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			// 예외 상관없이 마무리작업 => 객체생성한 기억장소 해제
+			if(rs!=null) try { rs.close();} catch (Exception e2) {}
+			if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
+			if(con!=null) try { con.close();} catch (Exception e2) {}
+		}
+		return count;
+	}
+	
+	public int getdealCount1(String M_id) {
+		int count=0;
+		Connection con =null;
+		PreparedStatement pstmt=null;	
+		ResultSet rs=null;
+		try {
+			
+			con=getConnection();
+			
+			String sql="select count(*) from deal where M_id=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, M_id);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()){
+				count=rs.getInt("count(*)");				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			// 예외 상관없이 마무리작업 => 객체생성한 기억장소 해제
+			if(rs!=null) try { rs.close();} catch (Exception e2) {}
+			if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
+			if(con!=null) try { con.close();} catch (Exception e2) {}
+		}
+		return count;
+	}
 	
 	
 	
@@ -712,46 +857,6 @@ public class MypageDAO {
 	
 	
 	
-	
-	
-	
-	
-	
-//	BuyHistory 연습
-//	public ArrayList<SellDTO> buyHistory(String M_id) {
-//		ArrayList<SellDTO> sellHistory=new ArrayList<SellDTO>();
-//		ArrayList<DealDTO> dealHistory=new ArrayList<DealDTO>();
-//		Connection con=null;
-//		PreparedStatement pstmt=null;
-//		ResultSet rs=null;
-//		try {
-//			con=getConnection();
-//			String sql="select s.M_id, s.S_title, s.S_price, s.S_text, s.S_category, s.S_img, d.D_buy from sell s join deal d on s.S_num=d.D_num where D_buy=?";
-//			pstmt=con.prepareStatement(sql);
-//			pstmt.setString(1, M_id);
-//			rs=pstmt.executeQuery();
-//			while(rs.next()) {
-//				SellDTO dto=new SellDTO();
-//				DealDTO sdto=new DealDTO();
-//				dto.setM_id(rs.getString("M_id"));				
-//				dto.setS_title(rs.getString("S_title"));
-//				dto.setS_price(rs.getInt("S_price"));
-//				dto.setS_text(rs.getString("S_text"));
-//				dto.setS_category(rs.getString("S_category"));
-//				dto.setS_img(rs.getString("S_img"));
-//				sdto.setD_buy(rs.getString("D_buy"));
-//				sellHistory.add(dto);
-//				dealHistory.add(sdto);
-//			}
-//		}catch(Exception e) {
-//			e.printStackTrace();
-//		}finally {
-//			if(con!=null) try {con.close();} catch (Exception e2) {}
-//			if(pstmt!=null) try {pstmt.close();} catch (Exception e2) {}
-//			if(rs!=null) try {rs.close();} catch (Exception e2) {}
-//		}
-//		return sellHistory;
-//	};
-//	
+
 }
 

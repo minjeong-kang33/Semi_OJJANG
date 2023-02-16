@@ -7,16 +7,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.itwillbs.admin.db.MypageDAO;
-import com.itwillbs.buy.db.BuyDTO;
+import com.itwillbs.deal.db.DealDTO;
 import com.itwillbs.member.action.Action;
 import com.itwillbs.member.action.ActionForward;
 import com.itwillbs.sell.db.SellDTO;
 
-public class Likelist implements Action {
+public class Buyhistory implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("Likelist execute()");
+		System.out.println("BuyList execute()");
 		HttpSession session=request.getSession();
 		String M_id=(String)session.getAttribute("M_id");
 		
@@ -28,21 +28,25 @@ public class Likelist implements Action {
 		}
 		int currentPage=Integer.parseInt(pageNum);
 		int startRow=(currentPage-1)*pageSize+1;
-		int endRow = startRow+pageSize-1;
+//		int endRow = startRow+pageSize-1;
 
-		ArrayList<SellDTO> likeList=dao.likeList(startRow, pageSize, M_id);
+		ArrayList<DealDTO> dealListB1=dao.dealListB1(startRow, pageSize, M_id);
+		ArrayList<SellDTO> dealListS1=dao.dealListS1(startRow, pageSize, M_id);
 		
+		
+	
 		int pageBlock=10;
 		int startPage=(currentPage-1)/pageBlock*pageBlock+1;
 		int endPage=startPage+pageBlock-1;
-		int count = dao.getlikeCount(M_id);
+		int count = dao.getdealCount(M_id);
 		int pageCount=count/pageSize+(count%pageSize==0?0:1);
 		if(endPage > pageCount){
 			endPage = pageCount;
 		}
 		
 		// request 가져온 데이터 담기
-		request.setAttribute("likeList", likeList);		
+		request.setAttribute("dealListB1", dealListB1);		
+		request.setAttribute("dealListS1", dealListS1);		
 		request.setAttribute("currentPage", currentPage);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("pageBlock", pageBlock);
@@ -51,7 +55,7 @@ public class Likelist implements Action {
 		
 		// 이동
 		ActionForward forward=new ActionForward();
-		forward.setPath("Mypage/likeList.jsp");
+		forward.setPath("Mypage/buyHistory.jsp");
 		forward.setRedirect(false);
 		return forward;
 	}
