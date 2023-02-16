@@ -76,7 +76,7 @@ public class BuyFrontController extends HttpServlet{
 			}else if (sPath.equals("/BuyInsertForm.buy")) {
 
 				forward = new ActionForward();
-				forward.setPath("buy/.jsp");
+				forward.setPath("buy/buyInsertForm.jsp");
 				forward.setRedirect(false);
 				// 강민정
 				
