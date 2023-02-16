@@ -74,7 +74,18 @@ int adOutCount=(Integer)request.getAttribute("adOutCount");
 		총 멤버 <b><%=adOutCount %></b>명
 		</div>
 <table border="1">
-<tr><td>번호</td><td>아이디</td><td>이름</td><td>닉네임</td><td>가입날짜</td><td>상태</td></tr>
+	<thead>
+		<tr>
+			<th scope="col">번호</th>
+			<th scope="col">아이디</th>
+			<th scope="col">이름</th>
+			<th scope="col">닉네임</th>
+			<th scope="col">가입날짜</th>
+			<th scope="col">상태</th>
+		</tr>
+	</thead>
+	
+	<tbody>
 <%
 for(int i=0;i<adOutList.size();i++){
 	dto=adOutList.get(i);
@@ -88,6 +99,7 @@ for(int i=0;i<adOutList.size();i++){
 <%
 }
 %>
+	</tbody>
 </table>
 <%
 

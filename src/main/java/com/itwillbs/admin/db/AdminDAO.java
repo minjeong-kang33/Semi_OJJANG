@@ -237,7 +237,7 @@ public class AdminDAO {
 		int count=0;
 		try {
 			con=getConnection();
-			String sql="select * from report order by R_type desc, M_id";
+			String sql="select count(*) from report";
 			pstmt=con.prepareStatement(sql);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
@@ -261,8 +261,7 @@ public class AdminDAO {
 			con=getConnection();
 			String sql="select * from report where ";
 			if(info.equals("M_id")) {sql+="M_id like ?";}
-			else if(info.equals("M_name")) {sql+="M_name like ?";}
-			else if(info.equals("M_nick")) {sql+="M_nick like ?";}
+			else if(info.equals("R_id")) {sql+="R_id like ?";}
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, "%"+search+"%");
 			rs=pstmt.executeQuery();
@@ -303,6 +302,23 @@ public class AdminDAO {
 			if(pstmt!=null) try {pstmt.close();} catch (Exception e2) {}
 		}
 	}//adUserDeletePro()
+	
+	public void adUserReportDelete(String R_id) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		try {
+			con=getConnection();
+			String sql="update member set M_play='강퇴' where M_id=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, R_id);
+			pstmt.execute();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(con!=null) try {con.close();} catch (Exception e2) {}
+			if(pstmt!=null) try {pstmt.close();} catch (Exception e2) {}
+		}
+	}//adUserReportDelete()
 		
 	//    ----Sell----
 	public ArrayList<SellDTO> adSellList(int startRow, int pageSize) {
