@@ -71,7 +71,7 @@ for(int i=0;i<WriteHistoryB2.size();i++){
 	</table>
 	
 </section>
-	    <h3>판매글조회</h3> <a href="WriteHistoryS.moi">더보기</a>
+	    <h3>판매글조회</h3> <a href="WritehistoryS.moi">더보기</a>
 <%
 
 ArrayList<SellDTO> WriteHistoryS2=dao.WriteHistoryS2(M_id);
@@ -80,7 +80,7 @@ ArrayList<SellDTO> WriteHistoryS2=dao.WriteHistoryS2(M_id);
 %>	
 <section>
 <table border="1">
-<tr><td>판매글제목</td><td>판매가격</td><td>내용</td><td>카테고리</td><td>좋아요 수</td><td>업로드 날짜</td></tr>
+<tr><td>판매글제목</td><td>판매가격</td><td>내용</td><td>카테고리</td><td>좋아요 수</td><td>조회수</td></tr>
 
 <%
 // System.out.println(dealListS.size());
@@ -96,8 +96,7 @@ for(int i=0;i<WriteHistoryS2.size();i++){
 		<td><%=sdto.getS_text() %></td>		
 		<td><%=sdto.getS_category() %></td>
 		<td><%=sdto.getS_like() %></td>
-		<td><%=dateFormat.format(sdto.getS_createdate()) %></td>
-		
+		<td><%=sdto.getS_view() %></td>
 		
 	</tr>
 

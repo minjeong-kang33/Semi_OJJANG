@@ -33,7 +33,6 @@
     
     <h3>판매글 조회</h3>
 <%
-MypageDAO dao=new MypageDAO();
 String M_id=(String)session.getAttribute("M_id");
 SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy.MM.dd");
 
@@ -77,18 +76,18 @@ for(int i=0;i<sellList.size();i++){
 <%
 if(currentPage > 1){
 	%>
-	<a href="WriteHistoryS.moi?pageNum=<%=currentPage-1%>">[1페이지 이전]</a>
+	<a href="WritehistoryS.moi?pageNum=<%=currentPage-1%>">[1페이지 이전]</a>
 	<%
 }
 
 for(int i=startPage;i<=endPage;i++){
 	%>
-	<a href="WriteHistoryS.moi?pageNum=<%=i%>"><%=i %></a> 
+	<a href="WritehistoryS.moi?pageNum=<%=i%>"><%=i %></a> 
 	<%
 }
 if(currentPage < pageCount){
 	%>
-	<a href="WriteHistoryS.moi?pageNum=<%=currentPage+1%>">[1페이지 다음]</a>
+	<a href="WritehistoryS.moi?pageNum=<%=currentPage+1%>">[1페이지 다음]</a>
 	<%
 }
 

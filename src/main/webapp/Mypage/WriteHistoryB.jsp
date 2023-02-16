@@ -31,7 +31,6 @@
     
     <h3>구매글 조회</h3>
 <%
-MypageDAO dao=new MypageDAO();
 String M_id=(String)session.getAttribute("M_id");
 SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy.MM.dd");
 
@@ -52,7 +51,7 @@ for(int i=0;i<buyList.size();i++){
 	BuyDTO dto=buyList.get(i);	
 %>
 	<tr>	
-		<td><a href="../buy/buyDetails.jsp?B_num=<%=dto.getB_num() %>">
+		<td><a href="BuyDetails.buy?B_num=<%=dto.getB_num() %>">
 		<%=dto.getB_title() %></a></td>	
 		<td><%=dto.getB_text() %></td>
 		<td><%=dto.getB_category() %></td>

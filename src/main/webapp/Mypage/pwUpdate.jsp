@@ -24,7 +24,7 @@
         <div class="container">
              <div class="inner-content2">
              	
-    <!-- ***** 비밀번호 ***** -->
+    <!-- ***** 비밀번호 수정 시작 ***** -->
 
 
 <h3>비밀번호수정</h3>
@@ -38,7 +38,7 @@ String M_id=(String)session.getAttribute("M_id");
 
 %>
 <section>	
-<form action="pwUpdatePro.jsp" method="post" name="fr">
+<form action="PwUpdatePro.moi" method="post" name="fr">
 아이디 : <input type="text" name="M_id" value="<%=M_id%>" readonly><br>
 비밀번호 : <input type="password" name="M_pw"><br>
 변경 비밀번호: <input type="password" name="M_pw2"><br>
@@ -46,11 +46,11 @@ String M_id=(String)session.getAttribute("M_id");
 <input type="button" value="회원정보수정" onclick="fun1()">
 </form>
 
-<a href="main.jsp">메인으로 이동</a>
+<!-- <a href="main.jsp">메인으로 이동</a> -->
 
 </section>
                
-	<!-- ***** 회원정보수정 끝 ***** -->        
+	<!-- ***** 비밀번호수정 끝 ***** -->        
             
              </div>
         </div>

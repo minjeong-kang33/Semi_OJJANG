@@ -34,11 +34,13 @@
 
 <%
 String M_id=(String)session.getAttribute("M_id");
-MemberDAO dao=new MemberDAO();
-MemberDTO dto=dao.getMember(M_id);
+// MemberDAO dao=new MemberDAO();
+// MemberDTO dto=dao.getMember(M_id);
+
+MemberDTO dto=(MemberDTO)request.getAttribute("dto");
 %>
 <section>	
-<form action="profileUpdatepro.jsp" method="post">
+<form action="ProfileUpdatePro.moi" method="post">
 아이디 : <input type="text" name="M_id" value="<%=M_id%>" readonly><br>
 비밀번호 : <input type="password" name="M_pw"><br>
 이름 : <input type="text" name="M_name" value="<%=dto.getM_name()%>" readonly><br>
@@ -50,8 +52,6 @@ MemberDTO dto=dao.getMember(M_id);
 
 <input type="submit" value="회원정보수정">
 </form>
-
-<a href="main.jsp">메인으로 이동</a>
 
 </section>
                

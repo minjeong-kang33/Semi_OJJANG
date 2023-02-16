@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.itwillbs.member.action.Action;
 import com.itwillbs.member.action.ActionForward;
-import com.itwillbs.mypage.action.PwUpdatePro;
+
 
 public class LikeFrontController extends HttpServlet{
 	@Override
@@ -35,14 +35,14 @@ public class LikeFrontController extends HttpServlet{
 		/* 찜목록 관련 가상주소 .like 입니다!! */
 		/* 여기 아래부터 if문 작성. 각 if이 끝나는 괄호 뒤에는 작성자 이름 함께 적기 */
 		
-		if(sPath.equals("/LikePro.moi")) {
+		if(sPath.equals("/LikePro.like")) {
 			action=new LikePro();
 			try {
 				forward=action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}//박은지
-		
+	
 		}
 		
 		

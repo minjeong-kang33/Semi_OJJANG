@@ -1,3 +1,5 @@
+<%@page import="com.itwillbs.sell.db.SellDTO"%>
+<%@page import="com.itwillbs.admin.db.MypageDAO"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -31,10 +33,16 @@
 <%
 String M_id=(String)session.getAttribute("M_id");
 // LikeDTO dto=new LikeDTO();
-SellDTO dto=new SellDTO();
 MypageDAO dao=new MypageDAO();
+SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy.MM.dd");
 
-ArrayList<SellDTO> likeHistory=dao.likeHistory(M_id);
+int currentPage=(Integer)request.getAttribute("currentPage");
+int startPage=(Integer)request.getAttribute("startPage");
+int pageBlock=(Integer)request.getAttribute("pageBlock");
+int endPage=(Integer)request.getAttribute("endPage");
+int pageCount=(Integer)request.getAttribute("pageCount");
+
+ArrayList<SellDTO> likeList=(ArrayList<SellDTO>)request.getAttribute("likeList");
 // SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy.MM.dd");
 %>	
 <section>
@@ -44,8 +52,8 @@ ArrayList<SellDTO> likeHistory=dao.likeHistory(M_id);
 <%
 // System.out.println(dealList.size());
 // System.out.println(dealListB.size());
-for(int i=0;i<likeHistory.size();i++){
- 	dto=likeHistory.get(i);
+for(int i=0;i<likeList.size();i++){
+ 	SellDTO dto=likeList.get(i);
 %>
 	<tr>
 		<td><%=dto.getM_id() %></td>
@@ -59,7 +67,26 @@ for(int i=0;i<likeHistory.size();i++){
 <%
 }
 %>
-</table>
+	</table>
+<%
+if(currentPage > 1){
+	%>
+	<a href=Likelist.moi?pageNum=<%=currentPage-1%>">[1페이지 이전]</a>
+	<%
+}
+
+for(int i=startPage;i<=endPage;i++){
+	%>
+	<a href="Likelist.moi?pageNum=<%=i%>"><%=i %></a> 
+	<%
+}
+if(currentPage < pageCount){
+	%>
+	<a href="Likelist.moi?pageNum=<%=currentPage+1%>">[1페이지 다음]</a>
+	<%
+}
+
+%>
 </section>
 	<!-- ***** 찜목록조회 끝 ***** -->
 	       

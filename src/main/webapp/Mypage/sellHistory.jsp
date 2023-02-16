@@ -1,4 +1,3 @@
-
 <%@page import="com.itwillbs.admin.db.MypageDAO"%>
 <%@page import="com.itwillbs.sell.db.SellDTO"%>
 <%@page import="com.itwillbs.deal.db.DealDTO"%>
@@ -35,18 +34,11 @@
     <h3>판매내역조회</h3>
 <%
 String M_id=(String)session.getAttribute("M_id");
-
-
 DealDTO dto=new DealDTO();
 SellDTO sdto=new SellDTO();
-
 MypageDAO dao=new MypageDAO();
-
-
-
 ArrayList<DealDTO> dealHistory=dao.dealHistory(M_id);
 ArrayList<SellDTO> sellHistory=dao.sellHistory(M_id);
-
 SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy.MM.dd");
 %>	
 <section>
@@ -108,7 +100,6 @@ for(int i=0;i<dealHistory.size();i++){
     <script src="../assets/js/custom.js"></script>
 
     <script>
-
         $(function() {
             var selectedClass = "";
             $("p").click(function(){
@@ -122,7 +113,6 @@ for(int i=0;i<dealHistory.size();i++){
                 
             });
         });
-
     </script> 
 
   </body>

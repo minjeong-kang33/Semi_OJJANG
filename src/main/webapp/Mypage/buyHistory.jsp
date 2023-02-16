@@ -38,14 +38,11 @@
     
     
 <%
-
 String M_id=(String)session.getAttribute("M_id");
 DealDTO dto=new DealDTO();
 SellDTO sdto=new SellDTO();
-
 DealDAO ddao=new DealDAO();
 MypageDAO dao=new MypageDAO();
-
 ArrayList<DealDTO> dealListB=ddao.dealListB(M_id);
 ArrayList<SellDTO> dealListS=dao.dealListS(M_id);
 SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy.MM.dd");
