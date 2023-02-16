@@ -11,10 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.itwillbs.sell.action.SellInsertPro;
 
 
-
-
-
-
 public class BuyFrontController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -35,16 +35,12 @@
     <!-- ***** 헤더 끝 ***** -->
     
 <%
-// int B_num = Integer.parseInt(request.getParameter("B_num"));
-// BuyDAO dao = new BuyDAO();
-// BuyDTO dto = dao.getBuyBoard(B_num);
+int B_num = Integer.parseInt(request.getParameter("B_num"));
 String M_id = (String)session.getAttribute("M_id");
 BuyDTO dto = (BuyDTO)request.getAttribute("dto");
-String B_num = (String)session.getAttribute("B_num");
-
-ArrayList<CommentDTO> List=(ArrayList<CommentDTO>)request.getAttribute("List");
-
+CommentDAO comment=new CommentDAO();
 int pageNumber = (Integer)request.getAttribute("pageNumber");
+ArrayList<CommentDTO>List=comment.getList(B_num, pageNumber);
 
 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd hh:mm");
 %>
@@ -99,7 +95,7 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd hh:mm");
 <!-- 본문 끝 -->
 <!-- 댓글시작 -->
 <div id="comment"  style="text-align: center;" >
-<form method="post" action="commentAction.jsp?B_num=<%=B_num%>">
+<form method="post" action="CommentAction.buy?B_num=<%=B_num%>">
 				<table class="table table-striped"
 					style="text-align: center; border: 1px solid #dddddd">
 					<thead>
