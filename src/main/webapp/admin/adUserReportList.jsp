@@ -86,9 +86,8 @@ int adUserReportCount=(Integer)request.getAttribute("adUserReportCount");
 		<li>
 		<select name="info">
 		<option value="">선택</option>
-		<option value="M_id">아이디</option>
-		<option value="M_name">이름</option>
-		<option value="M_nick">닉네임</option>
+		<option value="M_id">신고자아이디</option>
+		<option value="R_id">피신고자아이디</option>
 		</select>
 		<input type="text" name="search"> <input type="button" value="검색" onclick="fun3()"></li>
 		</ul><br>
@@ -99,12 +98,26 @@ int adUserReportCount=(Integer)request.getAttribute("adUserReportCount");
 		</div>
 <form name="ckDelete" action="AdUserReportDelete.ad" method="post">
 <table border="1">
-<tr><td><input type="checkbox" id="ckAll" name="ckAll" onclick="fun2()"></td><td>번호</td><td>신고사유</td><td>신고자아이디</td><td>피신고자아이디</td><td>기타사유</td><td>카테고리</td><td>글번호</td><td>내용</td></tr>
+	<thead>
+<tr>
+	<th scope="col"><input type="checkbox" id="ckAll" name="ckAll" onclick="fun2()"></th>
+	<th scope="col">번호</th>
+	<th scope="col">신고사유</th>
+	<th scope="col">신고자아이디</th>
+	<th scope="col">피신고자아이디</th>
+	<th scope="col">기타사유</th>
+	<th scope="col">카테고리</th>
+	<th scope="col">글번호</th>
+	<th scope="col">내용</th>
+</tr>
+	</thead>
+
+	<tbody>
 <%
 for(int i=0;i<adUserReportList.size();i++){
 	dto=adUserReportList.get(i);
 %>
-	<tr><td><input type="checkbox" id="ck" name="ck" value="<%=dto.getM_id() %>"></td>
+	<tr><td><input type="checkbox" id="ck" name="ck" value="<%=dto.getR_id() %>"></td>
 		<td><%=i+1 %></td>
 		<td><%=dto.getR_type() %></td>
 		<td><%=dto.getM_id() %></td>
@@ -116,6 +129,7 @@ for(int i=0;i<adUserReportList.size();i++){
 <%
 }
 %>
+	</tbody>
 </table>
 <%
 for(int i=startPage;i<=endPage;i++){
