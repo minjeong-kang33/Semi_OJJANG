@@ -17,7 +17,7 @@ public class BuyDelete implements Action {
 		dao.deleteBuyBoard(B_num);
 
 		ActionForward forward = new ActionForward();
-		forward.setPath("/BuyList.buy");
+		forward.setPath("BuyList.buy");
 		forward.setRedirect(true);
 		
 		return forward;

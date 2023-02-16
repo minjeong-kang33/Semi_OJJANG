@@ -19,6 +19,17 @@
     <link href="assets/css/buy.css" rel="stylesheet" type="text/css">
 <meta charset="UTF-8">
 <title>중고 의류거래: 옺장</title>
+
+<script type="text/javascript">
+
+function fun1(M_id, B_num, R_category, B_title) {
+	   
+    window.open("ReportForm.rpt?R_id=" + M_id + "&R_writeNum="
+          + B_num + "&R_category=" + "buy" + "&R_title=" + B_title,
+          "pop", "width=520,height=340");
+ }
+ 
+</script>
 </head>
     <body>
     <!-- ***** 로딩 일단 지금은 비어있음***** -->
@@ -181,13 +192,25 @@ if(M_id != null){
 	// 세션값=id와 글쓴이가 일치해야만 글수정, 글삭제 표시
 	if(M_id.equals(dto.getM_id())){
 		%>
-<input type="button" class="btn btn-dark" value="글수정" onclick="location.href='buyEdit.jsp?B_num=<%=dto.getB_num() %>'">
-<input type="button" class="btn btn-dark" value="글삭제" onclick="location.href='buyDelete.jsp?B_num=<%=dto.getB_num() %>'"> 
+<input type="button" class="btn btn-dark" value="글수정" onclick="location.href='BuyEditForm.buy?B_num=<%=dto.getB_num() %>'">
+<input type="button" class="btn btn-dark" value="글삭제" onclick="location.href='BuyDelete.buy?B_num=<%=dto.getB_num() %>'"> 
 		<%		
 	}
 }
 %>
-	<button type="button" class="btn btn-dark" onclick="location.href='buyList.jsp'" >글목록</button>
+
+	<button type="button" class="btn btn-dark" onclick="location.href='BuyList.buy'" >글목록</button>
+		<%
+		if(M_id != null){
+			//본인에게는 신고하기 안보임
+			if(!M_id.equals(dto.getM_id())){
+		%>
+		
+		<button type="button" class="btn btn-dark" onclick="fun1('<%=dto.getM_id()%>','<%=dto.getB_num()%>','buy','<%=dto.getB_title()%>')" style="float: right">신고하기</button>
+		<%
+			}
+		}
+		 %>
 </div>
 </div>
 <!-- ***** 푸터 시작 ***** -->

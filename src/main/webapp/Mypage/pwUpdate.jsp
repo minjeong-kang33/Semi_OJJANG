@@ -7,9 +7,9 @@
     <title>중고의류거래: 옺장</title>
    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/font-awesome.css">
-    <link rel="stylesheet" href="../assets/css/templatemo-hexashop.css">
-    <link rel="stylesheet" href="../assets/css/owl-carousel.css">
-    <link rel="stylesheet" href="../assets/css/lightbox.css"> 
+    <link rel="stylesheet" href="assets/css/templatemo-hexashop.css">
+    <link rel="stylesheet" href="assets/css/owl-carousel.css">
+    <link rel="stylesheet" href="assets/css/lightbox.css"> 
 <meta charset="UTF-8">
 <title>중고 의류거래: 옺장</title>
 </head>
@@ -24,7 +24,7 @@
         <div class="container">
              <div class="inner-content2">
              	
-    <!-- ***** 비밀번호 ***** -->
+    <!-- ***** 비밀번호 수정 시작 ***** -->
 
 
 <h3>비밀번호수정</h3>
@@ -38,7 +38,7 @@ String M_id=(String)session.getAttribute("M_id");
 
 %>
 <section>	
-<form action="pwUpdatePro.jsp" method="post" name="fr">
+<form action="PwUpdatePro.moi" method="post" name="fr">
 아이디 : <input type="text" name="M_id" value="<%=M_id%>" readonly><br>
 비밀번호 : <input type="password" name="M_pw"><br>
 변경 비밀번호: <input type="password" name="M_pw2"><br>
@@ -46,11 +46,11 @@ String M_id=(String)session.getAttribute("M_id");
 <input type="button" value="회원정보수정" onclick="fun1()">
 </form>
 
-<a href="main.jsp">메인으로 이동</a>
+<!-- <a href="main.jsp">메인으로 이동</a> -->
 
 </section>
                
-	<!-- ***** 회원정보수정 끝 ***** -->        
+	<!-- ***** 비밀번호수정 끝 ***** -->        
             
              </div>
         </div>
@@ -61,26 +61,26 @@ String M_id=(String)session.getAttribute("M_id");
     <!-- ***** 푸터 끝 ***** -->
 
  <!-- jQuery -->
-    <script src="../assets/js/jquery-2.1.0.min.js"></script>
+    <script src="assets/js/jquery-2.1.0.min.js"></script>
 
  <!--  Bootstrap -->
-    <script src="../assets/js/popper.js"></script>
-    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/popper.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
 
  <!-- Plugins -->
-    <script src="../assets/js/owl-carousel.js"></script>
-    <script src="../assets/js/accordions.js"></script>
-    <script src="../assets/js/datepicker.js"></script>
-    <script src="../assets/js/scrollreveal.min.js"></script>
-    <script src="../assets/js/waypoints.min.js"></script>
-    <script src="../assets/js/jquery.counterup.min.js"></script>
-    <script src="../assets/js/imgfix.min.js"></script> 
-    <script src="../assets/js/slick.js"></script> 
-    <script src="../assets/js/lightbox.js"></script> 
-    <script src="../assets/js/isotope.js"></script> 
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/accordions.js"></script>
+    <script src="assets/js/datepicker.js"></script>
+    <script src="assets/js/scrollreveal.min.js"></script>
+    <script src="assets/js/waypoints.min.js"></script>
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    <script src="assets/js/imgfix.min.js"></script> 
+    <script src="assets/js/slick.js"></script> 
+    <script src="assets/js/lightbox.js"></script> 
+    <script src="assets/js/isotope.js"></script> 
     
 <!-- Global Init -->
-    <script src="../assets/js/custom.js"></script>
+    <script src="assets/js/custom.js"></script>
 
     <script>
 

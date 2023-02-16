@@ -45,7 +45,7 @@ public class ProfileUpdatePro implements Action {
 		if(dto!=null) {
 			dao.updateMember(updateDto);
 			forward=new ActionForward();
-			forward.setPath("Membermain.me");
+			forward.setPath("Main.me");
 			forward.setRedirect(true);
 		}else {
 			response.setContentType("text/html; charset=UTF-8");
