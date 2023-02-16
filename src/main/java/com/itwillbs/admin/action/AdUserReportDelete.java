@@ -16,28 +16,23 @@ public class AdUserReportDelete implements Action {
 		System.out.println("AdUserDelete execute()");
 		AdminDAO dao=new AdminDAO();
 		
-		String M_idArr[]=request.getParameterValues("ck");
-		String M_id=null;
-		if(M_idArr!=null){
-			for(int i=0;i<M_idArr.length;i++){
-				M_id=M_idArr[i];
-				dao.adUserDeletePro(M_id);
+		String R_idArr[]=request.getParameterValues("ck");
+		String R_id=null;
+		if(R_idArr!=null){
+			for(int i=0;i<R_idArr.length;i++){
+				R_id=R_idArr[i];
+				dao.adUserReportDelete(R_id);
 			}
 		}
 		
-		ActionForward forward=null;
-		if(M_id!=null) {
-			forward=new ActionForward();
-			forward.setPath("AdUserReportList.ad");
-			forward.setRedirect(true);
-		}else {
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out=response.getWriter();
-			out.println("<script type='text/javascript'>");
-			out.println("alert('강퇴완료');");
-			out.println("location.href=\'AdUserReportList.ad'");
-			out.println("</script>");
-		}
-		return forward;
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out=response.getWriter();
+		out.println("<script type='text/javascript'>");
+		out.println("alert('강퇴완료');");
+		out.println("location.href=\'AdUserReportList.ad'");
+		out.println("</script>");
+		out.close();
+		
+		return null;
 	}
 }

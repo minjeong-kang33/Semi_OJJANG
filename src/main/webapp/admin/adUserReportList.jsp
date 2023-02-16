@@ -1,6 +1,6 @@
-<%@page import="com.itwillbs.member.db.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="com.itwillbs.report.db.ReportDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <!DOCTYPE html>
@@ -66,10 +66,10 @@ function fun3() {
 <h3>신고회원목록조회</h3>
 <%
 request.setCharacterEncoding("utf-8");
-MemberDTO dto=new MemberDTO();
+ReportDTO dto=new ReportDTO();
 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 
-ArrayList<MemberDTO> adUserReportList=(ArrayList<MemberDTO>)request.getAttribute("adUserReportList");
+ArrayList<ReportDTO> adUserReportList=(ArrayList<ReportDTO>)request.getAttribute("adUserReportList");
 
 int currentPage=(Integer)request.getAttribute("currentPage");
 int startPage=(Integer)request.getAttribute("startPage");
@@ -86,9 +86,8 @@ int adUserReportCount=(Integer)request.getAttribute("adUserReportCount");
 		<li>
 		<select name="info">
 		<option value="">선택</option>
-		<option value="M_id">아이디</option>
-		<option value="M_name">이름</option>
-		<option value="M_nick">닉네임</option>
+		<option value="M_id">신고자아이디</option>
+		<option value="R_id">피신고자아이디</option>
 		</select>
 		<input type="text" name="search"> <input type="button" value="검색" onclick="fun3()"></li>
 		</ul><br>
@@ -99,21 +98,38 @@ int adUserReportCount=(Integer)request.getAttribute("adUserReportCount");
 		</div>
 <form name="ckDelete" action="AdUserReportDelete.ad" method="post">
 <table border="1">
-<tr><td><input type="checkbox" id="ckAll" name="ckAll" onclick="fun2()"></td><td>번호</td><td>아이디</td><td>이름</td><td>닉네임</td><td>가입날짜</td><td>상태</td></tr>
+	<thead>
+<tr>
+	<th scope="col"><input type="checkbox" id="ckAll" name="ckAll" onclick="fun2()"></th>
+	<th scope="col">번호</th>
+	<th scope="col">신고사유</th>
+	<th scope="col">신고자아이디</th>
+	<th scope="col">피신고자아이디</th>
+	<th scope="col">기타사유</th>
+	<th scope="col">카테고리</th>
+	<th scope="col">글번호</th>
+	<th scope="col">내용</th>
+</tr>
+	</thead>
+
+	<tbody>
 <%
 for(int i=0;i<adUserReportList.size();i++){
 	dto=adUserReportList.get(i);
 %>
-	<tr><td><input type="checkbox" id="ck" name="ck" value="<%=dto.getM_id() %>"></td>
+	<tr><td><input type="checkbox" id="ck" name="ck" value="<%=dto.getR_id() %>"></td>
 		<td><%=i+1 %></td>
+		<td><%=dto.getR_type() %></td>
 		<td><%=dto.getM_id() %></td>
-		<td><%=dto.getM_name() %></td>
-		<td><%=dto.getM_nick() %></td>
-		<td><%=dateFormat.format(dto.getM_createdate()) %></td>
-		<td><%=dto.getM_play() %></td></tr>
+		<td><%=dto.getR_id() %></td>
+		<td><%=dto.getR_reason() %></td>
+		<td><%=dto.getR_category() %></td>
+		<td><%=dto.getR_writeNum() %></td>
+		<td><%=dto.getR_title() %></td></tr>
 <%
 }
 %>
+	</tbody>
 </table>
 <%
 for(int i=startPage;i<=endPage;i++){
