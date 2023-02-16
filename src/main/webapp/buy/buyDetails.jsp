@@ -175,7 +175,7 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd hh:mm");
 <%
 if(M_id != null){
 	// 세션값=id와 글쓴이가 일치해야만 글수정, 글삭제 표시
-	if(M_id.equals(dto.getM_id())){
+	if(M_id.equals(dto.getM_id()) || M_id.equals("admin")){
 		%>
 <input type="button" class="btn btn-dark" value="글수정" onclick="location.href='buyEdit.jsp?B_num=<%=dto.getB_num() %>'">
 <input type="button" class="btn btn-dark" value="글삭제" onclick="location.href='buyDelete.jsp?B_num=<%=dto.getB_num() %>'"> 
