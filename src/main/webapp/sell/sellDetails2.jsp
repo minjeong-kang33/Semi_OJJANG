@@ -21,12 +21,11 @@
 <link href="assets/css/buy.css" rel="stylesheet" type="text/css">
 <meta charset="UTF-8">
 <script type="text/javascript">
-function fun1(M_id, S_num, R_category, S_title) {
-	   
-    window.open("ReportForm.rpt?R_id=" + M_id + "&R_writeNum="
-          + S_num + "&R_category=" + R_category + "&R_title=" + S_title,
-          "pop", "width=520,height=340");
- }
+	function fun1(M_id, S_num, R_category, S_title) {
+		window.open("report/reportWrite.jsp?R_id=" + M_id + "&R_writeNum="
+				+ S_num + "&R_category=" + R_category + "&R_title=" + S_title,
+				"pop", "width=520,height=340");
+	}
 </script>
 </head>
 <body>
@@ -62,36 +61,21 @@ function fun1(M_id, S_num, R_category, S_title) {
 						<h2 style="margin-top: 180px">팝니다</h2>
 						<span>sell</span>
 					</div>
-					
-					<table style="text-align: center; border: 1px solid black;">
-					<tr><td rowspan="10"><img src="img/sell/<%=dto.getS_img() %>" width=300px class="goodsImg" ></td></tr>
-					<tr><td colspan="2"><%=dto.getS_category()%></td>
-					<!-- 하트 일단 대충 첨부해둠.. S_like랑 안연결됨 -->
-						<td align="right" class="like_id"><input type="image" name="button"  class="heart" src="sell/heart.png" onclick="hartToggle()"></td></tr>
-					<tr><td colspan="2" style="border-bottom: 1px;"><%=dto.getS_title()%></td></tr>
-					<tr><td>작성자</td><td><%=dto.getM_id()%></td></tr>
-					<tr><td>판매가</td><td><%=dto.getS_price()%></td></tr>
-					<!-- 솔직히 rowspan, colspan 대충 함. 알아서 맞춰 -->
-					<!-- 조회수, 거래방법, (주소), 작성일도 어딘가에 넣어야함 -->
-					<tr><td>test</td></tr>
-					<tr><td>test</td></tr>
-					<tr><td>test</td></tr>
-					<tr><td>글내용</td></tr>
-					<tr><td colspan="2"><%=dto.getS_text()%></td></tr>
-					
-					</table>
 					<!--보내지는 내용 숨겨지도록(post) 작성한 글을 writeAction으로 보냄 -->
-<!-- 					<table class="table table-stripe"
-						style="text-align: center;" > -->
-<!-- 						<colgroup>
+					<table class="table table-striped"
+						style="text-align: center; border: 1px solid #dddddd">
+						<colgroup>
 							<col style="width: 601px">
 							<col style="width: 101px">
 							<col style="width: 301px">
-						</colgroup> -->
-<%-- 							<tr>
-								<td rowspan="7"
-									style="text-align: center"><%=dto.getS_title()%></td>
+						</colgroup>
+						<thead>
+							<tr>
+								<th colspan="3"
+									style="background-color: #eeeeee; text-align: center"><%=dto.getS_title()%></th>
 							</tr>
+						</thead>
+						<tbody>
 							<tr>
 								<td rowspan="7"><img src="img/sell/<%=dto.getS_img() %>" width=300px height=300px class="goodsImg"></td>
 							</tr>
@@ -129,7 +113,8 @@ function fun1(M_id, S_num, R_category, S_title) {
 								<td height="150">글내용</td>
 								<td><%=dto.getS_text()%></td>
 							</tr>
-					</table> --%>
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>

@@ -30,16 +30,6 @@ public class MainPro implements Action{
 		
 		ArrayList<SellDTO> sellList = dao.getsellList(startRow, pageSize);
 		
-		int pageBlock = 10;
-		int startPage = (currentPage - 1) / pageBlock * pageBlock + 1;
-		int endPage = startPage + pageBlock - 1;
-
-		int count = dao.getSellBoardCount();
-		int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
-
-		if (endPage > pageCount) {
-			endPage = pageCount;
-		}
 		// 가져온 데이터 담기
 		request.setAttribute("sellList", sellList);
 		

@@ -15,6 +15,7 @@ public class SellDeletePro implements Action {
 		int S_num = Integer.parseInt(request.getParameter("S_num"));
 
 		SellDAO dao = new SellDAO();
+		dao.deleteLikeSellBoard(S_num);
 		dao.deleteSellBoard(S_num);
 
 		ActionForward forward = new ActionForward();
