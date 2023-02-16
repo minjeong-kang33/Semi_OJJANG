@@ -28,7 +28,7 @@ if(M_id != null){
             <nav class="main-nav">
             
                <!-- ***** 로고 시작 ***** -->
-               <a href="../home/main.jsp" class="logo"> 
+               <a href="Main.me" class="logo"> 
                <img src="assets/images/otzang_logo_top.png" height="60px">
                </a>
                <!-- ***** 로고 끝 ***** -->
