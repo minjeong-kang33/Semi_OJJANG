@@ -51,7 +51,6 @@ function fun1(M_id, S_num, R_category, S_title) {
 	SellDTO dto = (SellDTO) request.getAttribute("dto");
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd hh:mm");
 	%>
-
 	<section class="section" id="products">
 		<!-- 게시판 제목  -->
 		<div class="container">
@@ -62,24 +61,21 @@ function fun1(M_id, S_num, R_category, S_title) {
 						<h2 style="margin-top: 180px">팝니다</h2>
 						<span>sell</span>
 					</div>
+				 <!--  폼 추가했어요!!~!~!~!~!~!~! 데이터 넘기기 편하시라고.... -->
 					
 					<table style="text-align: center; border: 1px solid black;">
-					<tr><td rowspan="10"><img src="img/sell/<%=dto.getS_img() %>" width=300px class="goodsImg" ></td></tr>
-					<tr><td colspan="2"><%=dto.getS_category()%></td>
-					<!-- 하트 일단 대충 첨부해둠.. S_like랑 안연결됨 -->
-						<td align="right" class="like_id"><input type="image" name="button"  class="heart" src="sell/heart.png" onclick="hartToggle()"></td></tr>
-					<tr><td colspan="2" style="border-bottom: 1px;"><%=dto.getS_title()%></td></tr>
-					<tr><td>작성자</td><td><%=dto.getM_id()%></td></tr>
-					<tr><td>판매가</td><td><%=dto.getS_price()%></td></tr>
+					<tr><td rowspan="6"><img src="img/sell/<%=dto.getS_img()%>" width=300px class="goodsImg" ></td></tr>  <!-- 이미지 -->
+					<tr><td colspan="3" align="left"><%=dto.getS_category()%></td>   <!-- 카테고리--> 
+					<tr><td colspan="3" style="border-bottom: 1px;" align="left"> <%=dto.getS_title()%></td></tr> <!--  제목 -->
+					<tr><td colspan="2" align="left"><%=dto.getS_price()%></td> <td align="right" class="like_id"><input type="image" name="button"  class="heart" src="sell/heart.png" ></td></tr> <!--  찜하기 -->
+					<tr><td colspan="2" align="left"> 배송방법 </td><td>거래위치</td></tr>
+					<tr><td align="left"> <%=dto.getM_id()%> </td><td align="right"> 작성일자 </td><td align="right">조회수</td></tr>
+					<tr><td colspan="3" class="line"></td></tr> <!--  리뷰리스트처럼 선 넣을 예정  -->
+					<tr><td colspan="3"> <%=dto.getS_text()%> </td></tr>
+					</table>
 					<!-- 솔직히 rowspan, colspan 대충 함. 알아서 맞춰 -->
 					<!-- 조회수, 거래방법, (주소), 작성일도 어딘가에 넣어야함 -->
-					<tr><td>test</td></tr>
-					<tr><td>test</td></tr>
-					<tr><td>test</td></tr>
-					<tr><td>글내용</td></tr>
-					<tr><td colspan="2"><%=dto.getS_text()%></td></tr>
-					
-					</table>
+				
 					<!--보내지는 내용 숨겨지도록(post) 작성한 글을 writeAction으로 보냄 -->
 <!-- 					<table class="table table-stripe"
 						style="text-align: center;" > -->
@@ -130,10 +126,12 @@ function fun1(M_id, S_num, R_category, S_title) {
 								<td><%=dto.getS_text()%></td>
 							</tr>
 					</table> --%>
+	
 				</div>
 			</div>
 		</div>
 	</section>
+	
 	<div class="btn-naran">
 		<%
 		if (M_id != null) {
@@ -160,7 +158,7 @@ function fun1(M_id, S_num, R_category, S_title) {
 		%>
 		<button type="button" class="btn btn-dark" onclick="fun1('<%=dto.getM_id()%>','<%=dto.getS_num() %>','sell','<%=dto.getS_title() %>')" style="float:right"> 신고하기</button>
    <button type="button" class="btn btn-dark" onclick="history.back()" style="float:right">글목록</button>
-   <button type="button" class="btn btn-dark" onclick="location.href='LikePro.like?S_num=<%=dto.getS_num() %>'" style="float:right">찜하기</button>
+         <button type="button" class="btn btn-dark" onclick="location.href='LikePro.like?S_num=<%=dto.getS_num() %>'">찜하기</button>
 
 	</div>
 
