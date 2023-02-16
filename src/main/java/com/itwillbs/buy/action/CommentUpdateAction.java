@@ -19,7 +19,7 @@ public class CommentUpdateAction implements Action{
 
 	    int Co_num=Integer.parseInt(request.getParameter("Co_num"));
 		String Co_text=request.getParameter("Co_text");
-		
+		request.setAttribute("Co_num", Co_num);
 		if(Co_text == ""){
 				PrintWriter script= response.getWriter();
 				script.println("<script>");

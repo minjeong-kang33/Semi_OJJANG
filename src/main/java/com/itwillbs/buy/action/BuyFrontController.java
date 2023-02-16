@@ -47,7 +47,7 @@ public class BuyFrontController extends HttpServlet{
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
-			}
+			} // 임호정
 		}else if (sPath.equals("/CommentAction.buy")) {
 			action = new CommentAction();
 			try {
@@ -56,13 +56,13 @@ public class BuyFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}else if (sPath.equals("/CommentDelete.buy")) {
-			action = new CommentAction();
+			action = new CommentDelete();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if (sPath.equals("/commentupdateForm.buy")) {
+		}else if (sPath.equals("/CommentUpdateForm.buy")) {
 			
 			forward=new ActionForward();
 			forward.setPath("buy/commentupdateForm.jsp");

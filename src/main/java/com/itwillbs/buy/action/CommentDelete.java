@@ -18,7 +18,7 @@ public class CommentDelete implements Action{
 				CommentDAO commentDAO=new CommentDAO();
 
 				commentDAO.delete(Co_num);
-				String url = "buyDetails.jsp?B_num=" + B_num;
+				String url = "BuyDetails.buy?B_num=" + B_num;
 				PrintWriter script= response.getWriter();
 				script.println("<script>");
 				script.println("location.href='"+url+"'");

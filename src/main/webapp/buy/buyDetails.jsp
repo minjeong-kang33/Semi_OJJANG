@@ -133,13 +133,13 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd hh:mm");
 								    var _left = Math.ceil(( window.screen.width - _width )/2);
 								    var _top = Math.ceil(( window.screen.height - _height )/2); 
 									window.name ="buydetails";
-									window.open("commentupdateForm.jsp?Co_num="+<%=List.get(i).getCo_num()%>,
+									window.open("CommentUpdateForm.buy?Co_num="+<%=List.get(i).getCo_num()%>,
 											"updateForm", 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top);
 								}
 									</script>
 							</td>
 							<td width="10">
-							<a href="commentdeleteAction.jsp?B_num=<%=B_num %>&Co_num=<%=List.get(i).getCo_num() %>"
+							<a href="CommentDelete.buy?B_num=<%=B_num %>&Co_num=<%=List.get(i).getCo_num() %>"
 								onclick="return delchk();" class="btn">삭제</a>
 									<script type="text/javascript">
 								function delchk(){return confirm("삭제하시겠습니까?");}
