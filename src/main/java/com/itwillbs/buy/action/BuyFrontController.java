@@ -8,9 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.itwillbs.sell.action.SellInsertPro;
-
-
 public class BuyFrontController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -74,9 +71,48 @@ public class BuyFrontController extends HttpServlet{
 					forward = action.execute(request, response);
 				} catch (Exception e) {
 					e.printStackTrace();
-				}
+				}// 임호정
+				
+			}else if (sPath.equals("/BuyInsertForm.buy")) {
+
+				forward = new ActionForward();
+				forward.setPath("buy/.jsp");
+				forward.setRedirect(false);
+				// 강민정
+				
+			}else if (sPath.equals("/BuyInsertPro.buy")) {
+				action = new BuyInsertPro();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				} // 강민정
+				
+			}else if (sPath.equals("/BuyEditForm.buy")) {
+				action = new BuyEditForm();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				} // 강민정
+				
+			}else if (sPath.equals("/BuyEditPro.buy")) {
+				action = new BuyEditPro();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				} // 강민정
+				
+			}else if (sPath.equals("/BuyDelete.buy")) {
+				action = new BuyDelete();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				} // 강민정
+				
 			}
-		
 		
 		
 		

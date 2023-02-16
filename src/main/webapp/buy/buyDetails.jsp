@@ -35,12 +35,14 @@
     <!-- ***** 헤더 끝 ***** -->
     
 <%
-int B_num = Integer.parseInt(request.getParameter("B_num"));
+
 String M_id = (String)session.getAttribute("M_id");
 BuyDTO dto = (BuyDTO)request.getAttribute("dto");
-CommentDAO comment=new CommentDAO();
+String B_num = (String)session.getAttribute("B_num");
+/* 댓글
+ArrayList<CommentDTO> List=(ArrayList<CommentDTO>)request.getAttribute("List"); */
+
 int pageNumber = (Integer)request.getAttribute("pageNumber");
-ArrayList<CommentDTO>List=comment.getList(B_num, pageNumber);
 
 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd hh:mm");
 %>
@@ -116,12 +118,14 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd hh:mm");
 // ArrayList<CommentDTO> List=(ArrayList<CommentDTO>)request.getAttribute("List");
 							
 // 							int pageNumber = (Integer)request.getAttribute("pageNumber");
-							for(int i=List.size()-1 ; i>=0 ; i--){
-						%>
 
+/* 댓글 
+							for(int i=List.size()-1 ; i>=0 ; i--){*/
+						%>
+<!-- 댓글 
 						<tr>
-						<td width="10%" style="text-align: left;"><%=List.get(i).getM_id() %></td>
-							<td width="200" style="text-align: left;"><%=List.get(i).getCo_text() %></td>
+						<td width="10%" style="text-align: left;"><%//=List.get(i).getM_id() %></td>
+							<td width="200" style="text-align: left;"><%//=List.get(i).getCo_text() %></td>
 							
 							<td width="10" ><a href=# onclick = "return coupdate();" class="btn">수정</a>
 									<script text="text/javascript">
@@ -133,13 +137,13 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd hh:mm");
 								    var _left = Math.ceil(( window.screen.width - _width )/2);
 								    var _top = Math.ceil(( window.screen.height - _height )/2); 
 									window.name ="buydetails";
-									window.open("CommentUpdateForm.buy?Co_num="+<%=List.get(i).getCo_num()%>,
+									window.open("CommentUpdateForm.buy?Co_num="+<%//=List.get(i).getCo_num()%>,
 											"updateForm", 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top);
 								}
 									</script>
 							</td>
 							<td width="10">
-							<a href="CommentDelete.buy?B_num=<%=B_num %>&Co_num=<%=List.get(i).getCo_num() %>"
+							<a href="CommentDelete.buy?B_num=<%//=B_num %>&Co_num=<%//=List.get(i).getCo_num() %>"
 								onclick="return delchk();" class="btn">삭제</a>
 									<script type="text/javascript">
 								function delchk(){return confirm("삭제하시겠습니까?");}
@@ -147,9 +151,9 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd hh:mm");
 							</td> 
 						</tr>
 		
-						<%
+						<%-- <%
 								}
-						%>
+						%> --%>
 			<tr>
 			<td colspan="3">
 			<div class="btn-naran">
@@ -161,10 +165,10 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd hh:mm");
 				<input type="submit" class="btn btn-dark" value="댓글입력">
 			</div>
 			</td>
-
+-->
 					
 					</tbody>
-				</table>
+				</table> 
 				
 			</form>
 			</div>

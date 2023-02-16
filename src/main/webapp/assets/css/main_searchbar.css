@@ -24,15 +24,15 @@ input#search-bar{
     color: #008ABF;
     &::-webkit-input-placeholder{
       transition: opacity 0.45s ease; 
-  	  opacity: 0;
+       opacity: 0;
      }
     &::-moz-placeholder {
       transition: opacity 0.45s ease; 
-  	  opacity: 0;
+       opacity: 0;
      }
     &:-ms-placeholder {
      transition: opacity 0.45s ease; 
-  	 opacity: 0;
+      opacity: 0;
      }    
    }
  }
@@ -46,6 +46,3 @@ input#search-bar{
   top: -62px;
   right: -45px;
 }
-
-
-
