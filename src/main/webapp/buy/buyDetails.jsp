@@ -60,13 +60,22 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd hh:mm");
 </thead>
 <tbody>
   <tr>
-    <td rowspan="7">이미지자리</td>
+    <td rowspan="7">
+
+   <%
+     if(dto.getB_img()==null){ 
+  	%>
+    	<img src="img/buy/otzang_logo_top.png" width=300px>
+    	<%  }else{ %>
+  		 <img src="img/buy/<%=dto.getB_img()%>" width=300px>
+       <%}%>
+   </td>
     <td>글제목</td>
-    <td><%= dto.getB_title()%></td>
+    <td><%=dto.getB_title()%></td>
   </tr>
   <tr>
     <td>작성자</td>
-    <td><%= dto.getM_id() %></td>
+    <td><%= dto.getM_id()%></td>
   </tr>
   <tr>
     <td>카테고리</td>
