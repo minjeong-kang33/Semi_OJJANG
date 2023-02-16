@@ -56,9 +56,9 @@ String M_id = (String)session.getAttribute("M_id");
  <!-- ***** 검색창 시작 ***** -->
  <!-- assets/css/main_searchbar.css: 검색창용 css -->
 <div class = searchbar>
-  <form class="search-container">
-    <input type="text" id="search-bar" placeholder="찾으시는 상품이 있나요?">
-    <a href="#"><img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></a>
+  <form class="search-container" action="Main.me">
+    <input type="text" id="search-bar" placeholder="찾으시는 상품이 있나요?" value="${param.searchbar}" name="search">
+    <a href="#"><input type="image" class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png" ></a>
   </form>
 </div>
  <!-- ***** 검색창 끝 ***** -->
@@ -83,6 +83,10 @@ String M_id = (String)session.getAttribute("M_id");
 					<div class="item">
 						<div class="down-content">
   	<%
+  	request.setCharacterEncoding("UTF-8");
+  	String search =request.getParameter("search");
+								
+  	
 	SellDAO dao =new SellDAO();
 	
 	int pageSize = 9;
@@ -97,25 +101,32 @@ String M_id = (String)session.getAttribute("M_id");
 	int startRow = (currentPage-1)*pageSize+1;
 	
 	int endRow = startRow + pageSize -1;
-	
-	ArrayList<SellDTO> sellList = dao.getsellList(startRow, pageSize);
+	ArrayList<SellDTO> sellList = null;
+	if(search!=null){
+		sellList = dao.getsellSearch(startRow, pageSize, search);
+	}else{
+		 sellList = dao.getsellList(startRow, pageSize);
+	}
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
-	
-	%>						
-<table>
+
+	%>
+							
+	<table>
 	<tr> <!--  테이블................1칸 -->
 	<%
 	for(int i=0; i<sellList.size();i++){
 		SellDTO dto = sellList.get(i);
 	
 	%>
+
+
 		<td>
 			<table class="item-table">
 				<tr>
 					<td colspan="2" class="S_img"><img src="img/sell/<%=dto.getS_img() %>" width=300px height=300px class="goodsImg"></td>
 				</tr>
 				<tr>
-					<td colspan="2" class="S_title" ><a href="sellDetails.jsp?S_num=<%=dto.getS_num()%>" > <%=dto.getS_title()%></td> <!-- 제목 -->
+					<td colspan="2" class="S_title"><a href="sellDetails.jsp?S_num=<%=dto.getS_num()%>" > <%=dto.getS_title()%></td> <!-- 제목 -->
 				</tr>
 				<tr>
 					<td class="price"><%=dto.getS_price()%>원</td> <td align="right" class="like_id"><input type="image" name="button" class="heart" src="sell/heart.png" onclick="location.href='Mypage/likePro.jsp'">
@@ -146,7 +157,7 @@ String M_id = (String)session.getAttribute("M_id");
 	<%
 	 }
 	%>	
-	
+
 </tr>
 </table>      
         

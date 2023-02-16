@@ -33,41 +33,6 @@ if(M_id != null){
                </a>
                <!-- ***** 로고 끝 ***** -->
                
-<!-- 검색시작 : ** 영환씨!!! ** 검색기능 (기능만! main.jsp에 적용시켜 주세요! main.jsp의 검색창에 class명으로 css 잡혀있으니 주의! 모르겠으면 물어보세요) -->
-           
-<%-- 	<div class="container">
-		<div class="row">
-			<form  name="search" method="get">
-				<table class="pull-right">
-					<tr>
-						<td><input type="text" class="form-control" value="${param.searchText}"
-							placeholder="검색어 입력" name="searchText" maxlength="100"></td>
-						<td><button type="submit" class="btn btn-success">검색</button></td>
-					</tr>
-
-				</table>
-			</form>
-		</div>
-	</div>
-<%
-SellDAO selldao = new SellDAO();
-ArrayList<SellDTO> list = selldao.getSearch(request.getParameter("searchText"));
-
-
-for(int i=0; i<list.size(); i++){
-//  SellDTO dto = list.get(i);
- %>
- <%= list.get(i).getS_price()%>
- <%= list.get(i).getS_img() %>
- <%= list.get(i).getS_num() %>
-  <%= list.get(i).getS_sido1()%>
-  <%= list.get(i).getS_send1() %>
-  <%=list.get(i).getS_title() %>
-  <%=list.get(i).getS_text() %>
-<% } %>    
-	
-			
-    <!-- 검색 끝 -->                 --%>
                
                <!-- ***** 상단 바 메뉴 시작 ***** -->
                <ul class="nav">
@@ -99,8 +64,8 @@ for(int i=0; i<list.size(); i++){
                    <li class="submenu"><a href="#">커뮤니티</a>
                       <ul>
                       	 <li><a href="ReviewList.rev">리뷰보기</a></li>	
-      					 <li><a href="javascript:void(window.open('../find.jsp', '판매자찾기','width=400, height=400'))">판매자찾기</a></li>
-						 <li><a href="javascript:void(window.open('../box.jsp', '메세지함','width=400, height=400'))">메세지함</a></li>
+      					 <li><a href="javascript:void(window.open('find.ch', '판매자찾기','width=400, height=400'))">판매자찾기</a></li>
+						 <li><a href="javascript:void(window.open('box.ch', '메세지함','width=400, height=400'))">메세지함</a></li>
                      </ul>
                    </li>   
                    	
