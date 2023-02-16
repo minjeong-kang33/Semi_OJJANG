@@ -26,7 +26,10 @@ public class MemberLoginPro implements Action{
 		ActionForward forward = null;
 		
 		if(M_id.equals("admin")&&(M_pw.equals("1234"))){
-			response.sendRedirect("../admin/admain_test.jsp");
+			forward = new ActionForward();
+			forward.setPath("AdMain.me");
+			forward.setRedirect(true);
+			
 			} else if (dto != null) {
 			HttpSession session=request.getSession();
 			session.setAttribute("M_id", M_id);

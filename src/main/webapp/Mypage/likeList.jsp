@@ -1,35 +1,32 @@
+
 <%@page import="com.itwillbs.sell.db.SellDTO"%>
 <%@page import="com.itwillbs.admin.db.MypageDAO"%>
 <%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="java.util.ArrayList"%>
-    
+<!DOCTYPE html>
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>중고의류거래: 옺장</title>
-   <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/font-awesome.css">
-    <link rel="stylesheet" href="../assets/css/templatemo-hexashop.css">
-    <link rel="stylesheet" href="../assets/css/owl-carousel.css">
-    <link rel="stylesheet" href="../assets/css/lightbox.css"> 
+   <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-hexashop.css">
+    <link rel="stylesheet" href="assets/css/owl-carousel.css">
+    <link rel="stylesheet" href="assets/css/lightbox.css"> 
+   <link href="assets/css/reviewWriteList.css" rel="stylesheet" type="text/css">
 <meta charset="UTF-8">
-<title>중고 의류거래: 옺장</title>
+<title>중고 의류거래: 옺장 - 리뷰작성</title>
+
+   <script type="text/javascript">     
+
+    </script>
+    
 </head>
-<body>
-    <body>
-     <!-- ***** 헤더 ***** -->
-  <jsp:include page="../top.jsp" />
-    <!-- ***** 헤더 끝 ***** -->
-    
-    <div class="page-heading about-page-heading" id="top">
-        <div class="container">
-             <div class="inner-content2">
-            
- <!-- ***** 찜목록 조회 ***** -->
-    
-    <h3>찜목록 조회</h3>
+
+   <body>
+   
+   
 <%
 String M_id=(String)session.getAttribute("M_id");
 // LikeDTO dto=new LikeDTO();
@@ -45,80 +42,109 @@ int pageCount=(Integer)request.getAttribute("pageCount");
 ArrayList<SellDTO> likeList=(ArrayList<SellDTO>)request.getAttribute("likeList");
 // SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy.MM.dd");
 %>	
-<section>
-<table border="1">
-<tr><td>판매자</td><td>카테고리</td><td>글제목</td><td>내용</td><td>가격</td></tr>
 
-<%
-// System.out.println(dealList.size());
-// System.out.println(dealListB.size());
-for(int i=0;i<likeList.size();i++){
- 	SellDTO dto=likeList.get(i);
-%>
-	<tr>
-		<td><%=dto.getM_id() %></td>
-		<td><%=dto.getS_category() %></td>
-		<td><a href="../sell/sellDetails.jsp?S_num=<%=dto.getS_num() %>">
-		<%=dto.getS_title() %></a></td>
-		<td><%=dto.getS_text() %></td>
-		<td><%=dto.getS_price() %></td>
-	</tr>
-	
-<%
-}
-%>
-	</table>
-<%
-if(currentPage > 1){
-	%>
-	<a href=Likelist.moi?pageNum=<%=currentPage-1%>">[1페이지 이전]</a>
-	<%
-}
-
-for(int i=startPage;i<=endPage;i++){
-	%>
-	<a href="Likelist.moi?pageNum=<%=i%>"><%=i %></a> 
-	<%
-}
-if(currentPage < pageCount){
-	%>
-	<a href="Likelist.moi?pageNum=<%=currentPage+1%>">[1페이지 다음]</a>
-	<%
-}
-
-%>
-</section>
-	<!-- ***** 찜목록조회 끝 ***** -->
-	       
-             </div>
+    <!-- ***** 로딩 일단 지금은 비어있음***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
-    </div>     <!-- ***** 푸터 시작 ***** -->
-   <jsp:include page="../bottom.jsp" />
+    </div>  
+    .
+    <!-- ***** 헤더 ***** -->
+  <jsp:include page="../top.jsp" />
+    <!-- ***** 헤더 끝 ***** -->
+
+	<section class="section" id="products">
+		<div class="container"> <!--  댓글부분  -->
+			<div class="row"> <!--  글쓰기 버튼  -->
+				<div class="col-lg-12"> <!--  테이블부분 -->
+					<div class="section-heading"> <!--  테이블 제목부분 -->
+					<!--  게시판제목 -->
+						<h2>찜내역</h2>
+						<span>like list</span>
+					</div>
+					
+					<!--  리뷰작성 입력상자 시작 -->
+						<table>
+							<%
+							
+							for(int i=0;i<likeList.size();i++){
+							 	SellDTO dto=likeList.get(i);
+								
+							%>
+							<tr>
+								<td rowspan="4" ><img src="img/sell/<%=dto.getS_img() %>" class="RE_img_st"></td>
+															<tr>	
+								<td colspan="2"> 제목 : <a href="SellDetails.sell?S_num=<%=dto.getS_num() %>">
+														<%=dto.getS_title() %></a> </td>
+							</tr>
+								<td align="right"> 판매자 : <%=dto.getM_id() %></td>
+							</tr>
+							<tr>
+								<td colspan="2"> 카테고리 : <%=dto.getS_category() %> </td>
+							</tr>
+
+							<tr>	
+								<td colspan="2"> 내용 : <%=dto.getS_text() %> </td>
+							</tr>
+							<tr>
+								<td colspan="2"> 가격: <%=dto.getS_price() %> </td>
+							</tr>
+							<tr>
+							</tr>
+							<tr><td colspan="3" class="line"></td> <tr>
+							<%
+							}
+							%>
+							
+						</table>
+				</div>
+				
+				<!--  페이지 번호  -->
+				<%
+				
+				
+				for(int i=startPage;i<=endPage;i++){
+					%>
+					<a href="ReviewList.rev?pageNum=<%=i%>"><%=i%></a>
+					<%
+				}
+				
+				%>
+		</div>
+	</section>
+
+	<!-- ***** 푸터 시작 ***** -->
+<jsp:include page="../bottom.jsp" />
     <!-- ***** 푸터 끝 ***** -->
 
  <!-- jQuery -->
-    <script src="../assets/js/jquery-2.1.0.min.js"></script>
+    <script src="assets/js/jquery-2.1.0.min.js">
+    </script>
 
  <!--  Bootstrap -->
-    <script src="../assets/js/popper.js"></script>
-    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/popper.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
 
  <!-- Plugins -->
-    <script src="../assets/js/owl-carousel.js"></script>
-    <script src="../assets/js/accordions.js"></script>
-    <script src="../assets/js/datepicker.js"></script>
-    <script src="../assets/js/scrollreveal.min.js"></script>
-    <script src="../assets/js/waypoints.min.js"></script>
-    <script src="../assets/js/jquery.counterup.min.js"></script>
-    <script src="../assets/js/imgfix.min.js"></script> 
-    <script src="../assets/js/slick.js"></script> 
-    <script src="../assets/js/lightbox.js"></script> 
-    <script src="../assets/js/isotope.js"></script> 
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/accordions.js"></script>
+    <script src="assets/js/datepicker.js"></script>
+    <script src="assets/js/scrollreveal.min.js"></script>
+    <script src="assets/js/waypoints.min.js"></script>
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    <script src="assets/js/imgfix.min.js"></script> 
+    <script src="assets/js/slick.js"></script> 
+    <script src="assets/js/lightbox.js"></script> 
+    <script src="assets/js/isotope.js"></script> 
     
 <!-- Global Init -->
-    <script src="../assets/js/custom.js"></script>
+    <script src="assets/js/custom.js"></script>
 
     <script>
+
         $(function() {
             var selectedClass = "";
             $("p").click(function(){
@@ -132,7 +158,10 @@ if(currentPage < pageCount){
                 
             });
         });
-    </script> 
 
-  </body>
+    </script> 
+   
+
+
+</body>
 </html>

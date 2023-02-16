@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+
 .btn-naran{
 	text-align: right;
 }
@@ -11,6 +12,7 @@
 	width: 20px;
 	height: 20px;
 	margin-right: 2px;
+	border:0;
 }
 
 .preference {
@@ -23,4 +25,19 @@
     font-size: 12px;
     cursor: pointer;
 	border-radius: 8px;
+}
+
+table{
+	border-collapse: separate;
+	border-spacing: 10px 10px;
+}
+
+.line{
+	
+	border-bottom: 1px solid #ccc;
+}
+
+.heartbtn{
+	border: 0;
+	background-color: white;
 }

@@ -19,6 +19,17 @@
     <link href="assets/css/buy.css" rel="stylesheet" type="text/css">
 <meta charset="UTF-8">
 <title>중고 의류거래: 옺장</title>
+
+<script type="text/javascript">
+
+function fun1(M_id, B_num, R_category, B_title) {
+	   
+    window.open("ReportForm.rpt?R_id=" + M_id + "&R_writeNum="
+          + B_num + "&R_category=" + "buy" + "&R_title=" + B_title,
+          "pop", "width=520,height=340");
+ }
+ 
+</script>
 </head>
     <body>
     <!-- ***** 로딩 일단 지금은 비어있음***** -->
@@ -35,12 +46,14 @@
     <!-- ***** 헤더 끝 ***** -->
     
 <%
-int B_num = Integer.parseInt(request.getParameter("B_num"));
+
 String M_id = (String)session.getAttribute("M_id");
 BuyDTO dto = (BuyDTO)request.getAttribute("dto");
-CommentDAO comment=new CommentDAO();
+String B_num = (String)session.getAttribute("B_num");
+/* 댓글
+ArrayList<CommentDTO> List=(ArrayList<CommentDTO>)request.getAttribute("List"); */
+
 int pageNumber = (Integer)request.getAttribute("pageNumber");
-ArrayList<CommentDTO>List=comment.getList(B_num, pageNumber);
 
 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd hh:mm");
 %>
@@ -125,12 +138,14 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd hh:mm");
 // ArrayList<CommentDTO> List=(ArrayList<CommentDTO>)request.getAttribute("List");
 							
 // 							int pageNumber = (Integer)request.getAttribute("pageNumber");
-							for(int i=List.size()-1 ; i>=0 ; i--){
-						%>
 
+/* 댓글 
+							for(int i=List.size()-1 ; i>=0 ; i--){*/
+						%>
+<!-- 댓글 
 						<tr>
-						<td width="10%" style="text-align: left;"><%=List.get(i).getM_id() %></td>
-							<td width="200" style="text-align: left;"><%=List.get(i).getCo_text() %></td>
+						<td width="10%" style="text-align: left;"><%//=List.get(i).getM_id() %></td>
+							<td width="200" style="text-align: left;"><%//=List.get(i).getCo_text() %></td>
 							
 							<td width="10" ><a href=# onclick = "return coupdate();" class="btn">수정</a>
 									<script text="text/javascript">
@@ -142,13 +157,13 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd hh:mm");
 								    var _left = Math.ceil(( window.screen.width - _width )/2);
 								    var _top = Math.ceil(( window.screen.height - _height )/2); 
 									window.name ="buydetails";
-									window.open("CommentUpdateForm.buy?Co_num="+<%=List.get(i).getCo_num()%>,
+									window.open("CommentUpdateForm.buy?Co_num="+<%//=List.get(i).getCo_num()%>,
 											"updateForm", 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top);
 								}
 									</script>
 							</td>
 							<td width="10">
-							<a href="CommentDelete.buy?B_num=<%=B_num %>&Co_num=<%=List.get(i).getCo_num() %>"
+							<a href="CommentDelete.buy?B_num=<%//=B_num %>&Co_num=<%//=List.get(i).getCo_num() %>"
 								onclick="return delchk();" class="btn">삭제</a>
 									<script type="text/javascript">
 								function delchk(){return confirm("삭제하시겠습니까?");}
@@ -156,9 +171,9 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd hh:mm");
 							</td> 
 						</tr>
 		
-						<%
+						<%-- <%
 								}
-						%>
+						%> --%>
 			<tr>
 			<td colspan="3">
 			<div class="btn-naran">
@@ -170,10 +185,10 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd hh:mm");
 				<input type="submit" class="btn btn-dark" value="댓글입력">
 			</div>
 			</td>
-
+-->
 					
 					</tbody>
-				</table>
+				</table> 
 				
 			</form>
 			</div>
@@ -186,13 +201,25 @@ if(M_id != null){
 	// 세션값=id와 글쓴이가 일치해야만 글수정, 글삭제 표시
 	if(M_id.equals(dto.getM_id()) || M_id.equals("admin")){
 		%>
-<input type="button" class="btn btn-dark" value="글수정" onclick="location.href='buyEdit.jsp?B_num=<%=dto.getB_num() %>'">
-<input type="button" class="btn btn-dark" value="글삭제" onclick="location.href='buyDelete.jsp?B_num=<%=dto.getB_num() %>'"> 
+<input type="button" class="btn btn-dark" value="글수정" onclick="location.href='BuyEditForm.buy?B_num=<%=dto.getB_num() %>'">
+<input type="button" class="btn btn-dark" value="글삭제" onclick="location.href='BuyDelete.buy?B_num=<%=dto.getB_num() %>'"> 
 		<%		
 	}
 }
 %>
-	<button type="button" class="btn btn-dark" onclick="location.href='buyList.jsp'" >글목록</button>
+
+	<button type="button" class="btn btn-dark" onclick="location.href='BuyList.buy'" >글목록</button>
+		<%
+		if(M_id != null){
+			//본인에게는 신고하기 안보임
+			if(!M_id.equals(dto.getM_id())){
+		%>
+		
+		<button type="button" class="btn btn-dark" onclick="fun1('<%=dto.getM_id()%>','<%=dto.getB_num()%>','buy','<%=dto.getB_title()%>')" style="float: right">신고하기</button>
+		<%
+			}
+		}
+		 %>
 </div>
 </div>
 <!-- ***** 푸터 시작 ***** -->

@@ -11,6 +11,7 @@ import javax.sql.DataSource;
 
 import com.itwillbs.buy.db.BuyDTO;
 import com.itwillbs.member.db.MemberDTO;
+import com.itwillbs.report.db.ReportDTO;
 import com.itwillbs.sell.db.SellDTO;
 
 public class AdminDAO {
@@ -196,25 +197,27 @@ public class AdminDAO {
 		return adOutListPro;
 	}//adOutListPro()
 	
-	public ArrayList<MemberDTO> adUserReportList(int startRow, int pageSize) {
-		ArrayList<MemberDTO> adUserReportList=new ArrayList<MemberDTO>();
+	public ArrayList<ReportDTO> adUserReportList(int startRow, int pageSize) {
+		ArrayList<ReportDTO> adUserReportList=new ArrayList<ReportDTO>();
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		try {
 			con=getConnection();
-			String sql="select * from member where M_play='신고' order by M_id limit ?, ?";
+			String sql="select * from report order by R_type desc, M_id limit ?, ?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, startRow-1);
 			pstmt.setInt(2, pageSize);
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
-				MemberDTO dto=new MemberDTO();
+				ReportDTO dto=new ReportDTO();
+				dto.setR_type(rs.getString("R_type"));
 				dto.setM_id(rs.getString("M_id"));
-				dto.setM_name(rs.getString("M_name"));
-				dto.setM_nick(rs.getString("M_nick"));
-				dto.setM_createdate(rs.getTimestamp("M_createdate"));
-				dto.setM_play(rs.getString("M_play"));
+				dto.setR_id(rs.getString("R_id"));
+				dto.setR_reason(rs.getString("R_reason"));
+				dto.setR_writeNum(rs.getString("R_writeNum"));
+				dto.setR_category(rs.getString("R_category"));
+				dto.setR_title(rs.getString("R_title"));
 				adUserReportList.add(dto);
 			}
 		}catch(Exception e) {
@@ -234,7 +237,7 @@ public class AdminDAO {
 		int count=0;
 		try {
 			con=getConnection();
-			String sql="select count(*) from member where M_play='신고'";
+			String sql="select count(*) from report";
 			pstmt=con.prepareStatement(sql);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
@@ -249,27 +252,28 @@ public class AdminDAO {
 		} return count;
 	}//adUserReportCount()
 	
-	public ArrayList<MemberDTO> adUserReportListPro(String info, String search) {
-		ArrayList<MemberDTO> adUserReportListPro=new ArrayList<MemberDTO>();
+	public ArrayList<ReportDTO> adUserReportListPro(String info, String search) {
+		ArrayList<ReportDTO> adUserReportListPro=new ArrayList<ReportDTO>();
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		try {
 			con=getConnection();
-			String sql="select * from member where M_play='신고'";
-			if(info.equals("M_id")) {sql+="and M_id like ?";}
-			else if(info.equals("M_name")) {sql+="and M_name like ?";}
-			else if(info.equals("M_nick")) {sql+="and M_nick like ?";}
+			String sql="select * from report where ";
+			if(info.equals("M_id")) {sql+="M_id like ?";}
+			else if(info.equals("R_id")) {sql+="R_id like ?";}
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, "%"+search+"%");
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
-				MemberDTO dto=new MemberDTO();
+				ReportDTO dto=new ReportDTO();
+				dto.setR_type(rs.getString("R_type"));
 				dto.setM_id(rs.getString("M_id"));
-				dto.setM_name(rs.getString("M_name"));
-				dto.setM_nick(rs.getString("M_nick"));
-				dto.setM_createdate(rs.getTimestamp("M_createdate"));
-				dto.setM_play(rs.getString("M_play"));
+				dto.setR_id(rs.getString("R_id"));
+				dto.setR_reason(rs.getString("R_reason"));
+				dto.setR_writeNum(rs.getString("R_writeNum"));
+				dto.setR_category(rs.getString("R_category"));
+				dto.setR_title(rs.getString("R_title"));
 				adUserReportListPro.add(dto);
 			}
 		}catch(Exception e) {
@@ -298,6 +302,23 @@ public class AdminDAO {
 			if(pstmt!=null) try {pstmt.close();} catch (Exception e2) {}
 		}
 	}//adUserDeletePro()
+	
+	public void adUserReportDelete(String R_id) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		try {
+			con=getConnection();
+			String sql="update member set M_play='강퇴' where M_id=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, R_id);
+			pstmt.execute();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(con!=null) try {con.close();} catch (Exception e2) {}
+			if(pstmt!=null) try {pstmt.close();} catch (Exception e2) {}
+		}
+	}//adUserReportDelete()
 		
 	//    ----Sell----
 	public ArrayList<SellDTO> adSellList(int startRow, int pageSize) {

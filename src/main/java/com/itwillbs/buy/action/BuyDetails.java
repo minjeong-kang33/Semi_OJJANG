@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import com.itwillbs.buy.db.BuyDAO;
 import com.itwillbs.buy.db.BuyDTO;
 import com.itwillbs.comment.db.CommentDAO;
@@ -18,6 +20,8 @@ public class BuyDetails implements Action{
 		int B_num = Integer.parseInt(request.getParameter("B_num"));
 		BuyDAO dao = new BuyDAO();
 		
+		HttpSession session = request.getSession();
+		String M_id = (String)session.getAttribute("M_id");
 		
 		int pageNumber=1;
 		if(request.getParameter("pageNumber")!=null){

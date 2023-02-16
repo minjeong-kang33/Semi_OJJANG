@@ -22,9 +22,9 @@ String M_id = null;
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="css/bootstrap.css">
-	<link rel="stylesheet" href="css/custom.css">
-	<title>옷장 톡</title>
+	<link rel="stylesheet" href="chat/cs/bootstrap.css">
+	<link rel="stylesheet" href="chat/cs/custom.css">
+	<title>옺장 톡</title>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="js/bootstrap.js"></script>
 	<script type="text/javascript">

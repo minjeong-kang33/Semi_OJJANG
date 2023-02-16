@@ -76,6 +76,14 @@
    <url-pattern>*.ch</url-pattern>
   </servlet-mapping>
   
+    <servlet>
+    <servlet-name>MemberRegisterServlet</servlet-name>
+    <servlet-class>com.itwillbs.db.MemberRegisterServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MemberRegisterServlet</servlet-name>
+    <url-pattern>/MemberRegister</url-pattern>
+  </servlet-mapping>
    <servlet>
    <servlet-name>ChatSubmitServlet</servlet-name>
    <servlet-class>com.itwillbs.chat.db.ChatSubmitServlet</servlet-class>
@@ -94,7 +102,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>MemberLoginServlet</servlet-name>
-    <servlet-class>Member.UserLoginServlet</servlet-class>
+    <servlet-class>com.itwillbs.member.UserLoginServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>MemberLoginServlet</servlet-name>
