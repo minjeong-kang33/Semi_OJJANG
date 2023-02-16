@@ -83,23 +83,9 @@ String M_id = (String)session.getAttribute("M_id");
 					<div class="item">
 						<div class="down-content">
   	<%
-	SellDAO dao =new SellDAO();
 	
-	int pageSize = 9;
-	
-	String pageNum = request.getParameter("pageNum");
-	
-	if(pageNum==null){
-		pageNum="1";
-	}
-	
-	int currentPage=Integer.parseInt(pageNum);
-	int startRow = (currentPage-1)*pageSize+1;
-	
-	int endRow = startRow + pageSize -1;
-	
-	ArrayList<SellDTO> sellList = dao.getsellList(startRow, pageSize);
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
+	ArrayList<SellDTO> sellList = (ArrayList<SellDTO>)request.getAttribute("sellList");
 	
 	%>						
 <table>
@@ -112,13 +98,14 @@ String M_id = (String)session.getAttribute("M_id");
 		<td>
 			<table class="item-table">
 				<tr>
-					<td colspan="2" class="S_img"><img src="img/sell/<%=dto.getS_img() %>" width=300px height=300px class="goodsImg"></td>
+					<td colspan="2" class="S_img"><a href="SellDetails.sell?S_num=<%=dto.getS_num()%>" >
+						<img src="img/sell/<%=dto.getS_img() %>" width=300px height=300px class="goodsImg"></a></td>
 				</tr>
 				<tr>
-					<td colspan="2" class="S_title" ><a href="sellDetails.jsp?S_num=<%=dto.getS_num()%>" > <%=dto.getS_title()%></td> <!-- 제목 -->
+					<td colspan="2" class="S_title" ><a href="SellDetails.sell?S_num=<%=dto.getS_num()%>" > <%=dto.getS_title()%></a></td> <!-- 제목 -->
 				</tr>
 				<tr>
-					<td class="price"><%=dto.getS_price()%>원</td> <td align="right" class="like_id"><input type="image" name="button" class="heart" src="sell/heart.png" onclick="location.href='Mypage/likePro.jsp'">
+					<td class="price"><%=dto.getS_price()%>원</td> <td align="right" class="like_id"><input type="image" name="button" class="heart" src="sell/heart.png" onclick="location.href='LikePro.like'">
 				</tr>
 				<tr>
 					<td colspan="2" class="S_createdate" ><%= dateFormat.format(dto.getS_createdate())+" 작성"%></td> <!-- 게시글 생성일자 -->
@@ -149,12 +136,12 @@ String M_id = (String)session.getAttribute("M_id");
 	
 </tr>
 </table>      
-        
-		               </div>
-                    </div>
-                </div>
-            </div>
-        </div> 
+<!-- 게시판 내용 여기 넘어가면 안됨.  -->							
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
     </section>
 <!-- ***** 최신 판매글 끝 ***** -->
 
@@ -169,14 +156,6 @@ String M_id = (String)session.getAttribute("M_id");
  <!--  Bootstrap -->
     <script src="assets/js/popper.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
-
-
-
-
-
-
-
-
 
  <!-- Plugins -->
     <script src="assets/js/owl-carousel.js"></script>

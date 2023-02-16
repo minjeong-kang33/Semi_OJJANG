@@ -95,6 +95,15 @@ public class SellFrontController extends HttpServlet {
 			}
 		} // 강민정
 
+		else if (sPath.equals("/SellDetails.sell")) {
+			action = new SellDetails();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} // 강민정
+		
 		else if (sPath.equals("/SellOuterDetails.sell")) {
 			action = new SellOuterDetails();
 			try {
