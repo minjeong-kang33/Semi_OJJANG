@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.itwillbs.admin.db.AdminDAO;
 import com.itwillbs.member.action.Action;
 import com.itwillbs.member.action.ActionForward;
-import com.itwillbs.member.db.MemberDTO;
+import com.itwillbs.report.db.ReportDTO;
 
 public class AdUserReportListPro implements Action {
 
@@ -20,7 +20,7 @@ public class AdUserReportListPro implements Action {
 		
 		String info = request.getParameter("info");
 		String search = request.getParameter("search");
-		ArrayList<MemberDTO> adUserReportListPro=dao.adUserReportListPro(info, search);
+		ArrayList<ReportDTO> adUserReportListPro=dao.adUserReportListPro(info, search);
 		
 		int count=dao.adUserReportCount();
 		
