@@ -95,7 +95,7 @@ int adUserReportCount=(Integer)request.getAttribute("adUserReportCount");
 	</form>
 	</div>
 		<div>
-		총 멤버 <%=adUserReportCount %>명
+		총 멤버 <b><%=adUserReportCount %></b>명
 		</div>
 <form name="ckDelete" action="AdUserReportDelete.ad" method="post">
 <table border="1">

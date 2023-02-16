@@ -66,7 +66,7 @@ int adBuyCount=(Integer)request.getAttribute("adBuyCount");
 <section>
 <div class="container">
 	<div>
-	총 게시글 <%=adBuyCount %>개
+	총 게시글 <b><%=adBuyCount %></b>개
 	</div>
 <form name="ckDelete" action="AdBuyDelete.ad" method="post">
 <table border="1">
