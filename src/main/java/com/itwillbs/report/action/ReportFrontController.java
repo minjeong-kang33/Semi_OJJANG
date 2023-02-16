@@ -8,10 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.itwillbs.member.action.Action;
-import com.itwillbs.member.action.ActionForward;
-import com.itwillbs.review.action.ReviewList;
-
 public class ReportFrontController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -37,13 +33,13 @@ public class ReportFrontController extends HttpServlet{
 
 		
 		// 신고하기 폼 (승민)
-		if(sPath.equals("/ReportForm.rpv")){
+		if(sPath.equals("/ReportForm.rpt")){
 		     forward = new ActionForward();
 	         forward.setPath("report/reportForm.jsp");
 	         forward.setRedirect(false);
 	         
 	    //신고하기 Pro
-		} else if(sPath.equals("/ReportPro.rpv")) {
+		} else if(sPath.equals("/ReportPro.rpt")) {
 	    	  action = new ReportPro();
 	    	  try {
 				forward=action.execute(request, response);
@@ -51,7 +47,7 @@ public class ReportFrontController extends HttpServlet{
 				e.printStackTrace();
 		}
 		
-		
+		}
 		
 		
 		

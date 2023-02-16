@@ -16,15 +16,14 @@
 	<br>
 	<%
 	
-
-	int Co_num=(Integer)request.getAttribute("Co_num");
+	int Co_num = Integer.parseInt(request.getParameter("Co_num"));
 	CommentDAO commentDAO=new CommentDAO();	
 	CommentDTO comment = commentDAO.getComment(Co_num);
 	
 
 	%>
 	<div id = "commentupdateForm">
-		<form method="post" action="commentupdateAction.jsp?Co_num=<%=Co_num%>" name="updateForm">
+		<form method="post" action="CommentUpdateAction.buy?Co_num=<%=Co_num%>" name="updateForm">
 				<textarea rows="7" cols="70" name="Co_text"><%=comment.getCo_text() %></textarea>
 				<br><br>
 		<input type="submit" class="btn" value="등록">

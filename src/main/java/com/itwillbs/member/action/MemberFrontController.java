@@ -66,6 +66,7 @@ public class MemberFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}//로그아웃 김광원
+
 		
 		else if(sPath.equals("/MemberJoinForm.me")) {
 			forward=new ActionForward();

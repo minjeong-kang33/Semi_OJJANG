@@ -1,16 +1,26 @@
 @charset "UTF-8";
 
-.container2{
-	margin-top : 180px;
-}
-
 .btn-naran{
 	text-align: right;
 }
 .btn btn-dark{
 	display :inline-block;
 }
-#comment{
-	width:60% !important;
-	margin:0 auto; 
+
+.heart{
+	width: 20px;
+	height: 20px;
+	margin-right: 2px;
+}
+
+.preference {
+	background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    cursor: pointer;
+	border-radius: 8px;
 }
