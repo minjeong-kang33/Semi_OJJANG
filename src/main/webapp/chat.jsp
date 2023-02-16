@@ -1,6 +1,6 @@
 
-<%@page import="com.itwillbs.member.db.MemberDAO"%>
 
+<%@page import="com.itwillbs.member.db.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.net.URLDecoder" %>
 
@@ -23,8 +23,8 @@
     %>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="chat/css/bootstrap.css">
-	<link rel="stylesheet" href="chat/css/custom.css">
+	<link rel="stylesheet" href="chat/cs/bootstrap.css">
+	<link rel="stylesheet" href="chat/cs/custom.css">
 	<title>옷장 톡</title>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="js/bootstrap.js"></script>
@@ -60,10 +60,8 @@
 	    }
 	    var lastID = 0;
 	    function chatListFunction(type) {
-	    	
 	    	var fromID = '<%= M_id %>';
 	    	var toID = '<%= toID %>';
-
 	    	$.ajax({
 	    		type: "POST",
 	    		url: "./chatListServlet",
@@ -87,10 +85,7 @@
 	    	});
 	    }
 	    function addChat(chatName, chatContent, chatTime) {
-	  
 	    	if(chatName == '나') {
-	 
-
 		    	$('#chatList').append('<div class="row">' +
 		    			'<div class="col-lg-12">' +
 		    			'<div class="media">' + 
@@ -113,7 +108,6 @@
 		    			'</div>' + 
 		    			'<hr>');	  
 	    	} else {
-
 		    	$('#chatList').append('<div class="row">' +
 		    			'<div class="col-lg-12">' +
 		    			'<div class="media">' + 
