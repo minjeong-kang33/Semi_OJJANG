@@ -39,7 +39,7 @@ public class ReportFrontController extends HttpServlet{
 	         forward.setRedirect(false);
 	         
 	    //신고하기 Pro
-		} else if(sPath.equals("/ReportPro.rpv")) {
+		} else if(sPath.equals("/ReportPro.rpt")) {
 	    	  action = new ReportPro();
 	    	  try {
 				forward=action.execute(request, response);
