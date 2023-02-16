@@ -76,6 +76,47 @@
    <url-pattern>*.ch</url-pattern>
   </servlet-mapping>
   
+   <servlet>
+   <servlet-name>ChatSubmitServlet</servlet-name>
+   <servlet-class>com.itwillbs.chat.db.ChatSubmitServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChatSubmitServlet</servlet-name>
+    <url-pattern>/chatSubmitServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ChatListServlet</servlet-name>
+    <servlet-class>com.itwillbs.chat.db.ChatListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChatListServlet</servlet-name>
+    <url-pattern>/chatListServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>MemberLoginServlet</servlet-name>
+    <servlet-class>Member.UserLoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MemberLoginServlet</servlet-name>
+    <url-pattern>/MemberLogin</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ChatUnreadServlet</servlet-name>
+    <servlet-class>com.itwillbs.chat.db.ChatUnreadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChatUnreadServlet</servlet-name>
+    <url-pattern>/chatUnread</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ChatBoxServlet</servlet-name>
+    <servlet-class>com.itwillbs.chat.db.ChatBoxServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChatBoxServlet</servlet-name>
+    <url-pattern>/chatBox</url-pattern>
+  </servlet-mapping>
+  
   <!-- 댓글 관련 -->
   <servlet>
    <servlet-name>CommentFrontController</servlet-name>
