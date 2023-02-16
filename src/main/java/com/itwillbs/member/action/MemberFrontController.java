@@ -81,6 +81,16 @@ public class MemberFrontController extends HttpServlet{
 			}
 		}// 회원가입 김광원
 		
+		else if(sPath.equals("/AdMain.me")) {
+	         action = new AdMainPro();
+	         try {
+	            forward=action.execute(request, response);
+	         } catch (Exception e) {
+	            e.printStackTrace();
+	         }
+			
+		}//노은주
+		
 		/* 여기 위까지 if문 작성 */
 		
 		if(forward != null) {
