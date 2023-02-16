@@ -32,8 +32,8 @@ public class MemberLoginPro implements Action{
 			session.setAttribute("M_id", M_id);
 			
 			forward = new ActionForward();
-			forward.setPath("home/main.jsp");
-			forward.setRedirect(false);
+			forward.setPath("Main.me");
+			forward.setRedirect(true);
 		}else{
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
