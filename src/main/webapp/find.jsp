@@ -8,14 +8,16 @@
        }
        if(M_id == null){
     	   session.setAttribute("messageType", "오류 메시지");
+    	   session.setAttribute("messageContent", "현재 로그인이 되어있지 않습니다.");
+    	   response.sendRedirect("login/loginForm.jsp");
     	   return;
        }
     %>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="chat/css/bootstrap.css">
-	<link rel="stylesheet" href="chat/css/custom.css">
+	<link rel="stylesheet" href="chat/cs/bootstrap.css">
+	<link rel="stylesheet" href="chat/cs/custom.css">
 	<title>옷장 톡</title>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="js/bootstrap.js"></script>
