@@ -34,7 +34,103 @@ public class AdminFrontController extends HttpServlet{
 		/* 관리자관련 가상주소 .ad 입니다!! */
 		/* 여기 아래부터 if문 작성. 각 if이 끝나는 괄호 뒤에는 작성자 이름 함께 적기 */
 		
-		
+		if(sPath.equals("/AdUserList.ad")) {
+			action=new AdUserList();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}//노은주
+			
+		}else if(sPath.equals("/AdUserListPro.ad")) {
+			action=new AdUserListPro();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}//노은주
+			
+		}else if(sPath.equals("/AdUserDelete.ad")) {
+			action=new AdUserDelete();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}//노은주
+			
+		}else if(sPath.equals("/AdUserReportList.ad")) {
+			action=new AdUserReportList();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}//노은주
+			
+		}else if(sPath.equals("/AdUserReportListPro.ad")) {
+			action=new AdUserReportListPro();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}//노은주
+			
+		}else if(sPath.equals("/AdOutList.ad")) {
+			action=new AdOutList();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}//노은주
+			
+		}else if(sPath.equals("/AdOutListPro.ad")) {
+			action=new AdOutListPro();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}//노은주
+			
+		}else if(sPath.equals("/AdUserReportDelete.ad")) {
+			action=new AdUserReportDelete();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}//노은주
+			
+		}else if(sPath.equals("/AdBuyList.ad")) {
+			action=new AdBuyList();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}//노은주
+			
+		}else if(sPath.equals("/AdBuyDelete.ad")) {
+			action=new AdBuyDelete();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}//노은주
+			
+		}else if(sPath.equals("/AdSellDelete.ad")) {
+			action=new AdSellDelete();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}//노은주
+			
+		}else if(sPath.equals("/AdSellList.ad")) {
+			action=new AdSellList();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}//노은주
+			
+		}
 		
 		
 		
