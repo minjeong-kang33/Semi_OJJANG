@@ -15,8 +15,15 @@ public class MemberDTO {
 	private Timestamp M_createdate;
 	private int M_play;
 	private String M_admin;
+	private String M_Profile;
 	
 	
+	public String getM_Profile() {
+		return M_Profile;
+	}
+	public void setM_Profile(String m_Profile) {
+		M_Profile = m_Profile;
+	}
 	public String getM_id() {
 		return M_id;
 	}
