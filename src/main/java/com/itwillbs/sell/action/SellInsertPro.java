@@ -23,9 +23,10 @@ public class SellInsertPro implements Action{
 		MultipartRequest multi = new MultipartRequest(request, uploadPath, maxSize, "utf-8", new DefaultFileRenamePolicy());
 		
 		request.setCharacterEncoding("utf-8");
-		HttpSession session = request.getSession();
 		
+		HttpSession session = request.getSession();
 		String M_id = (String)session.getAttribute("M_id");
+		
 		String S_title = multi.getParameter("S_title");
 		int S_price = Integer.parseInt(multi.getParameter("S_price"));
 		String S_text = multi.getParameter("S_text");

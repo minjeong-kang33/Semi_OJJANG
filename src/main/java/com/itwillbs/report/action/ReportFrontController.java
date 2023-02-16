@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.itwillbs.member.action.Action;
 import com.itwillbs.member.action.ActionForward;
+import com.itwillbs.review.action.ReviewList;
 
 public class ReportFrontController extends HttpServlet{
 	@Override
@@ -33,8 +34,22 @@ public class ReportFrontController extends HttpServlet{
 		
 		/* 신고 관련 가상주소 .rpt 입니다!! */
 		/* 여기 아래부터 if문 작성. 각 if이 끝나는 괄호 뒤에는 작성자 이름 함께 적기 */
+
 		
-		
+		// 신고하기 폼 (승민)
+		if(sPath.equals("/ReportForm.rpv")){
+		     forward = new ActionForward();
+	         forward.setPath("report/reportForm.jsp");
+	         forward.setRedirect(false);
+	         
+	    //신고하기 Pro
+		} else if(sPath.equals("/ReportPro.rpv")) {
+	    	  action = new ReportPro();
+	    	  try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+		}
 		
 		
 		

@@ -10,7 +10,6 @@ public class reviewDTO {
 	private String RE_title;
 	private String RE_text;
 	private Timestamp RE_createtime;
-	private int RE_view;
 	private String RE_img1;
 	private String RE_delivery;
 	private String RE_manner;
@@ -57,12 +56,7 @@ public class reviewDTO {
 	public void setRE_createtime(Timestamp rE_createtime) {
 		RE_createtime = rE_createtime;
 	}
-	public int getRE_view() {
-		return RE_view;
-	}
-	public void setRE_view(int rE_view) {
-		RE_view = rE_view;
-	}
+
 	public String getRE_img1() {
 		return RE_img1;
 	}
