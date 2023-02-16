@@ -8,6 +8,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.itwillbs.sell.action.SellInsertPro;
+
+
+
+
+
 
 public class BuyFrontController extends HttpServlet{
 	@Override
@@ -31,8 +37,49 @@ public class BuyFrontController extends HttpServlet{
 		
 		/* 삽니다 게시판 관련 가상주소 .buy 입니다!! */
 		/* 여기 아래부터 if문 작성. 각 if이 끝나는 괄호 뒤에는 작성자 이름 함께 적기 */
-		
-		
+		if(sPath.equals("/BuyList.buy")) {
+			action=new BuyList();
+			try {
+				forward=action.execute(request, response);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		} // 임호정
+		else if (sPath.equals("/BuyDetails.buy")) {
+			action = new BuyDetails();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if (sPath.equals("/CommentAction.buy")) {
+			action = new CommentAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if (sPath.equals("/CommentDelete.buy")) {
+			action = new CommentAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if (sPath.equals("/commentupdateForm.buy")) {
+			
+			forward=new ActionForward();
+			forward.setPath("buy/commentupdateForm.jsp");
+			forward.setRedirect(false);
+			
+			}else if (sPath.equals("/CommentUpdateAction.buy")) {
+				action = new CommentUpdateAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		
 		
 		
@@ -51,6 +98,6 @@ public class BuyFrontController extends HttpServlet{
 			}
 		}//이동방식
 		
-	}//doProcess()
-	
+		
+	}//doProcess()	
 }//클래스

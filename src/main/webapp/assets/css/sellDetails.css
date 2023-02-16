@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+.container2{
+	margin-top : 180px;
+}
+
+.btn-naran{
+	text-align: right;
+}
+.btn btn-dark{
+	display :inline-block;
+}
+#comment{
+	width:60% !important;
+	margin:0 auto; 
+}

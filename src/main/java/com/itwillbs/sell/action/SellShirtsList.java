@@ -8,8 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.itwillbs.sell.db.SellDAO;
 import com.itwillbs.sell.db.SellDTO;
 
-public class SellOuterList implements Action {
-
+public class SellShirtsList implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		SellDAO dao = new SellDAO();
@@ -20,12 +19,12 @@ public class SellOuterList implements Action {
 		if (pageNum == null) {
 			pageNum = "1";
 		}
-		
+
 		int currentPage = Integer.parseInt(pageNum);
 		int startRow = (currentPage - 1) * pageSize + 1;
 		int endRow = startRow + pageSize - 1;
 
-		ArrayList<SellDTO> sellouterList = dao.getsellOuterList(startRow, pageSize);
+		ArrayList<SellDTO> sellShirtsList = dao.getsellShirtsList(startRow, pageSize);
 
 		int pageBlock = 10;
 		int startPage = (currentPage - 1) / pageBlock * pageBlock + 1;
@@ -38,7 +37,7 @@ public class SellOuterList implements Action {
 			endPage = pageCount;
 		}
 		// 가져온 데이터 담기
-		request.setAttribute("sellouterList", sellouterList);
+		request.setAttribute("sellShirtsList", sellShirtsList);
 
 		request.setAttribute("currentPage", currentPage);
 		request.setAttribute("startPage", startPage);
@@ -48,7 +47,7 @@ public class SellOuterList implements Action {
 
 		// 이동
 		ActionForward forward = new ActionForward();
-		forward.setPath("sell/outer.jsp");
+		forward.setPath("sell/shirts.jsp");
 		forward.setRedirect(false);
 
 		return forward;
