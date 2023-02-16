@@ -6,16 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>신고하기</title>
-<link rel="stylesheet" type="text/css" href="reportWrite.css"/>
+<link rel="stylesheet" type="text/css" href="assets/css/reportForm.css"/>
 
 
 <script type="text/javascript">
-
-finction fun1(){
-	
-	
-	
-}
 
 function fun2() {
 	window.close();
@@ -42,7 +36,7 @@ if(M_id==null){
 
 <%-- 신고하기 폼 --%>
 <div class="reportForm">
-	<form action="reportWritePro.jsp" method="post" name="reportWriteBox">
+	<form action="ReportPro.rpt" method="post" name="reportWriteBox">
 	<input type="hidden" name="M_id" value="<%=M_id %>">
  	<input type="hidden" name="R_id" value="<%=R_id %>">
 	<input type="hidden" name="R_writeNum" value="<%=R_writeNum %>">

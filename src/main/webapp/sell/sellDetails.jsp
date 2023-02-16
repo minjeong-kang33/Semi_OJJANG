@@ -20,13 +20,13 @@
 <link href="assets/css/sellDetails.css" rel="stylesheet" type="text/css">
 <link href="assets/css/buy.css" rel="stylesheet" type="text/css">
 <meta charset="UTF-8">
-<title>중고 의류거래: 옺장</title>
 <script type="text/javascript">
-	function fun1(M_id, S_num, R_category, S_title) {
-		window.open("report/reportWrite.jsp?R_id=" + M_id + "&R_writeNum="
-				+ S_num + "&R_category=" + R_category + "&R_title=" + S_title,
-				"pop", "width=520,height=340");
-	}
+function fun1(M_id, S_num, R_category, S_title) {
+	   
+    window.open("ReportForm.rpt?R_id=" + M_id + "&R_writeNum="
+          + S_num + "&R_category=" + R_category + "&R_title=" + S_title,
+          "pop", "width=520,height=340");
+ }
 </script>
 </head>
 <body>
@@ -51,7 +51,6 @@
 	SellDTO dto = (SellDTO) request.getAttribute("dto");
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd hh:mm");
 	%>
-
 	<section class="section" id="products">
 		<!-- 게시판 제목  -->
 		<div class="container">
@@ -62,21 +61,33 @@
 						<h2 style="margin-top: 180px">팝니다</h2>
 						<span>sell</span>
 					</div>
+				 <!--  폼 추가했어요!!~!~!~!~!~!~! 데이터 넘기기 편하시라고.... -->
+					
+					<table style="text-align: center; border: 1px solid black;">
+					<tr><td rowspan="6"><img src="img/sell/<%=dto.getS_img()%>" width=300px class="goodsImg" ></td></tr>  <!-- 이미지 -->
+					<tr><td colspan="3" align="left"><%=dto.getS_category()%></td>   <!-- 카테고리--> 
+					<tr><td colspan="3" style="border-bottom: 1px;" align="left"> <%=dto.getS_title()%></td></tr> <!--  제목 -->
+					<tr><td colspan="2" align="left"><%=dto.getS_price()%></td> <td align="right" class="like_id"><input type="image" name="button"  class="heart" src="sell/heart.png" ></td></tr> <!--  찜하기 -->
+					<tr><td colspan="2" align="left"> 배송방법 </td><td>거래위치</td></tr>
+					<tr><td align="left"> <%=dto.getM_id()%> </td><td align="right"> 작성일자 </td><td align="right">조회수</td></tr>
+					<tr><td colspan="3" class="line"></td></tr> <!--  리뷰리스트처럼 선 넣을 예정  -->
+					<tr><td colspan="3"> <%=dto.getS_text()%> </td></tr>
+					</table>
+					<!-- 솔직히 rowspan, colspan 대충 함. 알아서 맞춰 -->
+					<!-- 조회수, 거래방법, (주소), 작성일도 어딘가에 넣어야함 -->
+				
 					<!--보내지는 내용 숨겨지도록(post) 작성한 글을 writeAction으로 보냄 -->
-					<table class="table table-striped"
-						style="text-align: center; border: 1px solid #dddddd">
-						<colgroup>
+<!-- 					<table class="table table-stripe"
+						style="text-align: center;" > -->
+<!-- 						<colgroup>
 							<col style="width: 601px">
 							<col style="width: 101px">
 							<col style="width: 301px">
-						</colgroup>
-						<thead>
-							<tr>
-								<th colspan="3"
-									style="background-color: #eeeeee; text-align: center"><%=dto.getS_title()%></th>
+						</colgroup> -->
+<%-- 							<tr>
+								<td rowspan="7"
+									style="text-align: center"><%=dto.getS_title()%></td>
 							</tr>
-						</thead>
-						<tbody>
 							<tr>
 								<td rowspan="7"><img src="img/sell/<%=dto.getS_img() %>" width=300px height=300px class="goodsImg"></td>
 							</tr>
@@ -114,12 +125,13 @@
 								<td height="150">글내용</td>
 								<td><%=dto.getS_text()%></td>
 							</tr>
-						</tbody>
-					</table>
+					</table> --%>
+	
 				</div>
 			</div>
 		</div>
 	</section>
+	
 	<div class="btn-naran">
 		<%
 		if (M_id != null) {
@@ -139,18 +151,14 @@
 			// 세션값=id와 글쓴이가 일치해야만 글수정, 글삭제 표시
 			if (M_id.equals("admin")) {
 		%>
-		<input type="button" class="btn btn-dark" value="글삭제"
-			onclick="location.href='SellDelete.sell?S_num=<%=dto.getS_num()%>'">
+<input type="button" class="btn btn-dark" value="글삭제" onclick="location.href='SellDelete.sell?S_num=<%=dto.getS_num() %>'"> 
 		<%
 		}
 		}
 		%>
-		<button type="button" class="btn btn-dark"
-			onclick="fun1('<%=dto.getM_id()%>','<%=dto.getS_num()%>','sell','<%=dto.getS_title()%>')"
-			style="float: right">신고하기</button>
-		<button type="button" class="btn btn-dark" onclick="history.back()"
-			style="float: right">글목록</button>
-		<button onclick="location.href='Mypage/likePro.jsp'">찜하기</button>
+		<button type="button" class="btn btn-dark" onclick="fun1('<%=dto.getM_id()%>','<%=dto.getS_num() %>','<%=dto.getS_category() %>','<%=dto.getS_title() %>')" style="float:right"> 신고하기</button>
+   <button type="button" class="btn btn-dark" onclick="history.back()" style="float:right">글목록</button>
+         <button type="button" class="btn btn-dark" onclick="location.href='LikePro.like?S_num=<%=dto.getS_num() %>'">찜하기</button>
 
 	</div>
 

@@ -71,7 +71,7 @@ for(int i=0;i<WriteHistoryB2.size();i++){
 	</table>
 	
 </section>
-	    <h3>판매글조회</h3> <a href="WriteHistoryS.moi">더보기</a>
+	    <h3>판매글조회</h3> <a href="WritehistoryS.moi">더보기</a>
 <%
 
 ArrayList<SellDTO> WriteHistoryS2=dao.WriteHistoryS2(M_id);

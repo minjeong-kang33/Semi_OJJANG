@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.itwillbs.comment.db.CommentDAO;
 import com.itwillbs.comment.db.CommentDTO;
@@ -14,22 +15,22 @@ public class CommentAction implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("CommentAction execute()");
 		
-
+		request.setCharacterEncoding("UTF-8");
 		int B_num=1;
 		if(request.getParameter("B_num")!=null){
 			B_num=Integer.parseInt(request.getParameter("B_num"));
 		}
-	    // 세션값어떻게들고오더라
-		String M_id=null;
-		BuyDTO dto = dao.getMember(M_id);
-		if(dto!=null){
+		HttpSession session = request.getSession();
+		String M_id = (String)session.getAttribute("M_id");
+		
+		if(M_id!=null){
 			M_id=(String)session.getAttribute("M_id");
 		}
-		if(dto==null){
+		if(M_id==null){
 			PrintWriter script=response.getWriter();
 			script.println("<script>");
 			script.println("alert('로그인이 필요합니다.')");
-			script.println("location.href='login.jsp'");
+			script.println("location.href='MemberLoginForm.me'");
 			script.println("</script>");	
 		}
 		
@@ -47,7 +48,7 @@ public class CommentAction implements Action{
 			else{
 				CommentDAO commentDAO=new CommentDAO();
 				
-				commentDAO.write(B_num, Co_text, dto);
+				commentDAO.write(B_num, Co_text, M_id);
 				
 				String url = "BuyDetails.buy?B_num=" + B_num;
 				PrintWriter script= response.getWriter();

@@ -31,12 +31,16 @@ public class MemberFrontController extends HttpServlet{
 		/* 회원 관련 가상주소 .me 입니다!! */
 		/* 여기 아래부터 if문 작성. 각 if이 끝나는 괄호 뒤에는 작성자 이름 함께 적기 */
 		
+		
 		if(sPath.equals("/Main.me")) {
-			forward=new ActionForward();
-			forward.setPath("home/main.jsp");
-			forward.setRedirect(false);
-			
-		} //강민정
+	         action = new MainPro();
+	         try {
+	            forward=action.execute(request, response);
+	         } catch (Exception e) {
+	            e.printStackTrace();
+	         }
+	         
+	      } //강민정
 		
 		else if(sPath.equals("/MemberLoginForm.me")) {
 			forward=new ActionForward();
@@ -54,7 +58,28 @@ public class MemberFrontController extends HttpServlet{
 			}
 		} //강민정
 		
+		else if(sPath.equals("/MemberLogout.me")) {
+			action=new MemberLogout();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}//로그아웃 김광원
+
 		
+		else if(sPath.equals("/MemberJoinForm.me")) {
+			forward=new ActionForward();
+			forward.setPath("join/joinForm.jsp");
+			forward.setRedirect(false);
+		}else if(sPath.equals("/MemberJoinPro.me")) {
+			action=new MemberJoinPro();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}// 회원가입 김광원
 		
 		/* 여기 위까지 if문 작성 */
 		
