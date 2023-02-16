@@ -19,13 +19,16 @@
     <link href="assets/css/buy.css" rel="stylesheet" type="text/css">
 <meta charset="UTF-8">
 <title>중고 의류거래: 옺장</title>
+
 <script type="text/javascript">
-function fun1(M_id, S_num, R_category, S_title) {
+
+function fun1(M_id, B_num, R_category, B_title) {
 	   
     window.open("ReportForm.rpt?R_id=" + M_id + "&R_writeNum="
-          + B_num() + "&R_category=" + R_category + "&R_title=" + B_title(),
+          + B_num + "&R_category=" + "buy" + "&R_title=" + B_title,
           "pop", "width=520,height=340");
  }
+ 
 </script>
 </head>
     <body>
@@ -196,21 +199,18 @@ if(M_id != null){
 }
 %>
 
+	<button type="button" class="btn btn-dark" onclick="location.href='BuyList.buy'" >글목록</button>
 		<%
 		if(M_id != null){
-			//본인에게는 신고하기, 찜하기 안보임
+			//본인에게는 신고하기 안보임
 			if(!M_id.equals(dto.getM_id())){
 		%>
 		
 		<button type="button" class="btn btn-dark" onclick="fun1('<%=dto.getM_id()%>','<%=dto.getB_num()%>','buy','<%=dto.getB_title()%>')" style="float: right">신고하기</button>
-
 		<%
 			}
 		}
 		 %>
-
-
-	<button type="button" class="btn btn-dark" onclick="location.href='BuyList.buy'" >글목록</button>
 </div>
 </div>
 <!-- ***** 푸터 시작 ***** -->
