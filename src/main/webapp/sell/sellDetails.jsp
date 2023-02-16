@@ -156,7 +156,7 @@ function fun1(M_id, S_num, R_category, S_title) {
 		}
 		}
 		%>
-		<button type="button" class="btn btn-dark" onclick="fun1('<%=dto.getM_id()%>','<%=dto.getS_num() %>','sell','<%=dto.getS_title() %>')" style="float:right"> 신고하기</button>
+		<button type="button" class="btn btn-dark" onclick="fun1('<%=dto.getM_id()%>','<%=dto.getS_num() %>','<%=dto.getS_category() %>','<%=dto.getS_title() %>')" style="float:right"> 신고하기</button>
    <button type="button" class="btn btn-dark" onclick="history.back()" style="float:right">글목록</button>
          <button type="button" class="btn btn-dark" onclick="location.href='LikePro.like?S_num=<%=dto.getS_num() %>'">찜하기</button>
 
