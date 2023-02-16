@@ -100,7 +100,7 @@ public class CommentDAO {
 		} finally {
 			if(rs!=null) try { rs.close();} catch (Exception e2) {}
 			if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
-			if(con!=null) try { pstmt.close();} catch (Exception e2) {}
+			if(con!=null) try { con.close();} catch (Exception e2) {}
 		}
 		return reply;
 		
