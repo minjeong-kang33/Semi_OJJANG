@@ -7,13 +7,13 @@
 			<div class="col-12">
 				<nav class="main-nav">
 					<!-- ***** 로고 시작 ***** -->
-					<a href="index.html" class="logo"> <img
+					<a href="AdMain.me" class="logo"> <img
 						src="assets/images/otzang_logo_top.png" height="60px">
 					</a>
 					<!-- ***** 로고 끝 ***** -->
 					<!-- ***** 상단 바 메뉴 시작 ***** -->
 					<ul class="nav">
-						<li><a href="#" class="active">홈</a></li>
+						<li><a href="AdMain.me" class="active">홈</a></li>
 						<li class="submenu"><a>관리자</a>
 							<ul>
 								<li><a href="#">로그아웃</a></li>
