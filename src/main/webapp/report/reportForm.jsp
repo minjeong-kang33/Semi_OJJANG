@@ -42,7 +42,7 @@ if(M_id==null){
 
 <%-- 신고하기 폼 --%>
 <div class="reportForm">
-	<form action="reportWritePro.jsp" method="post" name="reportWriteBox">
+	<form action="ReportPro.rpv" method="post" name="reportWriteBox">
 	<input type="hidden" name="M_id" value="<%=M_id %>">
  	<input type="hidden" name="R_id" value="<%=R_id %>">
 	<input type="hidden" name="R_writeNum" value="<%=R_writeNum %>">
