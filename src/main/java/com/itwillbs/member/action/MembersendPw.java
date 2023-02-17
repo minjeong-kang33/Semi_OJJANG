@@ -23,7 +23,7 @@ public class MembersendPw implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("MembersendPw execute() ");
 		request.setCharacterEncoding("utf-8");
-		PrintWriter out = response.getWriter();
+//		PrintWriter out = response.getWriter();
 		MemberDAO dao=new MemberDAO();
 		MemberDTO dto=new MemberDTO();
 		String M_pw = request.getParameter("M_pw");
@@ -60,7 +60,7 @@ public class MembersendPw implements Action {
 			//5) 메일 보내기
 			
 			String to = request.getParameter("M_email");
-			String from	   = "lg25sk@gmail.com";
+			String from	   = "itwillbs.co.kr";
 			String subject = "[(주)옺장] 임시 비밀번호";
 			String content = "임시 비밀번호를 발급해드립니다.";	
 			content += "<hr>";
@@ -84,19 +84,24 @@ public class MembersendPw implements Action {
 			
 			int cnt = dao.updatePasswd(dto);;
 			if(cnt == 0){
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				Transport.send(msg);
+				out.println(to);
+				out.println("님의 이메일에 메일이 발송되었습니다.");
+				System.out.println(msg.getContent());
 			}else{
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = response.getWriter();
 				response.setContentType("text/html; charset=UTF-8");
 				out.println("<script>");
 				out.println("	location.href='MemberLoginForm.me';");	//인트로페이지 이동
 				out.println("</script>");
 			}//if end
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out1 = response.getWriter();
-			Transport.send(msg);
-			out1.println(to +"님에게 메일이 발송되었습니다.");
-			out1.println("<a href=MemberLoginForm.me\"></a>");
-			System.out.println(msg.getContent());
+
 		}catch(Exception e){
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
 			out.println("<p>메일전송 실패!" + e + "</p>");
 			out.println("<p><a href='javascript:history.back();'>[다시시도]</a></p>");
 			e.printStackTrace();
