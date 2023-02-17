@@ -106,6 +106,7 @@ int adUserReportCount=(Integer)request.getAttribute("adUserReportCount");
 		<th scope="col">글번호</th>
 		<th scope="col">내용</th>
 		<th scope="col">신고자아이디</th>
+		<th scope="col">회원상태</th>
 	</tr>
 	</thead>
 	
@@ -122,7 +123,8 @@ for(int i=0;i<adUserReportListPro.size();i++){
 		<td><%=dto.getR_category() %></td>
 		<td><%=dto.getR_writeNum() %></td>
 		<td><%=dto.getR_title() %></td>
-		<td><%=dto.getM_id() %></td></tr>
+		<td><%=dto.getM_id() %></td>
+		<td><%=dto.getR_play() %></td></tr>
 <%
 }
 %>
