@@ -9,7 +9,6 @@ import com.itwillbs.member.db.MemberDAO;
 import com.itwillbs.member.db.MemberDTO;
 
 public class MemberfindIDPro implements Action {
-
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("MemberfindIDPro.me execute()");

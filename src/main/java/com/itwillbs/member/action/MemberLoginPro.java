@@ -48,15 +48,14 @@ public class MemberLoginPro implements Action{
 			out.println("</script>");
 			out.close();
 			forward = null;
-			
-			Cookie cookie = new Cookie("M_id", M_id);// 일단 쿠키 생성
-			System.out.println(checkbox);
-			if (checkbox != null) { // 체크박스 체크여부에 따라 쿠키 저장 확인
-				cookie.setMaxAge(60*60*24*5);
-				response.addCookie(cookie);
-			} else {
-			}	
 		}
+		Cookie cookie = new Cookie("M_id", M_id);// 일단 쿠키 생성
+		System.out.println(checkbox);
+		if (checkbox != null) { // 체크박스 체크여부에 따라 쿠키 저장 확인
+			cookie.setMaxAge(60*60*24*5);
+			response.addCookie(cookie);
+		} else {
+		}	
 		return forward;
 	}
 	

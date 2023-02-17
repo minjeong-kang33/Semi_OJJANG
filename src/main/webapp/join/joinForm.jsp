@@ -50,8 +50,8 @@
 		<fieldset class="joinUpField">
 			<legend>로그인 정보</legend>
 				<ul>
-					<li><label for="userid">아이디</label> <input type="text" id="M_id" name="M_id" size="15" required> 
-						<input type="button" value="ID중복확인" onclick="idCheck()" id="joinbutton">
+					<li><label for="userid">아이디</label> <input type="text" id="M_id" name="M_id" size="15" required onclick="idCheck()"> 
+						<input type="button" value="ID중복확인" id="joinbutton">
 						
 						<script type="text/javascript">
 						function idCheck() {
@@ -69,7 +69,7 @@
 		</fieldset>
 		<!-- 아이디 , 아이디 중복확인, 비밀번호, 비밀번호 확인 끝 -->
 		
-		<%-- 			<%@include file="pwCheck.jsp"%> --%>
+					<br><%@include file="pwCheck.jsp"%>
 		
 		<!-- 기타 개인정보 입력 -->
 		<fieldset>
@@ -79,8 +79,8 @@
 					<li><label for="gender">성별</label> <input type="radio" name="M_gender" id="남"> 남 
 						<input type="radio" name="M_gender" id="여"> 여</li>
 					<li><label for="nickname">닉네임</label> 
-						<input type="text" id="M_nick" name="M_nick" size="15" required> 
-						<input type="button" value="중복확인" onclick="nickCheck()" id="joinbutton">
+						<input type="text" id="M_nick" name="M_nick" size="15" required onclick="nickCheck()"> 
+						<input type="button" value="중복확인"  id="joinbutton">
 						
 						<script type="text/javascript">
 							function nickCheck() {
