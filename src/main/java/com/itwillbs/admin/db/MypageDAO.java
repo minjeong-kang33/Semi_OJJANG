@@ -13,6 +13,7 @@ import javax.sql.DataSource;
 import com.itwillbs.buy.db.BuyDTO;
 import com.itwillbs.deal.db.DealDTO;
 import com.itwillbs.like.db.LikeDTO;
+import com.itwillbs.member.db.MemberDTO;
 import com.itwillbs.sell.db.SellDTO;
 
 
@@ -24,7 +25,7 @@ public class MypageDAO {
 		Connection con=ds.getConnection();
 		return con;
 	}
-	//=========================거래내역====================================
+	//=========================deal====================================
 	
 	//deal 테이블에 값 넣기(값이 들어가는지 확인해봐야하는데..) //승민
 	public void insertDeal(SellDTO selldto, String M_id) {
@@ -58,6 +59,71 @@ public class MypageDAO {
 				if (rs != null) try {rs.close();} catch (Exception e2) {}
 			}		
 	}
+	
+	public ArrayList<MemberDTO> DealWantList(String M_id){
+		ArrayList<MemberDTO> DealWantList=new ArrayList<MemberDTO>();
+		Connection con =null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=getConnection();
+			String sql="select * from member where M_id=?";
+			
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, M_id);
+			
+			rs=pstmt.executeQuery();	
+
+			while(rs.next()) {
+				
+				MemberDTO dto=new MemberDTO();
+				dto.setM_id(rs.getString("M_id"));
+				dto.setM_pw(rs.getString("M_pw"));
+				dto.setM_name(rs.getString("M_name"));
+				dto.setM_nick(rs.getString("M_nick"));
+				dto.setM_gender(rs.getString("M_gender"));
+				dto.setM_phone(rs.getString("M_phone"));
+				dto.setM_address(rs.getString("M_address"));
+				dto.setM_address2(rs.getString("M_address2"));
+				dto.setM_email(rs.getString("M_email"));
+				dto.setM_createdate(rs.getTimestamp("M_createdate"));
+				dto.setM_play(rs.getString("M_play"));
+				dto.setM_admin(rs.getString("M_admin"));
+				dto.setM_Profile(rs.getString("M_Profile"));
+			
+				
+				DealWantList.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			
+			if(rs!=null) try { rs.close();} catch (Exception e2) {}
+			if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
+			if(con!=null) try { con.close();} catch (Exception e2) {}
+		}
+		return DealWantList;
+	}
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	//판매내역1
 //	public ArrayList<SellDTO> sellHistory(String M_id) {
@@ -421,7 +487,7 @@ public class MypageDAO {
 	
 //============================페이징
 	
-	public ArrayList<SellDTO> sellList(int startRow, int pageSize){
+	public ArrayList<SellDTO> sellList(int startRow, int pageSize, String M_id){
 		System.out.println("SellDAO sellList()");
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -431,10 +497,11 @@ public class MypageDAO {
 		
 			con=getConnection();
 
-			String sql="select * from sell order by S_num desc limit ?,?";
+			String sql="select * from sell where M_id=? order by S_num desc limit ?,?";
 			pstmt=con.prepareStatement(sql);
-			pstmt.setInt(1, startRow-1);
-			pstmt.setInt(2, pageSize);
+			pstmt.setString(1, M_id);
+			pstmt.setInt(2, startRow-1);
+			pstmt.setInt(3, pageSize);
 
 			rs=pstmt.executeQuery();
 			//5
@@ -471,7 +538,7 @@ public class MypageDAO {
 	}
 	
 	
-	public ArrayList<BuyDTO> buyList(int startRow, int pageSize){
+	public ArrayList<BuyDTO> buyList(int startRow, int pageSize, String M_id){
 		System.out.println("BuyDAO buyList()");
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -481,10 +548,11 @@ public class MypageDAO {
 		
 			con=getConnection();
 
-			String sql="select * from buy order by B_num desc limit ?,?";
+			String sql="select * from buy where M_id=? order by B_num desc limit ?,?";
 			pstmt=con.prepareStatement(sql);
-			pstmt.setInt(1, startRow-1);
-			pstmt.setInt(2, pageSize);
+			pstmt.setString(1, M_id);
+			pstmt.setInt(2, startRow-1);
+			pstmt.setInt(3, pageSize);
 
 			rs=pstmt.executeQuery();
 			//5
@@ -692,7 +760,7 @@ public class MypageDAO {
 // Count=============================================================
 	
 	
-	public int getsellCount() {
+	public int getsellCount(String M_id) {
 		int count=0;
 		Connection con =null;
 		PreparedStatement pstmt=null;	
@@ -701,9 +769,9 @@ public class MypageDAO {
 			
 			con=getConnection();
 			
-			String sql="select count(*) from Sell";
+			String sql="select count(*) from Sell where M_id=?";
 			pstmt=con.prepareStatement(sql);
-
+			pstmt.setString(1, M_id);
 			rs=pstmt.executeQuery();
 			
 			if(rs.next()){
@@ -722,7 +790,7 @@ public class MypageDAO {
 	
 	
 	
-	public int getbuyCount() {
+	public int getbuyCount(String M_id) {
 		int count=0;
 		Connection con =null;
 		PreparedStatement pstmt=null;	
@@ -731,9 +799,9 @@ public class MypageDAO {
 			
 			con=getConnection();
 			
-			String sql="select count(*) from Buy";
+			String sql="select count(*) from Buy where M_id=?";
 			pstmt=con.prepareStatement(sql);
-
+			pstmt.setString(1, M_id);
 			rs=pstmt.executeQuery();
 			
 			if(rs.next()){
