@@ -1,5 +1,4 @@
 
-
 <%@page import="com.itwillbs.member.db.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.net.URLDecoder" %>
@@ -27,7 +26,7 @@
 	<link rel="stylesheet" href="chat/cs/custom.css">
 	<title>옷장 톡</title>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script src="js/bootstrap.js"></script>
+	<script src="chat/js/bootstrap.js"></script>
 	<script type="text/javascript">
 	    function autoClosingAlert(selector, delay) {
 	    	var alert = $(selector).alert();
@@ -175,7 +174,7 @@
                         <div class="clearfix"></div>
                     </div>
                     <div id="chat" class="panel-collapse collapse in">
-                        <div id="chatList" class="portlet-body chat-widget" style="overflow-y: auto; width: auto; height: 600px;">
+                        <div id="chatList" class="portlet-body chat-widget" style="overflow-y: auto; width: auto; height: 250px;">
                         </div>
                         <div class="portlet-footer">
                             <div class="row" style="height: 90px;">

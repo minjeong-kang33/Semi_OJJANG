@@ -62,8 +62,8 @@
                    <li class="submenu"><a href="#">커뮤니티</a>
                       <ul>
                       	 <li><a href="ReviewList.rev">리뷰보기</a></li>	
-      					 <li><a href="javascript:void(window.open('../find.jsp', '판매자찾기','width=400, height=400'))">판매자찾기</a></li>
-						 <li><a href="javascript:void(window.open('../box.jsp', '메세지함','width=400, height=400'))">메세지함</a></li>
+      					 <li><a href="javascript:void(window.open('find.ch', '판매자찾기','width=450, height=450'))">판매자찾기</a></li>
+						 <li><a href="javascript:void(window.open('box.ch', '메세지함','width=450, height=450'))">메세지함</a></li>
                      </ul>
                    </li>   
                    	
