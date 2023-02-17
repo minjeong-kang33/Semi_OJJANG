@@ -47,13 +47,12 @@ function fun1(M_id, B_num, R_category, B_title) {
     
 <%
 
+int B_num = Integer.parseInt(request.getParameter("B_num"));
 String M_id = (String)session.getAttribute("M_id");
 BuyDTO dto = (BuyDTO)request.getAttribute("dto");
-String B_num = (String)session.getAttribute("B_num");
-/* 댓글
-ArrayList<CommentDTO> List=(ArrayList<CommentDTO>)request.getAttribute("List"); */
-
+CommentDAO comment=new CommentDAO();
 int pageNumber = (Integer)request.getAttribute("pageNumber");
+ArrayList<CommentDTO>List=comment.getList(B_num, pageNumber);
 
 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd hh:mm");
 %>
@@ -129,20 +128,9 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd hh:mm");
 					<tbody>
 					
 						<%
-// 						int pageNumber=1;
-// 						// pageNumber는 URL에서 가져온다.
-// 						if(request.getParameter("pageNumber")!=null){
-// 							pageNumber=Integer.parseInt(request.getParameter("pageNumber"));
-// 						}
-// 							CommentDAO comment=new CommentDAO();
-// ArrayList<CommentDTO> List=(ArrayList<CommentDTO>)request.getAttribute("List");
-							
-// 							int pageNumber = (Integer)request.getAttribute("pageNumber");
-
-/* 댓글 
-							for(int i=List.size()-1 ; i>=0 ; i--){*/
+							for(int i=List.size()-1 ; i>=0 ; i--){
 						%>
-<!-- 댓글 
+<!--  댓글  -->
 						<tr>
 						<td width="10%" style="text-align: left;"><%//=List.get(i).getM_id() %></td>
 							<td width="200" style="text-align: left;"><%//=List.get(i).getCo_text() %></td>
@@ -171,9 +159,9 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd hh:mm");
 							</td> 
 						</tr>
 		
-						<%-- <%
+						<%
 								}
-						%> --%>
+						%>
 			<tr>
 			<td colspan="3">
 			<div class="btn-naran">
@@ -185,7 +173,7 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd hh:mm");
 				<input type="submit" class="btn btn-dark" value="댓글입력">
 			</div>
 			</td>
--->
+
 					
 					</tbody>
 				</table> 
