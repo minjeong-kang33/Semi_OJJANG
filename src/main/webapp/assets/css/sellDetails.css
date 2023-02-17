@@ -27,11 +27,6 @@
 	border-radius: 8px;
 }
 
-table{
-	border-collapse: separate;
-	border-spacing: 10px 10px;
-}
-
 .line{
 	
 	border-bottom: 1px solid #ccc;
@@ -40,4 +35,54 @@ table{
 .heartbtn{
 	border: 0;
 	background-color: white;
+}
+
+.location{
+	width: 20px;
+	height: 20px;
+	margin-right: 2px;
+}
+
+.eye{
+	width: 20px;
+	height: 20px;
+	margin-right: 10px;
+	border:0;
+}
+
+
+
+.item-box1{
+	width: 800px;
+	height: 800px;
+	margin: 0 auto;
+}
+
+.item-img{
+	width: 400px;
+	height: 400px;
+	float:left;
+}
+
+.item-info{
+	width: 400px;
+	height: 400px;
+	float:right;
+}
+
+.item-detail{
+	width: 800px;
+	height: 400px;
+	clear:left;
+}
+
+.goodsImg{
+	width: 350px;
+	height: 350px;
+	border-radius: 3px;
+	margin: 25px;
+}
+
+.info-category{
+	margin: 10px;
 }
