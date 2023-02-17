@@ -35,18 +35,18 @@
 		<div class="col-lg-3">
             <h4>Useful Links</h4>
             <ul>
-               <li><a href="../Mypage/profile.jsp">My Profile</a></li>
-               <li><a href="../Mypage/likeList.jsp">Wish List</a></li>
-               <li><a href="../Mypage/sellHistory.jsp">Sales History</a></li>
-               <li><a href="../Mypage/buyHistory.jsp">Purchase history</a></li>
+               <li><a href="Profile.moi">My Profile</a></li>
+               <li><a href="Likelist.moi">Wish List</a></li>
+               <li><a href="Sellhistory.moi">Sales History</a></li>
+               <li><a href="Buyhistory.moi">Purchase history</a></li>
                <!-- 일단 게시글모음은 여기서는 뺄게요! 너무 많아서요! -->
-               <li><a href="../review/reviewList.jsp">My review</a></li>
+               <li><a href="ReviewList.rev">My review</a></li>
             </ul>
          </div>
          <div class="col-lg-3">
             <h4>Help & Information</h4>
             <ul>
-               <li><a href="#">About us</a></li>
+               <li><a href="Introduce.buy">About us</a></li>
                <li><a href="#">Help</a></li>
             </ul>
          </div>
@@ -57,7 +57,7 @@
 		<div class="col-lg-3">
             <h4>Help & Information</h4>
             <ul>
-               <li><a href="#">About us</a></li>
+               <li><a href="Introduce.buy">About us</a></li>
                <li><a href="#">Help</a></li>
             </ul>
          </div>

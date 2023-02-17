@@ -24,16 +24,16 @@
 			MemberDTO dto=new MemberDTO();
 			
 			if(M_id != null){
-			%>	<ul class="nav23">
-					<li><%=M_id%> 님 |
-					<a href="MemberLogout.me" id="top_logout" style="color: #434242">로그아웃</a></li>	
+			%>	<ul class="nav23" style="margin-right: 10px;">
+					<li style="color: #434242; margin-right: 10px;"><%=M_id%> 님 |
+					<a href="MemberLogout.me" id="top_logout" style="color: #434242; margin-left: 10px;">로그아웃</a></li>	
 				</ul>
 			<%
 			}else{
 			%>
 				<ul class="nav23">
 					<li><a href="MemberLoginForm.me" id="top_login" style="color: #434242">로그인   </a> |
-					<a href="MemberJoinForm.me" id="top_insert" style="color: #434242">  회원가입</a></li>	
+					<a href="MemberJoinForm.me" id="top_insert" style="color: #434242; margin-left: 10px;">  회원가입</a></li>	
 				</ul>
 			<%		
 			}
@@ -70,7 +70,7 @@
                    	<!-- 고객센터에는 링크 걸지않기, 회사소개, QnA에만 걸기 -->
                   <li class="submenu"><a href="#">고객센터</a>
                      <ul>
-                        <li><a href="#">회사소개</a></li>
+                        <li><a href="Introduce.buy">회사소개</a></li>
                         <li><a href="#">QnA</a></li>
                      </ul>
                   </li>	
@@ -88,7 +88,7 @@
 				<!-- 고객센터에는 링크 걸지않기, 회사소개, QnA에만 걸기 -->
 				<li class="submenu"><a href="#">고객센터</a>
                      <ul>
-                        <li><a href="#">회사소개</a></li>
+                        <li><a href="Introduce.buy">회사소개</a></li>
                         <li><a href="#">QnA</a></li>
                      </ul>
                 </li>

@@ -73,27 +73,25 @@ if(search==null){
     	<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
-					<div class="section-heading" id="find">
+					<div class="section-heading" style="text-align: center;">
 						<h2>최신 판매글</h2>
 						<span>recent posts for sale</span>
 					</div>
 				</div>
 			</div>
 		</div>
-	</section>
 <%}else{ %>
 		 <section class="section" id="men">
     	<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
-					<div class="section-heading" id="find">
+					<div class="section-heading" id="find" style="text-align: center;">
 						<h2>검색결과</h2>
 						<span>search result</span>
 					</div>
 				</div>
 			</div>
 		</div>
-
 	<%
 }
 %> 	
@@ -169,7 +167,7 @@ int pageCount=(Integer)request.getAttribute("pageCount");
 				</div>
 			</div>
 		</div> 
-    </section>
+	</section>
 <!-- ***** 최신 판매글 끝 ***** -->
 <!-- 페이징처리 -->
 <div style="text-align : center;">
