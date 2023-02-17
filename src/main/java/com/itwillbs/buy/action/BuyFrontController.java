@@ -112,7 +112,14 @@ public class BuyFrontController extends HttpServlet{
 					e.printStackTrace();
 				} // 강민정
 				
-			}
+			}else if (sPath.equals("/Introduce.buy")) {
+
+				forward = new ActionForward();
+				forward.setPath("buy/introduce.jsp");
+				forward.setRedirect(false);
+				
+				
+			}// 임호정
 		
 		
 		
