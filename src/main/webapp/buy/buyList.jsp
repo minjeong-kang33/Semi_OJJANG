@@ -34,7 +34,7 @@
 
 <% 
 ArrayList<BuyDTO> buyList=(ArrayList<BuyDTO>)request.getAttribute("buyList");
-
+String M_id = (String)session.getAttribute("M_id");
 int currentPage=(Integer)request.getAttribute("currentPage");
 int startPage=(Integer)request.getAttribute("startPage");
 int pageBlock=(Integer)request.getAttribute("pageBlock");
@@ -108,13 +108,13 @@ if(endPage < pageCount){
 <a href="BuyList.buy?pageNum=<%=startPage+pageBlock%>">[10페이지 다음]</a>
 	<%
 }
-
+if(M_id != null){
 %>
 <!-- 	글 작성 버튼을 오른쪽 아래에 고정 -->
 	</div>
 	<button type="button" class="btn btn-dark" onclick="location.href='BuyInsertForm.buy'" style="float:right">글쓰기</button>
 </section>
-
+<%} %>
 
 <!-- ***** 푸터 시작 ***** -->
 <jsp:include page="../bottom.jsp" />
