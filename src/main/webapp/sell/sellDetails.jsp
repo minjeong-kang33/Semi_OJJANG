@@ -75,51 +75,117 @@ function fun1(M_id, S_num, R_category, S_title) {
 					
 					<!-- 상품정보 -->
 					<div class="item-info"> 
-						<span class="info-category"> <%=dto.getS_category()%> </span> <br> <!--  카테고리 -->
-						<span> <%=dto.getS_title()%> </span> <br> <!-- 글제목 -->
-						<span> <%=dto.getS_price()%>원 </span> <br> <!-- 가격 -->
-						
-						<span>  <!--  좋아요, 찜하기 -->
-							<%
-									if(M_id != null){
-										//글쓴이에게는 찜하기 안보임
-										if(!M_id.equals(dto.getM_id())){
-									%>
-							<button type="button" onclick="location.href='LikePro.like?S_num=<%=dto.getS_num() %>'" class="heartbtn"><img src="sell/heart.png" alt="찜하기" class="heart"></button>
-								<%
-										}
-									}
-								%>
-						</span> <br>
-						
-						
-						<span> <!-- 거래방식  -->
-							<% if(dto.getS_send1()!=null&&dto.getS_send2()!=null){%> <%= "<b>택배거래</b>, <b>직거래</b>"%><%}
-													 else if(dto.getS_send1()!=null){%> <%= "<b>택배거래</b>"%><%}
-													 else if(dto.getS_send2()!=null){%> <%= "<b>직거래</b>"%><%}%>
-						</span> <br>
-						
-						<span> <!-- 거래지역 -->
-							<% if(dto.getS_send2()!=null){%> <img src="sell/location_icon.png" class="location"><%= dto.getS_sido1()%> <%= dto.getS_gugun1()%><%} else { %>　<%}%>
-						</span> <br>
-						
-						<span><%=dto.getM_id()%></span> <br>
-						<span><%=dateFormat.format(dto.getS_createdate())%></span> <br>
-						<span><img src="assets/images/eye.png" class="eye"><%=dto.getS_view() %></span> <br>
-						
+					   <div class="item-info2">
+					   		<!--  카테고리 -->
+							<span class="info-category"> <%=dto.getS_category()%> 
+							
+							<!--  좋아요, 찜하기 -->
+							<span class="info-like">  
+								<%if(M_id != null){//글쓴이에게는 찜하기 안보임
+									if(!M_id.equals(dto.getM_id())){%>
+								<button type="button" onclick="location.href='LikePro.like?S_num=<%=dto.getS_num() %>'" class="heartbtn"><img src="sell/heart.png" alt="찜하기" class="heart"></button>
+									<%}
+										}%>
+							</span></span><br> 
+							<span class="info-title"><%=dto.getS_title()%></span> <br> <!-- 글제목 -->
+							<span class="info-price"><%=dto.getS_price()%>원</span> <!-- 가격 -->
+							
+							<hr><!-- 가로줄 -->
+							
+							
+							<!-- 거래방식  -->
+							<span class="info-send"> 
+								<% if(dto.getS_send1()!=null&&dto.getS_send2()!=null){%> <%= "<b>택배거래</b>, <b>직거래</b>"%><%}
+														 else if(dto.getS_send1()!=null){%> <%= "<b>택배거래</b>"%><%}
+														 else if(dto.getS_send2()!=null){%> <%= "<b>직거래</b>"%><%}%>
+							</span> 
+							
+							<!-- 조회수 -->
+							<span class="info-eye"><img src="assets/images/eye.png" class="eye"><%=dto.getS_view() %></span>
+							
+							<!-- 판매자~거래일자 구분항목(왼쪽) -->
+							<div class="item-info3"> 
+								<div style="margin: auto 0;">
+								<br>
+								<span> 판매자 </span> <br><br>
+								<span> 작성일자 </span> <br><br>
+								<span> <% if(dto.getS_send2()!=null){%> <span> 거래 선호 지역 <%} else { %>　<%}%></span> <br><br>
+								</div>
+							</div>
+							
+							<!-- 판매자~거래일자 data(오른쪽) -->
+							<div class="item-info4">
+								<div style="margin: auto 0;">
+									<br>
+									<!-- 판매자 ID -->
+									<span><%=dto.getM_id()%></span> <br><br>
+									<!-- 작성일자 -->
+									<span><%=dateFormat.format(dto.getS_createdate())%></span> <br><br>
+									<!-- 거래지역 -->
+									<% if(dto.getS_send2()!=null){%>
+									<span class="info-location">
+										<img src="sell/location_icon.png" class="location"><%= dto.getS_sido1()%> <%= dto.getS_gugun1()%><%} else { %>　<%}%></span> <br><br>
+								</div>
+							</div>
+							 
+						</div>
 					</div>
 					
 		
 					
 					<!-- 판매 상세글 -->
-					<div class="item-detail">
-						<hr> <!-- 가로줄 -->
-						
-						 <%=dto.getS_text()%> 
-						
-					</div>
+					<div class="item-detail" >
+						<div style="margin-left: 80px;">
+							<hr> <!-- 가로줄 -->
+							  <div class="item-detail-text"> 제품 상세 정보 </div> <br>
+						  	<div class="textBox"><%=dto.getS_text()%></div> 
+						</div>
+			<div class="btn-naran">
+				<%
+				if (M_id != null) {
+					// 세션값=id와 글쓴이가 일치해야만 글수정, 글삭제 표시
+					if (M_id.equals(dto.getM_id())) {
+				%>
+				<input type="button" class="btn btn-dark" value="글수정"
+					onclick="location.href='SellEditForm.sell?S_num=<%=dto.getS_num()%>'">
+				<input type="button" class="btn btn-dark" value="글삭제"
+					onclick="location.href='SellDelete.sell?S_num=<%=dto.getS_num()%>'">
+				<%
+				}
+				}
+				%>
+				<%
+				if (M_id != null) {
+					// 세션값=id와 글쓴이가 일치해야만 글수정, 글삭제 표시
+					if (M_id.equals("admin")) {
+				%>
+				<input type="button" class="btn btn-dark" value="글삭제"
+					onclick="location.href='SellDelete.sell?S_num=<%=dto.getS_num()%>'">
+				<%
+				}
+				}
+				%>
+				
+				<%
+				if(M_id != null){
+					//본인에게는 신고하기, 찜하기 안보임
+					if(!M_id.equals(dto.getM_id())){
+				%>
+				<button type="button" class="btn btn-dark" onclick="fun1('<%=dto.getM_id()%>','<%=dto.getS_num()%>','<%=dto.getS_category() %>','<%=dto.getS_title()%>')" style="float: right">신고하기</button>
+				<%
+					}
+				}
+				 %>
+				
+				
+				<button type="button" class="btn btn-dark" onclick="history.back()"
+					style="float: right">글목록</button>
+		
+		
+				</div>
+			</div>
+		</div>
 					
-					</div>
 		
 				
 					<!--보내지는 내용 숨겨지도록(post) 작성한 글을 writeAction으로 보냄 -->
@@ -178,49 +244,6 @@ function fun1(M_id, S_num, R_category, S_title) {
 		</div>
 	</section>
 	
-	<div class="btn-naran">
-		<%
-		if (M_id != null) {
-			// 세션값=id와 글쓴이가 일치해야만 글수정, 글삭제 표시
-			if (M_id.equals(dto.getM_id())) {
-		%>
-		<input type="button" class="btn btn-dark" value="글수정"
-			onclick="location.href='SellEditForm.sell?S_num=<%=dto.getS_num()%>'">
-		<input type="button" class="btn btn-dark" value="글삭제"
-			onclick="location.href='SellDelete.sell?S_num=<%=dto.getS_num()%>'">
-		<%
-		}
-		}
-		%>
-		<%
-		if (M_id != null) {
-			// 세션값=id와 글쓴이가 일치해야만 글수정, 글삭제 표시
-			if (M_id.equals("admin")) {
-		%>
-		<input type="button" class="btn btn-dark" value="글삭제"
-			onclick="location.href='SellDelete.sell?S_num=<%=dto.getS_num()%>'">
-		<%
-		}
-		}
-		%>
-		
-		<%
-		if(M_id != null){
-			//본인에게는 신고하기, 찜하기 안보임
-			if(!M_id.equals(dto.getM_id())){
-		%>
-		<button type="button" class="btn btn-dark" onclick="fun1('<%=dto.getM_id()%>','<%=dto.getS_num()%>','<%=dto.getS_category() %>','<%=dto.getS_title()%>')" style="float: right">신고하기</button>
-		<%
-			}
-		}
-		 %>
-		
-		
-		<button type="button" class="btn btn-dark" onclick="history.back()"
-			style="float: right">글목록</button>
-
-
-	</div>
 
 	<!-- ***** 푸터 시작 ***** -->
 	<jsp:include page="../bottom.jsp" />
