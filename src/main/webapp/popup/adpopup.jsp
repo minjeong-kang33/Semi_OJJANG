@@ -27,7 +27,7 @@ function getCookie( name ) {
 
 if ( getCookie( "popup2" ) != "done" ) {
 	noticeWindow =
-	window.open('../popup/popup2.jsp','popup2','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no,width=310,height=510,top=90,left=200');
+	window.open('Popup2.ad','popup2','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no,width=310,height=510,top=90,left=200');
 	//경로 수정?
 	noticeWindow.opener = self;
 }
