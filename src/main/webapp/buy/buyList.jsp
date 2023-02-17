@@ -31,24 +31,7 @@
     <!-- ***** 헤더 ***** -->
   <jsp:include page="../top.jsp" />
     <!-- ***** 헤더 끝 ***** -->
-    
-<%-- <% --%>
-<!-- BuyDAO dao=new BuyDAO(); -->
 
-<!-- int pageSize=10; -->
-
-<!-- String pageNum=request.getParameter("pageNum"); -->
-<!-- if(pageNum==null){ -->
-<!-- 	pageNum="1";		 -->
-<!-- } -->
-
-<!-- int currentPage=Integer.parseInt(pageNum); -->
-<!-- int startRow=(currentPage-1)*pageSize+1; -->
-<!-- int endRow = startRow+pageSize-1; -->
-<!-- ArrayList<BuyDTO> buyList=dao.getList(startRow, pageSize); -->
-
-<!-- SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd"); -->
-<!-- %> -->
 <% 
 ArrayList<BuyDTO> buyList=(ArrayList<BuyDTO>)request.getAttribute("buyList");
 
@@ -106,17 +89,7 @@ int pageCount=(Integer)request.getAttribute("pageCount");
 	</table>
 <!-- 여기다가 페이지번호 -->
 <%
-// int pageBlock=10;
 
-// int startPage=(currentPage-1)/pageBlock*pageBlock+1;
-// int endPage=startPage+pageBlock-1;
-// int count = dao.getBuyBoardCount();
-// int pageCount=count/pageSize+(count%pageSize==0?0:1);
-// if(endPage > pageCount){
-// 	endPage = pageCount;
-// }
-
-// 10페이지 이전
 if(startPage > pageBlock){
 	%>
 <a href="BuyList.buy?pageNum=<%=startPage-pageBlock%>">[10페이지 이전]</a>
