@@ -79,7 +79,7 @@ for(int i=0;i<adBuyList.size();i++){
 		<td><%=dto.getB_num() %></td>
 		<td><%=dto.getB_category() %></td>
 		<td><%=dto.getM_id() %></td>
-		<td><a href="BuyDetails.buy?B_num=<%=dto.getB_num() %>"><%=dto.getB_title() %></a></td>
+		<td><a href="AdBuyDetails.buy?B_num=<%=dto.getB_num() %>"><%=dto.getB_title() %></a></td>
 		<td><%=dateFormat.format(dto.getB_time()) %></td></tr>
 <%
 }

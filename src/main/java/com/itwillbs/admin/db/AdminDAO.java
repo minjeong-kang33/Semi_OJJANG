@@ -291,7 +291,7 @@ public class AdminDAO {
 		PreparedStatement pstmt=null;
 		try {
 			con=getConnection();
-			String sql="update member set M_play='강퇴' where M_id=?";
+			String sql="update * set M_play='강퇴' where M_id=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, M_id);
 			pstmt.execute();

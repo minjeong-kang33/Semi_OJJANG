@@ -81,7 +81,8 @@
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 	
 	ArrayList<SellDTO> sellouterList = (ArrayList<SellDTO>)request.getAttribute("sellouterList");
-
+	
+	String M_id = (String)session.getAttribute("M_id");
 	int currentPage = (Integer)request.getAttribute("currentPage");
 	int startPage = (Integer)request.getAttribute("startPage");
 	int pageBlock = (Integer)request.getAttribute("pageBlock");
@@ -158,9 +159,14 @@
 			</div>
 		</div>
 <!-- 	글 작성 버튼을 오른쪽 아래에 고정 -->
+<%
+if(M_id != null){
+%>
 	<button type="button" class="btn btn-dark" onclick="location.href='SellInsertForm.sell'" style="float:right">글쓰기</button>
 </section>
-
+<%
+}
+%>
     <!-- ***** 푸터 시작 ***** -->
    <jsp:include page="../bottom.jsp" />
     <!-- ***** 푸터 끝 ***** -->

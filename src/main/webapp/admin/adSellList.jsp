@@ -79,7 +79,7 @@ for(int i=0;i<adSellList.size();i++){
 		<td><%=dto.getS_num() %></td>
 		<td><%=dto.getS_category() %></td>
 		<td><%=dto.getM_id() %></td>
-		<td><a href="SellDetails.sell?S_num=<%=dto.getS_num() %>"><%=dto.getS_title() %></a></td>
+		<td><a href="AdSellDetails.sell?S_num=<%=dto.getS_num() %>"><%=dto.getS_title() %></a></td>
 		<td><%=dto.getS_price() %></td>
 		<td><%=dateFormat.format(dto.getS_createdate()) %></td></tr>
 <%

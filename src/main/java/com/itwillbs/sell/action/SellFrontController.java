@@ -104,6 +104,15 @@ public class SellFrontController extends HttpServlet {
 			}
 		} // 강민정
 		
+		else if (sPath.equals("/AdSellDetails.sell")) {
+			action = new AdSellDetails();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} // 강민정
+		
 		else if (sPath.equals("/SellOuterDetails.sell")) {
 			action = new SellOuterDetails();
 			try {
@@ -165,7 +174,7 @@ public class SellFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} // 강민정
+		} // 강민정 
 
 		/*
 		 * else if (sPath.equals("/SellDetails.sell")) { action = new

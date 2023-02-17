@@ -130,7 +130,11 @@ public class AdminFrontController extends HttpServlet{
 				e.printStackTrace();
 			}//노은주
 			
-		}
+		}else if(sPath.equals("/Popup2.ad")) {
+			forward=new ActionForward();
+			forward.setPath("popup/popup2.jsp");
+			forward.setRedirect(false);
+			}//노은주
 		
 		
 		

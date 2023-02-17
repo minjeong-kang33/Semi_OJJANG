@@ -22,6 +22,7 @@
 			 <%
 			String M_id=(String)session.getAttribute("M_id");
 			MemberDTO dto=new MemberDTO();
+			
 			if(M_id != null){
 			%>	<ul class="nav23">
 					<li><%=M_id%> 님 |
@@ -37,45 +38,18 @@
 			<%		
 			}
 			%>
-<!-- ***** (관리자용) 상단 바 메뉴 시작 ***** -->
-					<ul class="nav">
-						<li><a href="AdMain.me" class="active">홈</a></li>
-						<li class="submenu"><a>관리자</a>
-							<ul>
-								<li><a href="#">로그아웃</a></li>
-							</ul></li>
-						<li class="submenu"><a>회원관리</a>
-							<ul>
-								<li><a href="AdUserList.ad">전체회원목록</a></li>
-								<li><a href="AdUserReportList.ad">신고회원목록</a></li>
-								<li><a href="AdOutList.ad">탈퇴회원목록</a></li>
-							</ul></li>
-						<li class="submenu"><a>게시글관리</a>
-							<ul>
-								<li><a href="AdSellList.ad">판매글목록</a></li>
-								<li><a href="AdBuyList.ad">구매글목록</a></li>
-							</ul></li>
-					</ul>
-<!-- ***** (관리자용) 상단 바 메뉴 끝 ***** -->  
-          
-<!-- ***** (회원용) 상단 바 메뉴 시작 ***** -->
-
-               <ul class="nav" style="margin-bottom: 15px;">
+			
+			<% if(M_id != null){%>
+				<ul class="nav" style="margin-bottom: 15px;">
                   <li><a href="Main.me" class="active">홈</a></li>
                   <li><a href="Outer.sell">아우터</a></li>
                   <li><a href="Shirts.sell">상의</a></li>
                   <li><a href="Pants.sell">하의</a></li>
                   <li><a href="Dress.sell">원피스</a></li>
                   <li><a href="BuyList.buy">삽니다</a></li>
-                  
-		<!-- **** 로그인 한 경우에만 보이는 메뉴 시작 **** -->                  
-				<%
-								/* 로그인 한 경우 */
-					if(M_id != null){
-					
-				%>
 					<li class="submenu"><a>마이페이지</a>
-                     <ul>
+					
+                  <ul>
                         <li><a href="Profile.moi">프로필</a></li>
                         <li><a href="Likelist.moi">찜목록</a></li>
                         <li><a href="Sellhistory.moi">판매내역</a></li>
@@ -100,28 +74,32 @@
                         <li><a href="#">QnA</a></li>
                      </ul>
                   </li>	
-                  	
-
-
-		<!-- **** 로그인 안 한 경우에만 보이는 메뉴 시작 **** -->                     
-				<%
-					}else{
-				%>
+				</ul>
+			
+			
+			<%} else {%>
+               <ul class="nav" style="margin-bottom: 15px;">
+                  <li><a href="Main.me" class="active">홈</a></li>
+                  <li><a href="Outer.sell">아우터</a></li>
+                  <li><a href="Shirts.sell">상의</a></li>
+                  <li><a href="Pants.sell">하의</a></li>
+                  <li><a href="Dress.sell">원피스</a></li>
+                  <li><a href="BuyList.buy">삽니다</a></li>
 				<!-- 고객센터에는 링크 걸지않기, 회사소개, QnA에만 걸기 -->
 				<li class="submenu"><a href="#">고객센터</a>
                      <ul>
                         <li><a href="#">회사소개</a></li>
                         <li><a href="#">QnA</a></li>
-                        <li><a href="MemberLoginForm.me">임시로그인</a></li>
                      </ul>
                 </li>
+                </ul>
+ 
 				<%		
 				}
-				%>
-				</ul>
-		<!-- **** 로그인 안 한 경우에만 보이는 메뉴 끝 **** -->
+				%> 
+<!-- **** 로그인 안 한 회원 메뉴 끝 **** -->
          
-<!-- ***** 회원용 상단 바 메뉴 끝 ***** -->
+<!-- ***** 상단 바 메뉴 끝 ***** -->
             </nav>
          </div>
       </div>

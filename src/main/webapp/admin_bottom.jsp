@@ -20,25 +20,23 @@
 			<div class="col-lg-3">
 				<h4>회원 관리</h4>
 				<ul>
-					<li><a href="#">전체 회원 목록</a></li>
-					<li><a href="#">탈퇴 회원 목록</a></li>
-					<li><a href="#">회원 관리</a></li>
+					<li><a href="AdUserList.ad">전체 회원 목록</a></li>
+					<li><a href="AdUserReportList.ad">신고 회원 목록</a></li>
+					<li><a href="AdOutList.ad">탈퇴 회원 목록</a></li>
 				</ul>
 			</div>
 			<div class="col-lg-3">
 				<h4>게시글 관리</h4>
 				<ul>
-					<li><a href="#">판매글 목록 조회</a></li>
-					<li><a href="#">구매글 목록 조회</a></li>
+					<li><a href="AdSellList.ad">판매 글 목록</a></li>
+					<li><a href="AdBuyList.ad">구매 글 목록</a></li>
 				</ul>
 			</div>
 			<div class="col-lg-3">
 				<h4>Help &amp; Information</h4>
 				<ul>
+					<li><a href="#">About us</a></li>
 					<li><a href="#">Help</a></li>
-					<li><a href="#">FAQ's</a></li>
-					<li><a href="#">Shipping</a></li>
-					<li><a href="#">Tracking ID</a></li>
 				</ul>
 			</div>
 			<div class="col-lg-12">

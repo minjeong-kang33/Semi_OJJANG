@@ -42,7 +42,7 @@ function fun1(M_id, B_num, R_category, B_title) {
     </div>  
     
     <!-- ***** 헤더 ***** -->
-  <jsp:include page="../top.jsp" />
+  <jsp:include page="../admin_top.jsp" />
     <!-- ***** 헤더 끝 ***** -->
     
 <%
@@ -194,34 +194,14 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd hh:mm");
 <!-- 댓글끝 -->
 
 			<div class="btn-naran">
-<%
-if(M_id != null){
-	// 세션값=id와 글쓴이가 일치해야만 글수정, 글삭제 표시
-	if(M_id.equals(dto.getM_id()) || M_id.equals("admin")){
-		%>
-<input type="button" class="btn btn-dark" value="글수정" onclick="location.href='BuyEditForm.buy?B_num=<%=dto.getB_num() %>'">
-<input type="button" class="btn btn-dark" value="글삭제" onclick="location.href='BuyDelete.buy?B_num=<%=dto.getB_num() %>'"> 
-		<%		
-	}
-}
-%>
 
-	<button type="button" class="btn btn-dark" onclick="location.href='BuyList.buy'" >글목록</button>
-		<%
-		if(M_id != null){
-			//본인에게는 신고하기 안보임
-			if(!M_id.equals(dto.getM_id())){
-		%>
-		
-		<button type="button" class="btn btn-dark" onclick="fun1('<%=dto.getM_id()%>','<%=dto.getB_num()%>','buy','<%=dto.getB_title()%>')" style="float: right">신고하기</button>
-		<%
-			}
-		}
-		 %>
+<input type="button" class="btn btn-dark" value="글삭제" onclick="location.href='BuyDelete.buy?B_num=<%=dto.getB_num() %>'"> 
+<button type="button" class="btn btn-dark" onclick="location.href='BuyList.buy'" >글목록</button>
+
 </div>
 </div>
 <!-- ***** 푸터 시작 ***** -->
-<jsp:include page="../bottom.jsp" />
+<jsp:include page="../admin_bottom.jsp" />
     <!-- ***** 푸터 끝 ***** -->
 
  <!-- jQuery -->
