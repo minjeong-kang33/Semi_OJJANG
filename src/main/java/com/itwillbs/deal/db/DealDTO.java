@@ -9,6 +9,8 @@ public class DealDTO {
 	private String M_id;
 	private String D_buy;
 	private Timestamp D_date;
+	private String D_play;
+	
 	public int getD_num() {
 		return D_num;
 	}
@@ -38,6 +40,12 @@ public class DealDTO {
 	}
 	public void setD_date(Timestamp d_date) {
 		D_date = d_date;
+	}
+	public String getD_play() {
+		return D_play;
+	}
+	public void setD_play(String d_play) {
+		D_play = d_play;
 	}
 	
 

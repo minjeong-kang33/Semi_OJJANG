@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.itwillbs.member.action.Action;
 import com.itwillbs.member.action.ActionForward;
+import com.itwillbs.mypage.action.ProfileUpdateForm;
 
 public class DealFrontController extends HttpServlet{
 	@Override
@@ -33,7 +34,41 @@ public class DealFrontController extends HttpServlet{
 		
 		/* 거래내역관련 가상주소 .deal 입니다!! */
 		/* 여기 아래부터 if문 작성. 각 if이 끝나는 괄호 뒤에는 작성자 이름 함께 적기 */
+		if(sPath.equals("/DealWantPro.deal")) {
+			System.out.println("가상주소 /DealWantPro.deal");
+			action=new DealWantPro();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}//박은지
+			
+		}else if(sPath.equals("/DealWantList.deal")) {
+			// board/fwriteForm.jsp 이동
+			forward=new ActionForward();
+			forward.setPath("Mypage/dealWantList.jsp");
+			forward.setRedirect(false);				
+			 //박은지
+			
+		}else if(sPath.equals("/EndDealPro.deal")) {
+			System.out.println("가상주소 /EndDealPro.deal");
+			action=new EndDealPro();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}//박은지
+	
+		}
+
 		
+		
+//		if(sPath.equals("/DealWantList.deal")) {
+//			System.out.println("가상주소 /DealWantList.deal");
+//			forward=new ActionForward();
+//			forward.setPath("Mypage/dealWantList.jsp");
+//			forward.setRedirect(false); 
+//		}//박은지
 		
 		
 		
