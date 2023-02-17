@@ -39,7 +39,6 @@
 	<!-- ***** 헤더 끝 ***** -->
 <body>
 <div style="margin: 180px auto 0 auto;">
- <hr style="border: solid 4px rgba(42,42,42,100%);">
 	<img src="img/buy/company.png" style="width: 480px; height: 400px;display: block;margin: 0px  auto 0px auto;">
 	</div>
 
@@ -48,7 +47,7 @@
 <!-- <img src="img/buy/운영시간 아이콘.png" style="width: 5px; height: 5px; margin: auto;display: block;"> -->
 
 
-  <hr style="border: solid 4px rgba(42,42,42,100%);">
+  <hr style="border: solid 4px rgba(42,42,42,80%);">
 <table style="margin: auto;display: block;undefined;table-layout: fixed; width: 879px;">
 <colgroup>
 <col style="width: 512px">
