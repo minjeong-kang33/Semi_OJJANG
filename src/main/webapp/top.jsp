@@ -3,74 +3,64 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <link href="assets/css/logout.css" rel="stylesheet" type="text/css">
+<link href="assets/css/top.css" rel="stylesheet" type="text/css">
 <header class="header-area header-sticky">
 <!-- 로그인/회원가입 -->
-  <%
-String M_id=(String)session.getAttribute("M_id");
-MemberDTO dto=new MemberDTO();
-if(M_id != null){
-			%>			
-<div id="logout" class=logout><%=M_id%> 님 | 
-                <a href="MemberLogout.me">로그아웃</a> </div>			
-			<%
-}else{
-	%>
-<div id="logout" class=logout><a href="MemberLoginForm.me">로그인</a> | 
-                <a href="MemberJoinForm.me">회원가입</a></div>	
-	<%		
-}
-%>
+
 
 <!--    로그인/회원가입끝 -->
    <div class="container">
       <div class="row">
          <div class="col-12">
             <nav class="main-nav">
-            
                <!-- ***** 로고 시작 ***** -->
                <a href="Main.me" class="logo"> 
                <img src="assets/images/otzang_logo_top.png" height="60px">
                </a>
                <!-- ***** 로고 끝 ***** -->
-               
-<!-- 검색시작 : ** 영환씨!!! ** 검색기능 (기능만! main.jsp에 적용시켜 주세요! main.jsp의 검색창에 class명으로 css 잡혀있으니 주의! 모르겠으면 물어보세요) -->
-           
-<%-- 	<div class="container">
-		<div class="row">
-			<form  name="search" method="get">
-				<table class="pull-right">
-					<tr>
-						<td><input type="text" class="form-control" value="${param.searchText}"
-							placeholder="검색어 입력" name="searchText" maxlength="100"></td>
-						<td><button type="submit" class="btn btn-success">검색</button></td>
-					</tr>
 
-				</table>
-			</form>
-		</div>
-	</div>
-<%
-SellDAO selldao = new SellDAO();
-ArrayList<SellDTO> list = selldao.getSearch(request.getParameter("searchText"));
+			 <%
+			String M_id=(String)session.getAttribute("M_id");
+			MemberDTO dto=new MemberDTO();
+			if(M_id != null){
+			%>	<ul class="nav23">
+					<li><%=M_id%> 님 |
+					<a href="MemberLogout.me" id="top_logout" style="color: #434242">로그아웃</a></li>	
+				</ul>
+			<%
+			}else{
+			%>
+				<ul class="nav23">
+					<li><a href="MemberLoginForm.me" id="top_login" style="color: #434242">로그인   </a> |
+					<a href="MemberJoinForm.me" id="top_insert" style="color: #434242">  회원가입</a></li>	
+				</ul>
+			<%		
+			}
+			%>
+<!-- ***** (관리자용) 상단 바 메뉴 시작 ***** -->
+					<ul class="nav">
+						<li><a href="AdMain.me" class="active">홈</a></li>
+						<li class="submenu"><a>관리자</a>
+							<ul>
+								<li><a href="#">로그아웃</a></li>
+							</ul></li>
+						<li class="submenu"><a>회원관리</a>
+							<ul>
+								<li><a href="AdUserList.ad">전체회원목록</a></li>
+								<li><a href="AdUserReportList.ad">신고회원목록</a></li>
+								<li><a href="AdOutList.ad">탈퇴회원목록</a></li>
+							</ul></li>
+						<li class="submenu"><a>게시글관리</a>
+							<ul>
+								<li><a href="AdSellList.ad">판매글목록</a></li>
+								<li><a href="AdBuyList.ad">구매글목록</a></li>
+							</ul></li>
+					</ul>
+<!-- ***** (관리자용) 상단 바 메뉴 끝 ***** -->  
+          
+<!-- ***** (회원용) 상단 바 메뉴 시작 ***** -->
 
-
-for(int i=0; i<list.size(); i++){
-//  SellDTO dto = list.get(i);
- %>
- <%= list.get(i).getS_price()%>
- <%= list.get(i).getS_img() %>
- <%= list.get(i).getS_num() %>
-  <%= list.get(i).getS_sido1()%>
-  <%= list.get(i).getS_send1() %>
-  <%=list.get(i).getS_title() %>
-  <%=list.get(i).getS_text() %>
-<% } %>    
-	
-			
-    <!-- 검색 끝 -->                 --%>
-               
-               <!-- ***** 상단 바 메뉴 시작 ***** -->
-               <ul class="nav">
+               <ul class="nav" style="margin-bottom: 15px;">
                   <li><a href="Main.me" class="active">홈</a></li>
                   <li><a href="Outer.sell">아우터</a></li>
                   <li><a href="Shirts.sell">상의</a></li>
@@ -78,9 +68,7 @@ for(int i=0; i<list.size(); i++){
                   <li><a href="Dress.sell">원피스</a></li>
                   <li><a href="BuyList.buy">삽니다</a></li>
                   
-                  
-                  
-<!-- **** 로그인 한 경우에만 보이는 메뉴 시작 **** -->                  
+		<!-- **** 로그인 한 경우에만 보이는 메뉴 시작 **** -->                  
 				<%
 								/* 로그인 한 경우 */
 					if(M_id != null){
@@ -115,7 +103,7 @@ for(int i=0; i<list.size(); i++){
                   	
 
 
-<!-- **** 로그인 안 한 경우에만 보이는 메뉴 시작 **** -->                     
+		<!-- **** 로그인 안 한 경우에만 보이는 메뉴 시작 **** -->                     
 				<%
 					}else{
 				%>
@@ -131,9 +119,9 @@ for(int i=0; i<list.size(); i++){
 				}
 				%>
 				</ul>
-<!-- **** 로그인 안 한 경우에만 보이는 메뉴 끝 **** -->
+		<!-- **** 로그인 안 한 경우에만 보이는 메뉴 끝 **** -->
          
-               <!-- ***** 상단 바 메뉴 끝 ***** -->
+<!-- ***** 회원용 상단 바 메뉴 끝 ***** -->
             </nav>
          </div>
       </div>

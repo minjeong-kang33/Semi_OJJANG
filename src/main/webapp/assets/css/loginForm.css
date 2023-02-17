@@ -1,59 +1,44 @@
 @charset "UTF-8";
-@charset "UTF-8";
-body{
-    background-color:#f5f6f7;
-    
-}
-.select{
-    margin-top:5%;
-    margin-left:70%;
- 
-}
-.form-group{
-    width:350px;
-    margin-left:auto;
-    margin-right:auto;
-}
-.btn.btn-primary{
-    border:1px solid darkblue;
-    background-color:darkblue;
-    width:350px;
-    margin-left:auto;
-    margin-right:auto;
-}
 
-.form-check{
-    display:flex;
-    flex-direction:row;
-    justify-content:center;
-}
-.easy-login{
-    font-weight:800;
-}
-.btn.btn-primary.btn-lg{
-    border:1px solid #03c75b;
-    background-color:white;
-    color:black;
-    font-size:80%;
-    width:170px;
-}
-.btn.btn-secondary.btn-lg{
-    border:1px solid #03c75b;
-    background-color:white;
-    color:black;
-    font-size:80%;
-    width:170px;
-}
+.logincontainer {
+	text-align: center;
+	margin-top: 20px;
+	margin-bottom: 25px;
+} /* h2 제목 */
 
-.login-button{
-    text-align:center;
-}
-.button-group{
-    text-align:center;
-}
-.footer{
-    margin:0 auto;
-    text-align:center;
-    bottom:5px;
-    color:gray;
-}
+.loginFormclass {
+	margin-left: 41%;
+} /* h2 제목 아래 묶음 */
+
+.form-group {
+	width: 350px;
+} /* 아이디, 비밀번호 입력칸 */
+
+.loginbtn {
+	font-size: 17px;
+	font-weight: 500;
+	letter-spacing: 1px;
+	width: 350px;
+	border: none;
+	border-radius: 3px;
+	color: white;
+	background-color: #4B3400;
+	padding: 6px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 15px;
+} /* 로그인 버튼 */
+
+.form-check-label {
+	margin-bottom: 15px;
+} /* 아이디 기억하기 버튼 */
+
+.button-group {
+	margin-left: 44%;
+} /* 카카오 로그인 버튼 width는 jsp에 직접 먹임*/
+
+.login-footer-info {
+	text-align: center;
+	margin-top: 20px;
+	font-weight: 500;
+} /* 아이디 비밀번호 찾기, 회원가입 */
