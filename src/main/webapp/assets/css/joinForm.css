@@ -1,0 +1,105 @@
+@charset "UTF-8";
+
+form {
+	margin-left: 32%;
+}
+
+.joincontainer {
+	text-align: center;
+	margin-bottom: 25px;
+}
+
+#join_area {
+	border: 1px solid #EAE0DA;
+	padding: 20px;
+	width: 750px;
+}
+
+#join_area fieldset {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-left: 85px;
+}
+
+.joinUpField {
+	border-bottom: 1px solid #F2E5E5;
+}
+
+#join_area fieldset:last-of-type {
+	border: none;
+}
+
+#join_area legend {
+	color: #4A403A;
+	font-size: 20px;
+	font-weight: 600;
+	padding-top: 15px;
+	padding-left: 5px;
+	padding-bottom: 5px;
+	font-size: 16px;
+	padding-left: 5px;
+}
+
+input[type=radio] {
+	accent-color: #4B3400;
+}
+
+#join_area ul li {
+	list-style-type: none;
+	padding: 5px 8px;
+	margin-bottom: 7px;
+}
+
+#join_area label {
+	width: 110px;
+	color: #42240C;
+	font-weight: 450;
+	font-size: 15px;
+	float: left;
+}
+
+#joinbutton {
+	border: 0px solid #e7e7e7;
+	font-size: 13px;
+	font-weight: 450;
+	letter-spacing: 1px;
+	margin: auto;
+	padding: 5px;
+	background-color: #E8E4E1;
+	margin-left: 5px;
+	border-radius: 3px;
+}
+
+#joinbutton2, #joinbutton3 {
+	color: white;
+	border: none;
+	font-size: 16px;
+	font-weight: 500;
+	letter-spacing: 1px;
+	margin: auto;
+	padding: 5px;
+	background-color: #4B3400;
+	letter-spacing: 1px;
+	border-radius: 3px;
+}
+
+#joinbutton2 {
+	margin-left: 30%;
+	margin-right: 10px;
+}
+
+#joinbutton3 {
+	letter-spacing: 1px;
+}
+
+#sample6_postcode {
+	width: 100px;
+}
+
+#M_email, #M_address2, #M_address {
+	width: 230px;
+}
+
+#M_name, #M_id, #M_pw, #M_pw2, #M_nick, #M_phone {
+	width: 150px;
+}
