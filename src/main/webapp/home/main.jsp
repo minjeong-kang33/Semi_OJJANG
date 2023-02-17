@@ -55,38 +55,76 @@ String M_id = (String)session.getAttribute("M_id");
 
  <!-- ***** 검색창 시작 ***** -->
  <!-- assets/css/main_searchbar.css: 검색창용 css -->
-<div class = searchbar>
-  <form class="search-container">
-    <input type="text" id="search-bar" placeholder="찾으시는 상품이 있나요?">
-    <a href="#"><img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></a>
-  </form>
-</div>
+ <form class="search-container" action="Main.me">
+    <input type="text" id="search-bar" placeholder="찾으시는 상품이 있나요?" value="${param.search}" name="search">
+    <a href="#"><input type="image" class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png" ></a>
+    </form>
  <!-- ***** 검색창 끝 ***** -->
 
 
 <!-- ***** 최신 판매글 시작 ***** -->
-    <section class="section" id="men">
+<!-- 최신판매/검색글 -->
+<%
+request.setCharacterEncoding("UTF-8");
+String search =request.getParameter("search");
+if(search==null){
+	%>
+	<section class="section" id="men">
     	<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
-					<div class="section-heading">
+					<div class="section-heading" id="find">
 						<h2>최신 판매글</h2>
 						<span>recent posts for sale</span>
 					</div>
 				</div>
 			</div>
 		</div>
-    	
+	</section>
+<%}else{ %>
+		 <section class="section" id="men">
+    	<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="section-heading" id="find">
+						<h2>검색결과</h2>
+						<span>search result</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	<%
+}
+%> 	
         <div class="container">
 			<div class="row">
 				<div class="col-lg-4">
 					<div class="item">
 						<div class="down-content">
-  	<%
+<%	
+	SellDAO dao =new SellDAO();
 	
+	int pageSize = 9;
+	
+	String pageNum = request.getParameter("pageNum");
+	
+	if(pageNum==null){
+		pageNum="1";
+	}
+	
+	int currentPage=Integer.parseInt(pageNum);
+	int startRow = (currentPage-1)*pageSize+1;
+	
+	int endRow = startRow + pageSize -1;
+	ArrayList<SellDTO> sellList = null;
+	if(search!=null){
+		sellList = dao.getsellSearch(startRow, pageSize, search);
+	}else{
+		 sellList = dao.getsellList(startRow, pageSize);
+	}
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
-	ArrayList<SellDTO> sellList = (ArrayList<SellDTO>)request.getAttribute("sellList");
-	
+
 	%>						
 <table>
 	<tr> <!--  테이블................1칸 -->

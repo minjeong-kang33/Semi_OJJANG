@@ -535,81 +535,55 @@ public class SellDAO {
 		}
 	} //delete (글삭제)
 	
+
 	//검색리스트
-		public ArrayList<SellDTO> getSearch(String searchText){
-			Connection con=null;
+		public ArrayList<SellDTO> getsellSearch(int startRow, int pageSize,String search){
+			Connection con =null;
 			PreparedStatement pstmt=null;
 			ResultSet rs=null;
-			ArrayList<SellDTO> list=new ArrayList<>();
-
-
-			try {			
+			
+			ArrayList<SellDTO> getsellSearch=new ArrayList<SellDTO>();
+			try {
 				con=getConnection();
-				// 3단계 sql
-				// 기본 num기준 오름차순 => 최근글 위로 올라오게 정렬 (num 내림차순)
-				String sql = "SELECT * FROM SELL WHERE S_TITLE LIKE ?"  ;
-				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, "%"+searchText+"%");
-				rs=pstmt.executeQuery();
-				//5
+				String sql = "SELECT * FROM SELL WHERE S_TITLE LIKE ? order by S_num desc limit ?,?" ;
+				pstmt=con.prepareStatement(sql);
+				pstmt.setString(1, "%"+search+"%");
+				pstmt.setInt(2, startRow-1);
+				pstmt.setInt(3, pageSize);
+				
+				
+				rs=pstmt.executeQuery();	
+
 				while(rs.next()) {
-					// 하나의 글의 바구니에 저장
 					SellDTO dto=new SellDTO();
-					dto.setS_img(rs.getString("S_img"));
+					dto.setS_num(rs.getInt("S_num"));
+					dto.setM_id(rs.getString("M_id"));
 					dto.setS_title(rs.getString("S_title"));
 					dto.setS_price(rs.getInt("S_price"));
-					dto.setS_sido1(rs.getString("S_sido1"));
-					dto.setS_gugun1(rs.getString("S_gugun1"));
-					dto.setS_send1(rs.getString("S_send1"));
+					dto.setS_text(rs.getString("S_text"));
+					dto.setS_like(rs.getInt("S_like"));
+					dto.setS_view(rs.getInt("S_view"));
+					dto.setS_send1(rs.getString("S_send1"));		
+					dto.setS_send2(rs.getString("S_send2"));	
+					dto.setS_sido1(rs.getString("S_sido1"));	
+					dto.setS_gugun1(rs.getString("S_gugun1"));	
 					dto.setS_createdate(rs.getTimestamp("S_createdate"));
-					// 바구니의 주소값을 배열 한칸에 저장
-					list.add(dto);
+					dto.setS_category(rs.getString("S_category"));
+					dto.setS_img(rs.getString("S_img"));
+					
+					getsellSearch.add(dto);
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}finally {
-				// 예외 상관없이 마무리작업 => 객체생성한 기억장소 해제
+				
 				if(rs!=null) try { rs.close();} catch (Exception e2) {}
 				if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
 				if(con!=null) try { con.close();} catch (Exception e2) {}
 			}
-			return list;
-		
-	}
-		//현재 페이지 숫자세기
-		public int getSellCount() {
-			Connection con=null;
-			PreparedStatement pstmt=null;
-			ResultSet rs=null;
-			SellDTO dto=null;
-			int count=0;
-			try {
-				// 1~2 단계
-				con=getConnection();
-				// 3단계 sql
-				String sql="select * from Sell where S_num=?";
-				pstmt=con.prepareStatement(sql);
-				rs=pstmt.executeQuery();
-				//5
-				while(rs.next()) {
-					// 하나의 글의 바구니에 저장
-					dto=new SellDTO();
-					dto.setS_img(rs.getString("S_img"));
-					dto.setS_title(rs.getString("S_title"));
-					dto.setS_price(rs.getInt("S_price"));
-					dto.setS_sido1(rs.getString("S_sido1"));
-					dto.setS_gugun1(rs.getString("S_gugun1"));
-					dto.setS_send1(rs.getString("S_send1"));
-					dto.setS_createdate(rs.getTimestamp("S_createdate"));
-					// 바구니의 주소값을 배열 한칸에 저장
-				}
-			}
-			catch(Exception e) {
-				e.printStackTrace();
-			}
-			
-			return count;	
-		}
+			return getsellSearch;
+		} 
+
 	
 }
 
