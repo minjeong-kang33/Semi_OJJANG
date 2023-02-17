@@ -135,9 +135,10 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd hh:mm");
 						<tr>
 						<td width="10%" style="text-align: left;"><%=List.get(i).getM_id()%></td>
 							<td width="200" style="text-align: left;"><%=List.get(i).getCo_text()%></td>
-<%-- 							<%  --%>
-<!-- 								if(M_id.equals(List.get(i).getM_id())) {  -->
-<!-- 									%> -->
+							<% 
+							if(M_id != null){
+								if(M_id.equals(List.get(i).getM_id())) { 
+									%>
 								
 							<td width="10" ><a href=# onclick = "return coupdate();" class="btn">수정</a>
 									<script text="text/javascript">
@@ -161,11 +162,15 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd hh:mm");
 								function delchk(){return confirm("삭제하시겠습니까?");}
 									</script>
 							</td> 
-<%-- 							<%} %> --%>
+							<%
+								} 
+							}
+							%>
 						</tr>
 		
 						<%
-								}
+								
+						}
 						%>
 			<tr>
 			<td colspan="3">
