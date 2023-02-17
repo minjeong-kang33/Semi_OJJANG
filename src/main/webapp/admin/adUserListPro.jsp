@@ -95,7 +95,19 @@ int adUserCount=(Integer)request.getAttribute("adUserCount");
 	</div>
 <form name="ckDelete" action="AdUserDelete.ad" method="post">
 <table border="1">
-<tr><td><input type="checkbox" id="ckAll" name="ckAll" onclick="fun2()"></td><td>번호</td><td>아이디</td><td>이름</td><td>닉네임</td><td>가입날짜</td><td>상태</td></tr>
+	<thead>
+		<tr>
+			<th scope="col"><input type="checkbox" id="ckAll" name="ckAll" onclick="fun2()"></th>
+			<th scope="col">번호</th>
+			<th scope="col">아이디</th>
+			<th scope="col">이름</th>
+			<th scope="col">닉네임</th>
+			<th scope="col">가입날짜</th>
+			<th scope="col">상태</th>
+		</tr>
+	</thead>
+
+	<tbody>
 <%
 for(int i=0;i<adUserListPro.size();i++){
 	dto=adUserListPro.get(i);
@@ -110,6 +122,7 @@ for(int i=0;i<adUserListPro.size();i++){
 <%
 }
 %>
+	</tbody>
 </table>
 <div>
 회원 처리 <input type="button" value="강퇴"  onclick="fun1()">

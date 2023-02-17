@@ -27,6 +27,7 @@ public class CommentAction implements Action{
 			M_id=(String)session.getAttribute("M_id");
 		}
 		if(M_id==null){
+			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter script=response.getWriter();
 			script.println("<script>");
 			script.println("alert('로그인이 필요합니다.')");

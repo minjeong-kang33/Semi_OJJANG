@@ -161,27 +161,27 @@ int adUserCount=(Integer)request.getAttribute("adUserCount");
 if(startPage > pageBlock){
 %>
 
-	<a href="adUserList.ad?pageNum=<%=startPage-pageBlock%>">[10페이지 이전]</a>
+	<a href="AdUserList.ad?pageNum=<%=startPage-pageBlock%>">[10페이지 이전]</a>
 	<%
 	}
 	if(currentPage>1) {
 		%>
-		<a href="adUserList.ad?pageNum=<%=currentPage-1 %>">[1페이지 이전]</a>
+		<a href="AdUserList.ad?pageNum=<%=currentPage-1 %>">[1페이지 이전]</a>
 		<%
 	}
 	for(int i=startPage;i<=endPage;i++){
 	%>
-	<a href="adUserList.ad?pageNum=<%=i %>"><%=i %></a>
+	<a href="AdUserList.ad?pageNum=<%=i %>"><%=i %></a>
 	<%
 	}
 	if(currentPage<pageCount) {
 		%>
-		<a href="adUserList.ad?pageNum=<%=currentPage+1 %>">[1페이지 다음]</a>
+		<a href="AdUserList.ad?pageNum=<%=currentPage+1 %>">[1페이지 다음]</a>
 		<%
 	}
 	if(endPage < pageCount){
 	%>
-	<a href="adUserList.ad?pageNum=<%=startPage+pageBlock%>">[10페이지 다음]</a>
+	<a href="AdUserList.ad?pageNum=<%=startPage+pageBlock%>">[10페이지 다음]</a>
 	<%
 	}
 	%>

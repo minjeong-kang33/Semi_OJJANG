@@ -17,8 +17,8 @@
 <link rel="stylesheet" href="assets/css/templatemo-hexashop.css">
 <link rel="stylesheet" href="assets/css/owl-carousel.css">
 <link rel="stylesheet" href="assets/css/lightbox.css">
-<link href="assets/css/sellDetails.css" rel="stylesheet" type="text/css">
 <link href="assets/css/buy.css" rel="stylesheet" type="text/css">
+<link href="assets/css/sellDetails.css" rel="stylesheet" type="text/css">
 <meta charset="UTF-8">
 <title>중고 의류거래: 옺장</title>
 <script type="text/javascript">
@@ -50,7 +50,7 @@ function fun1(M_id, S_num, R_category, S_title) {
 	SellDTO dto = dao.getSellBoard(S_num); */
 	String M_id = (String) session.getAttribute("M_id");
 	SellDTO dto = (SellDTO) request.getAttribute("dto");
-	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd hh:mm");
+	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 	%>
 	<section class="section" id="products">
 		<!-- 게시판 제목  -->
@@ -64,14 +64,27 @@ function fun1(M_id, S_num, R_category, S_title) {
 					</div>
 				 <!--  폼 추가했어요!!~!~!~!~!~!~! 데이터 넘기기 편하시라고.... -->
 					
-					<table style="text-align: center; border: 1px solid black;">
+					<table>
 					<tr><td rowspan="6"><img src="img/sell/<%=dto.getS_img()%>" width=300px class="goodsImg" ></td></tr>  <!-- 이미지 -->
 					<tr><td colspan="3" align="left"><%=dto.getS_category()%></td>   <!-- 카테고리--> 
 					<tr><td colspan="3" style="border-bottom: 1px;" align="left"> <%=dto.getS_title()%></td></tr> <!--  제목 -->
-					<tr><td colspan="2" align="left"><%=dto.getS_price()%></td> <td align="right" class="like_id"><input type="image" name="button"  class="heart" src="sell/heart.png" ></td></tr> <!--  찜하기 -->
+					<tr><td colspan="2" align="left"><%=dto.getS_price()%></td> 
+						<td align="right" class="like_id">
+								<%
+									if(M_id != null){
+										//글쓴이에게는 찜하기 안보임
+										if(!M_id.equals(dto.getM_id())){
+									%>
+							<button type="button" onclick="location.href='LikePro.like?S_num=<%=dto.getS_num() %>'" class="heartbtn"><img src="sell/heart.png" alt="찜하기" class="heart"></button>
+								<%
+										}
+									}
+								%>
+						</td></tr> <!--  찜하기 -->
 					<tr><td colspan="2" align="left"> 배송방법 </td><td>거래위치</td></tr>
-					<tr><td align="left"> <%=dto.getM_id()%> </td><td align="right"> 작성일자 </td><td align="right">조회수</td></tr>
-					<tr><td colspan="3" class="line"></td></tr> <!--  리뷰리스트처럼 선 넣을 예정  -->
+					<tr> <td align="left"><%=dto.getM_id()%></td><td align="right"> <%=dto.getS_createdate()%> </td><td align="right"><%=dto.getS_view() %></td></tr>
+					<tr><td></td></tr>
+					<tr><td colspan="4" class="line"></td></tr> <!--  리뷰리스트처럼 선 넣을 예정  -->
 					<tr><td colspan="3"> <%=dto.getS_text()%> </td></tr>
 					</table>
 					<!-- 솔직히 rowspan, colspan 대충 함. 알아서 맞춰 -->
@@ -158,13 +171,21 @@ function fun1(M_id, S_num, R_category, S_title) {
 		}
 		}
 		%>
-
-		<button type="button" class="btn btn-dark"
-			onclick="fun1('<%=dto.getM_id()%>','<%=dto.getS_num()%>','sell','<%=dto.getS_title()%>')"
-			style="float: right">신고하기</button>
+		
+		<%
+		if(M_id != null){
+			//본인에게는 신고하기, 찜하기 안보임
+			if(!M_id.equals(dto.getM_id())){
+		%>
+		<button type="button" class="btn btn-dark" onclick="fun1('<%=dto.getM_id()%>','<%=dto.getS_num()%>','<%=dto.getS_category() %>','<%=dto.getS_title()%>')" style="float: right">신고하기</button>
+		<%
+			}
+		}
+		 %>
+		
+		
 		<button type="button" class="btn btn-dark" onclick="history.back()"
 			style="float: right">글목록</button>
-		<button type="button" class="btn btn-dark" onclick="location.href='LikePro.like?S_num=<%=dto.getS_num() %>'">찜하기</button>
 
 
 	</div>
@@ -206,10 +227,10 @@ function fun1(M_id, S_num, R_category, S_title) {
 					$("." + selectedClass).fadeIn();
 					$("#portfolio").fadeTo(50, 1);
 				}, 500);
-
 			});
 		});
 	</script>
+
 
 
 </body>

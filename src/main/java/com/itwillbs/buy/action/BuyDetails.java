@@ -29,11 +29,13 @@ public class BuyDetails implements Action{
 		}
 		
 			CommentDAO comment=new CommentDAO();
-			ArrayList<CommentDTO>List=comment.getList(B_num, pageNumber);
+
 			
 			BuyDTO dto = dao.getBuyBoard(B_num);
 			request.setAttribute("dto", dto);
+			request.setAttribute("B_num", B_num);
 			request.setAttribute("pageNumber",pageNumber);
+			ArrayList<CommentDTO>List=comment.getList(B_num, pageNumber);
 			
 		ActionForward forward = new ActionForward();
 		forward.setPath("buy/buyDetails.jsp");

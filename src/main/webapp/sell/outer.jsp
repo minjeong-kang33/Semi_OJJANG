@@ -88,7 +88,8 @@
 	int endPage = (Integer)request.getAttribute("endPage");
 	int pageCount = (Integer)request.getAttribute("pageCount");
 	
-	%>						
+	%>	
+	
 <table>
 	<tr> <!--  테이블................1칸 -->
 	<%
@@ -140,7 +141,6 @@
 	
 </tr>
 </table>
-							
 <!-- 게시판 내용 여기 넘어가면 안됨.  -->							
 					</div>
 				<!--  페이지 번호  -->

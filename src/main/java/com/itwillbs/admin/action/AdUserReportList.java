@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.itwillbs.admin.db.AdminDAO;
 import com.itwillbs.member.action.Action;
 import com.itwillbs.member.action.ActionForward;
-import com.itwillbs.member.db.MemberDTO;
+import com.itwillbs.report.db.ReportDTO;
 
 public class AdUserReportList implements Action {
 
@@ -23,8 +23,7 @@ public class AdUserReportList implements Action {
 		if(pageNum==null){pageNum="1";}
 		int currentPage=Integer.valueOf(pageNum);
 		int startRow=(currentPage-1)*pageSize+1;
-		int endRow=startRow+pageSize-1;
-		ArrayList<MemberDTO> adUserReportList=dao.adUserReportList(startRow, pageSize);
+		ArrayList<ReportDTO> adUserReportList=dao.adUserReportList(startRow, pageSize);
 		
 		int pageBlock=10;
 		int startPage=(currentPage-1)/pageBlock*pageBlock+1;

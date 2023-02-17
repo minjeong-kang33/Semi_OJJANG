@@ -25,20 +25,14 @@ public class AdUserDelete implements Action {
 			}
 		}
 		
-		ActionForward forward=null;
-		if(M_id!=null) {
-			forward=new ActionForward();
-			forward.setPath("AdUserList.ad");
-			forward.setRedirect(true);
-		}else {
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out=response.getWriter();
-			out.println("<script type='text/javascript'>");
-			out.println("alert('강퇴완료');");
-			out.println("location.href=\'AdUserList.ad'");
-			out.println("</script>");
-			out.close();
-		}
-		return forward;
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out=response.getWriter();
+		out.println("<script type='text/javascript'>");
+		out.println("alert('강퇴완료');");
+		out.println("location.href=\'AdUserList.ad'");
+		out.println("</script>");
+		out.close();
+
+		return null;
 	}
 }
