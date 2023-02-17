@@ -262,37 +262,84 @@ public class MemberDAO {
 	
 	
 	
-	public String findId(String M_name, String M_phone) {
+	public String findID(String M_name, String M_email) {
 		String M_id = null;
-		
-		Connection con =null;
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
-			con=getConnection();
-			String sql = "select M_id from member where M_name=? and M_phone=? ";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, M_name);
-			pstmt.setString(2, M_phone);
-			rs=pstmt.executeQuery();
+			con = getConnection();
+			StringBuilder sql = new StringBuilder();
+			sql.append(" SELECT M_id ");
+			sql.append(" FROM member ");
+			sql.append(" WHERE M_name=? and M_email=?");
 			
+			pstmt = con.prepareStatement(sql.toString());
+			pstmt.setString(1, M_name);
+			pstmt.setString(2, M_email);
+			
+			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				M_id=rs.getString("M_id");
-			}
+				M_id = rs.getString("M_id");
+			
+			}//if end
+			
+		} catch (Exception e) {
+			System.out.println("이메일 중복확인 실패:" + e);
+			e.printStackTrace();
+		} finally {
+			if (pstmt != null)try {pstmt.close();} catch (Exception e2) {}
+			if (con != null)try {con.close();} catch (Exception e2) {}
+			if (rs != null)try {rs.close();} catch (Exception e2) {}
+		}//end			
+		return M_id;
+	}//findID() end
+
+	public String randomPasswd(int length){
+		int index = 0;
+		char[] charset = new char[] {
+			'0','1','2','3','4','5','6','7','8','9'
+			,'A','B','C','D','E','F','G','H','I','J','K','L','M'
+			,'N','O','P','Q','R','S','T','U','V','W','X','Y','Z'
+			,'a','b','c','d','e','f','g','h','i','j','k','l','m'
+			,'n','o','p','q','r','s','t','u','v','w','x','y','z'
+		};
+
+		StringBuffer sb = new StringBuffer();
+		for(int i = 0 ; i<length ; i++){
+			index = (int) (charset.length * Math.random());
+			sb.append(charset[index]);
+		}//for end
+		return sb.toString();
+	}//randomPasswd() end
+
+	public int updatePasswd(MemberDTO dto) {
+		int cnt = 0;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = getConnection();
+			StringBuilder sql = new StringBuilder();
+			sql.append(" UPDATE member ");
+			sql.append(" SET M_pw = ? ");
+			sql.append(" WHERE M_id = ? ");
+			
+			pstmt = con.prepareStatement(sql.toString());
+			pstmt.setString(1, dto.getM_pw());
+			pstmt.setString(2, dto.getM_id());
+			pstmt.executeUpdate();
+
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			if (pstmt != null)try {pstmt.close();} catch (Exception e2) {}
+			if (con != null)try {con.close();} catch (Exception e2) {}
+			if (rs != null)try {rs.close();} catch (Exception e2) {}
 		}
-		finally {
-			if(pstmt!=null)try {pstmt.close();} catch (Exception e2) {}
-			if(con!=null)try {con.close();} catch (Exception e2) {}
-			if(rs!=null)try {rs.close();} catch (Exception e2) {}
-
-		}
-		return M_id;
-	}//ID찾기
-	
+		return cnt;	
+	}	
 	
 	//profile 인트값 있는지 없는지
 		public int profile(String M_id, String M_Profile) {
