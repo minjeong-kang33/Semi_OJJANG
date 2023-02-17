@@ -27,12 +27,12 @@ public class WritehistoryB implements Action {
 		int startRow=(currentPage-1)*pageSize+1;
 		int endRow = startRow+pageSize-1;
 
-		ArrayList<BuyDTO> buyList=dao.buyList(startRow, pageSize);
+		ArrayList<BuyDTO> buyList=dao.buyList(startRow, pageSize, M_id);
 		
 		int pageBlock=10;
 		int startPage=(currentPage-1)/pageBlock*pageBlock+1;
 		int endPage=startPage+pageBlock-1;
-		int count = dao.getbuyCount();
+		int count = dao.getbuyCount(M_id);
 		int pageCount=count/pageSize+(count%pageSize==0?0:1);
 		if(endPage > pageCount){
 			endPage = pageCount;
