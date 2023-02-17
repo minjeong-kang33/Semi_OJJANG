@@ -47,13 +47,18 @@
       </div>
    </div>
    <!-- ***** 게시판 제목 끝 ***** -->
-   
+<%String cookie = "";
+		Cookie[] cookies = request.getCookies(); //쿠키생성
+		if(cookies !=null&& cookies.length > 0)
+		for (int i = 0; i < cookies.length; i++){
+			if (cookies[i].getName().equals("M_id")) { // 내가 원하는 쿠키명 찾아서 값 저장
+				cookie = cookies[i].getValue();}}%>   
+ <form action="MemberLoginPro.me" method="post">
    <div class="loginFormclass">
 
-   <form action="MemberLoginPro.me" method="post">
       <div class="form-group">
          <input type="text" class="form-control" name="M_id" id="M_id"
-            aria-describedby="emailHelp" placeholder="아이디">
+            aria-describedby="emailHelp" placeholder="아이디"  value="<%=cookie%>">
       </div>
 
       <div class="form-group">
@@ -63,7 +68,7 @@
       
      <div class="form-check">
          <div>
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <input type="checkbox" class="form-check-input" id="checkbox" name="checkbox">
             <label class="form-check-label" for="exampleCheck1">로그인 상태
                유지</label>
          </div>
@@ -75,7 +80,7 @@
          </div>
       </div>
  </div>     
-
+      
    </form>
 
 
