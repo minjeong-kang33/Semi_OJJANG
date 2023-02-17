@@ -77,7 +77,7 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd hh:mm");
    <%
      if(dto.getB_img()==null){ 
   	%>
-    	<img src="img/buy/otzang_logo_top.png" width=300px>
+    	<img src="img/buy/ozzangbuy.png" width=600px>
     	<%  }else{ %>
   		 <img src="img/buy/<%=dto.getB_img()%>" width=300px>
        <%}%>
