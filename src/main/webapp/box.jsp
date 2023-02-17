@@ -20,7 +20,7 @@
 	<link rel="stylesheet" href="chat/cs/custom.css">
 	<title>옷장 톡</title>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script src="js/bootstrap.js"></script>
+	<script src="chat/js/bootstrap.js"></script>
 	<script type="text/javascript">
 	    function getUnread() {
 	    	$.ajax({
