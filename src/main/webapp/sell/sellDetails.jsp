@@ -64,13 +64,23 @@ function fun1(M_id, S_num, R_category, S_title) {
 					</div>
 				 <!--  폼 추가했어요!!~!~!~!~!~!~! 데이터 넘기기 편하시라고.... -->
 					
-					<table>
-					<tr><td rowspan="6"><img src="img/sell/<%=dto.getS_img()%>" width=300px class="goodsImg" ></td></tr>  <!-- 이미지 -->
-					<tr><td colspan="3" align="left"><%=dto.getS_category()%></td>   <!-- 카테고리--> 
-					<tr><td colspan="3" style="border-bottom: 1px;" align="left"> <%=dto.getS_title()%></td></tr> <!--  제목 -->
-					<tr><td colspan="2" align="left"><%=dto.getS_price()%></td> 
-						<td align="right" class="like_id">
-								<%
+					
+					<div class="item-box1">
+					
+					<!-- 상품이미지 -->
+					<div class="item-img"> 
+						<img src="img/sell/<%=dto.getS_img()%>" class="goodsImg">
+					</div>
+					
+					
+					<!-- 상품정보 -->
+					<div class="item-info"> 
+						<span class="info-category"> <%=dto.getS_category()%> </span> <br> <!--  카테고리 -->
+						<span> <%=dto.getS_title()%> </span> <br> <!-- 글제목 -->
+						<span> <%=dto.getS_price()%>원 </span> <br> <!-- 가격 -->
+						
+						<span>  <!--  좋아요, 찜하기 -->
+							<%
 									if(M_id != null){
 										//글쓴이에게는 찜하기 안보임
 										if(!M_id.equals(dto.getM_id())){
@@ -80,15 +90,37 @@ function fun1(M_id, S_num, R_category, S_title) {
 										}
 									}
 								%>
-						</td></tr> <!--  찜하기 -->
-					<tr><td colspan="2" align="left"> 배송방법 </td><td>거래위치</td></tr>
-					<tr> <td align="left"><%=dto.getM_id()%></td><td align="right"> <%=dto.getS_createdate()%> </td><td align="right"><%=dto.getS_view() %></td></tr>
-					<tr><td></td></tr>
-					<tr><td colspan="4" class="line"></td></tr> <!--  리뷰리스트처럼 선 넣을 예정  -->
-					<tr><td colspan="3"> <%=dto.getS_text()%> </td></tr>
-					</table>
-					<!-- 솔직히 rowspan, colspan 대충 함. 알아서 맞춰 -->
-					<!-- 조회수, 거래방법, (주소), 작성일도 어딘가에 넣어야함 -->
+						</span> <br>
+						
+						
+						<span> <!-- 거래방식  -->
+							<% if(dto.getS_send1()!=null&&dto.getS_send2()!=null){%> <%= "<b>택배거래</b>, <b>직거래</b>"%><%}
+													 else if(dto.getS_send1()!=null){%> <%= "<b>택배거래</b>"%><%}
+													 else if(dto.getS_send2()!=null){%> <%= "<b>직거래</b>"%><%}%>
+						</span> <br>
+						
+						<span> <!-- 거래지역 -->
+							<% if(dto.getS_send2()!=null){%> <img src="sell/location_icon.png" class="location"><%= dto.getS_sido1()%> <%= dto.getS_gugun1()%><%} else { %>　<%}%>
+						</span> <br>
+						
+						<span><%=dto.getM_id()%></span> <br>
+						<span><%=dateFormat.format(dto.getS_createdate())%></span> <br>
+						<span><img src="assets/images/eye.png" class="eye"><%=dto.getS_view() %></span> <br>
+						
+					</div>
+					
+		
+					
+					<!-- 판매 상세글 -->
+					<div class="item-detail">
+						<hr> <!-- 가로줄 -->
+						
+						 <%=dto.getS_text()%> 
+						
+					</div>
+					
+					</div>
+		
 				
 					<!--보내지는 내용 숨겨지도록(post) 작성한 글을 writeAction으로 보냄 -->
 <!-- 					<table class="table table-stripe"
