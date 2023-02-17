@@ -33,14 +33,14 @@ public class MemberFrontController extends HttpServlet{
 		
 		
 		if(sPath.equals("/Main.me")) {
-	         action = new MainPro();
+	         action = new SearchPro();
 	         try {
 	            forward=action.execute(request, response);
 	         } catch (Exception e) {
 	            e.printStackTrace();
 	         }
 	         
-	      } //강민정
+	      } //신영환
 		
 		else if(sPath.equals("/MemberLoginForm.me")) {
 			forward=new ActionForward();
