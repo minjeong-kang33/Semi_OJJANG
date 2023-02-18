@@ -50,8 +50,7 @@ ArrayList<SellDTO> sellList=(ArrayList<SellDTO>)request.getAttribute("sellList")
 <tr><td>판매글제목</td><td>판매가격</td><td>내용</td><td>카테고리</td><td>좋아요 수</td><td>업로드 날짜</td></tr>
 
 <%
-// System.out.println(dealListS.size());
-// System.out.println(dealListB.size());
+
 for(int i=0;i<sellList.size();i++){
 	SellDTO dto=sellList.get(i);
 	

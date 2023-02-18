@@ -66,7 +66,7 @@ ArrayList<SellDTO> likeList=(ArrayList<SellDTO>)request.getAttribute("likeList")
 						<span>like list</span>
 					</div>
 					
-					<!--  찜리스트 시작 -->
+					<!--  찜 리스트 시작 -->
 						<table>
 							<%
 							

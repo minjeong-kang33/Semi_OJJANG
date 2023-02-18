@@ -365,6 +365,7 @@ public class MypageDAO {
 		return buyList;
 	}
 	
+	//likeList 찜한 목록
 	public ArrayList<SellDTO> likeList(int startRow, int pageSize,String M_id) {
 		ArrayList<SellDTO> likeList=new ArrayList<SellDTO>();
 		Connection con=null;
