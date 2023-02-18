@@ -32,7 +32,7 @@ public class AdminDAO {
 		MemberDTO dto=null;
 		try {
 			con=getConnection();
-			String sql="select * from member order by M_play desc, M_id limit ?, ?";
+			String sql="select * from member where M_play not in ('탈퇴', '강퇴') order by M_play desc, M_id limit ?, ?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, startRow-1);
 			pstmt.setInt(2, pageSize);
@@ -63,7 +63,7 @@ public class AdminDAO {
 		int count=0;
 		try {
 			con=getConnection();
-			String sql="select count(*) from member";
+			String sql="select count(*) from member where M_play not in ('탈퇴', '강퇴')";
 			pstmt=con.prepareStatement(sql);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
@@ -85,7 +85,7 @@ public class AdminDAO {
 		ResultSet rs=null;
 		try {
 			con=getConnection();
-			String sql="select * from member where ";
+			String sql="select * from member where M_play not in ('탈퇴', '강퇴') and ";
 			if(info.equals("M_id")) {sql+="M_id like ?";}
 			else if(info.equals("M_name")) {sql+="M_name like ?";}
 			else if(info.equals("M_nick")) {sql+="M_nick like ?";}
@@ -204,7 +204,7 @@ public class AdminDAO {
 		ResultSet rs=null;
 		try {
 			con=getConnection();
-			String sql="select * from report order by R_type desc, M_id limit ?, ?";
+			String sql="select R_type, M_id, R_id, R_reason, R_category, R_writeNum, R_title, ifnull(R_play, '') R_play from report order by R_id desc, R_type limit ?, ?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, startRow-1);
 			pstmt.setInt(2, pageSize);
@@ -218,6 +218,7 @@ public class AdminDAO {
 				dto.setR_writeNum(rs.getString("R_writeNum"));
 				dto.setR_category(rs.getString("R_category"));
 				dto.setR_title(rs.getString("R_title"));
+				dto.setR_play(rs.getString("R_play"));
 				adUserReportList.add(dto);
 			}
 		}catch(Exception e) {
@@ -259,9 +260,9 @@ public class AdminDAO {
 		ResultSet rs=null;
 		try {
 			con=getConnection();
-			String sql="select * from report where ";
-			if(info.equals("M_id")) {sql+="M_id like ?";}
-			else if(info.equals("R_id")) {sql+="R_id like ?";}
+			String sql="select R_type, M_id, R_id, R_reason, R_category, R_writeNum, R_title, ifnull(R_play, '') R_play from report where ";
+			if(info.equals("M_id")) {sql+="M_id like ? order by R_id, R_type desc";}
+			else if(info.equals("R_id")) {sql+="R_id like ? order by R_id, R_type desc";}
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, "%"+search+"%");
 			rs=pstmt.executeQuery();
@@ -274,6 +275,7 @@ public class AdminDAO {
 				dto.setR_writeNum(rs.getString("R_writeNum"));
 				dto.setR_category(rs.getString("R_category"));
 				dto.setR_title(rs.getString("R_title"));
+				dto.setR_play(rs.getString("R_play"));
 				adUserReportListPro.add(dto);
 			}
 		}catch(Exception e) {
@@ -291,7 +293,7 @@ public class AdminDAO {
 		PreparedStatement pstmt=null;
 		try {
 			con=getConnection();
-			String sql="update * set M_play='강퇴' where M_id=?";
+			String sql="update member set M_play='강퇴' where M_id=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, M_id);
 			pstmt.execute();
@@ -319,6 +321,23 @@ public class AdminDAO {
 			if(pstmt!=null) try {pstmt.close();} catch (Exception e2) {}
 		}
 	}//adUserReportDelete()
+	
+	public void adUserReportOut(String R_id) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		try {
+			con=getConnection();
+			String sql="update report set R_play='강퇴처리' where R_id=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, R_id);
+			pstmt.execute();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(con!=null) try {con.close();} catch (Exception e2) {}
+			if(pstmt!=null) try {pstmt.close();} catch (Exception e2) {}
+		}
+	}//adUserReportOut()
 		
 	//    ----Sell----
 	public ArrayList<SellDTO> adSellList(int startRow, int pageSize) {

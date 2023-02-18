@@ -22,6 +22,7 @@ public class AdUserReportDelete implements Action {
 			for(int i=0;i<R_idArr.length;i++){
 				R_id=R_idArr[i];
 				dao.adUserReportDelete(R_id);
+				dao.adUserReportOut(R_id);
 			}
 		}
 		
