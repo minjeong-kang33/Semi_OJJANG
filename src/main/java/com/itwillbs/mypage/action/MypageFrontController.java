@@ -129,6 +129,13 @@ public class MypageFrontController extends HttpServlet{
 				e.printStackTrace();
 			}//박은지
 		
+		}else if(sPath.equals("/Deallist.moi")) {
+			action=new Deallist();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			
 			
 			
