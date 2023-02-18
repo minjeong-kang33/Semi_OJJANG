@@ -62,12 +62,13 @@ MemberDTO dto=(MemberDTO)request.getAttribute("dto");
     				<li><label>주소</label> <input type="text" name="M_address" id="M_address" value="<%= dto.getM_address()+" "+dto.getM_address2()%>"></li>
     			</ul>
     	</fieldset>
+    	 </form>
     	<fieldset>
     		<button id="profileupdate-btn" onclick="location.href='ProfileUpdateForm.moi'">개인정보 변경</button>
 			<button id="pwupdate-btn" onclick="location.href='PwUpdateForm.moi'">비밀번호 변경</button>
 			<button id="withdraw-btn" onclick="location.href='MemberwithdrawalForm.me'">회원탈퇴</button>
     	</fieldset>
-    </form>
+   
     	
 <%-- <div class="page-heading about-page-heading" id="top">
      <div class="container">
