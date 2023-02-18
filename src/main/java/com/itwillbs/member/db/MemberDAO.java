@@ -127,12 +127,13 @@ public class MemberDAO {
 			
 			con=getConnection();
 			
-			String sql="update member set M_nick=?, M_email=?, M_address=? where M_id =?";
+			String sql="update member set M_nick=?, M_email=?, M_address=?, M_address2=? where M_id =?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, updateDto.getM_nick()); 
 			pstmt.setString(2, updateDto.getM_email());  
 			pstmt.setString(3, updateDto.getM_address());  
-			pstmt.setString(4, updateDto.getM_id());  
+			pstmt.setString(4, updateDto.getM_address2());  
+			pstmt.setString(5, updateDto.getM_id());  
 			
 			pstmt.executeUpdate();
 			
