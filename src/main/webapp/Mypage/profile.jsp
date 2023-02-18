@@ -59,10 +59,11 @@ MemberDTO dto=(MemberDTO)request.getAttribute("dto");
     				<li><label for="usergender">성별</label><span><%=dto.getM_gender() %></span></li>
     				<li><label for="useremail">이메일</label><span><%=dto.getM_email() %></span></li>
     				<li><label for="useraddr">주소</label><span><%=dto.getM_address()+" "+dto.getM_address2()%></span></li>
+	    			<li><a href="MemberwithdrawalForm.me">회원탈퇴</a></li>
     			</ul>
     	</fieldset>
     </form>
-    
+    	
 <%-- <div class="page-heading about-page-heading" id="top">
      <div class="container">
          <div class="inner-content2"> 
