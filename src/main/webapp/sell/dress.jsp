@@ -144,6 +144,7 @@
 							
 <!-- 게시판 내용 여기 넘어가면 안됨.  -->							
 					</div>
+			<div style="width: 1000px;">	
 				<!--  페이지 번호  -->
 				<%
 				
@@ -154,18 +155,19 @@
 				}
 				
 				%>
+				<!-- 	글 작성 버튼을 오른쪽 아래에 고정 -->
+				<%
+				if(M_id != null){
+				%>
+					<button type="button" class="btn btn-dark" onclick="location.href='SellInsertForm.sell'" style="float:right; margin-left: 500px;">글쓰기</button>
+				<%
+				}
+				%>
+			</div>		
 					</div>
 				</div>
 			</div>
 		</div>
-<!-- 	글 작성 버튼을 오른쪽 아래에 고정 -->
-<%
-if(M_id != null){
-%>
-	<button type="button" class="btn btn-dark" onclick="location.href='SellInsertForm.sell'" style="float:right">글쓰기</button>
-<%
-}
-%>
 </section>
 
     <!-- ***** 푸터 시작 ***** -->
