@@ -39,6 +39,47 @@ String M_id = (String)session.getAttribute("M_id");
         </div>
     </div>  
     
+    <!-- ***** 챗봇 ***** -->
+	<script>
+	(function (){var w=window;if(w.ChannelIO){return w.console.error("ChannelIO script included twice.")}var ch=function(){ch.c(arguments)};ch.q=[];ch.c=function(args){ch.q.push(args)};w.ChannelIO=ch;function l(){if(w.ChannelIOInitialized){return}w.ChannelIOInitialized=true;var s=document.createElement("script");s.type="text/javascript";s.async=true;s.src="https://cdn.channel.io/plugin/ch-plugin-web.js";var x=document.getElementsByTagName("script")[0];if(x.parentNode){x.parentNode.insertBefore(s,x)}}if(document.readyState==="complete"){l()}else{w.addEventListener("DOMContentLoaded",l);w.addEventListener("load",l)}})();
+	ChannelIO('boot', {"pluginKey": "b1f192f2-a03b-4a57-befd-365e5a60d32f"});
+	</script>
+    <!-- ***** 챗봇 끝 ***** -->
+    
+    <!-- ***** 팝업창 시작 ***** -->
+        <script>
+function setCookie( name, value, expiredays ) {
+	var todayDate = new Date();
+	todayDate.setDate( todayDate.getDate() + expiredays );
+	document.cookie = name + "=" + escape( value ) + "; path=/; expires=" + todayDate.toGMTString() + ";"
+}
+
+function getCookie( name ) {
+	var nameOfCookie = name + "=";
+	var x = 0;
+	while ( x <= document.cookie.length ) {
+	var y = (x+nameOfCookie.length);
+		if ( document.cookie.substring( x, y ) == nameOfCookie ) {
+		if ( (endOfCookie=document.cookie.indexOf( ";", y )) == -1 )
+		endOfCookie = document.cookie.length;
+			return unescape( document.cookie.substring( y, endOfCookie ) );
+		}
+	x = document.cookie.indexOf( " ", x ) + 1;
+	if ( x == 0 )
+	break;
+	}
+	return "";
+}
+
+if ( getCookie( "popup2" ) != "done" ) {
+	noticeWindow =
+	window.open('Popup2.ad','popup2','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no,width=310,height=510,top=90,left=200');
+	//경로 수정?
+	noticeWindow.opener = self;
+}
+</script>
+	<!-- ***** 팝업창 끝 ***** -->
+    
     <!-- ***** 헤더 ***** -->
   <jsp:include page="../top.jsp" />
     <!-- ***** 헤더 끝 ***** -->
