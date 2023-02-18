@@ -12,9 +12,12 @@
     <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
     <link rel="stylesheet" href="assets/css/templatemo-hexashop.css">
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
-    <link rel="stylesheet" href="assets/css/lightbox.css"> 
+    <link rel="stylesheet" href="assets/css/lightbox.css">
+    <link href="assets/css/admin.css" rel="stylesheet" type="text/css">
 <meta charset="UTF-8">
 </head>
+
+    <!-- ***** 스크립트 ***** -->
 <script>
 function fun1() {
 	let check = false;
@@ -53,112 +56,157 @@ function fun3() {
 		document.scfr.submit();
 }
 </script>
+    <!-- ***** 스크립트 끝 ***** -->
+
 <body>
+	<!-- ***** 로딩 일단 지금은 비어있음***** -->
+	<div id="preloader">
+		<div class="jumper">
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+	
     <!-- ***** 헤더 ***** -->
   <jsp:include page="../admin_top.jsp" />
     <!-- ***** 헤더 끝 ***** -->
     
-	<!-- ***** 신고회원목록조회 ***** -->
-    <div class="page-heading about-page-heading" id="top">
-        <div class="container">
-             <div class="inner-content2">
-             
-<h3>신고회원목록조회</h3>
-<%
-request.setCharacterEncoding("utf-8");
-ReportDTO dto=new ReportDTO();
-SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
+	<!-- ***** 신고회원목록조회 ***** -->    
+	<%
+	request.setCharacterEncoding("utf-8");
+	ReportDTO dto=new ReportDTO();
+	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 
-ArrayList<ReportDTO> adUserReportList=(ArrayList<ReportDTO>)request.getAttribute("adUserReportList");
+	ArrayList<ReportDTO> adUserReportList=(ArrayList<ReportDTO>)request.getAttribute("adUserReportList");
 
-int currentPage=(Integer)request.getAttribute("currentPage");
-int startPage=(Integer)request.getAttribute("startPage");
-int pageBlock=(Integer)request.getAttribute("pageBlock");
-int endPage=(Integer)request.getAttribute("endPage");
-int pageCount=(Integer)request.getAttribute("pageCount");
-int adUserReportCount=(Integer)request.getAttribute("adUserReportCount");
-%>
-<section>
-<div class="container">
-	<div>
-	<form action="AdUserReportListPro.ad" method="post" name="scfr">
-		<ul>
-		<li>
-		<select name="info">
-		<option value="">선택</option>
-		<option value="R_id">피신고자아이디</option>
-		<option value="M_id">신고자아이디</option>
-		</select>
-		<input type="text" name="search"> <input type="button" value="검색" onclick="fun3()"></li>
-		</ul><br>
-	</form>
-	</div>
-		<div>
-		총 멤버 <b><%=adUserReportCount %></b>명
+	int currentPage=(Integer)request.getAttribute("currentPage");
+	int startPage=(Integer)request.getAttribute("startPage");
+	int pageBlock=(Integer)request.getAttribute("pageBlock");
+	int endPage=(Integer)request.getAttribute("endPage");
+	int pageCount=(Integer)request.getAttribute("pageCount");
+	int adUserReportCount=(Integer)request.getAttribute("adUserReportCount");
+	%>
+	
+<section class="section" id="products">
+
+		<!-- 게시판 제목  -->
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="section-heading">
+						<h3>신고회원목록조회</h3>
+						<span>User List</span>
+					</div>
+				</div>
+			</div>
 		</div>
+
+	<div class="container">
+		
+	<div class="col-lg-12">
+		<div class="ad-divsearch">
+		<div class="ad-right">
+			<form action="AdUserReportListPro.ad" method="post" name="scfr">
+				<div class="ad-search">
+					<ul class="select-list">
+					<li>
+						<select class="select-search" name="info">
+							<option value="">선택</option>
+							<option value="R_id">피신고자아이디</option>
+							<option value="M_id">신고자아이디</option>
+						</select>
+						<input class="input-search" type="text" name="search">
+						<input class="button-search" type="button" value="검색" onclick="fun3()">
+					</li></ul><br>
+				</div>
+			</form>
+		</div>
+		</div>
+	</div>
+	
 <form name="ckDelete" action="AdUserReportDelete.ad" method="post">
+
+		<div class="ad-count">
+			총 멤버 <b><%=adUserReportCount %></b>명
+		</div>
+		
 <table border="1">
 	<thead>
-<tr>
-	<th scope="col"><input type="checkbox" id="ckAll" name="ckAll" onclick="fun2()"></th>
-	<th scope="col">번호</th>
-	<th scope="col">피신고자아이디</th>
-	<th scope="col">신고사유</th>
-	<th scope="col">기타사유</th>
-	<th scope="col">카테고리</th>
-	<th scope="col">글번호</th>
-	<th scope="col">내용</th>
-	<th scope="col">신고자아이디</th>
-	<th scope="col">회원상태</th>
-</tr>
+		<tr>
+			<th scope="col"><input type="checkbox" id="ckAll" name="ckAll" onclick="fun2()"></th>
+			<th scope="col">번호</th>
+			<th scope="col">피신고자아이디</th>
+			<th scope="col">신고사유</th>
+			<th scope="col">기타사유</th>
+			<th scope="col">카테고리</th>
+			<th scope="col">글번호</th>
+			<th scope="col">내용</th>
+			<th scope="col">신고자아이디</th>
+			<th scope="col">회원상태</th>
+		</tr>
 	</thead>
 
 	<tbody>
-<%
-for(int i=0;i<adUserReportList.size();i++){
-	dto=adUserReportList.get(i);
-%>
-	<tr><td><input type="checkbox" id="ck" name="ck" value="<%=dto.getR_id() %>"></td>
-		<td><%=i+1 %></td>
-		<td><%=dto.getR_id() %></td>
-		<td><%=dto.getR_type() %></td>
-		<td><%=dto.getR_reason() %></td>
-		<td><%=dto.getR_category() %></td>
-		<td><%=dto.getR_writeNum() %></td>
-		<td><%=dto.getR_title() %></td>
-		<td><%=dto.getM_id() %></td>
-		<td><%=dto.getR_play() %></td></tr>
-<%
-}
-%>
+		<%
+		for(int i=0;i<adUserReportList.size();i++){
+			dto=adUserReportList.get(i);
+		%>
+			<tr>
+				<td><input type="checkbox" id="ck" name="ck" value="<%=dto.getR_id() %>"></td>
+				<td><%=i+1 %></td>
+				<td><%=dto.getR_id() %></td>
+				<td><%=dto.getR_type() %></td>
+				<td><%=dto.getR_reason() %></td>
+				<td><%=dto.getR_category() %></td>
+				<td><%=dto.getR_writeNum() %></td>
+				<td><%=dto.getR_title() %></td>
+				<td><%=dto.getM_id() %></td>
+				<td><%=dto.getR_play() %></td>
+			</tr>
+		<%
+		}
+		%>
 	</tbody>
 </table>
-<%
-for(int i=startPage;i<=endPage;i++){
-if(startPage > pageBlock){
-%>
-<a href="AdUserReportList.ad?pageNum=<%=startPage-pageBlock%>">[10페이지 이전]</a>
-<%
-}
-%>
-<a href="AdUserReportList.ad?pageNum=<%=i %>"><%=i %></a>
-<%
-}
-if(endPage < pageCount){
-%>
-<a href="AdUserReportList.ad?pageNum=<%=startPage+pageBlock%>">[10페이지 다음]</a>
-<%
-}
-%>
-<div>
-회원 처리 <input type="button" value="강퇴" onclick="fun1()">
-</div>
-</form>
-</div>
+
+	<!-- *** 페이징 *** -->
+	<%
+	if(startPage > pageBlock){
+		%>
+		<a href="AdUserReportList.ad?pageNum=<%=startPage-pageBlock%>">[10페이지 이전]</a>
+		<%
+		}
+	if(currentPage>1) {
+		%>
+		<a href="AdUserReportList.ad?pageNum=<%=currentPage-1 %>">[1페이지 이전]</a>
+		<%
+		}
+	for(int i=startPage;i<=endPage;i++){
+		%>
+		<a href="AdUserReportList.ad?pageNum=<%=i %>"><%=i %></a>
+		<%
+		}
+	if(currentPage<pageCount) {
+		%>
+		<a href="AdUserReportList.ad?pageNum=<%=currentPage+1 %>">[1페이지 다음]</a>
+		<%
+		}
+	if(endPage < pageCount){
+		%>
+		<a href="AdUserReportList.ad?pageNum=<%=startPage+pageBlock%>">[10페이지 다음]</a>
+		<%
+	}
+	%>
+	<!-- *** 페이징 끝 *** -->
+
+	<div class="ad-right">
+		회원 처리 <input type="button" value="강퇴" onclick="fun1()">
+	</div>
+
+		</form>
+	</div>
 </section>
-             </div>
-        </div>
-    </div>
     <!-- ***** 신고회원목록조회 끝 ***** -->
     
     <!-- ***** 푸터 시작 ***** -->
