@@ -429,6 +429,26 @@ public class MemberDAO {
 			}
 			return -1;  // 데이터 베이스 오류
 		}
+		public void DeleteMember(String M_id) {
+			Connection con =null;
+			PreparedStatement pstmt=null;
+			ResultSet rs = null;
+			try {
+				//1,2 디비연결 메서드
+				con=getConnection();
+				String sql="update member set M_withdrawl = 'O', M_pw=null where M_id =?";
+				pstmt = con.prepareStatement(sql.toString());
+				pstmt.setString(1, M_id); 
+				pstmt.executeUpdate();
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				if (pstmt != null)try {pstmt.close();} catch (Exception e2) {}
+				if (con != null)try {con.close();} catch (Exception e2) {}
+				if (rs != null)try {rs.close();} catch (Exception e2) {}
+			}
+		}// Delete
 
 	
 }
