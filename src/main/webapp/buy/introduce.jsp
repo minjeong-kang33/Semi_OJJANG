@@ -38,7 +38,7 @@
 	<jsp:include page="../top.jsp" />
 	<!-- ***** 헤더 끝 ***** -->
 <body>
-<div style="margin: 180px auto 0 auto;">
+<div style="margin: 220px auto 140px auto;">
 	<img src="img/buy/company.png" style="width: 480px; height: 400px;display: block;margin: 0px  auto 0px auto;">
 	</div>
 
@@ -46,9 +46,9 @@
 <!-- 오시는 길<br> -->
 <!-- <img src="img/buy/운영시간 아이콘.png" style="width: 5px; height: 5px; margin: auto;display: block;"> -->
 
-
-  <hr style="border: solid 4px rgba(42,42,42,80%);">
-<table style="margin: auto;display: block;undefined;table-layout: fixed; width: 879px;">
+<br>
+<hr style="border: solid 4px rgba(42,42,42,80%); margin-top: 20px; margin-bottom: 20px;"><br><br>
+<table style="margin: auto;display: block;undefined;table-layout: fixed; width: 879px; margin-bottom: 20px;">
 <colgroup>
 <col style="width: 512px">
 <col style="width: 367px">
@@ -56,24 +56,26 @@
 <thead>
   <tr>
     <th colspan="2" style="text-align: center;">
-    <img src="img/buy/오시는 길.png" style="width: 120px; height: 60px; margin: auto;display: block;">
+    <img src="img/buy/오시는 길.png" style="width: 120px; height: 60px; margin: auto;display: block;"><br><br>
     </th>
+    <th> </th>
   </tr>
 </thead>
-<tbody>
+<tbody style="margin-bottom: 50px;">
   <tr>
-    <td><div id="map" style="width: 500px; height: 400px;margin:0 auto; "></div></td>
-    <td><h5><img src="img/buy/지도 아이콘.png" style="width: 29px; height: 29px; ">주소 <br></h5>
-    부산광역시 부산진구 부전동 112-3번지 삼한골든게이트 7층 (도로명주소 : 부산광역시 부산진구 동천로 109 삼한골든게이트 7층)
-    [우편번호 : 47246]<br>
-     <br>
-   <h5> <img src="img/buy/전화기아이콘.png" style="width: 29px; height: 29px;">연락처<br></h5>
-    대표전화 : 051-803-0909
-   시험문의 : 051-803-0918
-   팩스 : 051-803-0979<br>
-   <br>
-    <h5><img src="img/buy/운영시간 아이콘.png" style="width: 29px; height: 29px;">운영시간<br></h5>
-    매일 08:00-21:00
+    <td><div id="map" style="width: 500px; height: 400px; border-radius: 5px;"></div></td>
+    <td style="margin-left: 50px; ">
+    	<h5><img src="img/buy/지도 아이콘.png" style="width: 29px; height: 29px; margin-left: 30px;"><b>주소</b> <br></h5>
+    	<div style="margin-left: 50px; ">〒 47246<br>
+    		부산광역시 부산진구 부전동 112-3번지<br>
+     		삼한골든게이트 7층 <br>
+     		(부산광역시 부산진구 동천로 109 7층)<br><br></div>
+  		<h5><img src="img/buy/전화기아이콘.png" style="width: 29px; height: 29px; margin-bottom: 5px; margin-left: 30px;"><b>연락처</b><br></h5>
+   		<div style="margin-left: 50px; ">
+   			 <b>대표전화</b> : 051-803-0909<br>
+   			<b>팩스</b> : 051-803-0979<br><br></div>
+   		 <h5><img src="img/buy/운영시간 아이콘.png" style="width: 29px; height: 29px; margin-bottom: 5px; margin-left: 30px;"><b>운영시간</b><br></h5>
+  		 <div style="margin-left: 50px; "> 평일 08:00-21:00 (공휴일 제외)</div>
     </td>
   </tr>
 </tbody>

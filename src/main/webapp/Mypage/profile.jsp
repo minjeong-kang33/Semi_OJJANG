@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="assets/css/templatemo-hexashop.css">
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
     <link rel="stylesheet" href="assets/css/lightbox.css"> 
+    <link rel="stylesheet" href="assets/css/profile.css"> 
 <meta charset="UTF-8">
 </head>
 
@@ -50,17 +51,21 @@
 MemberDTO dto=(MemberDTO)request.getAttribute("dto");
 %>      
     <!-- ***** 회원정보조회 ***** -->
-    <form action="#" method="post" id="Pinfo_area">
-    	<fieldset class="PinfoField">
+    <form action="#" method="post" id="profile_area">
+    	<fieldset class="profileField">
     			<ul>
-    				<li><label for="userid">아이디</label><span><%=dto.getM_id() %></span></li>
-    				<li><label for="username">이름</label><span><%=dto.getM_name() %></span></li>
-    				<li><label for="usernick">닉네임</label><span><%=dto.getM_nick() %></span></li>
-    				<li><label for="usergender">성별</label><span><%=dto.getM_gender() %></span></li>
-    				<li><label for="useremail">이메일</label><span><%=dto.getM_email() %></span></li>
-    				<li><label for="useraddr">주소</label><span><%=dto.getM_address()+" "+dto.getM_address2()%></span></li>
-	    			<li><a href="MemberwithdrawalForm.me">회원탈퇴</a></li>
+    				<li><label>아이디</label> <input type="text" id="M_id" name="M_id" size="15" value="<%= dto.getM_id()%>"></li>
+    				<li><label>이름</label> <input type="text" id="M_name" name="M_name" size="15" value="<%= dto.getM_name()%>"></li>
+    				<li><label>닉네임</label> <input type="text" id="M_nick" name="M_nick" size="15" value="<%=dto.getM_gender()%>"></li>
+    				<li><label>성별</label> <input type="text" id="M_gender" name="M_gender" value="<%= dto.getM_nick()%>"> </li>
+    				<li><label>이메일</label> <input type="email" id="M_email" name="M_email" size="30" value="<%= dto.getM_email()%>"></li>
+    				<li><label>주소</label> <input type="text" name="M_address" id="M_address" value="<%= dto.getM_address()+" "+dto.getM_address2()%>"></li>
     			</ul>
+    	</fieldset>
+    	<fieldset>
+    		<button id="profileupdate-btn" onclick="location.href='ProfileUpdateForm.moi'">개인정보 변경</button>
+			<button id="pwupdate-btn" onclick="location.href='PwUpdateForm.moi'">비밀번호 변경</button>
+			<button id="withdraw-btn" onclick="location.href='MemberwithdrawalForm.me'">회원탈퇴</button>
     	</fieldset>
     </form>
     	

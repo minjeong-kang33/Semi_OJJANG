@@ -11,6 +11,7 @@
 
 #top_login #top_insert #top_logout {
 	color: /* #434242; */ #2A2A2A;
+	width: 40px;
 	font-weight: 530;
 	margin-right: 5px;
 	font-family: 'Poppins', sans-serif;

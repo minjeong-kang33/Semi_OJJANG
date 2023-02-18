@@ -538,7 +538,7 @@ header
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1000px) {
   .header-area .main-nav .logo {
     color: #1e1e1e;
   }
@@ -571,7 +571,7 @@ header
   }
   .header-area .main-nav .nav {
     float: none;
-    width: 100%;
+    width: 110%;
     display: none;
     -webkit-transition: all 0s ease 0s;
     -moz-transition: all 0s ease 0s;
@@ -637,7 +637,7 @@ header
   }
 }
 
-@media (min-width: 767px) {
+@media (min-width: 1000px) {
   .header-area .main-nav .nav {
     display: flex !important;
   }
@@ -2280,7 +2280,7 @@ responsive
 }
 
 
-@media (max-width: 767px) {
+@media (max-width: 1000px) {
   .main-banner .left-content .thumb .inner-content {
     left: 50%;
     top: 47.5%;
