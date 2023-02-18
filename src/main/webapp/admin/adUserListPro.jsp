@@ -90,7 +90,7 @@ int adUserCount=(Integer)request.getAttribute("adUserCount");
 		</ul><br>
 	</form>
 	<div>
-	<%=info %> <%=search %>	검색결과 : <b><%=adUserListPro.size() %></b>명 / 총 <%=adUserCount %>명
+	<%=info %>> <%=search %>	검색결과 : <b><%=adUserListPro.size() %></b>명 / 총 <%=adUserCount %>명
 	</div>
 	</div>
 <form name="ckDelete" action="AdUserDelete.ad" method="post">

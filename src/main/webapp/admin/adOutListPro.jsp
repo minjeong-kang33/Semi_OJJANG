@@ -67,7 +67,7 @@ int adOutCount=(Integer)request.getAttribute("adOutCount");
 		</ul><br>
 	</form>
 		<div>
-		<%=info %> <%=search %>	검색결과 : <b><%=adOutListPro.size() %></b>명 / 총 <%=adOutCount %>명
+		<%=info %>> <%=search %>	검색결과 : <b><%=adOutListPro.size() %></b>명 / 총 <%=adOutCount %>명
 		</div>
 	</div>
 <table border="1">
