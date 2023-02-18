@@ -133,7 +133,7 @@ function fun1(M_id, S_num, R_category, S_title) {
 							<div class="requestBox">
 											<%
 								if(M_id != null){
-									//본인에게는 거래요청하기 안보임
+									//본인에게는 거래요청하기 안보임!
 									if(!M_id.equals(dto.getM_id())){
 								%>
 							<input type="button" class="requestBtn" value="거래요청하기" style="margin-bottom: 40px;"
