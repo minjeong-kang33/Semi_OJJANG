@@ -25,8 +25,8 @@
 			
 			if(M_id != null){
 			%>	<ul class="nav23" style="margin-right: 10px;">
-					<li style="color: #434242; margin-right: 10px;"><%=M_id%> 님 |
-					<a href="MemberLogout.me" id="top_logout" style="color: #434242; margin-left: 10px;">로그아웃</a></li>	
+					<li style="color: #434242; margin-right: 10px; "><%=M_id%> 님 |
+					<a href="MemberLogout.me" id="top_logout" style="color: #434242; margin-left: 7px;">로그아웃</a></li>	
 				</ul>
 			<%
 			}else{
