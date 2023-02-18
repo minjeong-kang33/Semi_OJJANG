@@ -166,6 +166,9 @@ function fun1(M_id, S_num, R_category, S_title) {
 				}
 				%>
 				
+				<button type="button" class="btn btn-dark" onclick="history.back()"
+					style="float: right; margin-left: 10px;">글목록</button>
+		
 				<%
 				if(M_id != null){
 					//본인에게는 신고하기, 찜하기 안보임
@@ -178,9 +181,6 @@ function fun1(M_id, S_num, R_category, S_title) {
 				 %>
 				
 				
-				<button type="button" class="btn btn-dark" onclick="history.back()"
-					style="float: right">글목록</button>
-		
 		
 				</div>
 			</div>
