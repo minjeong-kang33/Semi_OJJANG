@@ -70,8 +70,8 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 
 ArrayList<MemberDTO> adUserListPro=(ArrayList<MemberDTO>)request.getAttribute("adUserListPro");
 
-String info=request.getParameter("info");
-String search=request.getParameter("search");
+String info=(String)request.getAttribute("info");
+String search=(String)request.getAttribute("search");
 int adUserCount=(Integer)request.getAttribute("adUserCount");
 %>
 <section>
@@ -86,11 +86,11 @@ int adUserCount=(Integer)request.getAttribute("adUserCount");
 		<option value="M_name">이름</option>
 		<option value="M_nick">닉네임</option>
 		</select>
-		<input type="text" name="search" placeholder="<%=search %>"> <input type="button" value="검색" onclick="fun3()"></li>
+		<input type="text" name="search"> <input type="button" value="검색" onclick="fun3()"></li>
 		</ul><br>
 	</form>
 	<div>
-	검색결과 : <b><%=adUserListPro.size() %></b>명 / 총 <%=adUserCount %>명
+	<%=info %>> <%=search %>	검색결과 : <b><%=adUserListPro.size() %></b>명 / 총 <%=adUserCount %>명
 	</div>
 	</div>
 <form name="ckDelete" action="AdUserDelete.ad" method="post">

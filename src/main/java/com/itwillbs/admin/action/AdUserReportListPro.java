@@ -21,11 +21,18 @@ public class AdUserReportListPro implements Action {
 		String info = request.getParameter("info");
 		String search = request.getParameter("search");
 		ArrayList<ReportDTO> adUserReportListPro=dao.adUserReportListPro(info, search);
-		
 		int count=dao.adUserReportCount();
+		
+		if(info.equals("R_id")) {
+			info="피신고자아이디";
+		}else {
+			info="신고자아이디";
+		}
 		
 		request.setAttribute("adUserReportListPro", adUserReportListPro);
 		request.setAttribute("adUserReportCount", count);
+		request.setAttribute("search", search);
+		request.setAttribute("info", info);
 		
 		ActionForward forward=new ActionForward();
 		forward.setPath("admin/adUserReportListPro.jsp");

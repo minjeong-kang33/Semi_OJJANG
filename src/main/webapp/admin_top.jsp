@@ -27,7 +27,7 @@
 						<li><a href="AdMain.me" class="active">홈</a></li>
 						<li class="submenu"><a>회원관리</a>
 							<ul>
-								<li><a href="AdUserList.ad">전체회원목록</a></li>
+								<li><a href="AdUserList.ad">일반회원목록</a></li>
 								<li><a href="AdUserReportList.ad">신고회원목록</a></li>
 								<li><a href="AdOutList.ad">탈퇴회원목록</a></li>
 							</ul></li>

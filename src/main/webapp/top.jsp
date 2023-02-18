@@ -71,7 +71,7 @@
                   <li class="submenu"><a href="#">고객센터</a>
                      <ul>
                         <li><a href="Introduce.buy">회사소개</a></li>
-                        <li><a href="#">QnA</a></li>
+                        <li><a href="javascript:void(window.open('https://itwillbs-team1.channel.io/support-bots/59647', '챗봇'))">QnA</a></li>
                      </ul>
                   </li>	
 				</ul>
@@ -89,7 +89,7 @@
 				<li class="submenu"><a href="#">고객센터</a>
                      <ul>
                         <li><a href="Introduce.buy">회사소개</a></li>
-                        <li><a href="#">QnA</a></li>
+                        <li><a href="javascript:void(window.open('https://itwillbs-team1.channel.io/support-bots/59647', '챗봇'))">QnA</a></li>
                      </ul>
                 </li>
                 </ul>

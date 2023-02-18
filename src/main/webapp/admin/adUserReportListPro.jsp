@@ -71,8 +71,8 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 
 ArrayList<ReportDTO> adUserReportListPro=(ArrayList<ReportDTO>)request.getAttribute("adUserReportListPro");
 
-String info=request.getParameter("info");
-String search=request.getParameter("search");
+String info=(String)request.getAttribute("info");
+String search=(String)request.getAttribute("search");
 int adUserReportCount=(Integer)request.getAttribute("adUserReportCount");
 %>
 <section>
@@ -86,11 +86,11 @@ int adUserReportCount=(Integer)request.getAttribute("adUserReportCount");
 		<option value="R_id">피신고자아이디</option>
 		<option value="M_id">신고자아이디</option>
 		</select>
-		<input type="text" name="search" placeholder="<%=search %>"> <input type="button" value="검색" onclick="fun3()"></li>
+		<input type="text" name="search""> <input type="button" value="검색" onclick="fun3()"></li>
 		</ul><br>
 	</form>
 		<div>
-		검색결과 : <b><%=adUserReportListPro.size() %></b>명 / 총 <%=adUserReportCount %>명
+		<%=info %>> <%=search %>	검색결과 : <b><%=adUserReportListPro.size() %></b>명 / 총 <%=adUserReportCount %>명
 		</div>
 	</div>
 <form name="ckDelete" action="AdUserReportDelete.ad" method="post">
