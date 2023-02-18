@@ -25,106 +25,8 @@ public class MypageDAO {
 		Connection con=ds.getConnection();
 		return con;
 	}
-	//=========================deal====================================
-	
-	//deal 테이블에 값 넣기(값이 들어가는지 확인해봐야하는데..) //승민
-//	public void insertDeal(SellDTO selldto, String M_id) {
-//		Connection con = null;
-//		PreparedStatement pstmt=null;
-//		ResultSet rs=null;
-//		
-//		try {
-//			con=getConnection();
-//			int D_num=1;
-//			String sql="select max(D_num) from deal";
-//			pstmt=con.prepareStatement(sql);
-//			rs=pstmt.executeQuery();
-//			if(rs.next()) {
-//				D_num=rs.getInt("max(D_num)")+1;
-//				
-//			}						
-//			sql="insert into deal(D_num,S_num,M_id,D_buy,D_date) values(?,?,?,?,?)";
-//			pstmt=con.prepareStatement(sql);
-//			pstmt.setInt(1,D_num);
-//			pstmt.setInt(2, selldto.getS_num());
-//			pstmt.setString(3, selldto.getM_id());
-//			pstmt.setString(4, M_id);			
-//			pstmt.setTimestamp(5,new Timestamp(System.currentTimeMillis()));
-//			pstmt.executeUpdate();	
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		} finally {
-//				if (pstmt != null) try {pstmt.close();} catch (Exception e2) {}
-//				if (con != null) try {con.close();} catch (Exception e2) {}
-//				if (rs != null) try {rs.close();} catch (Exception e2) {}
-//			}		
-//	}
-//	
-//	public ArrayList<MemberDTO> DealWantList(String M_id){
-//		ArrayList<MemberDTO> DealWantList=new ArrayList<MemberDTO>();
-//		Connection con =null;
-//		PreparedStatement pstmt=null;
-//		ResultSet rs=null;
-//		try {
-//			con=getConnection();
-//			String sql="select * from member where M_id=?";
-//			
-//			pstmt=con.prepareStatement(sql);
-//			pstmt.setString(1, M_id);
-//			
-//			rs=pstmt.executeQuery();	
-//
-//			while(rs.next()) {
-//				
-//				MemberDTO dto=new MemberDTO();
-//				dto.setM_id(rs.getString("M_id"));
-//				dto.setM_pw(rs.getString("M_pw"));
-//				dto.setM_name(rs.getString("M_name"));
-//				dto.setM_nick(rs.getString("M_nick"));
-//				dto.setM_gender(rs.getString("M_gender"));
-//				dto.setM_phone(rs.getString("M_phone"));
-//				dto.setM_address(rs.getString("M_address"));
-//				dto.setM_address2(rs.getString("M_address2"));
-//				dto.setM_email(rs.getString("M_email"));
-//				dto.setM_createdate(rs.getTimestamp("M_createdate"));
-//				dto.setM_play(rs.getString("M_play"));
-//				dto.setM_admin(rs.getString("M_admin"));
-//				dto.setM_Profile(rs.getString("M_Profile"));
-//			
-//				
-//				DealWantList.add(dto);
-//			}
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}finally {
-//			
-//			if(rs!=null) try { rs.close();} catch (Exception e2) {}
-//			if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
-//			if(con!=null) try { con.close();} catch (Exception e2) {}
-//		}
-//		return DealWantList;
-//	}
-//	
-//
-//	
-//	
-//	
-//	
-//	
-//	
-//	
-//	
-//	
-//	
-//	
-//	
-//	
-//	
-	
-	
-	
-	
-	
+
+
 	//판매내역1
 //	public ArrayList<SellDTO> sellHistory(String M_id) {
 //		ArrayList<SellDTO> sellHistory=new ArrayList<SellDTO>();
@@ -345,7 +247,7 @@ public class MypageDAO {
 //	}
 
 	
-	//likePro_getLike
+	//likePro_getLike(체크하는거)
 	public LikeDTO getLike(String M_id, int S_num) {
 		LikeDTO dto=null;
 		Connection con = null;
@@ -396,6 +298,51 @@ public class MypageDAO {
 			if(con!=null) try { con.close();} catch (Exception e2) {}
 		}
 	} //delete_like
+	
+	//좋아요 취소
+	public void cancelLike(int S_num, String M_id) {
+		Connection con =null;
+		PreparedStatement pstmt=null;
+		try {
+			con=getConnection();
+			String sql="delete from likes where S_num =? and M_id=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, S_num);
+			pstmt.setString(2, M_id);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
+			if(con!=null) try { con.close();} catch (Exception e2) {}
+		}
+	}
+		
+	
+	//minus //좋아요취소하면 S_like -1되는거
+	public void minusSlike(int S_num) {
+		Connection con = null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		try {
+			con=getConnection();
+			String sql="update sell set S_like=S_like-1 where S_num=?";
+			pstmt=con.prepareStatement(sql);			
+			pstmt.setInt(1,S_num);			
+			pstmt.executeUpdate();	
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {				
+				if (con != null) try {con.close();} catch (Exception e2) {}
+				if (pstmt != null) try {pstmt.close();} catch (Exception e2) {}
+				if (rs != null) try {rs.close();} catch (Exception e2) {}
+			}
+		
+	} //delete_like
+	
+	
+	
 	
 	
 	//===========================글 쓴 내역

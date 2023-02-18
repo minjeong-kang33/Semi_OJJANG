@@ -33,20 +33,30 @@ public class LikePro implements Action {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out=response.getWriter(); //프린트라이트에 쓰기 권한을 받아서 리스폰스 어쩌구에 담음
 			out.println("<script type='text/javascript'>");
-			out.println("alert('찜완료')");
+			out.println("alert('찜 완료')");
 			out.println("history.back()");
 			out.println("</script>");
 			out.close();		
 					
 		}else{
+			dao.cancelLike(S_num, M_id);
+			dao.minusSlike(S_num);
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out=response.getWriter(); //프린트라이트에 쓰기 권한을 받아서 리스폰스 어쩌구에 담음
 			out.println("<script type='text/javascript'>");
-			out.println("alert('이미 찜한 상품입니다.')");
+			out.println("alert('찜 취소')");
 			out.println("history.back()");
 			out.println("</script>");
 			out.close();	
-			forward=null;
+			forward=null;	
+			
+//			PrintWriter out=response.getWriter(); //프린트라이트에 쓰기 권한을 받아서 리스폰스 어쩌구에 담음
+//			out.println("<script type='text/javascript'>");
+//			out.println("alert('이미 찜한 상품입니다.')");
+//			out.println("history.back()");
+//			out.println("</script>");
+//			out.close();	
+//			forward=null;
 		 }
 
 		return forward;

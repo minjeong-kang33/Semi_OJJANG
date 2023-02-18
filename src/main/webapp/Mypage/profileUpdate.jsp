@@ -45,10 +45,16 @@ MemberDTO dto=(MemberDTO)request.getAttribute("dto");
 비밀번호 : <input type="password" name="M_pw"><br>
 이름 : <input type="text" name="M_name" value="<%=dto.getM_name()%>" readonly><br>
 닉네임: <input type="text" name="M_nick" value="<%=dto.getM_nick()%>"><br>
-전화번호: <input type="text" name="M_phone" value="<%=dto.getM_phone() %>" readonly><br>
-주소: <input type="text" name="M_address" value="<%=dto.getM_address() %>"> <br>
-상세주소:<input type="text" name="M_address2" value="<%=dto.getM_address2() %>"><br>
 이메일:<input type="text" name="M_email" value="<%=dto.getM_email() %>"><br>
+전화번호: <input type="text" name="M_phone" value="<%=dto.getM_phone() %>" readonly><br>
+우편번호:  <input type="text" id="sample6_postcode" placeholder="우편번호" onclick="DaumPostcode()" >
+<input type="button" value="우편번호 찾기" id="joinbutton"><br>
+<%-- 주소: <input type="text" name="M_address" value="<%=dto.getM_address() %>"> <br> --%>
+주소: <input type="text" name="M_address" id="M_address" placeholder="주소" value="<%=dto.getM_address() %>"><br>
+<%-- 상세주소:<input type="text" name="M_address2" value="<%=dto.getM_address2() %>"><br> --%>
+상세주소:<input type="text" name="M_address2" id="M_address2" placeholder="상세주소" value="<%=dto.getM_address2() %>"><br>
+<%@include file="../join/addressMap.jsp"%>
+
 
 <input type="submit" value="회원정보수정">
 </form>

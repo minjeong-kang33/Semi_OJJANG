@@ -93,15 +93,6 @@ public class DealDAO {
 		return dealList;
 	} //구매내역 
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	//deal 테이블!
 	
 	public void insertDeal(int S_num,String M_id, String M_ids) {
@@ -119,7 +110,7 @@ public class DealDAO {
 				D_num=rs.getInt("max(D_num)")+1;
 				
 			}						
-			sql="insert into deal(D_num,S_num,M_id,D_buy,D_play) values(?,?,?,?,'거래중')";
+			sql="insert into deal(D_num,S_num,M_id,D_buy,D_play) values(?,?,?,?,'거래대기')";
 			pstmt=con.prepareStatement(sql);
 //			SellDTO dto=new SellDTO();
 			pstmt.setInt(1,D_num);
@@ -136,6 +127,7 @@ public class DealDAO {
 			}		
 	}
 	
+	//구매자가 거래희망을 또 눌렀을 때 거르는 거
 	public DealDTO CheckDeal(String M_id, int S_num) {
 		DealDTO dto=null;
 		Connection con = null;
@@ -206,7 +198,7 @@ public class DealDAO {
 	
 	
 	
-//	거래완료 누르면 실행되는 거 <수정해야함>
+//	거래완료 누르면 실행되는 거
 	public void EndDeal(int S_num, String D_buy) {
 		Connection con = null;
 		PreparedStatement pstmt=null;
@@ -229,11 +221,56 @@ public class DealDAO {
 		
 	}
 	
+// 판매자가 판매완료 누르면 다른 신청자들은 deal테이블에서 삭제되게	
+	public void deleteDeal(int S_num) {
+		Connection con =null;
+		PreparedStatement pstmt=null;
+		try {
+			con=getConnection();
+			String sql="delete from deal where S_num=? and D_play='거래대기'";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, S_num);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
+			if(con!=null) try { con.close();} catch (Exception e2) {}
+		}
+	}
 	
-	
-	
-	
-	
+	//판매자가 판매완료를 눌렀을 때 거르는 거
+	public DealDTO CheckDeal2(String M_id, int S_num) {
+		DealDTO dto=null;
+		Connection con = null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con = getConnection();
+		     String sql="select * from deal where M_id=? and S_num=? and D_play='거래완료'";
+			 pstmt=con.prepareStatement(sql);
+			 pstmt.setString(1,M_id);
+			 pstmt.setInt(2,S_num);
+			 rs=pstmt.executeQuery(); 
+			 
+			 if(rs.next()){
+				dto=new DealDTO(); 
+				dto.setD_buy(rs.getString("M_id"));
+				dto.setS_num(rs.getInt("S_num"));
+			 }else{
+				 
+			 }
+		}catch (Exception e) {	
+			e.printStackTrace();
+		}
+		finally {
+			if(pstmt!=null)try {pstmt.close();} catch (Exception e2) {}
+			if(con!=null)try {con.close();} catch (Exception e2) {}
+			if(rs!=null)try {rs.close();} catch (Exception e2) {}
+
+		}
+		return dto;
+	}
 	
 	
 	
