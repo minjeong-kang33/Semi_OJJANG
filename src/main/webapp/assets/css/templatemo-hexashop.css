@@ -276,7 +276,7 @@ header
 
 .header-area .main-nav .nav {
   float: right;
-  margin-top: 50px;
+  margin-top: 30px;
   margin-right: 0px;
   background-color: transparent;
   -webkit-transition: all 0.3s ease 0s;
@@ -517,7 +517,7 @@ header
 }
 
 .header-area.header-sticky {
-  min-height: 80px;
+  min-height: 110px;
 }
 
 .header-area .nav {

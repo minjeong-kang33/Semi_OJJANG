@@ -33,14 +33,14 @@ public class MemberFrontController extends HttpServlet{
 		
 		
 		if(sPath.equals("/Main.me")) {
-	         action = new MainPro();
+	         action = new SearchPro();
 	         try {
 	            forward=action.execute(request, response);
 	         } catch (Exception e) {
 	            e.printStackTrace();
 	         }
 	         
-	      } //강민정
+	      } //신영환
 		
 		else if(sPath.equals("/MemberLoginForm.me")) {
 			forward=new ActionForward();
@@ -90,6 +90,59 @@ public class MemberFrontController extends HttpServlet{
 	         }
 			
 		}//노은주
+		else if(sPath.equals("/MemberidCheckForm.me")){
+			forward=new ActionForward();
+			forward.setPath("join/idCheck.jsp");
+			forward.setRedirect(false);
+			
+		}
+		else if(sPath.equals("/MemberidCheckPro.me")) {
+			action=new MemberidCheckPro();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}// 아이디중복확인 김광원
+		
+		else if(sPath.equals("/MembernikCheckForm.me")){
+			forward=new ActionForward();
+			forward.setPath("join/nickCheck.jsp");
+			forward.setRedirect(false);
+			
+		}
+		else if(sPath.equals("/MembernikCheckPro.me")) {
+			action=new MembernikCheckPro();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}// 닉네임 중복확인 김광원
+		
+		else if(sPath.equals("/MemberfindIDForm.me")){
+			forward=new ActionForward();
+			forward.setPath("login/findID.jsp");
+			forward.setRedirect(false);
+			
+		}
+		else if(sPath.equals("/MemberfindIDPro.me")) {
+			action=new MemberfindIDPro();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		else if(sPath.equals("/MembersendPw.me")) {
+			action=new MembersendPw();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}// 이메일보내기 김광원
+		
 		
 		/* 여기 위까지 if문 작성 */
 		

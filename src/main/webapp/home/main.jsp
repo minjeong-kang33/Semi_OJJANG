@@ -55,38 +55,62 @@ String M_id = (String)session.getAttribute("M_id");
 
  <!-- ***** 검색창 시작 ***** -->
  <!-- assets/css/main_searchbar.css: 검색창용 css -->
-<div class = searchbar>
-  <form class="search-container">
-    <input type="text" id="search-bar" placeholder="찾으시는 상품이 있나요?">
-    <a href="#"><img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></a>
-  </form>
-</div>
+ <form class="search-container" action="Main.me" method="post">
+    <input type="text" id="search-bar" placeholder="찾으시는 상품이 있나요?" value="${param.search}" name="search">
+    <input type="image" class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png" >
+    </form>
  <!-- ***** 검색창 끝 ***** -->
 
 
 <!-- ***** 최신 판매글 시작 ***** -->
-    <section class="section" id="men">
+<!-- 최신판매/검색글 -->
+<%
+request.setCharacterEncoding("UTF-8");
+String search =request.getParameter("search");
+if(search==null){
+	%>
+	<section class="section" id="men">
     	<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
-					<div class="section-heading">
+					<div class="section-heading" style="text-align: center;">
 						<h2>최신 판매글</h2>
 						<span>recent posts for sale</span>
 					</div>
 				</div>
 			</div>
 		</div>
-    	
+<%}else{ %>
+		 <section class="section" id="men">
+    	<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="section-heading" id="find" style="text-align: center;">
+						<h2>검색결과</h2>
+						<span>search result</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	<%
+}
+%> 	
         <div class="container">
 			<div class="row">
 				<div class="col-lg-4">
 					<div class="item">
 						<div class="down-content">
-  	<%
-	
-	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
-	ArrayList<SellDTO> sellList = (ArrayList<SellDTO>)request.getAttribute("sellList");
-	
+<%	
+SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy.MM.dd");
+ArrayList<SellDTO> sellList=(ArrayList<SellDTO>)request.getAttribute("sellList");
+
+int currentPage=(Integer)request.getAttribute("currentPage");
+int startPage=(Integer)request.getAttribute("startPage");
+int pageBlock=(Integer)request.getAttribute("pageBlock");
+int endPage=(Integer)request.getAttribute("endPage");
+int pageCount=(Integer)request.getAttribute("pageCount");
+
+
 	%>						
 <table>
 	<tr> <!--  테이블................1칸 -->
@@ -135,17 +159,50 @@ String M_id = (String)session.getAttribute("M_id");
 	%>	
 	
 </tr>
-</table>      
+</table>
+      
 <!-- 게시판 내용 여기 넘어가면 안됨.  -->							
 					</div>
 					</div>
 				</div>
 			</div>
-		</div>
-    </section>
+		</div> 
+	</section>
 <!-- ***** 최신 판매글 끝 ***** -->
+<!-- 페이징처리 -->
+<div style="text-align : center;">
+<%
+if(search!=null){
+%>
+	 
+<%	 
+if(currentPage > 1){
+%>
+	<a href="Main.me?pageNum=<%=currentPage-1%>&search=<%=search%>">[1페이지 이전]</a> 
+<%
+}
+%>
+<%
+for(int i=startPage;i<=endPage;i++){
+%>
+	<a href="Main.me?pageNum=<%=i%>&search=<%=search%>"><%=i %></a> 
+<%
+}
+%>
 
+<%
+if(currentPage < pageCount){
+	%>
+<a href="Main.me?pageNum=<%=currentPage+1%>&search=<%=search%>">[1페이지 다음]</a>
+<%
+}
+%>
+<%
+}
+%>
+</div>
 
+<!-- 페이징처리 끝 -->
     <!-- ***** 푸터 시작 ***** -->
    <jsp:include page="../bottom.jsp" />
     <!-- ***** 푸터 끝 ***** -->

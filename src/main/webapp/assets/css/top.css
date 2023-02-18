@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+.nav23 {
+	margin-left: 86.5%;
+	margin-top: 15px;
+	font-weight: 530;
+	font-size: 12px;
+	color: #434242;
+	font-family: 'Poppins', sans-serif;
+}
+
+#top_login #top_insert #top_logout {
+	color: /* #434242; */ #2A2A2A;
+	font-weight: 530;
+	margin-right: 5px;
+	font-family: 'Poppins', sans-serif;
+}
+
+#top_login{
+	margin-right: 10px;
+}
+
+#top_insert #top_logout {
+	margin-left: 10px;
+}

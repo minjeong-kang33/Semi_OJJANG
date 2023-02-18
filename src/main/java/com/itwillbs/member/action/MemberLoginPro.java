@@ -2,6 +2,7 @@ package com.itwillbs.member.action;
 
 import java.io.PrintWriter;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -19,6 +20,7 @@ public class MemberLoginPro implements Action{
 		request.setCharacterEncoding("utf-8");
 		String M_id = request.getParameter("M_id");
 		String M_pw = request.getParameter("M_pw");
+		String checkbox= request.getParameter("checkbox");
 		
 		MemberDAO dao = new MemberDAO();
 		MemberDTO dto = dao.M_userCheck(M_id, M_pw);
@@ -47,6 +49,13 @@ public class MemberLoginPro implements Action{
 			out.close();
 			forward = null;
 		}
+		Cookie cookie = new Cookie("M_id", M_id);// 일단 쿠키 생성
+		System.out.println(checkbox);
+		if (checkbox != null) { // 체크박스 체크여부에 따라 쿠키 저장 확인
+			cookie.setMaxAge(60*60*24*5);
+			response.addCookie(cookie);
+		} else {
+		}	
 		return forward;
 	}
 	

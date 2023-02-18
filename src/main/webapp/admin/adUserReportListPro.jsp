@@ -83,8 +83,8 @@ int adUserReportCount=(Integer)request.getAttribute("adUserReportCount");
 		<li>
 		<select name="info">
 		<option value="">선택</option>
-		<option value="M_id">신고자아이디</option>
 		<option value="R_id">피신고자아이디</option>
+		<option value="M_id">신고자아이디</option>
 		</select>
 		<input type="text" name="search" placeholder="<%=search %>"> <input type="button" value="검색" onclick="fun3()"></li>
 		</ul><br>
@@ -99,13 +99,14 @@ int adUserReportCount=(Integer)request.getAttribute("adUserReportCount");
 		<tr>
 		<th scope="col"><input type="checkbox" id="ckAll" name="ckAll" onclick="fun2()"></th>
 		<th scope="col">번호</th>
-		<th scope="col">신고사유</th>
-		<th scope="col">신고자아이디</th>
 		<th scope="col">피신고자아이디</th>
+		<th scope="col">신고사유</th>
 		<th scope="col">기타사유</th>
 		<th scope="col">카테고리</th>
 		<th scope="col">글번호</th>
 		<th scope="col">내용</th>
+		<th scope="col">신고자아이디</th>
+		<th scope="col">회원상태</th>
 	</tr>
 	</thead>
 	
@@ -116,13 +117,14 @@ for(int i=0;i<adUserReportListPro.size();i++){
 %>
 	<tr><td><input type="checkbox" id="ck" name="ck" value="<%=dto.getR_id() %>"></td>
 		<td><%=i+1 %></td>
-		<td><%=dto.getR_type() %></td>
-		<td><%=dto.getM_id() %></td>
 		<td><%=dto.getR_id() %></td>
+		<td><%=dto.getR_type() %></td>
 		<td><%=dto.getR_reason() %></td>
 		<td><%=dto.getR_category() %></td>
 		<td><%=dto.getR_writeNum() %></td>
-		<td><%=dto.getR_title() %></td></tr>
+		<td><%=dto.getR_title() %></td>
+		<td><%=dto.getM_id() %></td>
+		<td><%=dto.getR_play() %></td></tr>
 <%
 }
 %>

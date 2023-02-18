@@ -9,7 +9,7 @@
        if(M_id == null){
     	   session.setAttribute("messageType", "오류 메시지");
     	   session.setAttribute("messageContent", "현재 로그인이 되어있지 않습니다.");
-    	   response.sendRedirect("login/loginForm.jsp");
+    	   response.sendRedirect("../login/loginForm.jsp");
     	   return;
        }
     %>
@@ -20,7 +20,7 @@
 	<link rel="stylesheet" href="chat/cs/custom.css">
 	<title>옷장 톡</title>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script src="js/bootstrap.js"></script>
+	<script src="chat/js/bootstrap.js"></script>
 	<script type="text/javascript">
 	    function findFunction() {
 	    	var M_id = $('#findID').val();

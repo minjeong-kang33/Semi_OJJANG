@@ -45,6 +45,15 @@ public class BuyFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			} // 임호정
+			
+		}else if (sPath.equals("/AdBuyDetails.buy")) {
+			action = new AdBuyDetails();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			} // 강민정
+			
 		}else if (sPath.equals("/CommentAction.buy")) {
 			action = new CommentAction();
 			try {
@@ -112,7 +121,13 @@ public class BuyFrontController extends HttpServlet{
 					e.printStackTrace();
 				} // 강민정
 				
-			}
+			}else if (sPath.equals("/Introduce.buy")) {
+
+				forward = new ActionForward();
+				forward.setPath("buy/introduce.jsp");
+				forward.setRedirect(false);
+				
+			}// 임호정
 		
 		
 		

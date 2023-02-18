@@ -3,6 +3,7 @@
 
 .btn-naran{
 	text-align: right;
+	margin-top: 200px;
 }
 .btn btn-dark{
 	display :inline-block;
@@ -27,11 +28,6 @@
 	border-radius: 8px;
 }
 
-table{
-	border-collapse: separate;
-	border-spacing: 10px 10px;
-}
-
 .line{
 	
 	border-bottom: 1px solid #ccc;
@@ -40,4 +36,129 @@ table{
 .heartbtn{
 	border: 0;
 	background-color: white;
+}
+
+.location{
+	width: 20px;
+	height: 20px;
+	margin-right: 2px;
+}
+
+.eye{
+	width: 25px;
+	height: 25px;
+	margin-right: 10px;
+	border:0;
+}
+
+
+
+.item-box1{
+	width: 1000px;
+	height: 800px;
+	margin: 0 auto;
+}
+
+.item-img{
+	width: 500px;
+	height: 400px;
+	float:left;
+}
+
+.item-info{
+	width: 500px;
+	height: 400px;
+	float:right;
+}
+
+.item-detail{
+	width: 1000px;
+	height: 400px;
+	float:left;
+}
+
+.goodsImg{
+	width: 350px;
+	height: 350px;
+	border-radius: 8px;
+	margin: 25px 75px;
+}
+
+.item-info2{
+	width: 500px;
+	margin-top: 20px;
+	height : 180px;
+}
+
+.info-category{
+	 font-weight:600; 
+	 font-size: 20px;
+	 width: 500px;
+	 float:left;  
+	 
+}
+
+.info-like{
+	margin-top :5px;
+	float: right;
+}
+
+.info-title{
+	 font-weight:600;
+	 font-size: 30px;
+	 width: 500px;
+}
+
+.info-price{
+	 font-weight:600;
+	 font-size: 23px;
+	 width: 100%;
+}
+
+
+.info-eye{
+	width: 100px;
+	margin-top:10px;
+}
+
+.info-send{
+	width: 400px;
+	float: left;
+}
+
+.info-location{
+	margin-top:20px;
+	}
+	
+
+
+.item-info3{
+	width: 140px;
+	height : 200px;
+	float:left;
+	margin-top:10px;
+}
+
+.item-info4{
+	width:360px;
+	height : 200px;
+	float:right;	
+	margin-top:10px;
+	padding-left: 15px;
+}
+
+.item-detail-text{
+	font-size: 23px;
+    font-weight:600; 
+}
+
+.S-text{
+	margin-top: 30px;
+	margin-left: 30px;
+	font-size: 40px;
+}
+
+.textBox{
+	font-size: 40px;
+	margin-left: 20px;
 }
