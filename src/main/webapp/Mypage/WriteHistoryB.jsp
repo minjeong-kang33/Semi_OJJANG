@@ -45,7 +45,7 @@ ArrayList<BuyDTO> buyList=(ArrayList<BuyDTO>)request.getAttribute("buyList");
 %>	
 <section>
 <table border="1">
-<tr><td>판매글제목</td><td>판매가격</td><td>내용</td><td>카테고리</td><td>좋아요 수</td><td>업로드 날짜</td></tr>
+<tr><td>판매글제목</td><td>판매가격</td><td>내용</td><td>카테고리</td><td>좋아요 수</td></tr>
 <%
 for(int i=0;i<buyList.size();i++){
 	BuyDTO dto=buyList.get(i);	
@@ -64,6 +64,10 @@ for(int i=0;i<buyList.size();i++){
 }
 %>
 	</table>
+	
+	<!-- ***** 작성글 조회(구매) 끝 ***** -->
+	
+<!-- 	페이징 시작 -->
 <%
 if(currentPage > 1){
 	%>
@@ -83,8 +87,8 @@ if(currentPage < pageCount){
 }
 
 %>
+<!-- 페이징 끝 -->
 </section>
-	<!-- ***** 작성글 조회(구매) 끝 ***** -->
 	       
              </div>
         </div>

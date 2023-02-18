@@ -53,7 +53,7 @@
                         <li><a href="Profile.moi">프로필</a></li>
                         <li><a href="Likelist.moi">찜목록</a></li>
                         <li><a href="Deallist.moi">거래내역</a></li>
-                       <li><a href="Writehistory.moi">작성글 내역</a></li>
+                       <li><a href="Writehistory.moi">작성글</a></li>
                         <li><a href="#">거래후기</a></li>
                      </ul></li>
                      

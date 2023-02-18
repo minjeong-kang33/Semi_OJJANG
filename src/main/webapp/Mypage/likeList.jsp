@@ -66,7 +66,7 @@ ArrayList<SellDTO> likeList=(ArrayList<SellDTO>)request.getAttribute("likeList")
 						<span>like list</span>
 					</div>
 					
-					<!--  리뷰작성 입력상자 시작 -->
+					<!--  찜리스트 시작 -->
 						<table>
 							<%
 							
@@ -75,7 +75,7 @@ ArrayList<SellDTO> likeList=(ArrayList<SellDTO>)request.getAttribute("likeList")
 								
 							%>
 							<tr>
-								<td rowspan="4" ><img src="img/sell/<%=dto.getS_img() %>" class="RE_img_st"></td>
+								<td rowspan="4" ><img src="img/sell/<%=dto.getS_img() %>" class="Like_img_st"></td>
 															<tr>	
 								<td colspan="2"> 제목 : <a href="SellDetails.sell?S_num=<%=dto.getS_num() %>">
 														<%=dto.getS_title() %></a> </td>
@@ -102,13 +102,15 @@ ArrayList<SellDTO> likeList=(ArrayList<SellDTO>)request.getAttribute("likeList")
 						</table>
 				</div>
 				
+				<!-- 찜 리스트 끝 -->
+				
 				<!--  페이지 번호  -->
 				<%
 				
 				
 				for(int i=startPage;i<=endPage;i++){
 					%>
-					<a href="ReviewList.rev?pageNum=<%=i%>"><%=i%></a>
+					<a href="LikePro.like?pageNum=<%=i%>"><%=i%></a>
 					<%
 				}
 				

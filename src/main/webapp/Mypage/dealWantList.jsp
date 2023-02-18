@@ -30,7 +30,7 @@
         <div class="container">
              <div class="inner-content2">
             
- <!-- ***** 판매내역조회***** -->
+<!--  ***** 구매 요청자 조회 시작***** -->
     
     <h3>거래 희망자</h3>
 <%
@@ -72,7 +72,7 @@ for(int i=0;i<DealWantList.size();i++){
 
 </section>
 </form>
-	<!-- ***** 판매내역조회 끝 ***** -->
+<!--  ***** 구매 요청자 조회 끝***** -->
 	       
              </div>
         </div>

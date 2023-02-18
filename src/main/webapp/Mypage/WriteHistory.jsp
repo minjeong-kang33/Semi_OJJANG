@@ -28,9 +28,9 @@
         <div class="container">
              <div class="inner-content2">
             
- <!-- ***** 판매내역조회***** -->
+ <!-- ***** 작성글 조회 시작***** -->
     
-    <h3>구매글내역조회</h3> <a href="WritehistoryB.moi">더보기</a>
+    <h3>구매글조회</h3> <a href="WritehistoryB.moi">더보기</a>
 <%
 String M_id=(String)session.getAttribute("M_id");
 
@@ -107,7 +107,7 @@ for(int i=0;i<WriteHistoryS2.size();i++){
 </section>
 	
 	
-	<!-- ***** 판매내역조회 끝 ***** -->
+ <!-- ***** 작성글 조회 끝***** -->
 	       
              </div>
         </div>
