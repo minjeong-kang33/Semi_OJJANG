@@ -372,7 +372,7 @@ public class MypageDAO {
 		ResultSet rs=null;
 		try {
 			con=getConnection();
-			String sql= "select s.S_num, s.M_id, s.S_category, s.S_title, s.S_text, s.S_price from sell s join likes l on s.S_num=l.S_num where l.M_id=?  order by S_num desc limit ?,?"; 
+			String sql= "select s.S_num, s.S_img, s.M_id, s.S_category, s.S_title, s.S_text, s.S_price from sell s join likes l on s.S_num=l.S_num where l.M_id=?  order by S_num desc limit ?,?"; 
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, M_id);
 			pstmt.setInt(2, startRow-1);
@@ -380,6 +380,7 @@ public class MypageDAO {
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				SellDTO dto=new SellDTO();
+				dto.setS_img(rs.getString("S_img"));
 				dto.setS_num(rs.getInt("S_num"));
 				dto.setM_id(rs.getString("M_id"));
 				dto.setS_category(rs.getString("S_category"));
