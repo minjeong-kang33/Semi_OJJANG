@@ -47,8 +47,8 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 
 ArrayList<MemberDTO> adOutListPro=(ArrayList<MemberDTO>)request.getAttribute("adOutListPro");
 
-String info=request.getParameter("info");
-String search=request.getParameter("search");
+String info=(String)request.getAttribute("info");
+String search=(String)request.getAttribute("search");
 int adOutCount=(Integer)request.getAttribute("adOutCount");
 %>
 <section>
@@ -63,11 +63,11 @@ int adOutCount=(Integer)request.getAttribute("adOutCount");
 		<option value="M_name">이름</option>
 		<option value="M_nick">닉네임</option>
 		</select>
-		<input type="text" name="search" placeholder="<%=search %>"> <input type="button" value="검색" onclick="fun3()"></li>
+		<input type="text" name="search"> <input type="button" value="검색" onclick="fun3()"></li>
 		</ul><br>
 	</form>
 		<div>
-		검색결과 : <b><%=adOutListPro.size() %></b>명 / 총 <%=adOutCount %>명
+		<%=info %> <%=search %>	검색결과 : <b><%=adOutListPro.size() %></b>명 / 총 <%=adOutCount %>명
 		</div>
 	</div>
 <table border="1">

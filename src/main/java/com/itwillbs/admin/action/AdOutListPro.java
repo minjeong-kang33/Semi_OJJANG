@@ -21,11 +21,20 @@ public class AdOutListPro implements Action {
 		String info = request.getParameter("info");
 		String search = request.getParameter("search");
 		ArrayList<MemberDTO> adOutListPro=dao.adOutListPro(info, search);
-		
 		int count=dao.adOutCount();
+		
+		if(info.equals("M_id")) {
+			info="아이디";
+		}else if(info.equals("M_name")) {
+			info="이름";
+		}else {
+			info="닉네임";
+		}
 		
 		request.setAttribute("adOutListPro", adOutListPro);
 		request.setAttribute("adOutCount", count);
+		request.setAttribute("search", search);
+		request.setAttribute("info", info);
 		
 		ActionForward forward=new ActionForward();
 		forward.setPath("admin/adOutListPro.jsp");
