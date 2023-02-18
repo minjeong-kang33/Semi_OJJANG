@@ -102,12 +102,14 @@ function fun1(M_id, S_num, R_category, S_title) {
 							
 							<!-- 조회수 -->
 							<span class="info-eye"><img src="assets/images/eye.png" class="eye"><%=dto.getS_view() %></span>
-							
+						<div>
+						
+						<div>
 							<!-- 판매자~거래일자 구분항목(왼쪽) -->
 							<div class="item-info3"> 
 								<div style="margin: auto 0;">
 								<br>
-								<span> 판매자 </span> <br><br>
+								<span > 판매자 </span> <br><br>
 								<span> 작성일자 </span> <br><br>
 								<span> <% if(dto.getS_send2()!=null){%> <span> 거래 선호 지역 <%} else { %>　<%}%></span> <br><br>
 								</div>
@@ -127,7 +129,31 @@ function fun1(M_id, S_num, R_category, S_title) {
 										<img src="sell/location_icon.png" class="location"><%= dto.getS_sido1()%> <%= dto.getS_gugun1()%><%} else { %>　<%}%></span> <br><br>
 								</div>
 							</div>
-							 
+						</div>
+							<div class="requestBox">
+											<%
+								if(M_id != null){
+									//본인에게는 거래요청하기 안보임
+									if(!M_id.equals(dto.getM_id())){
+								%>
+							<input type="button" class="requestBtn" value="거래요청하기" style="margin-bottom: 40px;">
+								<%
+									}
+								}
+								 %>	
+								 
+									<%
+								if (M_id != null) {
+									// 세션값=id와 글쓴이가 일치하는경우 거래요청 내역보기 버튼 생성
+									if (M_id.equals(dto.getM_id())) {
+								%>
+							<input type="button" class="requestBtn" value="구매희망자 보기" style="margin-bottom: 40px;">
+								<%
+									}
+								}
+								 %>	
+							</div>
+						 </div>	 
 						</div>
 					</div>
 					
@@ -135,7 +161,7 @@ function fun1(M_id, S_num, R_category, S_title) {
 					
 					<!-- 판매 상세글 -->
 					<div class="item-detail" >
-						<div style="margin-left: 80px;">
+						<div style="margin-left: 50px; float: left; width: 950px;">
 							<hr> <!-- 가로줄 -->
 							  <div class="item-detail-text"> 제품 상세 정보 </div> <br>
 						  	<div class="textBox"><%=dto.getS_text()%></div> 
@@ -146,7 +172,7 @@ function fun1(M_id, S_num, R_category, S_title) {
 					// 세션값=id와 글쓴이가 일치해야만 글수정, 글삭제 표시
 					if (M_id.equals(dto.getM_id())) {
 				%>
-				<input type="button" class="btn btn-dark" value="글수정"
+				<input type="button" class="btn btn-dark" value="글수정" style="margin-right: 10px;"
 					onclick="location.href='SellEditForm.sell?S_num=<%=dto.getS_num()%>'">
 				<input type="button" class="btn btn-dark" value="글삭제"
 					onclick="location.href='SellDelete.sell?S_num=<%=dto.getS_num()%>'">

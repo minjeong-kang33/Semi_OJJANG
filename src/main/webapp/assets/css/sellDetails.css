@@ -67,21 +67,21 @@
 
 .item-info{
 	width: 500px;
-	height: 400px;
+	height: 450px;
 	float:right;
 }
 
 .item-detail{
 	width: 1000px;
-	height: 400px;
+	height: 350px;
 	float:left;
 }
 
 .goodsImg{
-	width: 350px;
-	height: 350px;
+	width: 400px;
+	height: 400px;
 	border-radius: 8px;
-	margin: 25px 75px;
+	margin: 25px 55px;
 }
 
 .item-info2{
@@ -134,14 +134,14 @@
 
 .item-info3{
 	width: 140px;
-	height : 200px;
+	height : 170px;
 	float:left;
 	margin-top:10px;
 }
 
 .item-info4{
 	width:360px;
-	height : 200px;
+	height : 170px;
 	float:right;	
 	margin-top:10px;
 	padding-left: 15px;
@@ -162,3 +162,16 @@
 	font-size: 40px;
 	margin-left: 20px;
 }
+
+
+.requestBtn{
+	width: 200px;
+	height: 55px;
+	background-color: #4B3400;
+	margin-bottom: 100px;
+	border-radius: 8px;
+	border: none;
+	color: white;
+}
+
+
