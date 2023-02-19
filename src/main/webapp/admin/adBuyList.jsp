@@ -12,9 +12,12 @@
     <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
     <link rel="stylesheet" href="assets/css/templatemo-hexashop.css">
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
-    <link rel="stylesheet" href="assets/css/lightbox.css"> 
+    <link rel="stylesheet" href="assets/css/lightbox.css">
+    <link href="assets/css/admin.css" rel="stylesheet" type="text/css">
 <meta charset="UTF-8">
 </head>
+
+    <!-- ***** 스크립트 ***** -->
 <script>
 function fun1() {
 	let check = false;
@@ -39,88 +42,126 @@ function fun2() {
 	}
 }
 </script>
+    <!-- ***** 스크립트 끝 ***** -->
+    
 <body>
+	<!-- ***** 로딩 일단 지금은 비어있음***** -->
+	<div id="preloader">
+		<div class="jumper">
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+	
     <!-- ***** 헤더 ***** -->
   <jsp:include page="../admin_top.jsp" />
     <!-- ***** 헤더 끝 ***** -->
     
 	<!-- ***** 구매글목록조회 ***** -->
-    <div class="page-heading about-page-heading" id="top">
-        <div class="container">
-             <div class="inner-content2">
-             
-<h3>구매글목록조회</h3>
-<%
-BuyDTO dto=new BuyDTO();
-SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
+	<%
+	BuyDTO dto=new BuyDTO();
+	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
 
-ArrayList<BuyDTO> adBuyList=(ArrayList<BuyDTO>)request.getAttribute("adBuyList");
+	ArrayList<BuyDTO> adBuyList=(ArrayList<BuyDTO>)request.getAttribute("adBuyList");
 
-int currentPage=(Integer)request.getAttribute("currentPage");
-int startPage=(Integer)request.getAttribute("startPage");
-int pageBlock=(Integer)request.getAttribute("pageBlock");
-int endPage=(Integer)request.getAttribute("endPage");
-int pageCount=(Integer)request.getAttribute("pageCount");
-int adBuyCount=(Integer)request.getAttribute("adBuyCount");
-%>
-<section>
-<div class="container">
-	<div>
-	총 게시글 <b><%=adBuyCount %></b>개
+	int currentPage=(Integer)request.getAttribute("currentPage");
+	int startPage=(Integer)request.getAttribute("startPage");
+	int pageBlock=(Integer)request.getAttribute("pageBlock");
+	int endPage=(Integer)request.getAttribute("endPage");
+	int pageCount=(Integer)request.getAttribute("pageCount");
+	int adBuyCount=(Integer)request.getAttribute("adBuyCount");
+	%>
+	
+<section class="section" id="products">
+
+		<!-- 게시판 제목  -->
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="section-heading">
+						<h3>구매글 목록 조회</h3>
+						<span></span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	<div class="container">
+	
+	<div class="ad-count">
+		총 게시글 <b><%=adBuyCount %></b>개
 	</div>
-<form name="ckDelete" action="AdBuyDelete.ad" method="post">
-<table border="1">
-<tr><td><input type="checkbox" id="ckAll" name="ckAll" onclick="fun2()"></td><td>구매번호</td><td>카테고리</td><td>아이디</td><td>제목</td><td>날짜</td></tr>
-<%
-for(int i=0;i<adBuyList.size();i++){
-	dto=adBuyList.get(i);
-%>
-	<tr><td><input type="checkbox" id="ck" name="ck" value="<%=dto.getB_num() %>"></td>
-		<td><%=dto.getB_num() %></td>
-		<td><%=dto.getB_category() %></td>
-		<td><%=dto.getM_id() %></td>
-		<td><a href="AdBuyDetails.buy?B_num=<%=dto.getB_num() %>"><%=dto.getB_title() %></a></td>
-		<td><%=dateFormat.format(dto.getB_time()) %></td></tr>
-<%
-}
-%>
-</table>
-<%
-if(startPage > pageBlock){
-%>
-<a href="AdBuyDelete.ad?pageNum=<%=startPage-pageBlock%>">[10페이지 이전]</a>
-<%
-}
-if(currentPage>1) {
-	%>
-	<a href="AdBuyDelete.ad?pageNum=<%=currentPage-1 %>">[1페이지 이전]</a>
+		
+		<form name="ckDelete" action="AdBuyDelete.ad" method="post">
+			<table border="1">
+				<thead>
+					<tr>
+						<th scope="col"><input type="checkbox" id="ckAll" name="ckAll" onclick="fun2()"></th>
+						<th scope="col">구매번호</th>
+						<th scope="col">카테고리</th>
+						<th scope="col">아이디</th>
+						<th scope="col">제목</th>
+						<th scope="col">날짜</th>
+					</tr>
+				</thead>
+				
+				<tbody>
+					<%
+						for(int i=0;i<adBuyList.size();i++){
+							dto=adBuyList.get(i);
+					%>
+					<tr>
+						<td><input type="checkbox" id="ck" name="ck" value="<%=dto.getB_num() %>"></td>
+						<td><%=dto.getB_num() %></td>
+						<td><%=dto.getB_category() %></td>
+						<td><%=dto.getM_id() %></td>
+						<td><a href="AdBuyDetails.buy?B_num=<%=dto.getB_num() %>"><%=dto.getB_title() %></a></td>
+						<td><%=dateFormat.format(dto.getB_time()) %></td>
+					</tr>
+					<%
+					}
+					%>
+				</tbody>
+			</table>
+			
+	<!-- *** 페이징 *** -->
 	<%
-}
-for(int i=startPage;i<=endPage;i++){
-%>
-<a href="AdBuyDelete.ad?pageNum=<%=i %>"><%=i %></a>
-<%
-}
-if(currentPage<pageCount) {
+	if(startPage > pageBlock){
+		%>
+		<a href="AdBuyDelete.ad?pageNum=<%=startPage-pageBlock%>">[10페이지 이전]</a>
+		<%
+		}
+	if(currentPage>1) {
+		%>
+		<a href="AdBuyDelete.ad?pageNum=<%=currentPage-1 %>">[1페이지 이전]</a>
+		<%
+		}
+	for(int i=startPage;i<=endPage;i++){
+		%>
+		<a href="AdBuyDelete.ad?pageNum=<%=i %>"><%=i %></a>
+		<%
+		}
+	if(currentPage<pageCount) {
+		%>
+		<a href="AdBuyDelete.ad?pageNum=<%=currentPage+1 %>">[1페이지 다음]</a>
+		<%
+		}
+	if(endPage < pageCount){
+		%>
+		<a href="AdBuyDelete.ad?pageNum=<%=startPage+pageBlock%>">[10페이지 다음]</a>
+		<%
+		}
 	%>
-	<a href="AdBuyDelete.ad?pageNum=<%=currentPage+1 %>">[1페이지 다음]</a>
-	<%
-}
-if(endPage < pageCount){
-%>
-<a href="AdBuyDelete.ad?pageNum=<%=startPage+pageBlock%>">[10페이지 다음]</a>
-<%
-}
-%>
-<div>
-게시글 처리 <input type="button" value="삭제" onclick="fun1()">
-</div>
-</form>
-</div>
+	<!-- *** 페이징 끝 *** -->	
+
+	<div class="ad-right">
+		게시글 처리 <input type="button" value="삭제" onclick="fun1()">
+	</div>
+	
+		</form>
+	</div>
 </section>
-             </div>
-        </div>
-    </div>
     <!-- ***** 구매글목록조회 끝 ***** -->
     
     <!-- ***** 푸터 시작 ***** -->
