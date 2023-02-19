@@ -28,9 +28,9 @@
         <div class="container">
              <div class="inner-content2">
             
- <!-- ***** 판매내역조회***** -->
+ <!-- ***** 작성글 조회 시작***** -->
     
-    <h3>구매글내역조회</h3> <a href="WritehistoryB.moi">더보기</a>
+    <h3>구매글</h3> <a href="WritehistoryB.moi">더보기</a>
 <%
 String M_id=(String)session.getAttribute("M_id");
 
@@ -62,7 +62,6 @@ for(int i=0;i<WriteHistoryB2.size();i++){
 		<td><%=dto.getB_category() %></td>
 		<td><%=dto.getB_img() %>
 		<td><%=dto.getB_view() %>	
-<%-- 		<td><%=dateFormat.format(dto.getB_time()) %></td> --%>
 	</tr>
 
 <%
@@ -71,7 +70,7 @@ for(int i=0;i<WriteHistoryB2.size();i++){
 	</table>
 	
 </section>
-	    <h3>판매글조회</h3> <a href="WritehistoryS.moi">더보기</a>
+	    <h3>판매글</h3> <a href="WritehistoryS.moi">더보기</a>
 <%
 
 ArrayList<SellDTO> WriteHistoryS2=dao.WriteHistoryS2(M_id);
@@ -107,7 +106,7 @@ for(int i=0;i<WriteHistoryS2.size();i++){
 </section>
 	
 	
-	<!-- ***** 판매내역조회 끝 ***** -->
+ <!-- ***** 작성글 조회 끝***** -->
 	       
              </div>
         </div>
