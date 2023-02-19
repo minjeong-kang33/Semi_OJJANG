@@ -12,9 +12,12 @@
     <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
     <link rel="stylesheet" href="assets/css/templatemo-hexashop.css">
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
-    <link rel="stylesheet" href="assets/css/lightbox.css"> 
+    <link rel="stylesheet" href="assets/css/lightbox.css">
+    <link href="assets/css/admin.css" rel="stylesheet" type="text/css"> 
 <meta charset="UTF-8">
 </head>
+
+    <!-- ***** 스크립트 ***** -->
 <script>
 function fun3() {
 	if(document.scfr.info.value=="") {
@@ -30,49 +33,70 @@ function fun3() {
 		document.scfr.submit();
 }
 </script>
+    <!-- ***** 스크립트 끝 ***** -->
+    
 <body>
     <!-- ***** 헤더 ***** -->
   <jsp:include page="../admin_top.jsp" />
     <!-- ***** 헤더 끝 ***** -->
     
 	<!-- ***** 탈퇴회원목록조회 ***** -->
-    <div class="page-heading about-page-heading" id="top">
-        <div class="container">
-             <div class="inner-content2">
-             
-<h3>탈퇴회원목록조회</h3>
-<%
-MemberDTO dto=new MemberDTO();
-SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
+	<%
+	MemberDTO dto=new MemberDTO();
+	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 
-ArrayList<MemberDTO> adOutList=(ArrayList<MemberDTO>)request.getAttribute("adOutList");
+	ArrayList<MemberDTO> adOutList=(ArrayList<MemberDTO>)request.getAttribute("adOutList");
 
-int currentPage=(Integer)request.getAttribute("currentPage");
-int startPage=(Integer)request.getAttribute("startPage");
-int pageBlock=(Integer)request.getAttribute("pageBlock");
-int endPage=(Integer)request.getAttribute("endPage");
-int pageCount=(Integer)request.getAttribute("pageCount");
-int adOutCount=(Integer)request.getAttribute("adOutCount");
-%>
-<section>
-<div class="container">
-	<div>
-	<form action="AdOutListPro.ad" method="post" name="scfr">
-		<ul>
-		<li>
-		<select name="info">
-		<option value="">선택</option>
-		<option value="M_id">아이디</option>
-		<option value="M_name">이름</option>
-		<option value="M_nick">닉네임</option>
-		</select>
-		<input type="text" name="search"> <input type="button" value="검색" onclick="fun3()"></li>
-		</ul><br>
-	</form>
+	int currentPage=(Integer)request.getAttribute("currentPage");
+	int startPage=(Integer)request.getAttribute("startPage");
+	int pageBlock=(Integer)request.getAttribute("pageBlock");
+	int endPage=(Integer)request.getAttribute("endPage");
+	int pageCount=(Integer)request.getAttribute("pageCount");
+	int adOutCount=(Integer)request.getAttribute("adOutCount");
+	%>
+	
+<section class="section" id="products">
+
+		<!-- 게시판 제목  -->
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="section-heading">
+						<h3>탈퇴회원목록조회</h3>
+						<span>User List</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	<div class="container">
+		
+	<div class="col-lg-12">
+		<div class="ad-divsearch">
+		<div class="ad-right">
+			<form action="AdOutListPro.ad" method="post" name="scfr">
+				<div class="ad-search">
+					<ul class="select-list">
+					<li>
+						<select class="select-search" name="info">
+							<option value="">선택</option>
+							<option value="M_id">아이디</option>
+							<option value="M_name">이름</option>
+							<option value="M_nick">닉네임</option>
+						</select>
+						<input class="input-search" type="text" name="search">
+						<input class="button-search" type="button" value="검색" onclick="fun3()">
+					</li></ul><br>
+				</div>
+			</form>
+		</div>
+		</div>
 	</div>
-		<div>
+	
+	<div class="ad-count">
 		총 멤버 <b><%=adOutCount %></b>명
 		</div>
+		
 <table border="1">
 	<thead>
 		<tr>
@@ -101,29 +125,39 @@ for(int i=0;i<adOutList.size();i++){
 %>
 	</tbody>
 </table>
-<%
 
-for(int i=startPage;i<=endPage;i++){
-if(startPage > pageBlock){
-%>
-<a href="adOutList.jsp?pageNum=<%=startPage-pageBlock%>">[10페이지 이전]</a>
-<%
-}
-%>
-<a href="adOutList.jsp?pageNum=<%=i %>"><%=i %></a>
-<%
-}
-if(endPage < pageCount){
-%>
-<a href="adOutList.jsp?pageNum=<%=startPage+pageBlock%>">[10페이지 다음]</a>
-<%
-}
-%>
+	<!-- *** 페이징 *** -->
+	<%
+	if(startPage > pageBlock){
+		%>
+		<a href="AdOutList.ad?pageNum=<%=startPage-pageBlock%>">[10페이지 이전]</a>
+		<%
+		}
+	if(currentPage>1) {
+		%>
+		<a href="AdOutList.ad?pageNum=<%=currentPage-1 %>">[1페이지 이전]</a>
+		<%
+		}
+	for(int i=startPage;i<=endPage;i++){
+		%>
+		<a href="AdOutList.ad?pageNum=<%=i %>"><%=i %></a>
+		<%
+		}
+	if(currentPage<pageCount) {
+		%>
+		<a href="AdOutList.ad?pageNum=<%=currentPage+1 %>">[1페이지 다음]</a>
+		<%
+		}
+	if(endPage < pageCount){
+		%>
+		<a href="AdOutList.ad?pageNum=<%=startPage+pageBlock%>">[10페이지 다음]</a>
+		<%
+	}
+	%>
+	<!-- *** 페이징 끝 *** -->
+	
 </div>
 </section>
-             </div>
-        </div>
-    </div>
     <!-- ***** 탈퇴회원목록조회 끝 ***** -->
     
     <!-- ***** 푸터 시작 ***** -->

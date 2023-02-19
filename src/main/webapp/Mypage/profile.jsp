@@ -62,37 +62,14 @@ MemberDTO dto=(MemberDTO)request.getAttribute("dto");
     				<li><label>주소</label> <input type="text" name="M_address" id="M_address" value="<%= dto.getM_address()+" "+dto.getM_address2()%>"></li>
     			</ul>
     	</fieldset>
-    	<fieldset>    	
-    		<button id="profileupdate-btn" onclick="location.href='ProfileUpdateForm.moi'">개인정보 변경</button>
+    	 </form>
+       <fieldset>
+    	<button id="profileupdate-btn" onclick="location.href='ProfileUpdateForm.moi'">개인정보 변경</button>
 			<button id="pwupdate-btn" onclick="location.href='PwUpdateForm.moi'">비밀번호 변경</button>
 			<button id="withdraw-btn" onclick="location.href='MemberwithdrawalForm.me'">회원탈퇴</button>
     	</fieldset>
-    </form>
-    	
-<%-- <div class="page-heading about-page-heading" id="top">
-     <div class="container">
-         <div class="inner-content2"> 
-         
-    <section>
-
-
-아이디: <%=dto.getM_id() %><br>
-이름: <%=dto.getM_name() %><br>
-닉네임: <%=dto.getM_nick() %><br>
-이메일: <%=dto.getM_email() %><br>
-주소: <%=dto.getM_address() %><br>
-상세주소: <%=dto.getM_address2() %><br>
-번호: <%=dto.getM_phone() %><br>
-성별: <%=dto.getM_gender() %><br>
-
-<button onclick="location.href='ProfileUpdateForm.moi'">프로필 수정</button>
-<button onclick="location.href='PwUpdateForm.moi'">비밀번호 수정</button>
-
-</section>
-
-             </div>
-        </div>
-    </div> --%>
+ 
+    
 	<!-- ***** 회원정보조회 끝 ***** -->
      <!-- ***** 푸터 시작 ***** -->
    <jsp:include page="../bottom.jsp" />

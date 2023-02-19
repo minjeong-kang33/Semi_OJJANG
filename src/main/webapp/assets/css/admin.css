@@ -1,0 +1,52 @@
+@charset "UTF-8";
+h3 {
+	margin-top: 180px;
+}
+.down-content{
+	margin-top: 20px;
+}
+.page-title{
+	margin-top: 180px;
+}
+.container {
+  width: 1100px;
+  margin: 0 auto;
+}
+.ad-right {
+	float: right;
+}
+.ad-divsearch {
+	width: 100%;
+}
+.ad-search {
+	height: 28px;
+	width: 350px;
+	border: 1px solid #ABABAB;
+	background: #ffffff;
+	clear: right;
+}
+.input-search {
+	font-size: 14px;
+	width: 200px;
+	padding: 2px 8px;
+	border: 0px;
+	outline: none;
+	float: left;
+}
+.button-search {
+	width: 50px;
+	height: 100%;
+	border: 0px;
+	background: #ABABAB;
+	outline: none;
+	float: right;
+	color: #ffffff;
+}
+.select-search {
+	float: left;
+	position: relative;
+	width: 90px;
+}
+.ad-count {
+	clear: right;
+}
