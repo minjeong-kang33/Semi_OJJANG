@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="assets/css/templatemo-hexashop.css">
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
     <link rel="stylesheet" href="assets/css/lightbox.css"> 
+    <link href="assets/css/buy.css" rel="stylesheet" type="text/css">
 <meta charset="UTF-8">
 <title>중고 의류거래: 옺장</title>
 </head>
@@ -25,13 +26,10 @@
   <jsp:include page="../top.jsp" />
     <!-- ***** 헤더 끝 ***** -->
     
-    <div class="page-heading about-page-heading" id="top">
-        <div class="container">
-             <div class="inner-content2">
+
             
  <!-- ***** 작성글 조회(판매) 시작 ***** -->
     
-    <h3>판매글 조회</h3>
 <%
 String M_id=(String)session.getAttribute("M_id");
 SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy.MM.dd");
@@ -45,56 +43,88 @@ int pageCount=(Integer)request.getAttribute("pageCount");
 ArrayList<SellDTO> sellList=(ArrayList<SellDTO>)request.getAttribute("sellList");
 
 %>	
-<section>
-<table border="1">
-<tr><td>제목</td><td>가격</td><td>카테고리</td><td>좋아요</td><td>조회수</td><td>날짜</td></tr>
+<section class="section" id="products" style="width: 2000px;">
+		<!-- 게시판 제목  -->
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="section-heading">
+						<h2 style="margin-top: 180px;">판매글 조회</h2>
+						<span>sell</span>
+					</div>
+				</div>
+			</div>
+		</div>
 
-<%
+		<div class="container" style=" width:100%; padding: 0;">
+			<div class="row">
+				<div class="col-lg-4">
+					<div class="item" style="padding:0;">
 
-for(int i=0;i<sellList.size();i++){
+						<!-- board list area -->
+						<div id="board-list" style="width: 1200px;float: left; padding:0; margin-right: 40px;">
+							<table class="board-table" style="float: left; margin-bottom: 30px;">
+								<thead>
+									<tr>
+										<th scope="col" class="th-titles">제목</th>
+										<th scope="col" class="th-prices">가격</th>
+										<th scope="col" class="th-categorys">카테고리</th>
+										<th scope="col" class="th-likes">좋아요</th>
+										<th scope="col" class="th-titles">조회수</th>
+										<th scope="col" class="th-dates">등록일</th>
+									</tr>
+								</thead>
+								<tbody>
+									<%
+								for(int i=0;i<sellList.size();i++){
 	SellDTO dto=sellList.get(i);
-	
-%>
-
-	<tr>		
-		<td><a href="SellDetails.sell?S_num=<%=dto.getS_num() %>">
+									%>
+									<tr>
+										<td><a href="SellDetails.sell?S_num=<%=dto.getS_num() %>">
 		<%=dto.getS_title() %></a></td>
-		<td><%=dto.getS_price() %></td>	
-		<td><%=dto.getS_category() %></td>
-		<td><%=dto.getS_like() %></td>
-		<td><%=dto.getS_view() %></td>
-		<td><%=dateFormat.format(dto.getS_createdate()) %></td>
-		
-		
-	</tr>
-
-<%
-}
-%>
-	</table>
-		<!-- ***** 작성글 조회(판매) 끝 ***** -->
+										<td><%=dto.getS_price() %></td>
+										<td><%=dto.getS_category() %></td>
+										<td><%=dto.getS_like() %></td>
+	<td><%=dto.getS_view() %></td>
+	<td><%=dateFormat.format(dto.getS_createdate()) %></td>
+									</tr>
+									<%
+									}
+									%>
+								</tbody>
+							</table>
 	
-		<!-- ***** 작성글 조회(판매) 페이징 시작 ***** -->
-	
+	<!-- ***** 작성글 조회(구매) 끝 ***** -->
+	<div style="margin-top: 30px;">
+<!-- 	페이징 시작 -->
 <%
 if(currentPage > 1){
 	%>
-	<a href="WritehistoryS.moi?pageNum=<%=currentPage-1%>">[1페이지 이전]</a>
+	<a href="WriteHistoryB.moi?pageNum=<%=currentPage-1%>">[1페이지 이전]</a>
 	<%
 }
 
 for(int i=startPage;i<=endPage;i++){
 	%>
-	<a href="WritehistoryS.moi?pageNum=<%=i%>"><%=i %></a> 
+	<a href="WriteHistoryB.moi?pageNum=<%=i%>"><%=i %></a> 
 	<%
 }
 if(currentPage < pageCount){
 	%>
-	<a href="WritehistoryS.moi?pageNum=<%=currentPage+1%>">[1페이지 다음]</a>
+	<a href="WriteHistoryB.moi?pageNum=<%=currentPage+1%>">[1페이지 다음]</a>
+	</div>
 	<%
+	
 }
 
 %>
+
+ 						</div>
+					</div>
+             </div>
+        </div>
+    </div>
+<!-- 페이징 끝 -->
 </section>
 	<!-- ***** 작성글 조회(판매)페이징 끝 ***** -->
 
