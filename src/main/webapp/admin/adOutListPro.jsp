@@ -46,7 +46,7 @@ function fun3() {
 	</div>
 	
     <!-- ***** 헤더 ***** -->
-  <jsp:include page="../admin_top.jsp" />
+  <jsp:include page="../top.jsp" />
     <!-- ***** 헤더 끝 ***** -->
     
 	<!-- ***** 탈퇴회원목록조회 ***** -->
