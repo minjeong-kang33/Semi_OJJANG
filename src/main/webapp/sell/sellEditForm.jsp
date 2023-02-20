@@ -189,7 +189,7 @@ SellDTO dto = (SellDTO)request.getAttribute("dto");
 
 									<!-- ** 가격 입력 상자 시작 ** -->
 									<div class="price">
-										<b style="margin-right: 108px;">가격</b> <input type="text" id="S_price" name="S_price"
+										<b style="margin-right: 108px;">가격</b> <input type="text" id="S_price" name="S_price" pattern="[0-9]+"
 											value="<%=dto.getS_price()%>">원<br>
 									</div>
 									<!-- ** 가격 입력 상자 끝 ** -->
