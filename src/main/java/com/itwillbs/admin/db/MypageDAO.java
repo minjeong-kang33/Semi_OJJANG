@@ -443,7 +443,7 @@ public class MypageDAO {
 		ResultSet rs=null;
 		try {
 			con=getConnection();
-			String sql= "select * from sell where S_num in ( select S_num from deal where D_buy=?) order by S_num desc limit ?,?"; 
+			String sql= "select * from sell where S_num in ( select S_num from deal where D_buy=? and D_play='거래완료') order by S_num desc limit ?,?"; 
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, M_id);
 			pstmt.setInt(2, startRow-1);
@@ -512,7 +512,7 @@ public class MypageDAO {
 		ResultSet rs=null;
 		try {
 			con=getConnection();
-			String sql= ("select * from sell where M_id in ( select M_id from deal where M_id=?)  order by S_num desc limit ?,?"); 
+			String sql= ("select * from sell where M_id in ( select M_id from deal where M_id=? and D_play='거래완료')  order by S_num desc limit ?,?"); 
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, M_id);
 			pstmt.setInt(2, startRow-1);
