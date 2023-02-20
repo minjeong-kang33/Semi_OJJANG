@@ -107,15 +107,24 @@ public class MypageFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}//박은지
-		
-		}else if(sPath.equals("/Deallist.moi")) {
-			action=new Deallist();
+		}else if(sPath.equals("/Buyhistory.moi")) {
+			action=new Buyhistory();
 			try {
 				forward=action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
-			}
-			
+			}	
+		}else if(sPath.equals("/Sellhistory.moi")) {
+			action=new Sellhistory();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}	
+		}else if(sPath.equals("/Mypage.moi")) {
+			forward=new ActionForward();
+			forward.setPath("Mypage/mypage.jsp");
+			forward.setRedirect(false);
 			
 			
 			
