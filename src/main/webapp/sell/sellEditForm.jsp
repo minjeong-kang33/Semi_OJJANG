@@ -213,7 +213,7 @@ SellDTO dto = (SellDTO)request.getAttribute("dto");
 									<table style="width: 800px;">
 										<tr>
 											<td colspan="2">
-												<div class="button1" style="margin-left: 34px;">
+												<div class="button1" >
 													<input type="file" name="S_img"><%=dto.getS_img()%>
 													<input type="hidden" name="oldfile"
 														value="<%=dto.getS_img()%>">
