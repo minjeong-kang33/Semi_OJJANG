@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+.mypage_field {
+	width: 1000px;
+	margin: auto;
+	text-align: center;
+}
+
+h2 {
+	margin-top: 10px;
+}
+
+span {
+	margin-bottom: 100px;
+}
+
+button {
+	border: none;
+	background-color: white;
+}
+
+button:focus {
+  outline: none;
+}
+
+#MPprofile-btn, #MPsellhistory-btn {
+	margin-left: 50px;
+	margin-right: 50px;
+	width: 200px;
+	margin-bottom: 40px;
+}
+
+#MPmyreview-btn, #MPmypost-btn {
+	margin-left: 50px;
+	margin-right: 50px;
+	width: 200px;
+	margin-bottom: 40px;
+}
+
+#MPlike-btn, #MPbuyhistory-btn {
+	width: 200px;
+	margin-bottom: 40px;
+}
