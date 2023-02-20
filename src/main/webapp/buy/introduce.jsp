@@ -38,7 +38,7 @@
 	<jsp:include page="../top.jsp" />
 	<!-- ***** 헤더 끝 ***** -->
 <body>
-<div style="margin: 220px auto 140px auto;">
+<div style="margin: 220px auto 200px auto;">
 	<img src="img/buy/company.png" style="width: 480px; height: 400px;display: block;margin: 0px  auto 0px auto;">
 	</div>
 
