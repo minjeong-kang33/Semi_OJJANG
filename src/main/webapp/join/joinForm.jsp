@@ -76,8 +76,9 @@
 			<legend>개인 정보</legend>
 				<ul>
 					<li><label for="fullname">이름</label> <input type="text" id="M_name" name="M_name" size="15" required></li>
-					<li><label for="gender">성별</label> <input type="radio" name="M_gender" id="남"> 남 
-						<input type="radio" name="M_gender" id="여"> 여</li>
+					<li><label for="gender">성별</label> 
+					<input type="radio" name="M_gender" id="남" value="남"> 남 
+					<input type="radio" name="M_gender" id="여" value="여"> 여</li>
 					<li><label for="nickname">닉네임</label> 
 						<input type="text" id="M_nick" name="M_nick" size="15" required onclick="nickCheck()"> 
 						<input type="button" value="중복확인"  id="joinbutton">
