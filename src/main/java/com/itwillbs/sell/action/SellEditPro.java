@@ -33,7 +33,12 @@ public class SellEditPro implements Action {
 		if (S_img == null) {
 			S_img = multi.getParameter("oldfile");
 		}
-
+		if (S_sido1 == null) {
+			S_sido1 = multi.getParameter("oldS_sido1");
+		}
+		if (S_gugun1 == null) {
+			S_gugun1 = multi.getParameter("oldS_gugun1");
+		}
 		SellDTO dto = new SellDTO();
 		dto.setS_num(num);
 		dto.setS_title(S_title);

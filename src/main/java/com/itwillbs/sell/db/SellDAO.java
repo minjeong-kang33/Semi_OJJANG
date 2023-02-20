@@ -409,6 +409,7 @@ public class SellDAO {
 				dto.setS_send2(rs.getString("S_send2"));
 				dto.setS_createdate(rs.getTimestamp("S_createdate"));
 				dto.setS_category(rs.getString("S_category"));
+				dto.setS_img(rs.getString("S_img"));
 				
 				sellHistory.add(dto);
 			}

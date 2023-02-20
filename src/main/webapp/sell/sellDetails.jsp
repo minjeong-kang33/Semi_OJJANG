@@ -23,7 +23,7 @@
 <title>중고 의류거래: 옺장</title>
 <script type="text/javascript">
 function fun1(M_id, S_num, R_category, S_title) {
-	   
+	    
     window.open("ReportForm.rpt?R_id=" + M_id + "&R_writeNum="
           + S_num + "&R_category=" + R_category + "&R_title=" + S_title,
           "pop", "width=520,height=340");
