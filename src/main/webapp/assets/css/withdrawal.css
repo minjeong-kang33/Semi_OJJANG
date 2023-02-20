@@ -1,0 +1,58 @@
+@charset "UTF-8";
+
+.withdrawalcontainer {
+	text-align: center !important;
+	margin-bottom: 25px;
+}
+
+.withdrawal_div {
+	margin-left: 32%;
+}
+
+#withdrawal_area {
+	border: 1px solid #EAE0DA;
+	padding: 20px;
+	width: 750px;
+}
+
+#withdrawal_area fieldset {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-left: 85px;
+}
+#withdrawal_area ul li {
+	list-style-type: none;
+	padding: 5px 8px;
+	margin-bottom: 7px;
+	font-weight: 700;
+}
+
+#withdrawal_area label {
+	width: 110px;
+	color: #42240C;
+	font-weight: 450;
+	font-size: 15px;
+	float: left;
+}
+
+#M_id {
+	border: none;
+}
+
+#M_id:focus {
+	border: none;
+}
+
+#withdrawalbtn {
+	color: white;
+	border: none;
+	font-size: 16px;
+	font-weight: 500;
+	letter-spacing: 1px;
+	padding: 5px;
+	background-color: #4B3400;
+	letter-spacing: 1px;
+	border-radius: 3px;
+	margin-left: 28%;
+	margin-top: 20px;
+}

@@ -4,29 +4,21 @@ form {
 	margin-left: 32%;
 }
 
-.joincontainer {
+.PWchangecontainer {
 	text-align: center !important;
 	margin-bottom: 25px;
 }
 
-#profile_area {
+#PWchange_area {
 	border: 1px solid #EAE0DA;
 	padding: 20px;
 	width: 750px;
 }
 
-#profile_area fieldset {
+#PWchange_area fieldset {
 	padding-top: 10px;
 	padding-bottom: 10px;
 	margin-left: 85px;
-}
-
-.profileField {
-	border-bottom: 1px solid #F2E5E5;
-}
-
-#profile_area fieldset:last-of-type {
-	border: none;
 }
 
 .btnss {
@@ -34,18 +26,14 @@ form {
 	margin-top: 30px;
 }
 
-input:focus {
-  outline: none;
-}
-
-#profile_area ul li {
+#PWchange_area ul li {
 	list-style-type: none;
 	padding: 5px 8px;
 	margin-bottom: 7px;
 	font-weight: 700;
 }
 
-#profile_area label {
+#PWchange_area label {
 	width: 110px;
 	color: #42240C;
 	font-weight: 450;
@@ -53,35 +41,26 @@ input:focus {
 	float: left;
 }
 
-#profile_area input {
-	border: 1px solid white;
-	background-color: transparent;
+#M_id {
+	border: none;	
 }
 
-#M_address12 {
-	width: 450px;
+#M_id:focus {
+	border: none;
 }
 
-#profileupdate-btn, #pwupdate-btn, #withdraw-btn {
+#PWupdatebtn {
 	color: white;
 	border: none;
 	font-size: 16px;
 	font-weight: 500;
 	letter-spacing: 1px;
-	margin: auto;
 	padding: 5px;
 	background-color: #4B3400;
 	letter-spacing: 1px;
 	border-radius: 3px;
+	text-align: center;
+	margin-left: 47%;
+	margin-top: 20px;
 }
-
-#profileupdate-btn {
-	margin-left: 19%;
-	margin-right: 10px;
-}
-
-#withdraw-btn {
-	margin-left: 2%;
-	background-color: #E8E4E1;
-	color: #42240C;
-}
+ 

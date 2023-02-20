@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 .mypage_field {
-	width: 1000px;
+	width: 800px;
 	margin: auto;
 	text-align: center;
 }
@@ -11,7 +11,7 @@ h2 {
 }
 
 span {
-	margin-bottom: 100px;
+	margin-bottom: 200px;
 }
 
 button {
@@ -22,22 +22,22 @@ button {
 button:focus {
   outline: none;
 }
-
+/* 1,4 */
 #MPprofile-btn, #MPsellhistory-btn {
 	margin-left: 50px;
 	margin-right: 50px;
-	width: 200px;
+	width: 150px;
 	margin-bottom: 40px;
 }
-
-#MPmyreview-btn, #MPmypost-btn {
+/* 3,6 */
+#WritehistoryB-btn, #MPlike-btn {
 	margin-left: 50px;
 	margin-right: 50px;
-	width: 200px;
+	width: 150px;
 	margin-bottom: 40px;
 }
-
-#MPlike-btn, #MPbuyhistory-btn {
-	width: 200px;
+/* 2,5 */
+#WritehistoryS-btn, #MPbuyhistory-btn {
+	width: 150px;
 	margin-bottom: 40px;
 }
