@@ -81,15 +81,6 @@ public class MemberFrontController extends HttpServlet{
 			}
 		}// 회원가입 김광원
 		
-		else if(sPath.equals("/AdMain.me")) {
-	         action = new AdMainPro();
-	         try {
-	            forward=action.execute(request, response);
-	         } catch (Exception e) {
-	            e.printStackTrace();
-	         }
-			
-		}//노은주
 		else if(sPath.equals("/MemberidCheckForm.me")){
 			forward=new ActionForward();
 			forward.setPath("join/idCheck.jsp");
