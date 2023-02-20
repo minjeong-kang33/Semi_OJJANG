@@ -29,7 +29,7 @@
             
  <!-- ***** 작성글 조회(구매) 시작 ***** -->
     
-    <h3>구매글 조회</h3>
+    <h3>구매글</h3>
 <%
 String M_id=(String)session.getAttribute("M_id");
 SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy.MM.dd");
@@ -45,7 +45,7 @@ ArrayList<BuyDTO> buyList=(ArrayList<BuyDTO>)request.getAttribute("buyList");
 %>	
 <section>
 <table border="1">
-<tr><td>판매글제목</td><td>판매가격</td><td>내용</td><td>카테고리</td></tr>
+<tr><td>제목</td><td>카테고리</td><td>조회수</td><td>날짜</td></tr>
 <%
 for(int i=0;i<buyList.size();i++){
 	BuyDTO dto=buyList.get(i);	
@@ -53,9 +53,10 @@ for(int i=0;i<buyList.size();i++){
 	<tr>	
 		<td><a href="BuyDetails.buy?B_num=<%=dto.getB_num() %>">
 		<%=dto.getB_title() %></a></td>	
-		<td><%=dto.getB_text() %></td>
 		<td><%=dto.getB_category() %></td>
-		<td><%=dto.getB_img() %>
+		<td><%=dto.getB_view() %></td>
+		<td><%=dateFormat.format(dto.getB_time()) %></td>
+	
 		
 	</tr>
 

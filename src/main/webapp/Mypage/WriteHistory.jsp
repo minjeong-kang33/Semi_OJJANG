@@ -45,7 +45,7 @@ SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy.MM.dd");
 %>	
 <section>
 <table border="1"> 
-<tr><td>구매글제목</td><td>내용</td><td>카테고리</td><td>이미지</td><td>조회수</td></tr>
+<tr><td>제목</td><td>카테고리</td><td>조회수</td><td>날짜</td></tr>
 
 <%
 // System.out.println(dealListS.size());
@@ -58,10 +58,9 @@ for(int i=0;i<WriteHistoryB2.size();i++){
 	<tr>	
 		<td><a href="BuyDetails.buy?B_num=<%=dto.getB_num() %>">
 		<%=dto.getB_title() %></a></td>	
-		<td><%=dto.getB_text() %></td>
 		<td><%=dto.getB_category() %></td>
-		<td><%=dto.getB_img() %>
-		<td><%=dto.getB_view() %>	
+		<td><%=dto.getB_view() %></td>	
+		<td><%=dateFormat.format(dto.getB_time()) %></td>
 	</tr>
 
 <%
@@ -79,7 +78,7 @@ ArrayList<SellDTO> WriteHistoryS2=dao.WriteHistoryS2(M_id);
 %>	
 <section>
 <table border="1">
-<tr><td>판매글제목</td><td>판매가격</td><td>내용</td><td>카테고리</td><td>좋아요 수</td><td>조회수</td></tr>
+<tr><td>제목</td><td>가격</td><td>카테고리</td><td>좋아요</td><td>조회수</td><td>날짜</td></tr>
 
 <%
 // System.out.println(dealListS.size());
@@ -92,10 +91,10 @@ for(int i=0;i<WriteHistoryS2.size();i++){
 		<td><a href="SellDetails.sell?S_num=<%=sdto.getS_num() %>">
 		<%=sdto.getS_title() %></a></td>
 		<td><%=sdto.getS_price() %></td>
-		<td><%=sdto.getS_text() %></td>		
 		<td><%=sdto.getS_category() %></td>
 		<td><%=sdto.getS_like() %></td>
 		<td><%=sdto.getS_view() %></td>
+		<td><%=dateFormat.format(sdto.getS_createdate()) %></td>
 		
 	</tr>
 
