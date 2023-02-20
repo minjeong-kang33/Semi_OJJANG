@@ -12,7 +12,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
-				<nav class="main-nav">
+				<nav class="main-nav" >
 					<!-- ***** 로고 시작 ***** -->
 					<a href="Main.me" class="logo"> <img
 						src="assets/images/otzang_logo_top.png" height="60px">
@@ -24,7 +24,7 @@
             MemberDTO dto = new MemberDTO();
                %>
 
-					<ul class="nav23" style="margin-right: 10px;">
+					<ul class="nav23" style="margin-right: 10px; width: 500px;">
 
 						<%
                   if(M_id != null){
