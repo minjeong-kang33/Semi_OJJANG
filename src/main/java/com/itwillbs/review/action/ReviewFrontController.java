@@ -38,9 +38,21 @@ public class ReviewFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			} // 리뷰 리스트 조회 (승민)
-	         
+	    
+		} else if(sPath.equals("/ReviewWriteForm.rev")) {
+			forward=new ActionForward();
+			forward.setPath("review/reviewWriteForm.jsp");
+			forward.setRedirect(false);
+			
+		} else if(sPath.equals("/ReviewWritePro.rev")) {
+			  action = new ReviewWritePro();
+	    	  try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+		}
 	    	  
-	    	  
+		}  
 	    	  
 	    	  
 	    	  
@@ -54,10 +66,8 @@ public class ReviewFrontController extends HttpServlet{
 				request.getRequestDispatcher(forward.getPath());
 		        dispatcher.forward(request, response);
 			}
-		}
-		
 		}//이동방식
 		
-	}//doProcess()
-	
-}//클래스
+		}//doProcess()
+		
+	}//클래스
