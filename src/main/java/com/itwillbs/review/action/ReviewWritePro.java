@@ -39,6 +39,10 @@ public class ReviewWritePro implements Action{
 
 		Timestamp RE_createtime = new Timestamp(System.currentTimeMillis());
 
+		if(RE_img1 == null) { 
+			RE_img1 = "otzang_logo_top.png";
+		}
+		
 		reviewDTO dto = new reviewDTO();
 		dto.setRE_writer(M_id); // M_id;
 		dto.setRE_title(RE_title);
@@ -52,13 +56,15 @@ public class ReviewWritePro implements Action{
 		dto.setRE_createtime(RE_createtime);
 		dto.setRE_img1(RE_img1);
 
+		
+		
 		reviewDAO dao = new reviewDAO();
 
 		dao.insertreview(dto);
 
 		ActionForward forward = new ActionForward();
-		forward.setPath("review/reviewList.jsp");
-		forward.setRedirect(false);
+		forward.setPath("ReviewList.rev");
+		forward.setRedirect(true);
 		
 		return forward;
 	}
