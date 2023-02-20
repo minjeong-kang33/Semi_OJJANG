@@ -29,13 +29,16 @@
 						<%
                   if(M_id != null){
                %>
-						<li style="color: #434242; margin-right: 10px;"><%=M_id%> 님 <%
+						<li style="color: #434242; margin-right: 10px;"><%=M_id%> 님 
+					|  <a href="MemberLogout.me" id="top_logout"
+							style="color: #434242; margin-left: 7px;">로그아웃</a><%
                   } else {
                %> <a href="MemberLoginForm.me" id="top_login"
-							style="color: #434242">로그인</a> <%
-                  }
-               %> | <a href="MemberLogout.me" id="top_logout"
-							style="color: #434242; margin-left: 7px;">로그아웃</a></li>
+							style="color: #434242">로그인</a> 
+                  
+                | <a href="MemberJoinForm.me" id="top_logout"
+							style="color: #434242; margin-left: 7px;">회원가입</a></li> <%
+                  }%>
 					</ul>
 
 
@@ -57,16 +60,15 @@
                      }
                   if (M_id != null) {
                 	  if(!"admin".equals(M_id)){
-                  %>
-						<li class="submenu"><a>마이페이지</a>
-
+                  %>	<li><a href="Mypage.moi">마이페이지</a></li>
+						<!-- <li class="submenu"><a>마이페이지</a>
 							<ul>
 								<li><a href="Profile.moi">프로필</a></li>
 								<li><a href="Likelist.moi">찜목록</a></li>
 								<li><a href="Deallist.moi">거래내역</a></li>
 								<li><a href="Writehistory.moi">작성글</a></li>
 								<li><a href="#">거래후기</a></li>
-							</ul></li>
+							</ul></li> -->
 
 						<!-- 커뮤니티에는 링크 걸지않기 -->
 						<li class="submenu"><a href="#">커뮤니티</a>
