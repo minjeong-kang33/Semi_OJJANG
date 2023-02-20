@@ -17,10 +17,10 @@
     <link rel="stylesheet" href="assets/css/templatemo-hexashop.css">
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
     <link rel="stylesheet" href="assets/css/lightbox.css"> 
-    
+    <link rel="stylesheet" href="assets/css/sellhistory.css"> 
 <meta charset="UTF-8">
-<title>중고 의류거래: 옺장</title>
 </head>
+
 <body>
 <%
 String M_id=(String)session.getAttribute("M_id");
@@ -56,17 +56,18 @@ ArrayList<DealDTO> dealHistory1=(ArrayList<DealDTO>)request.getAttribute("dealHi
 								
 							%>
 							<tr>
-								<td rowspan="4" ><img src="img/sell/<%=sdto.getS_img() %>" class="RE_img_st" width="150px" height="150px"></td>
-								<td> 제목 : <%=sdto.getS_title() %> </td>
+								<td rowspan="4" ><a href="SellDetails.sell?S_num=<%=dto.getS_num()%>">
+									<img src="img/sell/<%=sdto.getS_img() %>" class="S_img_st" width="180px" height="180px"></a></td>
+								<td id="SH_title"><a href="SellDetails.sell?S_num=<%=dto.getS_num()%>"> <%=sdto.getS_title() %> </a></td>
 							</tr>
 							<tr>
-								<td colspan="2"> 구매자 : <%=dto.getD_buy() %> </td>
+								<td id="SH_price"><%=sdto.getS_price() %>원</td>
 							</tr>
 							<tr>	
-								<td> 거래가격 : <%=sdto.getS_price() %></td>
+								<td colspan="2" id="SH_buyer"> 구매자 : <%=dto.getD_buy() %> </td>
 							</tr>
 							<tr>
-							<td> 거래완료일 : <%=dateFormat.format(dto.getD_date())%></td>
+							<td id="SH_date"> 거래완료일 : <%=dateFormat.format(dto.getD_date())%></td>
 							
 							</tr>
 							<tr><td colspan="3" class="line"></td> <tr>
@@ -75,6 +76,7 @@ ArrayList<DealDTO> dealHistory1=(ArrayList<DealDTO>)request.getAttribute("dealHi
 							%>
 							
 						</table>
+						<hr>
 						</div>
 				</div>
 				
