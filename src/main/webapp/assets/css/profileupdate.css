@@ -1,0 +1,103 @@
+@charset "UTF-8";
+
+form {
+	margin-left: 32%;
+}
+
+.PFupdatecontainer {
+	text-align: center; 
+	margin-bottom: 25px;
+}
+
+#PFupdate_area {
+	border: 1px solid #EAE0DA;
+	padding: 20px;
+	width: 750px;
+}
+
+#PFupdate_area fieldset {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-left: 85px;
+}
+
+.PFupdateField {
+	border-bottom: 1px solid #F2E5E5;
+}
+
+#PFupdate_area fieldset:last-of-type {
+	border: none;
+}
+
+#PFupdate_area legend {
+	color: #4A403A;
+	font-size: 20px;
+	font-weight: 600;
+	padding-top: 15px;
+	padding-left: 5px;
+	padding-bottom: 5px;
+	font-size: 16px;
+	padding-left: 5px;
+}
+
+#PFupdate_area ul li {
+	list-style-type: none;
+	padding: 5px 8px;
+	margin-bottom: 7px;
+}
+
+#PFupdate_area label {
+	width: 110px;
+	color: #42240C;
+	font-weight: 450;
+	font-size: 15px;
+	float: left;
+}
+
+
+#PFupdatebutton {
+	color: white;
+	border: none;
+	font-size: 16px;
+	font-weight: 500;
+	letter-spacing: 1px;
+	margin: auto;
+	padding: 5px;
+	background-color: #4B3400;
+	letter-spacing: 1px;
+	border-radius: 3px;
+}
+
+#PFcheckbutton {
+	border: 0px solid #e7e7e7;
+	font-size: 13px;
+	font-weight: 450;
+	letter-spacing: 1px;
+	margin: auto;
+	padding: 5px;
+	background-color: #E8E4E1;
+	margin-left: 5px;
+	border-radius: 3px;
+}
+
+#PFupdatebutton {
+	margin-left: 40.5%;
+	margin-right: 10px;
+}
+
+
+#M_email{
+	width: 250px;
+}
+
+#M_address2, #M_address {
+	width: 400px;
+}
+
+#M_name, #M_id, #M_pw, #M_pw2, #M_nick, #M_phone {
+	width: 150px;
+}
+
+#M_id, #M_name, #M_gender {
+	border: none;
+}
