@@ -528,6 +528,7 @@ public class MypageDAO {
 				dto.setS_title(rs.getString("S_title"));
 				dto.setS_text(rs.getString("S_text"));
 				dto.setS_price(rs.getInt("S_price"));
+				dto.setS_img(rs.getString("S_img"));
 			
 				sellHistory1.add(dto);
 			}
