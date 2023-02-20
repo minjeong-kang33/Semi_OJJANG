@@ -21,8 +21,9 @@ public class MemberwithdrawalPro implements Action {
 		if(dto!=null) {
 			dao.DeleteMember(M_id);
 			HttpSession session=request.getSession();
-			
 			session.invalidate();
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out=response.getWriter();
 			forward=new ActionForward();
 			forward.setPath("Main.me");
 			forward.setRedirect(true);
