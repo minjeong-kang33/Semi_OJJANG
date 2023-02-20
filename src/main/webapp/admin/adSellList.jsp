@@ -55,7 +55,7 @@ function fun2() {
 	</div>
 	
     <!-- ***** 헤더 ***** -->
-  <jsp:include page="../admin_top.jsp" />
+  <jsp:include page="../top.jsp" />
     <!-- ***** 헤더 끝 ***** -->
     
 	<!-- ***** 판매글목록조회 ***** -->
