@@ -28,19 +28,13 @@ public class MemberLoginPro implements Action{
 		ActionForward forward = null;
 		
 		if (dto!=null) {
-			if(M_id.equals("admin")&&(M_pw.equals("1234"))){
-				forward = new ActionForward();
-				forward.setPath("AdMain.me");
-				forward.setRedirect(true);
-				}
-			else {
 			HttpSession session=request.getSession();
 			session.setAttribute("M_id", M_id);
 			
 			forward = new ActionForward();
 			forward.setPath("Main.me");
 			forward.setRedirect(true);
-			}
+			//}
 		}
 			else{
 				response.setContentType("text/html; charset=UTF-8");
