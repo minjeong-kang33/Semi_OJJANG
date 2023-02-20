@@ -42,14 +42,6 @@ public class AdminFrontController extends HttpServlet{
 				e.printStackTrace();
 			}//노은주
 			
-		}else if(sPath.equals("/AdUserListPro.ad")) {
-			action=new AdUserListPro();
-			try {
-				forward=action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}//노은주
-			
 		}else if(sPath.equals("/AdUserDelete.ad")) {
 			action=new AdUserDelete();
 			try {
@@ -66,24 +58,8 @@ public class AdminFrontController extends HttpServlet{
 				e.printStackTrace();
 			}//노은주
 			
-		}else if(sPath.equals("/AdUserReportListPro.ad")) {
-			action=new AdUserReportListPro();
-			try {
-				forward=action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}//노은주
-			
 		}else if(sPath.equals("/AdOutList.ad")) {
 			action=new AdOutList();
-			try {
-				forward=action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}//노은주
-			
-		}else if(sPath.equals("/AdOutListPro.ad")) {
-			action=new AdOutListPro();
 			try {
 				forward=action.execute(request, response);
 			} catch (Exception e) {
@@ -114,16 +90,16 @@ public class AdminFrontController extends HttpServlet{
 				e.printStackTrace();
 			}//노은주
 			
-		}else if(sPath.equals("/AdSellDelete.ad")) {
-			action=new AdSellDelete();
+		}else if(sPath.equals("/AdSellList.ad")) {
+			action=new AdSellList();
 			try {
 				forward=action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}//노은주
-			
-		}else if(sPath.equals("/AdSellList.ad")) {
-			action=new AdSellList();
+
+		}else if(sPath.equals("/AdSellDelete.ad")) {
+			action=new AdSellDelete();
 			try {
 				forward=action.execute(request, response);
 			} catch (Exception e) {

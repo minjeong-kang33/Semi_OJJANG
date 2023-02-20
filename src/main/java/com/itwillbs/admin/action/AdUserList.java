@@ -16,25 +16,51 @@ public class AdUserList implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("AdUserList execute()");
 		request.setCharacterEncoding("utf-8");
-		AdminDAO dao=new AdminDAO();
+		String info = request.getParameter("info");
+		String search = request.getParameter("search");
 		
+		AdminDAO dao=new AdminDAO();
 		int pageSize=10;
 		String pageNum=request.getParameter("pageNum");
 		if(pageNum==null){pageNum="1";}
 		int currentPage=Integer.valueOf(pageNum);
 		int startRow=(currentPage-1)*pageSize+1;
-		ArrayList<MemberDTO> adUserList=dao.adUserList(startRow, pageSize);
+		ArrayList<MemberDTO> adUserList=null;
+		
+		if(search==null&&info==null) {
+			adUserList=dao.adUserList(startRow, pageSize);
+		}else {
+			adUserList=dao.adUserList(startRow, pageSize, info, search);
+		}
 		
 		int pageBlock=10;
 		int startPage=(currentPage-1)/pageBlock*pageBlock+1;
 		int endPage=startPage+pageBlock-1;
-		int count=dao.adUserCount();
+		int count=0;
+		
+		if(search==null&&info==null) {
+			count=dao.adUserCount();
+		}else {
+			count=dao.adUserCount(info, search);
+		}
+		
 		int pageCount=count/pageSize+(count%pageSize==0?0:1);
 		if(endPage>pageCount){endPage=pageCount;}
 		
+		if(info!=null) {
+			if(info.equals("M_id")) {
+				info="아이디";
+			}else if(info.equals("M_name")) {
+				info="이름";
+			}else {
+				info="닉네임";
+			}
+		}
+		
 		request.setAttribute("adUserList", adUserList);
 		request.setAttribute("adUserCount", count);
-		
+		request.setAttribute("info", info);
+		request.setAttribute("search", search);
 		request.setAttribute("currentPage", currentPage);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("pageBlock", pageBlock);
