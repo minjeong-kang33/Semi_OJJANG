@@ -1,14 +1,5 @@
 @charset "UTF-8";
 
-.sellInsert {
-	margin-top: 20px;
-	margin-left: 35%;
-}
-
-#sellBoard {
-	margin-top: 12%;
-}
-
 input[type=radio] {
 	display: none;
 }
@@ -65,3 +56,5 @@ input[type=checkbox]:checked+label.btn {
 .buttons {
 	margin-left: 43%;
 }
+
+b{margin-right: 20px;}
