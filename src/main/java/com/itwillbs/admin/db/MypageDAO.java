@@ -506,7 +506,7 @@ public class MypageDAO {
 		return dealHistory1;
 	}
 	
-	//판매리스트
+	//판매리스트 수정!!!
 	public ArrayList<SellDTO> sellHistory1(int startRow, int pageSize,String M_id) {
 		ArrayList<SellDTO> sellHistory1=new ArrayList<SellDTO>();
 		Connection con=null;
