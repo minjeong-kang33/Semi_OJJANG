@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+table{
+	margin: auto;
+}
+
+.S_img_st{
+	border-radius: 5%;
+	margin-right: 25px;
+}
+
+#SH_title {
+	font-weight: 600;
+	font-size: 18px;
+}
+
+hr{
+	width: 600px;
+}
