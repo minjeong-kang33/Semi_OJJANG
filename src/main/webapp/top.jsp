@@ -39,21 +39,19 @@
 					</ul>
 
 
+					<ul class="nav" style="margin-bottom: 15px;">
+						<li><a href="Main.me" class="active">홈</a></li>
 					<%
 
                   if(!"admin".equals(M_id)){
                      //admin이면 안보이게 
                %>
 
-
-					<ul class="nav" style="margin-bottom: 15px;">
-						<li><a href="Main.me" class="active">홈</a></li>
 						<li><a href="Outer.sell">아우터</a></li>
 						<li><a href="Shirts.sell">상의</a></li>
 						<li><a href="Pants.sell">하의</a></li>
 						<li><a href="Dress.sell">원피스</a></li>
 						<li><a href="BuyList.buy">삽니다</a></li>
-
 
 						<%
                      }
@@ -90,7 +88,6 @@
                   if (M_id.equals("admin")) {
                %>
                
-              		 <ul class="nav" style="margin-bottom: 15px;">
 						<li class="submenu"><a>회원관리</a>
 							<ul>
 								<li><a href="AdUserList.ad">전체회원목록</a></li>
@@ -102,21 +99,34 @@
 								<li><a href="AdSellList.ad">판매글목록</a></li>
 								<li><a href="AdBuyList.ad">구매글목록</a></li>
 							</ul></li>
-					</ul>
 						<%
                }
                }
 
-		                  if(!"admin".equals(M_id)){
-		                     //admin이면 안보이게 
 		               %>
                                
 						<!-- 고객센터에는 링크 걸지않기, 회사소개, QnA에만 걸기 -->
 						<li class="submenu"><a href="#">고객센터</a>
 							<ul>
 								<li><a href="Introduce.buy">회사소개</a></li>
+               <%
+               if(!"admin".equals(M_id)){
+                   //admin이면 안보이게 
+               %>
 								<li><a
 									href="javascript:void(window.open('https://itwillbs-team1.channel.io/support-bots/59647', '챗봇'))">QnA</a></li>
+				<%
+                  }
+               //로그인 한 회원
+               if (M_id != null) {
+                  // admin 인 경우 
+                  if (M_id.equals("admin")) {
+               %>
+								<li><a
+									href="javascript:void(window.open('https://desk.channel.io/#/channels/122669/team_chats/direct_chats/719627', '챗봇'))">QnA</a></li>
+				<%
+                  }
+					%>
 							</ul></li>
 					</ul>
 				<%
