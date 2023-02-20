@@ -205,7 +205,8 @@ public class MypageDAO {
 				dto.setB_text(rs.getString("B_text"));
 				dto.setB_view(rs.getInt("B_view"));
 				dto.setB_img(rs.getString("B_img"));
-			
+				dto.setB_time(rs.getTimestamp("B_time"));
+
 				
 				WriteHistoryB2.add(dto);
 			}
@@ -350,6 +351,7 @@ public class MypageDAO {
 				dto.setB_view(rs.getInt("B_view"));
 				dto.setB_time(rs.getTimestamp("B_time"));
 				dto.setB_img(rs.getString("B_img"));
+				dto.setB_time(rs.getTimestamp("B_time"));
 				
 				// 바구니의 주소값을 배열 한칸에 저장
 				buyList.add(dto);

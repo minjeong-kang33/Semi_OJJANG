@@ -47,7 +47,7 @@ ArrayList<SellDTO> sellList=(ArrayList<SellDTO>)request.getAttribute("sellList")
 %>	
 <section>
 <table border="1">
-<tr><td>판매글제목</td><td>판매가격</td><td>내용</td><td>카테고리</td><td>좋아요 수</td><td>업로드 날짜</td></tr>
+<tr><td>제목</td><td>가격</td><td>카테고리</td><td>좋아요</td><td>조회수</td><td>날짜</td></tr>
 
 <%
 
@@ -59,10 +59,10 @@ for(int i=0;i<sellList.size();i++){
 	<tr>		
 		<td><a href="SellDetails.sell?S_num=<%=dto.getS_num() %>">
 		<%=dto.getS_title() %></a></td>
-		<td><%=dto.getS_price() %></td>
-		<td><%=dto.getS_text() %></td>		
+		<td><%=dto.getS_price() %></td>	
 		<td><%=dto.getS_category() %></td>
 		<td><%=dto.getS_like() %></td>
+		<td><%=dto.getS_view() %></td>
 		<td><%=dateFormat.format(dto.getS_createdate()) %></td>
 		
 		
