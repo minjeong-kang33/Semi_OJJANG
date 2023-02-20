@@ -25,6 +25,7 @@ public class AdminDAO {
 	
 	//    ----Member----
 	public ArrayList<MemberDTO> adUserList(int startRow, int pageSize) {
+		System.out.println("AdminDAO adUserList()");
 		ArrayList<MemberDTO> adUserList=new ArrayList<MemberDTO>();
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -56,6 +57,44 @@ public class AdminDAO {
 		return adUserList;
 	}//adUserList()
 	
+	public ArrayList<MemberDTO> adUserList(int startRow, int pageSize, String info, String search) {
+		ArrayList<MemberDTO> adUserList=new ArrayList<MemberDTO>();
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		MemberDTO dto=null;
+		String Uorder=" like ? order by M_play desc, M_id limit ?, ?";
+		try {
+			con=getConnection();
+			String sql="select * from member where M_play not in ('탈퇴', '강퇴') and ";
+			if(info.equals("M_id")) {sql+="M_id";}
+			else if(info.equals("M_name")) {sql+="M_name";}
+			else if(info.equals("M_nick")) {sql+="M_nick";}
+			sql+=Uorder;
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, "%"+search+"%");
+			pstmt.setInt(2, startRow-1);
+			pstmt.setInt(3, pageSize);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				dto=new MemberDTO();
+				dto.setM_id(rs.getString("M_id"));
+				dto.setM_name(rs.getString("M_name"));
+				dto.setM_nick(rs.getString("M_nick"));
+				dto.setM_createdate(rs.getTimestamp("M_createdate"));
+				dto.setM_play(rs.getString("M_play"));
+				adUserList.add(dto);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(con!=null) try {con.close();} catch (Exception e2) {}
+			if(pstmt!=null) try {pstmt.close();} catch (Exception e2) {}
+			if(rs!=null) try {rs.close();} catch (Exception e2) {}
+		}
+		return adUserList;
+	}//adUserList(info, search)
+	
 	public int adUserCount() {
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -78,38 +117,31 @@ public class AdminDAO {
 		} return count;
 	}//adUserCount()
 	
-	public ArrayList<MemberDTO> adUserListPro(String info, String search) {
-		ArrayList<MemberDTO> adUserListPro=new ArrayList<MemberDTO>();
+	public int adUserCount(String info, String search) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
+		int count=0;
 		try {
 			con=getConnection();
-			String sql="select * from member where M_play not in ('탈퇴', '강퇴') and ";
-			if(info.equals("M_id")) {sql+="M_id like ?";}
-			else if(info.equals("M_name")) {sql+="M_name like ?";}
-			else if(info.equals("M_nick")) {sql+="M_nick like ?";}
+			String sql="select count(*) from member where M_play not in ('탈퇴', '강퇴') and like ?";
+			if(info.equals("M_id")) {sql+="M_id";}
+			else if(info.equals("M_name")) {sql+="M_name";}
+			else if(info.equals("M_nick")) {sql+="M_nick";}
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, "%"+search+"%");
 			rs=pstmt.executeQuery();
-			while(rs.next()) {
-				MemberDTO dto=new MemberDTO();
-				dto.setM_id(rs.getString("M_id"));
-				dto.setM_name(rs.getString("M_name"));
-				dto.setM_nick(rs.getString("M_nick"));
-				dto.setM_createdate(rs.getTimestamp("M_createdate"));
-				dto.setM_play(rs.getString("M_play"));
-				adUserListPro.add(dto);
+			if(rs.next()) {
+				count=rs.getInt("count(*)");
 			}
-		}catch(Exception e) {
+		}catch(Exception e){
 			e.printStackTrace();
 		}finally {
 			if(con!=null) try {con.close();} catch (Exception e2) {}
 			if(pstmt!=null) try {pstmt.close();} catch (Exception e2) {}
 			if(rs!=null) try {rs.close();} catch (Exception e2) {}
-		}
-		return adUserListPro;
-	}//adUserListPro()
+		} return count;
+	}//adUserCount(info, search)
 	
 	public ArrayList<MemberDTO> adOutList(int startRow, int pageSize) {
 		ArrayList<MemberDTO> adOutList=new ArrayList<MemberDTO>();
@@ -142,6 +174,43 @@ public class AdminDAO {
 		return adOutList;
 	}//adOutList()
 	
+	public ArrayList<MemberDTO> adOutList(int startRow, int pageSize, String info, String search) {
+		ArrayList<MemberDTO> adOutList=new ArrayList<MemberDTO>();
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String Oorder=" like ? order by M_id limit ?, ?";
+		try {
+			con=getConnection();
+			String sql="select * from member where M_play in ('탈퇴', '강퇴') and ";
+			if(info.equals("M_id")) {sql+="M_id";}
+			else if(info.equals("M_name")) {sql+="M_name";}
+			else if(info.equals("M_nick")) {sql+="M_nick";}
+			sql+=Oorder;
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, "%"+search+"%");
+			pstmt.setInt(2, startRow-1);
+			pstmt.setInt(3, pageSize);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				MemberDTO dto=new MemberDTO();
+				dto.setM_id(rs.getString("M_id"));
+				dto.setM_name(rs.getString("M_name"));
+				dto.setM_nick(rs.getString("M_nick"));
+				dto.setM_createdate(rs.getTimestamp("M_createdate"));
+				dto.setM_play(rs.getString("M_play"));
+				adOutList.add(dto);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(con!=null) try {con.close();} catch (Exception e2) {}
+			if(pstmt!=null) try {pstmt.close();} catch (Exception e2) {}
+			if(rs!=null) try {rs.close();} catch (Exception e2) {}
+		}
+		return adOutList;
+	}//adOutList(info, search)
+	
 	public int adOutCount() {
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -164,38 +233,31 @@ public class AdminDAO {
 		} return count;
 	}//adOutCount()
 	
-	public ArrayList<MemberDTO> adOutListPro(String info, String search) {
-		ArrayList<MemberDTO> adOutListPro=new ArrayList<MemberDTO>();
+	public int adOutCount(String info, String search) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
+		int count=0;
 		try {
 			con=getConnection();
-			String sql="select * from member where M_play in ('탈퇴', '강퇴')";
-			if(info.equals("M_id")) {sql+="and M_id like ?";}
-			else if(info.equals("M_name")) {sql+="and M_name like ?";}
-			else if(info.equals("M_nick")) {sql+="and M_nick like ?";}
+			String sql="select count(*) from member where M_play in ('탈퇴', '강퇴') where ";
+			if(info.equals("M_id")) {sql+="M_id like ?";}
+			else if(info.equals("M_name")) {sql+="M_name like ?";}
+			else if(info.equals("M_nick")) {sql+="M_nick like ?";}
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, "%"+search+"%");
 			rs=pstmt.executeQuery();
-			while(rs.next()) {
-				MemberDTO dto=new MemberDTO();
-				dto.setM_id(rs.getString("M_id"));
-				dto.setM_name(rs.getString("M_name"));
-				dto.setM_nick(rs.getString("M_nick"));
-				dto.setM_createdate(rs.getTimestamp("M_createdate"));
-				dto.setM_play(rs.getString("M_play"));
-				adOutListPro.add(dto);
+			if(rs.next()) {
+				count=rs.getInt("count(*)");
 			}
-		}catch(Exception e) {
+		}catch(Exception e){
 			e.printStackTrace();
 		}finally {
 			if(con!=null) try {con.close();} catch (Exception e2) {}
 			if(pstmt!=null) try {pstmt.close();} catch (Exception e2) {}
 			if(rs!=null) try {rs.close();} catch (Exception e2) {}
-		}
-		return adOutListPro;
-	}//adOutListPro()
+		} return count;
+	}//adOutCount(info, search)
 	
 	public ArrayList<ReportDTO> adUserReportList(int startRow, int pageSize) {
 		ArrayList<ReportDTO> adUserReportList=new ArrayList<ReportDTO>();
@@ -231,6 +293,45 @@ public class AdminDAO {
 		return adUserReportList;
 	}//adUserReportList()
 	
+	public ArrayList<ReportDTO> adUserReportList(int startRow, int pageSize, String info, String search) {
+		ArrayList<ReportDTO> adUserReportList=new ArrayList<ReportDTO>();
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String Rorder=" like ?  order by R_id desc, R_type limit ?, ?";
+		try {
+			con=getConnection();
+			String sql="select R_type, M_id, R_id, R_reason, R_category, R_writeNum, R_title, ifnull(R_play, '') R_play from report where ";
+			if(info.equals("M_id")) {sql+="M_id";}
+			else if(info.equals("R_id")) {sql+="R_id";}
+			sql+=Rorder;
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, "%"+search+"%");
+			pstmt.setInt(2, startRow-1);
+			pstmt.setInt(3, pageSize);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				ReportDTO dto=new ReportDTO();
+				dto.setR_type(rs.getString("R_type"));
+				dto.setM_id(rs.getString("M_id"));
+				dto.setR_id(rs.getString("R_id"));
+				dto.setR_reason(rs.getString("R_reason"));
+				dto.setR_writeNum(rs.getString("R_writeNum"));
+				dto.setR_category(rs.getString("R_category"));
+				dto.setR_title(rs.getString("R_title"));
+				dto.setR_play(rs.getString("R_play"));
+				adUserReportList.add(dto);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(con!=null) try {con.close();} catch (Exception e2) {}
+			if(pstmt!=null) try {pstmt.close();} catch (Exception e2) {}
+			if(rs!=null) try {rs.close();} catch (Exception e2) {}
+		}
+		return adUserReportList;
+	}//adUserReportList(info, search)
+	
 	public int adUserReportCount() {
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -253,40 +354,30 @@ public class AdminDAO {
 		} return count;
 	}//adUserReportCount()
 	
-	public ArrayList<ReportDTO> adUserReportListPro(String info, String search) {
-		ArrayList<ReportDTO> adUserReportListPro=new ArrayList<ReportDTO>();
+	public int adUserReportCount(String info, String search) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
+		int count=0;
 		try {
 			con=getConnection();
-			String sql="select R_type, M_id, R_id, R_reason, R_category, R_writeNum, R_title, ifnull(R_play, '') R_play from report where ";
-			if(info.equals("M_id")) {sql+="M_id like ? order by R_id, R_type desc";}
-			else if(info.equals("R_id")) {sql+="R_id like ? order by R_id, R_type desc";}
+			String sql="select count(*) from report where ";
+			if(info.equals("M_id")) {sql+="M_id like ?";}
+			else if(info.equals("R_id")) {sql+="R_id like ?";}
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, "%"+search+"%");
 			rs=pstmt.executeQuery();
-			while(rs.next()) {
-				ReportDTO dto=new ReportDTO();
-				dto.setR_type(rs.getString("R_type"));
-				dto.setM_id(rs.getString("M_id"));
-				dto.setR_id(rs.getString("R_id"));
-				dto.setR_reason(rs.getString("R_reason"));
-				dto.setR_writeNum(rs.getString("R_writeNum"));
-				dto.setR_category(rs.getString("R_category"));
-				dto.setR_title(rs.getString("R_title"));
-				dto.setR_play(rs.getString("R_play"));
-				adUserReportListPro.add(dto);
+			if(rs.next()) {
+				count=rs.getInt("count(*)");
 			}
-		}catch(Exception e) {
+		}catch(Exception e){
 			e.printStackTrace();
 		}finally {
 			if(con!=null) try {con.close();} catch (Exception e2) {}
 			if(pstmt!=null) try {pstmt.close();} catch (Exception e2) {}
 			if(rs!=null) try {rs.close();} catch (Exception e2) {}
-		}
-		return adUserReportListPro;
-	}//adUserReportListPro()
+		} return count;
+	}//adUserReportCount(info, search)
 	
 	public void adUserDeletePro(String M_id) {
 		Connection con=null;

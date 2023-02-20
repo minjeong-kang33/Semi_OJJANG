@@ -78,13 +78,14 @@ function fun3() {
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 
 	ArrayList<MemberDTO> adUserList=(ArrayList<MemberDTO>)request.getAttribute("adUserList");
-
 	int currentPage=(Integer)request.getAttribute("currentPage");
 	int startPage=(Integer)request.getAttribute("startPage");
 	int pageBlock=(Integer)request.getAttribute("pageBlock");
 	int endPage=(Integer)request.getAttribute("endPage");
 	int pageCount=(Integer)request.getAttribute("pageCount");
 	int adUserCount=(Integer)request.getAttribute("adUserCount");
+	String info=(String)request.getAttribute("info");
+	String search=(String)request.getAttribute("search");
 	%>
 	
 <section class="section" id="products">
@@ -106,7 +107,7 @@ function fun3() {
 	<div class="col-lg-12">
 		<div class="ad-divsearch">
 		<div class="ad-right">
-			<form action="AdUserListPro.ad" method="post" name="scfr">
+			<form action="AdUserList.ad" method="get" name="scfr">
 				<div class="ad-search">
 					<ul class="select-list">
 					<li>
@@ -128,7 +129,18 @@ function fun3() {
 <form name="ckDelete" action="AdUserDelete.ad" method="post">
 
 	<div class="ad-count">
-		총 멤버 <b><%=adUserCount %></b>명
+		<%
+		if(info==null&&search==null) {
+			%>
+			총 <b><%=adUserCount %></b>명
+			<%
+		}else {
+			%>
+			<%=info %>> <%=search %><br>
+			검색결과 : <b><%=adUserList.size() %></b>명
+			<%
+		}
+		%>
 	</div>
 
 <table border="1">
@@ -166,30 +178,58 @@ function fun3() {
 
 	<!-- *** 페이징 *** -->
 	<%
-	if(startPage > pageBlock){
-		%>
-		<a href="AdUserList.ad?pageNum=<%=startPage-pageBlock%>">[10페이지 이전]</a>
-		<%
+	if(info==null&&search==null) {
+		if(startPage > pageBlock){
+			%>
+			<a href="AdUserList.ad?pageNum=<%=startPage-pageBlock%>">[10페이지 이전]</a>
+			<%
+			}
+		if(currentPage>1) {
+			%>
+			<a href="AdUserList.ad?pageNum=<%=currentPage-1 %>">[1페이지 이전]</a>
+			<%
+			}
+		for(int i=startPage;i<=endPage;i++){
+			%>
+			<a href="AdUserList.ad?pageNum=<%=i %>"><%=i %></a>
+			<%
+			}
+		if(currentPage<pageCount) {
+			%>
+			<a href="AdUserList.ad?pageNum=<%=currentPage+1 %>">[1페이지 다음]</a>
+			<%
+			}
+		if(endPage < pageCount){
+			%>
+			<a href="AdUserList.ad?pageNum=<%=startPage+pageBlock%>">[10페이지 다음]</a>
+			<%
 		}
-	if(currentPage>1) {
-		%>
-		<a href="AdUserList.ad?pageNum=<%=currentPage-1 %>">[1페이지 이전]</a>
-		<%
+	}else {
+		if(startPage > pageBlock){
+			%>
+			<a href="AdUserList.ad?pageNum=<%=startPage-pageBlock%>&search=<%=search %>">[10페이지 이전]</a>
+			<%
+			}
+		if(currentPage>1) {
+			%>
+			<a href="AdUserList.ad?pageNum=<%=currentPage-1 %>&search=<%=search %>">[1페이지 이전]</a>
+			<%
+			}
+		for(int i=startPage;i<=endPage;i++){
+			%>
+			<a href="AdUserList.ad?pageNum=<%=i %>&search=<%=search %>"><%=i %></a>
+			<%
+			}
+		if(currentPage<pageCount) {
+			%>
+			<a href="AdUserList.ad?pageNum=<%=currentPage+1 %>&search=<%=search %>">[1페이지 다음]</a>
+			<%
+			}
+		if(endPage < pageCount){
+			%>
+			<a href="AdUserList.ad?pageNum=<%=startPage+pageBlock%>&search=<%=search %>">[10페이지 다음]</a>
+			<%
 		}
-	for(int i=startPage;i<=endPage;i++){
-		%>
-		<a href="AdUserList.ad?pageNum=<%=i %>"><%=i %></a>
-		<%
-		}
-	if(currentPage<pageCount) {
-		%>
-		<a href="AdUserList.ad?pageNum=<%=currentPage+1 %>">[1페이지 다음]</a>
-		<%
-		}
-	if(endPage < pageCount){
-		%>
-		<a href="AdUserList.ad?pageNum=<%=startPage+pageBlock%>">[10페이지 다음]</a>
-		<%
 	}
 	%>
 	<!-- *** 페이징 끝 *** -->
