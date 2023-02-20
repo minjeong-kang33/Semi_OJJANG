@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="assets/css/templatemo-hexashop.css">
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
     <link rel="stylesheet" href="assets/css/lightbox.css"> 
-   <link href="assets/css/buyDetails.css" rel="stylesheet" type="text/css">
     <link href="assets/css/buy.css" rel="stylesheet" type="text/css">
+   <link href="assets/css/buyDetails.css" rel="stylesheet" type="text/css">
 <meta charset="UTF-8">
 <title>중고 의류거래: 옺장</title>
 
@@ -55,172 +55,198 @@ CommentDAO commentdto=new CommentDAO();
 int pageNumber = (Integer)request.getAttribute("pageNumber");
 ArrayList<CommentDTO>List=comment.getList(B_num, pageNumber);
 
-SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd hh:mm");
+SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 %>
-<div class="container2">
-	<div class="row" style="text-align: center; ">
-	<!-- 	본문 시작 -->
-<table class = "table table-striped" style="margin-left:auto;margin-right:auto; undefined;table-layout: fixed; width: 1003px; text-align:center; border:1px solid #dddddd">
-<colgroup>
-<col style="width: 601px">
-<col style="width: 101px">
-<col style="width: 301px">
-</colgroup>
-<thead>
-  <tr>
-    <th colspan="3" style="background-color: #eeeeee; text-align:center">삽니다</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td rowspan="7">
 
-   <%
-     if(dto.getB_img()==null){ 
-  	%>
-    	<img src="img/buy/ozzangbuy.png" width=600px>
-    	<%  }else{ %>
-  		 <img src="img/buy/<%=dto.getB_img()%>" width=300px>
-       <%}%>
-   </td>
-    <td>글제목</td>
-    <td><%=dto.getB_title()%></td>
-  </tr>
-  <tr>
-    <td>작성자</td>
-    <td><%= dto.getM_id()%></td>
-  </tr>
-  <tr>
-    <td>카테고리</td>
-    <td><%= dto.getB_category() %></td>
-  </tr>
-  <tr>
-    <td>거래유형</td>
-    <td><% if(dto.getB_send1()!=null){%> <%= "택배거래<br>"%><%}%>
-					<% if(dto.getB_send2()!=null){%> <%= "("+dto.getB_sido1()+")<br>직거래"%><%}%></td>
-  </tr>
-  <tr>
-    <td>조회수</td>
-    <td> <%= dto.getB_view() %></td>
-  </tr>
-  <tr>
-    <td>작성일자</td>
-    <td><%= dateFormat.format(dto.getB_time())%></td>
-  </tr>
-  <tr>
-    <td height="150">글내용</td>
-    <td><%= dto.getB_text() %></td>
-  </tr>
-</tbody>
-</table>
 
-<!-- 본문 끝 -->
-<!-- 댓글시작 -->
-<div id="comment"  style="text-align: center;" >
-<form method="post" action="CommentAction.buy?B_num=<%=B_num%>">
-				<table class="table table-striped"
-					style="text-align: center; border: 1px solid #dddddd">
-					<thead>
-						<tr>
-							<th colspan="3"
-								style="background-color: #eeeeeee; text-align: center;">댓글</th>
-						</tr>
-					</thead>
-					<tbody>
+	<section class="section" id="products">
+		<!-- 게시판 제목  -->
+		<div class="container" style="height: 1500px; ">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="aa"></div>
+					<div class="section-heading">
+						<h2 style="margin-top: 180px">삽니다</h2>
+						<span>buy</span>
+					</div>
+				 <!--  폼 추가했어요!!~!~!~!~!~!~! 데이터 넘기기 편하시라고.... -->
 					
-						<%
-							for(int i=List.size()-1 ; i>=0 ; i--){
-						%>
-<!--  댓글  -->
-						<tr>
-						<td width="10%" style="text-align: left;"><%=List.get(i).getM_id()%></td>
-							<td width="200" style="text-align: left;"><%=List.get(i).getCo_text()%></td>
-							<% 
-							if(M_id != null){
-								if(M_id.equals(List.get(i).getM_id())) { 
-									%>
-								
-							<td width="10" ><a href=# onclick = "return coupdate();" class="btn">수정</a>
-									<script text="text/javascript">
-								
-								function coupdate(Co_num){
-									//	수정팝업창 크기 조절과 팝업 위치 조절
-								    var _width = '600';
-								    var _height = '300';
-								    var _left = Math.ceil(( window.screen.width - _width )/2);
-								    var _top = Math.ceil(( window.screen.height - _height )/2); 
-									window.name ="buydetails";
-									window.open("CommentUpdateForm.buy?Co_num="+<%=List.get(i).getCo_num()%>,
-											"updateForm", 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top);
-								}
-									</script>
-							</td>
-							<td width="10">
-							<a href="CommentDelete.buy?B_num=<%=B_num %>&Co_num=<%=List.get(i).getCo_num() %>"
-								onclick="return delchk();" class="btn">삭제</a>
-									<script type="text/javascript">
-								function delchk(){return confirm("삭제하시겠습니까?");}
-									</script>
-							</td> 
-							<%
-								} 
-							}
-							%>
-						</tr>
+					
+					<div class="item-box1">
+					
+					<!-- 상품이미지 -->
+					<div class="item-img">
+						<% if (dto.getB_img() == null) {%>
+						<img src="img/buy/ozzangbuy.png" class="goodsImg">
+						<%} else {%>
+						<img src="img/buy/<%=dto.getB_img()%>" class="goodsImg">
+						<%}%>
+					</div>
+					
+					
+					<!-- 상품정보 -->
+					<div class="item-info"> 
+					   <div class="item-info2">
+					   		<!--  카테고리 -->
+							<span class="info-category"> <%=dto.getB_category()%> 
+							
+							<!--  좋아요, 찜하기 -->
+							<span class="info-like">  
+							</span></span><br> 
+							<span class="info-title"><%=dto.getB_title()%></span> <br> <!-- 글제목 -->
+							<span class="info-price">원</span> <!-- 가격 -->
+							
+							<hr><!-- 가로줄 -->
+							
+							
+							<!-- 거래방식  -->
+							<span class="info-send"> 
+								<% if(dto.getB_send1()!=null&&dto.getB_send2()!=null){%> <%= "<b>택배거래</b>, <b>직거래</b>"%><%}
+														 else if(dto.getB_send1()!=null){%> <%= "<b>택배거래</b>"%><%}
+														 else if(dto.getB_send2()!=null){%> <%= "<b>직거래</b>"%><%}%>
+							</span> 
+							
+							<!-- 조회수 -->
+							<span class="info-eye"><img src="assets/images/eye.png" class="eye"><%=dto.getB_view() %></span>
+						<div>
+						
+						<div>
+							<!-- 판매자~거래일자 구분항목(왼쪽) -->
+							<div class="item-info3"> 
+								<div style="margin: auto 0;">
+								<br>
+								<span > 판매자 </span> <br><br>
+								<span> 작성일자 </span> <br><br>
+								<span> <% if(dto.getB_send2()!=null){%> <span> 거래 선호 지역 <%} else { %>　<%}%></span> <br><br>
+								</div>
+							</div>
+							
+							<!-- 판매자~거래일자 data(오른쪽) -->
+							<div class="item-info4">
+								<div style="margin: auto 0;">
+									<br>
+									<!-- 판매자 ID -->
+									<span><%=dto.getM_id()%></span> <br><br>
+									<!-- 작성일자 -->
+									<span><%=dateFormat.format(dto.getB_time())%></span> <br><br>
+									<!-- 거래지역 -->
+									<% if(dto.getB_send2()!=null){%>
+									<span class="info-location">
+										<img src="sell/location_icon.png" class="location"><%= dto.getB_sido1()%> <%= dto.getB_gugun1()%><%} else { %>　<%}%></span> <br><br>
+								</div>
+							</div>
+						</div>
+							<div class="requestBox">
+							
+							</div>
+						 </div>	 
+						</div>
+					</div>
+					
 		
+					
+					<!-- 판매 상세글 -->
+					<div class="item-detail" >
+						<div style="margin-left: 50px; float: left; width: 950px;">
+							<hr> <!-- 가로줄 -->
+							  <div class="item-detail-text"> 제품 상세 정보 </div> <br>
+						  	<div class="textBox"><%=dto.getB_text()%></div> 
+						</div>
+			<div class="btn-naran">
+		
+				<%if (M_id != null) {
+				// 세션값=id와 글쓴이가 일치해야만 글수정, 글삭제 표시
+					if (M_id.equals(dto.getM_id()) || M_id.equals("admin")) {
+				%>
+					<input type="button" class="btn btn-dark" value="글수정"onclick="location.href='BuyEditForm.buy?B_num=<%=dto.getB_num()%>'">
+					<input type="button" class="btn btn-dark" value="글삭제"onclick="location.href='BuyDelete.buy?B_num=<%=dto.getB_num() %>'">
+				<%		
+					}
+				}
+				%>
+
+					<button type="button" class="btn btn-dark"onclick="location.href='BuyList.buy'">글목록</button>
+				<%
+					if(M_id != null){
+						//본인에게는 신고하기 안보임
+						if(!M_id.equals(dto.getM_id())){
+					%>
+
+			<button type="button" class="btn btn-dark"onclick="fun1('<%=dto.getM_id()%>','<%=dto.getB_num()%>','buy','<%=dto.getB_title()%>')"style="float: right; margin-left: 5px;">신고하기</button>
+				<%
+					}
+				}
+				 %>
+				 		<hr style="width: 940px; margin-left: 55px;">
+				</div>
+		<br><br>		
+				
+<!-- 댓글시작 -->
+<div id="comment" style="text-align: center; width: 900px; margin: 0 auto;">
+	<form method="post" action="CommentAction.buy?B_num=<%=B_num%>">
+		<table style="width: 900px;">
+			<tr><th colspan="3"><p style="font-size: 20px;">댓글<p></th></tr>
+			<%
+				for (int i = List.size() - 1; i >= 0; i--) {
+			%>
+			<!--  댓글  -->
+			<tr><td width="15%" height="50" style="text-align: left;"><%=List.get(i).getM_id()%></td>
+				<td width="200" height="50" style="text-align: left;"><%=List.get(i).getCo_text()%></td>
+				<%
+					if (M_id != null) {
+						if (M_id.equals(List.get(i).getM_id())) {
+				%>
+
+				<td width="10" style="text-align: right;"><a href=# onclick="return coupdate();" class="btn">수정</a> 
+					<script text="text/javascript">
+						function coupdate(Co_num) {
+						//	수정팝업창 크기 조절과 팝업 위치 조절
+							var _width = '600';
+							var _height = '300';
+							var _left = Math.ceil((window.screen.width - _width) / 2);
+							var _top = Math.ceil((window.screen.height - _height) / 2);
+							window.name = "buydetails";
+							window.open(
+							"CommentUpdateForm.buy?Co_num="+<%=List.get(i).getCo_num()%>,
+							"updateForm",'width='+ _width+ ', height='+ _height+ ', left='+ _left+ ', top='+ _top);}
+					</script></td>
+				<td width="10"><ahref="CommentDelete.buy?B_num=<%=B_num%>&Co_num=<%=List.get(i).getCo_num()%>"onclick="return delchk();" class="btn">삭제</a> 
+					<script text="text/javascript">
+						function delchk() {
+							return confirm("삭제하시겠습니까?");}
+					</script></td>
 						<%
-								
+							}
 						}
 						%>
-			<tr>
-			<td colspan="3">
-			<div class="btn-naran">
-				<textarea type="text" class="form-control"
-				placeholder="댓글을 입력하세요." name="Co_text" 
-				maxlength="2048" style="width:800px;height:100px;font-size:15px;"></textarea>
-				</td>
-				<td>
-				<input type="submit" class="btn btn-dark" value="댓글입력">
-			</div>
-			</td>
+				</tr>
 
-					
-					</tbody>
-				</table> 
-				
-			</form>
-			</div>
-	</div>
-<!-- 댓글끝 -->
-
-			<div class="btn-naran">
-<%
-if(M_id != null){
-	// 세션값=id와 글쓴이가 일치해야만 글수정, 글삭제 표시
-	if(M_id.equals(dto.getM_id()) || M_id.equals("admin")){
-		%>
-<input type="button" class="btn btn-dark" value="글수정" onclick="location.href='BuyEditForm.buy?B_num=<%=dto.getB_num() %>'">
-<input type="button" class="btn btn-dark" value="글삭제" onclick="location.href='BuyDelete.buy?B_num=<%=dto.getB_num() %>'"> 
-		<%		
-	}
-}
-%>
-
-	<button type="button" class="btn btn-dark" onclick="location.href='BuyList.buy'" >글목록</button>
-		<%
-		if(M_id != null){
-			//본인에게는 신고하기 안보임
-			if(!M_id.equals(dto.getM_id())){
-		%>
+			<%
+				}
+			%>
+		<tr>
 		
-		<button type="button" class="btn btn-dark" onclick="fun1('<%=dto.getM_id()%>','<%=dto.getB_num()%>','buy','<%=dto.getB_title()%>')" style="float: right">신고하기</button>
-		<%
-			}
-		}
-		 %>
+		<td colspan="3">
+			<div class="btn-naran">
+					<textarea type="text" class="form-control"placeholder="댓글을 입력하세요." name="Co_text" maxlength="2048"style="width: 800px; height: 100px; font-size: 15px;	display: flex;
+	resize: none;"></textarea>
+			</td>
+			<td valign="bottom"><input type="submit" class="btn btn-dark" value="댓글입력" style="margin-bottom: 30px; margin-left: 30px;">
+			</div></td>
+	</table>
+</form>
 </div>
 </div>
-<!-- ***** 푸터 시작 ***** -->
+<!-- 댓글끝 -->
+				
+			</div>
+		</div>
+</div>
+</div>
+</section>
+
+	
+	<!-- ***** 푸터 시작 ***** -->
 <jsp:include page="../bottom.jsp" />
     <!-- ***** 푸터 끝 ***** -->
 
