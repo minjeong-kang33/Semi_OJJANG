@@ -161,7 +161,7 @@ for(int i=0;i<adOutList.size();i++){
     <!-- ***** 탈퇴회원목록조회 끝 ***** -->
     
     <!-- ***** 푸터 시작 ***** -->
-   <jsp:include page="../admin_bottom.jsp" />
+   <jsp:include page="../bottom.jsp" />
     <!-- ***** 푸터 끝 ***** -->
 
  <!-- jQuery -->

@@ -117,7 +117,7 @@ function fun2() {
 					<td><%=dto.getS_num() %></td>
 					<td><%=dto.getS_category() %></td>
 					<td><%=dto.getM_id() %></td>
-					<td><a href="AdSellDetails.sell?S_num=<%=dto.getS_num() %>"><%=dto.getS_title() %></a></td>
+					<td><a href="SellDetails.sell?S_num=<%=dto.getS_num() %>"><%=dto.getS_title() %></a></td>
 					<td><%=dto.getS_price() %></td>
 					<td><%=dateFormat.format(dto.getS_createdate()) %></td>
 				</tr>
@@ -167,7 +167,7 @@ function fun2() {
     <!-- ***** 판매글목록조회 끝 ***** -->
     
     <!-- ***** 푸터 시작 ***** -->
-   <jsp:include page="../admin_bottom.jsp" />
+   <jsp:include page="../bottom.jsp" />
     <!-- ***** 푸터 끝 ***** -->
 
  <!-- jQuery -->
