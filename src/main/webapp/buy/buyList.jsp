@@ -42,81 +42,113 @@ int endPage=(Integer)request.getAttribute("endPage");
 int pageCount=(Integer)request.getAttribute("pageCount");
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 %>
-<section class="notice">
-  <div class="page-title">
-        <div class="container">
-            <h3>삽니다</h3>
-        </div>
-    </div>
-    
-  <!-- board list area -->
-    <div id="board-list">
-	<table class = "board-table">
-		<thead>
-			<tr>
-					<th scope="col" class="th-num">글번호</th>
-					<th scope="col" class="th-category">카테고리</th>
-					<th scope="col" class="th-title">제목</th>
-					<th scope="col" class="th-send">거래유형</th>
-                    <th scope="col" class="th-writer">작성자</th>
-                    <th scope="col" class="th-date">등록일</th>
-                    <th scope="col" class="th-count">조회수</th>
-			</tr>
-		</thead>
-		<tbody>
-			<%
-				for(int i=0; i<buyList.size(); i++){
-					BuyDTO dto = buyList.get(i);
-			%>
-			<tr>
-				<td><%= dto.getB_num() %></td>
-				<td><%= dto.getB_category() %>
-					<%-- <% if(dto.getB_category().equals("outer")){%> <%= "아우터"%><%}%> --%> 
-					<%-- <% if(dto.getB_category()=="outer"){%> <%= "아우터"%><%}%> --%>
-				</td>
-				<td><a href="BuyDetails.buy?B_num=<%=dto.getB_num() %>">
-					<%=dto.getB_title() %></a></td>
-				<td><% if(dto.getB_send1()!=null){%> <%= "<b>택배거래</b><br>"%><%}%>
-					<% if(dto.getB_send2()!=null){%> <%= "("+dto.getB_sido1()+")<br><b>직거래</b>"%><%}%></td>
-				<td><%= dto.getM_id()%></td>
-				<td><%= dateFormat.format(dto.getB_time()) %></td>
-				<td><%= dto.getB_view() %></td>
-			</tr>
-			<%
-				}
-			%>
-		</tbody>
-	</table>
-<!-- 여기다가 페이지번호 -->
-<%
 
-if(startPage > pageBlock){
-	%>
-<a href="BuyList.buy?pageNum=<%=startPage-pageBlock%>">[10페이지 이전]</a>
-	<%
-}
 
-for(int i=startPage;i<=endPage;i++){
-	%>
-	<a href="BuyList.buy?pageNum=<%=i%>"><%=i %></a> 
-	<%
-}
 
-//10페이지 다음
-if(endPage < pageCount){
-	%>
-<a href="BuyList.buy?pageNum=<%=startPage+pageBlock%>">[10페이지 다음]</a>
-	<%
-}
-if(M_id != null){
-%>
-<!-- 	글 작성 버튼을 오른쪽 아래에 고정 -->
-	</div>
-	<button type="button" class="btn btn-dark" onclick="location.href='BuyInsertForm.buy'" style="float:right">글쓰기</button>
-</section>
-<%} %>
 
-<!-- ***** 푸터 시작 ***** -->
+	<section class="section" id="products" style="width: 2000px;">
+		<!-- 게시판 제목  -->
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="section-heading">
+						<h2 style="margin-top: 180px;">삽니다</h2>
+						<span>buy</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container" style=" width:100%; padding: 0;">
+			<div class="row">
+				<div class="col-lg-4">
+					<div class="item" style="padding:0;">
+
+						<!-- board list area -->
+						<div id="board-list" style="width: 1200px;float: left; padding:0; margin-right: 40px;">
+							<table class="board-table" style="float: left; margin-bottom: 30px;">
+								<thead>
+									<tr>
+										<th scope="col" class="th-num">글번호</th>
+										<th scope="col" class="th-category">카테고리</th>
+										<th scope="col" class="th-title">제목</th>
+										<th scope="col" class="th-send">거래유형</th>
+										<th scope="col" class="th-writer">작성자</th>
+										<th scope="col" class="th-date">등록일</th>
+										<th scope="col" class="th-count">조회수</th>
+									</tr>
+								</thead>
+								<tbody>
+									<%
+									for (int i = 0; i < buyList.size(); i++) {
+										BuyDTO dto = buyList.get(i);
+									%>
+									<tr>
+										<td><%=dto.getB_num()%></td>
+										<td><%=dto.getB_category()%> <%-- <% if(dto.getB_category().equals("outer")){%> <%= "아우터"%><%}%> --%>
+											<%-- <% if(dto.getB_category()=="outer"){%> <%= "아우터"%><%}%> --%>
+										</td>
+										<td><a href="BuyDetails.buy?B_num=<%=dto.getB_num()%>">
+												<%=dto.getB_title()%></a></td>
+										<td>
+											<%
+											if (dto.getB_send1() != null) {
+											%> <%="<b>택배거래</b><br>"%> <%}%> <%
+											 if (dto.getB_send2() != null) {
+											 %> <%="(" + dto.getB_sido1() + ")<br><b>직거래</b>"%> <%}%>
+										</td>
+										<td><%=dto.getM_id()%></td>
+										<td><%=dateFormat.format(dto.getB_time())%></td>
+										<td><%=dto.getB_view()%></td>
+									</tr>
+									<%
+									}
+									%>
+								</tbody>
+							</table>
+						
+						<div style="margin-top: 30px;">
+							<!-- 여기다가 페이지번호 -->
+							<%
+							if (startPage > pageBlock) {
+							%>
+							<a href="BuyList.buy?pageNum=<%=startPage - pageBlock%>">[10페이지
+								이전]</a>
+							<%
+							}
+
+							for (int i = startPage; i <= endPage; i++) {
+							%>
+							<a href="BuyList.buy?pageNum=<%=i%>"><%=i%></a>
+							<%
+							}
+
+							//10페이지 다음
+							if (endPage < pageCount) {
+							%>
+							<a href="BuyList.buy?pageNum=<%=startPage + pageBlock%>">[10페이지
+								다음]</a>
+							<%
+							}
+							if (M_id != null) {
+							%>
+							<!-- 	글 작성 버튼을 오른쪽 아래에 고정 -->
+						<button type="button" class="btn btn-dark"
+							onclick="location.href='BuyInsertForm.buy'" style="float: right;">글쓰기</button>
+						</div>
+						<%
+						}
+						%>
+					 </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+	<!-- ***** 푸터 시작 ***** -->
 <jsp:include page="../bottom.jsp" />
     <!-- ***** 푸터 끝 ***** -->
 
