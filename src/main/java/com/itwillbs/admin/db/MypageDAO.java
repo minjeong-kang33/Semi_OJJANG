@@ -506,7 +506,7 @@ public class MypageDAO {
 		return dealHistory1;
 	}
 	
-	//판매리스트
+	//판매리스트 수정!!!
 	public ArrayList<SellDTO> sellHistory1(int startRow, int pageSize,String M_id) {
 		ArrayList<SellDTO> sellHistory1=new ArrayList<SellDTO>();
 		Connection con=null;
@@ -514,7 +514,7 @@ public class MypageDAO {
 		ResultSet rs=null;
 		try {
 			con=getConnection();
-			String sql= ("select * from sell where M_id in ( select M_id from deal where M_id=? and D_play='거래완료')  order by S_num desc limit ?,?"); 
+			String sql= ("select * from sell where S_num in ( select S_num from deal where M_id=? and D_play='거래완료')  order by S_num desc limit ?,?"); 
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, M_id);
 			pstmt.setInt(2, startRow-1);

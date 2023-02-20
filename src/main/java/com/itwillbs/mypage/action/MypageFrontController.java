@@ -69,12 +69,17 @@ public class MypageFrontController extends HttpServlet{
 			}//박은지
 			
 		}else if(sPath.equals("/Profile.moi")) {
-			action=new Profile();
-			try {
-				forward=action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}//박은지
+			forward=new ActionForward();
+			forward.setPath("Mypage/profile.jsp");
+			forward.setRedirect(false);
+			
+		
+//			action=new Profile();
+//			try {
+//				forward=action.execute(request, response);
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}//박은지
 			
 		}else if(sPath.equals("/Writehistory.moi")) {
 			action=new Writehistory();
@@ -125,10 +130,7 @@ public class MypageFrontController extends HttpServlet{
 			forward=new ActionForward();
 			forward.setPath("Mypage/mypage.jsp");
 			forward.setRedirect(false);
-			
-			
-			
-			
+	
 			
 		}
 		/* 여기 위까지 if문 작성 */

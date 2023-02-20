@@ -1,3 +1,4 @@
+<%@page import="com.itwillbs.member.db.MemberDAO"%>
 <%@page import="com.itwillbs.member.db.MemberDTO"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -48,7 +49,11 @@
 	<!-- ***** 게시판 제목 끝 ***** -->
 	
  <%
-MemberDTO dto=(MemberDTO)request.getAttribute("dto");
+String M_id=(String)session.getAttribute("M_id");
+MemberDAO  dao=new MemberDAO();
+MemberDTO dto=dao.getMember(M_id);
+
+
 %>      
     <!-- ***** 회원정보조회 ***** -->
     <form action="#" method="post" id="profile_area">
