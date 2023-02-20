@@ -95,7 +95,7 @@ int pageCount=(Integer)request.getAttribute("pageCount");
 											if (dto.getB_send1() != null) {
 											%> <%="<b>택배거래</b><br>"%> <%}%> <%
 											 if (dto.getB_send2() != null) {
-											 %> <%="(" + dto.getB_sido1() + ")<br><b>직거래</b>"%> <%}%>
+											 %> <%="<b>직거래</b><br>(" + dto.getB_sido1() + ")"%> <%}%>
 										</td>
 										<td><%=dto.getM_id()%></td>
 										<td><%=dateFormat.format(dto.getB_time())%></td>

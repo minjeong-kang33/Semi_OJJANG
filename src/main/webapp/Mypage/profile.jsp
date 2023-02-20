@@ -46,8 +46,8 @@
 			</div>
 		</div>
 	</div>
-	
 	<!-- ***** 게시판 제목 끝 ***** -->
+	
  <%
 String M_id=(String)session.getAttribute("M_id");
 MemberDAO  dao=new MemberDAO();
@@ -59,23 +59,23 @@ MemberDTO dto=dao.getMember(M_id);
     <form action="#" method="post" id="profile_area">
     	<fieldset class="profileField">
     			<ul>
-    				<li><label>아이디</label> <input type="text" id="M_id" name="M_id" size="15" value="<%= dto.getM_id()%>"></li>
-    				<li><label>이름</label> <input type="text" id="M_name" name="M_name" size="15" value="<%= dto.getM_name()%>"></li>
-    				<li><label>닉네임</label> <input type="text" id="M_nick" name="M_nick" size="15" value="<%=dto.getM_gender()%>"></li>
-    				<li><label>성별</label> <input type="text" id="M_gender" name="M_gender" value="<%= dto.getM_nick()%>"> </li>
-    				<li><label>이메일</label> <input type="email" id="M_email" name="M_email" size="30" value="<%= dto.getM_email()%>"></li>
-    				<li><label>주소</label> <input type="text" name="M_address" id="M_address" value="<%= dto.getM_address()+" "+dto.getM_address2()%>"></li>
+    				<li><label>아이디</label> <input type="text" id="M_id" name="M_id" size="15" value="<%= dto.getM_id()%>" readonly></li>
+    				<li><label>이름</label> <input type="text" id="M_name" name="M_name" size="15" value="<%= dto.getM_name()%>" readonly></li>
+    				<li><label>닉네임</label> <input type="text" id="M_nick" name="M_nick" size="15" value="<%=dto.getM_nick()%>" readonly></li>
+    				<li><label>성별</label> <input type="text" id="M_gender" name="M_gender" value="<%= dto.getM_gender()%>" readonly> </li>
+    				<li><label>이메일</label> <input type="email" id="M_email" name="M_email" size="30" value="<%= dto.getM_email()%>" readonly></li>
+    				<li><label>주소</label> <input type="text" name="M_address" id="M_address12" value="<%= dto.getM_address()+" "+dto.getM_address2()%>" readonly></li>
     			</ul>
     	</fieldset>
-    	 </form>
-       <fieldset>
-    	<button id="profileupdate-btn" onclick="location.href='ProfileUpdateForm.moi'">개인정보 변경</button>
+    </form>
+       <fieldset class="btnss">
+    		<button id="profileupdate-btn" onclick="location.href='ProfileUpdateForm.moi'">개인정보 변경</button>
 			<button id="pwupdate-btn" onclick="location.href='PwUpdateForm.moi'">비밀번호 변경</button>
 			<button id="withdraw-btn" onclick="location.href='MemberwithdrawalForm.me'">회원탈퇴</button>
     	</fieldset>
- 
     
 	<!-- ***** 회원정보조회 끝 ***** -->
+	
      <!-- ***** 푸터 시작 ***** -->
    <jsp:include page="../bottom.jsp" />
     <!-- ***** 푸터 끝 ***** -->

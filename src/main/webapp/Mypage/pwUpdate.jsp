@@ -5,56 +5,64 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>중고의류거래: 옺장</title>
-   <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/font-awesome.css">
+   <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
     <link rel="stylesheet" href="assets/css/templatemo-hexashop.css">
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
     <link rel="stylesheet" href="assets/css/lightbox.css"> 
+    <link rel="stylesheet" href="assets/css/pwUpdate.css"> 
 <meta charset="UTF-8">
-<title>중고 의류거래: 옺장</title>
 </head>
 <body>
-    <body>
 
-    <!-- ***** 헤더 ***** -->
+     <!-- ***** 헤더 ***** -->
   <jsp:include page="../top.jsp" />
     <!-- ***** 헤더 끝 ***** -->
     
-     <div class="page-heading about-page-heading" id="top">
-        <div class="container">
-             <div class="inner-content2">
-             	
-    <!-- ***** 비밀번호 수정 시작 ***** -->
+    <!-- ***** 배너 시작 ***** -->
+	<div class="page-heading about-page-heading" id="top">
+		<div class="container">
+			<div class="inner-content2">
+				<img src="assets/images/banner_img.png" width="100%">
+			</div>
+		</div>
+	</div>
+	<!--     ***** 배너 끝 ***** -->
 
-
-<h3>비밀번호수정</h3>
+	<!-- ***** 게시판 제목 시작 ***** -->
+	<div class="PWchangecontainer">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="section-heading">
+					<h2>비밀번호 변경</h2>
+					<span>password change</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- ***** 게시판 제목 끝 ***** --> 
 	
-
-
-
 <%
 String M_id=(String)session.getAttribute("M_id");
+%>     
 
+    <!-- ***** 비밀번호 수정 시작 ***** -->
 
-%>
-<section>	
-<form action="PwUpdatePro.moi" method="post" name="fr">
-아이디 : <input type="text" name="M_id" value="<%=M_id%>" readonly><br>
-비밀번호 : <input type="password" name="M_pw"><br>
-변경 비밀번호: <input type="password" name="M_pw2"><br>
-
-<input type="button" value="회원정보수정" onclick="fun1()">
+<form action="PwUpdatePro.moi" method="post" name="PWchange_area" id="PWchange_area">
+	<fieldset class="PWchangeField">
+		<ul>
+			<li><label>아이디</label> <input type="text" id="M_id" name="M_id" size="15" value="<%= M_id%>" readonly></li>
+			<li><label>현재 비밀번호</label> <input type="password" id="M_pw" name="M_pw" size="15" required placeholder="비밀번호 확인용"></li>
+			<li><label>새 비밀번호</label> <input type="password" id="M_pw2" name="M_pw2" size="15" required placeholder="새로운 비밀번호"></li>
+		</ul>
+	</fieldset>
 </form>
+	<fieldset>
+		<input type="button" value="비밀번호 변경" onclick="fun1()" id="PWupdatebtn">
+	</fieldset>
 
-<!-- <a href="main.jsp">메인으로 이동</a> -->
-
-</section>
-               
 	<!-- ***** 비밀번호수정 끝 ***** -->        
             
-             </div>
-        </div>
-    </div>
     
        <!-- ***** 푸터 시작 ***** -->
    <jsp:include page="../bottom.jsp" />
@@ -99,30 +107,16 @@ String M_id=(String)session.getAttribute("M_id");
         });
 
     </script> 
-
-  </body>
-  <script>
+	 <script>
   function fun1(){
-		if(document.fr.M_pw2.value.length<8){
-			alert("수정할 비밀번호를 8자 이상 입력하세요.")
-			document.fr.M_pw2.focus();
+		if(document.PWchange_area.M_pw2.value.length<6){
+			alert("비밀번호를 6자 이상 입력하세요.")
+			document.PWchange_area.M_pw2.focus();
 			return;
 		}
-		document.fr.submit();
+		document.PWchange_area.submit();
 	}
   </script>
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</html>
+  </body>
+</html>  
