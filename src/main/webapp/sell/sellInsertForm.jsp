@@ -178,7 +178,7 @@ String M_id = (String)session.getAttribute("M_id");
 							<!-- ** 가격 입력 상자 시작 ** -->
 								<div class="price">
 									<b style="margin-right: 108px;">가격</b>
-									<input type="text" id="S_price" name="S_price" placeholder="숫자만 입력하세요">원<br>
+									<input type="text" id="S_price" name="S_price" placeholder="숫자만 입력하세요" pattern="[0-9]+">원<br>
 								</div>
 							<!-- ** 가격 입력 상자 끝 ** -->
 								
