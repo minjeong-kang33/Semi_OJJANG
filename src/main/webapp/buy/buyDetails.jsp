@@ -26,7 +26,7 @@ function fun1(M_id, B_num, R_category, B_title) {
 	   
     window.open("ReportForm.rpt?R_id=" + M_id + "&R_writeNum="
           + B_num + "&R_category=" + "buy" + "&R_title=" + B_title,
-          "pop", "width=520,height=340");
+          "pop", "width=520,height=100");
  }
  
 </script>
@@ -94,7 +94,7 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 							<span class="info-like">  
 							</span></span><br> 
 							<span class="info-title"><%=dto.getB_title()%></span> <br> <!-- 글제목 -->
-							<span class="info-price">원</span> <!-- 가격 -->
+							<span class="info-price"></span> <!-- 가격 -->
 							
 							<hr><!-- 가로줄 -->
 							
