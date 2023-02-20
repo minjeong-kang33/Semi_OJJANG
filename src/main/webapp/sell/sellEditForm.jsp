@@ -118,89 +118,124 @@ SellDAO dao = new SellDAO();
 SellDTO dto = (SellDTO)request.getAttribute("dto");
 %>
     <!-- ***** 로딩 일단 지금은 비어있음***** -->
-    <div id="preloader">
-        <div class="jumper">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>  
-    
-    <!-- ***** 헤더 ***** -->
-  <jsp:include page="../top.jsp" />
-    <!-- ***** 헤더 끝 ***** -->
-    
-<div class="sellInsert"> 
-<img src="assets/images/sellInsert_title.png" id="sellBoard" width="500px">
-	
-	<!-- ** 옷 카테고리 선택 시작 -->
-<form id="frm" action="SellEditPro.sell?S_num=<%=S_num %>" method="post" enctype="multipart/form-data" onsubmit="return fun1()">
-	<div class="radio1">
-		<b>카테고리</b>
-		 <input type="radio" id="radio-btn-1" name="S_category" value="outer" <%if(dto.getS_category().equals("outer")){%>checked <%}%>>
-			<label for="radio-btn-1" class="btn" >아우터</label>
-		<input type="radio" id="radio-btn-2" name="S_category" value="shirts" <%if(dto.getS_category().equals("shirts")){%>checked <%}%>>
-			<label for="radio-btn-2" class="btn">상의</label>
-		<input type="radio" id="radio-btn-3" name="S_category" value="pants" <%if(dto.getS_category().equals("pants")){%>checked <%}%>>
-			<label for="radio-btn-3" class="btn">하의</label>
-		<input type="radio" id="radio-btn-4" name="S_category" value="dress" <%if(dto.getS_category().equals("dress")){%>checked <%}%>>
-			<label for="radio-btn-4" class="btn">원피스</label> 
+	<div id="preloader">
+		<div class="jumper">
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
 	</div>
-	<!-- ** 옷 카테고리 선택 끝 -->
-	
-	<!-- ** 선호거래 체크박스 시작 **-->
-	<div class="check1">
-		<b>선호하는 거래형태</b>
-		<input type="checkbox" id="checkbox-btn-1" name="S_send1"  value="delivery" <%if(dto.getS_send1()!=null){%>checked <%}%>>
-			<label for="checkbox-btn-1" class="btn">택배거래</label>
-		<input type="checkbox" id="checkbox-btn-2" name="S_send2" value="direct" <%if(dto.getS_send2()!=null){%>checked <%}%>>
-			<label for="checkbox-btn-2" class="btn" >직거래</label>
-		
-		<select name="S_sido1" id="S_sido1"><option><%=dto.getS_sido1() %></option></select>
-		<select name="S_gugun1" id="S_gugun1"><option><%=dto.getS_gugun1() %></option></select>
-	</div>
-	<!-- ** 선호거래 체크박스 끝 **-->
-	
-	<!-- ** 가격 입력 상자 시작 ** -->
-	<div class="price">
-		<b>가격</b>
-		<input type="text" id="S_price" name="S_price" value="<%= dto.getS_price()%>">원<br>
-	</div>
-	<!-- ** 가격 입력 상자 끝 ** -->
-	
-<!-- 입력상자 시작  -->    
 
-<table>
-<input type="hidden" name="M_id" value="<%=M_id %>"/>
-	<tr>
-		<th>제목</th>
-    	<td><input type="text" id="S_title" name="S_title" value="<%=dto.getS_title() %>" style="width:650px"/></td>
-    </tr>
-    <tr>
-        <th>내용</th>
-        <td>
-        <textarea rows="10" cols="30" id="S_text" name="S_text" style="width:650px; height:350px;"><%=dto.getS_text() %></textarea>
-        </td>
-     </tr>
-</table>   
-<table>
-     <tr>
-     	<td colspan="2">
-     		<div class="button1">
-     			<input type="file" name="S_img"><%=dto.getS_img() %>
-     			<input type="hidden" name="oldfile" value="<%=dto.getS_img()%>">
+	<!-- ***** 헤더 ***** -->
+	<jsp:include page="../top.jsp" />
+	<!-- ***** 헤더 끝 ***** -->
+
+	<section class="section" id="products">
+		<!-- 게시판 제목  -->
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="section-heading">
+						<h2 style="margin-top: 180px;">게시판 글 등록</h2>
+						<span>wirte a post for sale</span>
+					</div>
+				</div>
 			</div>
-              <div class="button2">
-            	 <input type="submit" id="save" value="글수정"/>
-              </div>
-         </td>
-     </tr>
-</table>
-</form>
-</div>
-<!-- 텍스트박스 입력상자 끝  -->  
+		</div>
 
-    <!-- ***** 푸터 시작 ***** -->
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4">
+					<div class="item">
+						<div class="down-content" style="margin-top: 20px">
+
+
+							<div class="SellInert" style="margin-left: 200px; width: 800px;">
+								<!-- ** 옷 카테고리 선택 시작 -->
+								<form id="frm" action="SellEditPro.sell?S_num=<%=S_num%>"
+									method="post" enctype="multipart/form-data"
+									onsubmit="return fun1()">
+									<div class="radio1">
+										<b style="margin-right: 67px;">카테고리</b> <input type="radio"
+											id="radio-btn-1" name="S_category" value="outer"
+											<%if (dto.getS_category().equals("outer")) {%> checked <%}%>>
+										<label for="radio-btn-1" class="btn">아우터</label> <input
+											type="radio" id="radio-btn-2" name="S_category"
+											value="shirts"
+											<%if (dto.getS_category().equals("shirts")) {%> checked <%}%>>
+										<label for="radio-btn-2" class="btn">상의</label> <input
+											type="radio" id="radio-btn-3" name="S_category" value="pants"
+											<%if (dto.getS_category().equals("pants")) {%> checked <%}%>>
+										<label for="radio-btn-3" class="btn">하의</label> <input
+											type="radio" id="radio-btn-4" name="S_category" value="dress"
+											<%if (dto.getS_category().equals("dress")) {%> checked <%}%>>
+										<label for="radio-btn-4" class="btn">원피스</label>
+									</div>
+									<!-- ** 옷 카테고리 선택 끝 -->
+
+									<!-- ** 선호거래 체크박스 시작 **-->
+									<div class="check1">
+										<b>선호하는 거래형태</b> <input type="checkbox" id="checkbox-btn-1"
+											name="S_send1" value="delivery"
+											<%if (dto.getS_send1() != null) {%> checked <%}%>> <label
+											for="checkbox-btn-1" class="btn">택배거래</label> <input
+											type="checkbox" id="checkbox-btn-2" name="S_send2"
+											value="direct" <%if (dto.getS_send2() != null) {%> checked
+											<%}%>> <label for="checkbox-btn-2" class="btn">직거래</label>
+										<select name="S_sido1" id="S_sido1"><option><%=dto.getS_sido1()%></option></select>
+										<select name="S_gugun1" id="S_gugun1"><option><%=dto.getS_gugun1()%></option></select>
+									</div>
+									<!-- ** 선호거래 체크박스 끝 **-->
+
+									<!-- ** 가격 입력 상자 시작 ** -->
+									<div class="price">
+										<b style="margin-right: 108px;">가격</b> <input type="text" id="S_price" name="S_price"
+											value="<%=dto.getS_price()%>">원<br>
+									</div>
+									<!-- ** 가격 입력 상자 끝 ** -->
+
+									<!-- 입력상자 시작  -->
+
+									<table>
+										<input type="hidden" name="M_id" value="<%=M_id%>" />
+										<tr>
+											<th>제목</th>
+											<td><input type="text" id="S_title" name="S_title"
+												value="<%=dto.getS_title()%>" style="width: 650px" /></td>
+										</tr>
+										<tr>
+											<th>내용</th>
+											<td><textarea rows="10" cols="30" id="S_text"
+													name="S_text" style="width: 650px; height: 350px;"><%=dto.getS_text()%></textarea>
+											</td>
+										</tr>
+									</table>
+									<table style="width: 800px;">
+										<tr>
+											<td colspan="2">
+												<div class="button1" style="margin-left: 34px;">
+													<input type="file" name="S_img"><%=dto.getS_img()%>
+													<input type="hidden" name="oldfile"
+														value="<%=dto.getS_img()%>">
+												</div>
+												<div class="button2" style="float: right;margin-right: 110px;" >
+													<input type="submit" id="save" value="글수정" class="btn btn-dark"/>
+												</div>
+											</td>
+										</tr>
+									</table>
+								</form>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- 텍스트박스 입력상자 끝  -->
+
+	<!-- ***** 푸터 시작 ***** -->
    <jsp:include page="../bottom.jsp" />
     <!-- ***** 푸터 끝 ***** -->
 
