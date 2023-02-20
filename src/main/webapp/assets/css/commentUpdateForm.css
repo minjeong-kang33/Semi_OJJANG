@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+.commentUpdateForm{
+	width: 650px;
+	margin: 0;
+}
+
+.commentUpdateBox{
+	margin-top: 20px;
+	margin-left : 285px;
+	margin-bottom: 40px;
+}
+
+.textBox{
+	margin-left: 50px;
+}
+
+textarea{
+	display: flex;
+	resize: none;
+}
+
+.buttonBox{
+	width: 600px;
+	margin: 0 auto;
+}
+
+input{
+	width: 280px;
+	height :50px;
+	
+}
+
+.btn{
+	margin-left: 20px;
+}
+
+input[type=submit] {
+	border: none; /* Remove borders */
+  color: white; /* Add a text color */
+  padding: 14px 28px; /* Add some padding */
+  cursor: pointer; /* Add a pointer cursor on mouse-over */
+  background-color: #4B3400;
+}
+
+input[type=submit]:hover {
+	background: #6E4C00;
+}
+
+input[type=button] {
+	border: none; /* Remove borders */
+  color: white; /* Add a text color #201600 */
+  padding: 14px 28px; /* Add some padding */
+  cursor: pointer; /* Add a pointer cursor on mouse-over */
+  background-color: #e7e7e7; color: black;
+}
+
+input[type=button]:hover {
+	background: #ddd;
+}
