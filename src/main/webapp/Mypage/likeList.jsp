@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="assets/css/templatemo-hexashop.css">
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
     <link rel="stylesheet" href="assets/css/lightbox.css"> 
-   <link href="assets/css/reviewWriteList.css" rel="stylesheet" type="text/css">
+<!--    <link href="assets/css/reviewWriteList.css" rel="stylesheet" type="text/css"> -->
+      <link href="assets/css/sell.css" rel="stylesheet" type="text/css">
 <meta charset="UTF-8">
 <title>중고 의류거래: 옺장 - 리뷰작성</title>
 
@@ -26,6 +27,25 @@
 
    <body>
    
+      <script type="text/javascript">     
+   	 <%-- 토글 --%>
+    	var set_state = true;
+    	var img_icon = new Array(); 
+    	img_icon[0] = new Image(); 
+    	img_icon[1] = new Image();
+    	img_icon[0].src = "sell/heart.png"; 
+    	img_icon[1].src = "sell/fullheart.png"; 
+    	
+    function hartToggle(){
+    	document.all.icon_btn.src = (set_state ? img_icon[0].src : img_icon[1].src);
+    	   if(set_state){ 
+    		   set_state = false;
+    	   } else {
+    	       set_state = true;
+    	   }
+    }
+    
+    </script>
    
 <%
 String M_id=(String)session.getAttribute("M_id");
@@ -56,68 +76,102 @@ ArrayList<SellDTO> likeList=(ArrayList<SellDTO>)request.getAttribute("likeList")
   <jsp:include page="../top.jsp" />
     <!-- ***** 헤더 끝 ***** -->
 
-	<section class="section" id="products">
-		<div class="container"> <!--  댓글부분  -->
-			<div class="row"> <!--  글쓰기 버튼  -->
-				<div class="col-lg-12"> <!--  테이블부분 -->
-					<div class="section-heading"> <!--  테이블 제목부분 -->
-					<!--  게시판제목 -->
-						<h2>찜내역</h2>
-						<span>like list</span>
+		<section class="section" id="products">
+
+
+		<!-- 게시판 제목  -->
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="section-heading">
+						<h2>찜 내역</h2>
+						<span>Like list</span>
 					</div>
-					
-					<!--  찜 리스트 시작 -->
-						<table>
-							<%
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4">
+					<div class="item">
+						<div class="down-content">
+<!-- 게시판 내용 여기부터 넣으세요  -->
+						
+
+	
+<table>
+	<tr> <!--  테이블................1칸 -->
+	<%
 							
 							for(int i=0;i<likeList.size();i++){
 							 	SellDTO dto=likeList.get(i);
 								
 							%>
-							<tr>
-								<td rowspan="4" ><img src="img/sell/<%=dto.getS_img() %>" class="Like_img_st"></td>
-															<tr>	
-								<td colspan="2"> 제목 : <a href="SellDetails.sell?S_num=<%=dto.getS_num() %>">
-														<%=dto.getS_title() %></a> </td>
-							</tr>
-								<td align="right"> 판매자 : <%=dto.getM_id() %></td>
-							</tr>
-							<tr>
-								<td colspan="2"> 카테고리 : <%=dto.getS_category() %> </td>
-							</tr>
-
-							<tr>	
-								<td colspan="2"> 내용 : <%=dto.getS_text() %> </td>
-							</tr>
-							<tr>
-								<td colspan="2"> 가격: <%=dto.getS_price() %> </td>
-							</tr>
-							<tr>
-							</tr>
-							<tr><td colspan="3" class="line"></td> <tr>
-							<%
-							}
-							%>
-							
-						</table>
-				</div>
+		<td>
+			<table class="item-table">
+				<tr>
+					<td colspan="2" class="S_img"><a href="SellOuterDetails.sell?S_num=<%=dto.getS_num()%>" >
+					<img src="img/sell/<%=dto.getS_img() %>" width=300px height=300px class="goodsImg"></a></td>
+				</tr>
+				<tr>
+					<td colspan="2" class="S_title" > <a href="SellOuterDetails.sell?S_num=<%=dto.getS_num()%>" > <%=dto.getS_title()%></a></td> <!-- 제목 -->
+				</tr>
+				<tr>
+					<td><%=dto.getM_id() %></td>
+				</tr>
+<!-- 				<tr> -->
+<%-- 					<td><%=dto.getS_category() %></td> --%>
+<!-- 				</tr> -->
+				<tr>
+					<td class="price"><%=dto.getS_price()%>원</td> <td align="right" class="like_id"><input type="image" name="button"  class="heart" src="sell/heart.png" onclick="hartToggle()">
+				</tr>
+			</table>
+		</td>		
+			<%
+			if((i+1) %3 ==0){
+			%>
+				</tr>
+				<tr>
 				
-				<!-- 찜 리스트 끝 -->
-				
+			<%
+			 }
+			%>
+	<%
+	 }
+	%>	
+	
+</tr>
+</table>
+<!-- 게시판 내용 여기 넘어가면 안됨.  -->							
+					</div>
+					
+			<div style="width: 1000px;">		
 				<!--  페이지 번호  -->
 				<%
-				
-				
+
 				for(int i=startPage;i<=endPage;i++){
 					%>
-					<a href="LikePro.like?pageNum=<%=i%>"><%=i%></a>
+					<a href="Outer.sell?pageNum=<%=i%>"><%=i%></a>
 					<%
 				}
 				
 				%>
+					
+			<!-- 	글 작성 버튼을 오른쪽 아래에 고정 -->
+			<%
+			if(M_id != null){
+			%>
+				<button type="button" class="btn btn-dark" onclick="location.href='SellInsertForm.sell'" style="float:right; margin-left: 500px;">글쓰기</button>
+			<%
+			}
+			%>
+			</div>		
+					</div>
+				</div>
+			</div>
 		</div>
-	</section>
-
+</section>
 	<!-- ***** 푸터 시작 ***** -->
 <jsp:include page="../bottom.jsp" />
     <!-- ***** 푸터 끝 ***** -->
