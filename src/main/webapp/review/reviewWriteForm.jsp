@@ -11,11 +11,9 @@
     <link rel="stylesheet" href="assets/css/lightbox.css"> 
    <link href="assets/css/reviewWrite.css" rel="stylesheet" type="text/css">
 <meta charset="UTF-8">
-<title>중고 의류거래: 옺장 - 리뷰작성</title>
+<title>중고 의류거래: 옺장</title>
 
    <script type="text/javascript">     
-
-
   function fun1() {
 	if(document.reviewWriteBox.RE_delivery[0].checked==false && document.reviewWriteBox.RE_delivery[1].checked==false){
 		alert("배송 후기를 선택하세요");
@@ -54,7 +52,6 @@
    
    <%
 String M_id=(String)session.getAttribute("M_id");
-
 %>
 
     <!-- ***** 로딩 일단 지금은 비어있음***** -->
@@ -87,10 +84,10 @@ String M_id=(String)session.getAttribute("M_id");
 			<div class="row" style=" padding:0 0;">
 				<div class="col-lg-4" style="padding:0 0;">
 					<div class="item" style="padding:0 0;" >
-						<div class="down-content" style="width: 800px; padding:0 0; background-color: pink;">
+						<div class="down-content" style="width: 800px; padding:0 0;">
 
 					<!--  리뷰작성 입력상자 시작 -->
-					<form id="review" action="ReviewWritePro.rev" method="post" name="reviewWriteBox" class="reviewWriteBox" enctype="multipart/form-data" style="float: left;">
+					<form id="review" action="ReviewWritePro.rev" method="post" name="reviewWriteBox" class="reviewWriteBox" enctype="multipart/form-data" style="margin-left:200px; width: 800px;">
 						<table>
 							<tr>
 								<th> 간편<br>후기</th>
@@ -149,7 +146,7 @@ String M_id=(String)session.getAttribute("M_id");
 								<th><input type="file" name="RE_img1" ></th>
 							</tr>
 						</table>
-						<div class="btn" style="margin-left: 550px;">
+						<div class="btn" style="margin-left: 575px;">
 							<input type="button" value="등록"  class="btn btn-dark" style="clear: right;" onclick="fun1()"/>
 							<input type="reset" class="btn btn-dark" style="margin-left: 10px;" value="초기화"/>
 						</div>
@@ -188,7 +185,6 @@ String M_id=(String)session.getAttribute("M_id");
     <script src="assets/js/custom.js"></script>
 
     <script>
-
         $(function() {
             var selectedClass = "";
             $("p").click(function(){
@@ -202,7 +198,6 @@ String M_id=(String)session.getAttribute("M_id");
                 
             });
         });
-
     </script> 
    
 
