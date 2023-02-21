@@ -1,3 +1,5 @@
+<%@page import="com.itwillbs.admin.db.MypageDAO"%>
+<%@page import="com.itwillbs.like.db.LikeDTO"%>
 <%@page import="com.itwillbs.sell.db.SellDTO"%>
 <%@page import="com.itwillbs.sell.db.SellDAO"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -60,6 +62,8 @@ if ( getCookie( "popup2" ) != "done" ) {
 	//경로 수정?
 	noticeWindow.opener = self;
 }
+
+
 </script>
 	<!-- ***** 팝업창 끝 ***** -->
     
@@ -147,7 +151,18 @@ int pageCount=(Integer)request.getAttribute("pageCount");
 						<img src="img/sell/<%=dto.getS_img() %>" width=300px height=300px class="goodsImg"></a></td>
 				</tr>
 				<tr>
-					<td class="S_category" > <%=dto.getS_category()%></td> <td align="right" class="like_id"><input type="image" name="button" class="heart" src="sell/heart.png" onclick="location.href='LikePro.like?S_num=<%=dto.getS_num() %>'">
+					<td class="S_category" > <%=dto.getS_category()%></td> <td align="right" class="like_id"> 
+						<% MypageDAO dao=new MypageDAO();
+						   LikeDTO getLikeDto=dao.getLike(M_id, dto.getS_num());
+						   if(getLikeDto==null){ %>
+							<input type="image" name="button" class="heart" src="sell/heart.png" onclick="location.href='LikePro.like?S_num=<%=dto.getS_num() %>'">
+							<%
+						   } else {
+						   %>
+						   <input type="image" name="button" class="heart" src="sell/fullheart.png" onclick="location.href='LikePro.like?S_num=<%=dto.getS_num() %>'">
+							<%
+						   }
+							%>
 				</tr>
 				<tr>
 					<td class="S_title" ><a href="SellDetails.sell?S_num=<%=dto.getS_num()%>" > <b><%=dto.getS_title()%></b></a></td> <!-- 제목 -->
