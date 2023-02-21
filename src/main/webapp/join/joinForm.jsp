@@ -56,7 +56,7 @@
 						<script type="text/javascript">
 						function idCheck() {
 							window.open("MemberidCheckForm.me", "nickwin",
-									"width=400, height=350");
+									"width=450, height=150");
 						}
 						</script>
 					</li>
@@ -86,7 +86,7 @@
 						<script type="text/javascript">
 							function nickCheck() {
 								window.open("MembernikCheckForm.me", "nickwin",
-									"width=400, height=350");
+									"width=450, height=150");
 							}
 						</script>
 					</li>
