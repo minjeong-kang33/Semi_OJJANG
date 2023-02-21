@@ -59,17 +59,17 @@
         <div class="col-lg-3">
             <h4>User Management</h4>
             <ul>
-               <li><a href="AdUserList.ad">General User</a></li>
-               <li><a href="AdUserReportList.ad">Reported User</a></li>
-               <li><a href="AdOutList.ad">Withdrawal User</a></li>
+               <li><a href="AdUserList.ad">General User List</a></li>
+               <li><a href="AdUserReportList.ad">Reported User List</a></li>
+               <li><a href="AdOutList.ad">Withdrawal User List</a></li>
             </ul>
          </div>
          
         <div class="col-lg-3">
             <h4>Posts Management</h4>
             <ul>
-               <li><a href="AdSellList.ad">Post for Sell</a></li>
-               <li><a href="AdBuyList.ad">Post for Buy</a></li>
+               <li><a href="AdSellList.ad">Sales Posts List</a></li>
+               <li><a href="AdBuyList.ad">Purchase Posts List</a></li>
             </ul>
          </div>
 					<%
