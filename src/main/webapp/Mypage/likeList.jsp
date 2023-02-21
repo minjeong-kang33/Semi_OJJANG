@@ -84,7 +84,7 @@ ArrayList<SellDTO> likeList=(ArrayList<SellDTO>)request.getAttribute("likeList")
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="section-heading">
-						<h2>찜 내역</h2>
+						<h2>찜목록</h2>
 						<span>Like list</span>
 					</div>
 				</div>
