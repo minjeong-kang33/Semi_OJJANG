@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+
 h2 {
 	margin-top: 180px;
 }
@@ -9,26 +10,8 @@ h2 {
 }
 
 
-
-
-.RE_title {
-	height: 30px;
-	width: 400px;
-}
-
-.RE_text {
-	width: 400px;
-}
-
-
-
 .section-heading {
 	height: 50px;
-}
-
-textarea{
-	display: flex;
-	resize: none;
 }
 
 table{
@@ -46,7 +29,7 @@ table{
 
 .line{
 	
-	border-bottom: 1px solid red;
+	border-bottom: 1px solid #201600;
 }
 
 
@@ -54,15 +37,18 @@ table{
 	margin-left: 650px;
 }
 
-span {
+.tag1 {
 	border-radius: 3px;
-	margin-left: 3px;
-	margin-bottom : 10px;
-	padding: 0px 3px;
+	margin-bottom : 6px;
+	background-color: #2A2A2A;
+	width: 180px;
+	text-align: center;
+	color: white;
+	height: 25px;
 }
 
 .RE_img_st {
 	width: 250px;
 	height: 250px;
+	border-radius: 8px;
 }
-

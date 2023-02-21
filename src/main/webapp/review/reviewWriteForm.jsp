@@ -89,11 +89,11 @@ String M_id=(String)session.getAttribute("M_id");
 								<th colspan="4">
 								<div class="RE_radio">
 									<input type="radio" id="radio-btn-1" name="RE_delivery"  value="배송이 빨라요" for="radio-btn-1">배송이 빨라요
-									<input type="radio" id="radio-btn-1" name="RE_delivery"  value="배송이 느려터졌어요" for="radio-btn-1">배송이 느려터졌어요
+									<input type="radio" id="radio-btn-1" name="RE_delivery"  value="배송이 느려요" for="radio-btn-1">배송이 느려요
 									<input type="radio" id="radio-btn-4" name="RE_fast"  value="응답이 빨라요">응답이 빨라요
 									<input type="radio" id="radio-btn-4" name="RE_fast"  value="응답이 느려요">응답이 느려요<br>
 									<input type="radio" id="radio-btn-3" name="RE_ProductStatus" value="상품이 설명과 같아요">상품이 설명과 같아요
-									<input type="radio" id="radio-btn-3" name="RE_ProductStatus" value="동일 상품이 맞나요?">동일 상품이 맞나요?
+									<input type="radio" id="radio-btn-3" name="RE_ProductStatus" value="상품이 설명과 달라요">상품이 설명과 달라요
 									<input type="radio" id="radio-btn-2" name="RE_manner" value="친절해요">친절해요
 									<input type="radio" id="radio-btn-2" name="RE_manner" value="불친절해요">불친절해요<br>
 									<input type="radio" id="radio-btn-5" name="RE_time" value="약속시간을 잘 지켜요">약속시간을 잘 지켜요
