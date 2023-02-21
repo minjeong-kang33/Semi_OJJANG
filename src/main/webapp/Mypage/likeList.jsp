@@ -28,22 +28,7 @@
    <body>
    
       <script type="text/javascript">     
-   	 <%-- 토글 --%>
-    	var set_state = true;
-    	var img_icon = new Array(); 
-    	img_icon[0] = new Image(); 
-    	img_icon[1] = new Image();
-    	img_icon[0].src = "sell/heart.png"; 
-    	img_icon[1].src = "sell/fullheart.png"; 
-    	
-    function hartToggle(){
-    	document.all.icon_btn.src = (set_state ? img_icon[0].src : img_icon[1].src);
-    	   if(set_state){ 
-    		   set_state = false;
-    	   } else {
-    	       set_state = true;
-    	   }
-    }
+
     
     </script>
    
@@ -124,7 +109,7 @@ ArrayList<SellDTO> likeList=(ArrayList<SellDTO>)request.getAttribute("likeList")
 <%-- 					<td><%=dto.getS_category() %></td> --%>
 <!-- 				</tr> -->
 				<tr>
-					<td class="price"><%=dto.getS_price()%>원</td> <td align="right" class="like_id"><input type="image" name="button"  class="heart" src="sell/heart.png" onclick="hartToggle()">
+					<td class="price"><%=dto.getS_price()%>원</td>
 				</tr>
 			</table>
 		</td>		
