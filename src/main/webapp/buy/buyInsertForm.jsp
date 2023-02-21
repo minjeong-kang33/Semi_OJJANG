@@ -121,67 +121,91 @@ String M_id = (String)session.getAttribute("M_id");
     <!-- ***** 헤더 ***** -->
   <jsp:include page="../top.jsp" />
     <!-- ***** 헤더 끝 ***** -->
-    
-<div class="BuyInsert"> 
-<img src="assets/images/buyInsert_title.png" id="buyBoard" width="500px">
-	
-	<!-- ** 옷 카테고리 선택 시작 -->
-<form id="frm" name="frm" action="BuyInsertPro.buy" method="post" enctype="multipart/form-data" onsubmit="return fun1()">	
-	<div class="radio1">
-		<b>카테고리</b>
-		<input type="radio" id="radio-btn-1" name="B_category" value="outer">
-			<label for="radio-btn-1" class="btn">아우터</label>
-		<input type="radio" id="radio-btn-2" name="B_category" value="shirts">
-			<label for="radio-btn-2" class="btn">상의</label>
-		<input type="radio" id="radio-btn-3" name="B_category" value="pants">
-			<label for="radio-btn-3" class="btn">하의</label>
-		<input type="radio" id="radio-btn-4" name="B_category" value="dress">
-			<label for="radio-btn-4" class="btn">원피스</label>
-	</div>
-	<!-- ** 옷 카테고리 선택 끝 -->
-	
-	<!-- ** 선호거래 체크박스 시작 **-->
-	<div class="check1">
-		<b>선호하는 거래형태</b>
-		<input type="checkbox" id="checkbox-btn-1" name="B_send1"  value="delivery">
-			<label for="checkbox-btn-1" class="btn">택배거래</label>
-		<input type="checkbox" id="checkbox-btn-2" name="B_send2" value="direct">
-			<label for="checkbox-btn-2" class="btn" >직거래</label>
-			
-      <select name="B_sido1" id="B_sido1"></select>
-      <select name="B_gugun1" id="B_gugun1"></select>
-   </div>
-	<!-- ** 선호거래 체크박스 끝 **-->
-<!-- 입력상자 시작  -->    
 
-<table>
-<input type="hidden" name="M_id" value="<%=M_id %>"/>
-	<tr>
-		<th>제목</th>
-    	<td><input type="text" id="B_title" name="B_title" style="width:650px" placeholder="제목을 입력하세요"/></td>
-    </tr>
-    <tr>
-        <th>내용</th>
-        <td>
-        <textarea rows="10" cols="30" id="B_text" name="B_text" style="width:650px; height:350px;" placeholder="내용을 입력하세요"></textarea>
-        </td>
-     </tr>
- </table>   
-<table>
-     <tr>
-     	<td colspan="2">
-     		<div class="button1">
-     			<input type="file" name="B_img">
+
+	<section class="section" id="products">
+
+
+		<!-- 게시판 제목  -->
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="section-heading">
+						<h2>구매 게시판 글 등록</h2>
+						<span>write posts for buy</span>
+					</div>
+				</div>
 			</div>
-              <div class="button2">
-            	 <input type="submit" id="save" value="등록"/>
-            	 <input type="reset" value="초기화"/>
-              </div>
-         </td>
-     </tr>
-</table>
-</form>
-</div>
+		</div>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4">
+					<div class="item">
+						<div class="down-content" style="width: 800px; margin-left: 200px;">
+						
+								<!-- ** 옷 카테고리 선택 시작 -->
+								<form id="frm" name="frm" action="BuyInsertPro.buy" method="post" enctype="multipart/form-data" onsubmit="return fun1()">	
+									<div class="radio1">
+										<b>카테고리</b>
+										<input type="radio" id="radio-btn-1" name="B_category" value="outer">
+											<label for="radio-btn-1" class="btn" style="margin-left: 80px;">아우터</label>
+										<input type="radio" id="radio-btn-2" name="B_category" value="shirts">
+											<label for="radio-btn-2" class="btn">상의</label>
+										<input type="radio" id="radio-btn-3" name="B_category" value="pants">
+											<label for="radio-btn-3" class="btn">하의</label>
+										<input type="radio" id="radio-btn-4" name="B_category" value="dress">
+											<label for="radio-btn-4" class="btn">원피스</label>
+									</div>
+									<!-- ** 옷 카테고리 선택 끝 -->
+									
+									<!-- ** 선호거래 체크박스 시작 **-->
+									<div class="check1">
+										<b>선호하는 거래형태</b>
+										<input type="checkbox" id="checkbox-btn-1" name="B_send1"  value="delivery">
+											<label for="checkbox-btn-1" class="btn">택배거래</label>
+										<input type="checkbox" id="checkbox-btn-2" name="B_send2" value="direct">
+											<label for="checkbox-btn-2" class="btn" >직거래</label>
+											
+								      <select name="B_sido1" id="B_sido1"></select>
+								      <select name="B_gugun1" id="B_gugun1"></select>
+								   </div>
+									<!-- ** 선호거래 체크박스 끝 **-->
+								<!-- 입력상자 시작  -->    
+								
+								<table>
+								<input type="hidden" name="M_id" value="<%=M_id %>"/>
+									<tr>
+										<th>제목</th>
+								    	<td><input type="text" id="B_title" name="B_title" style="width:650px" placeholder="제목을 입력하세요"/></td>
+								    </tr>
+								    <tr>
+								        <th>내용</th>
+								        <td>
+								        <textarea rows="10" cols="30" id="B_text" name="B_text" style="width:650px; height:350px;" placeholder="내용을 입력하세요"></textarea>
+								        </td>
+								     </tr>
+								 </table>   
+								<table>
+								     <tr>
+								     	<td colspan="2">
+								     		<div class="button1" style="padding-left: 30px;">
+								     			<input type="file" name="B_img">
+											</div>
+								              <div class="button2" style="margin-left: 540px;">
+								            	 <input type="submit" id="save" class="btn btn-dark" style="margin-right: 10px;;" value="등록"/>
+								            	 <input type="reset" class="btn btn-dark" value="초기화"/>
+								              </div>
+								         </td>
+								     </tr>
+								</table>
+								</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</section>
 <!-- 텍스트박스 입력상자 끝  -->  
 
     <!-- ***** 푸터 시작 ***** -->
