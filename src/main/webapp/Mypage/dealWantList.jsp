@@ -7,8 +7,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList"%>
-    
 <html>
+<head>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>중고의류거래: 옺장</title>
@@ -17,22 +17,15 @@
     <link rel="stylesheet" href="assets/css/templatemo-hexashop.css">
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
     <link rel="stylesheet" href="assets/css/lightbox.css"> 
+    <link href="assets/css/buy.css" rel="stylesheet" type="text/css">
 <meta charset="UTF-8">
-<title>중고 의류거래: 옺장</title>
-</head>
-<body>
-    <body>
-     <!-- ***** 헤더 ***** -->
-  <jsp:include page="../top.jsp" />
-    <!-- ***** 헤더 끝 ***** -->
-    
-    <div class="page-heading about-page-heading" id="top">
-        <div class="container">
-             <div class="inner-content2">
+</head>  
+<!-- ***** 로고 시작 ***** -->
+<img src="assets/images/otzang_logo_top.png" height="60px" style="display: flex !important">
+<!-- ***** 로고 끝 ***** -->
+
             
 <!--  ***** 구매 요청자 조회 시작 ***** -->
-    
-    <h3>거래 희망자</h3>
 <%
 int S_num=Integer.parseInt(request.getParameter("S_num"));
 String M_id=request.getParameter("M_id");
@@ -45,12 +38,34 @@ ArrayList<DealDTO> DealWantList=dao.DealWantList(S_num);
 
 // ArrayList<DealDTO> DealWantList=(ArrayList<DealDTO>)request.getAttribute("DealWantList");
 
-
 %>	
-<form>
-<section>
-<table border="1">
-<tr><td>구매희망자</td><td>거래완료</td></tr>
+<!-- <section class="section" id="products" style="width: 200px;"> -->
+<!-- 게시판 제목  -->
+		<div class="container">
+			<div style="width: 30px;">
+				<div  style="width: 30px;">
+					<div class="section-heading" style="width:200px; margin:30px 140px; text-align: center";>
+						<h2 style="width: 200px">거래</h2>
+						<span>sell</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container" style=" width:100%; padding: 0;">
+			<div style="height: 20;">
+				<div class="col-lg-4">
+					<div class="item" style="padding:0;">
+					<!-- board list area -->
+						<div id="board-list" style="width: 500px;float: left; padding:0; margin-right: auto;">
+<!-- 							<table class="board-table" style="float: left; margin-bottom: 30px;"> -->
+							<table class="board-table" style="float: left; margin: 0 auto;">
+								<thead>
+									<tr>					
+										<th scope="col" class="th-want">구매희망자</th>
+										<th scope="col" class="th-deal">거래완료</th>
+									</tr>
+								</thead>
+								<tbody>
 
 <%
 
@@ -60,63 +75,31 @@ for(int i=0;i<DealWantList.size();i++){
 
 	<tr>
 		<td><%=dto.getD_buy() %></td>
-		<td><button type="button" onclick="location.href='EndDealPro.deal?S_num=<%=dto.getS_num()%>&D_buy=<%=dto.getD_buy()%>'">거래완료</button>
-		</td>
-		
+		<td><button type="button" onclick="location.href='EndDealPro.deal?S_num=<%=dto.getS_num()%>&D_buy=<%=dto.getD_buy()%>'"
+					style="background-color:#704A00; color:white; border:none; border-radius: 7px; padding: 3px 7px" >거래완료</button>
+		</td>		
 	</tr>
 
 <%
 }
 %>
+		</tbody>
 	</table>
-
-</section>
-</form>
-<!--  ***** 구매 요청자 조회 끝***** -->
-	       
+<!-- 희망자조회끝 -->
+	<div style="margin-top: 10px;">
+							</div>
+ 						</div>
+					</div>
              </div>
         </div>
-    </div>     <!-- ***** 푸터 시작 ***** -->
-   <jsp:include page="../bottom.jsp" />
-    <!-- ***** 푸터 끝 ***** -->
+    </div>
+<!-- </section> -->
+	<!-- ***** 작성글 조회(판매)페이징 끝 ***** -->
 
- <!-- jQuery -->
-    <script src="assets/js/jquery-2.1.0.min.js"></script>
 
- <!--  Bootstrap -->
-    <script src="assets/js/popper.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+<!--  ***** 구매 요청자 조회 끝***** -->
+	       
 
- <!-- Plugins -->
-    <script src="assets/js/owl-carousel.js"></script>
-    <script src="assets/js/accordions.js"></script>
-    <script src=".assets/js/datepicker.js"></script>
-    <script src="assets/js/scrollreveal.min.js"></script>
-    <script src="assets/js/waypoints.min.js"></script>
-    <script src="assets/js/jquery.counterup.min.js"></script>
-    <script src="assets/js/imgfix.min.js"></script> 
-    <script src="assets/js/slick.js"></script> 
-    <script src="assets/js/lightbox.js"></script> 
-    <script src="assets/js/isotope.js"></script> 
-    
-<!-- Global Init -->
-    <script src="assets/js/custom.js"></script>
-
-    <script>
-        $(function() {
-            var selectedClass = "";
-            $("p").click(function(){
-            selectedClass = $(this).attr("data-rel");
-            $("#portfolio").fadeTo(50, 0.1);
-                $("#portfolio div").not("."+selectedClass).fadeOut();
-            setTimeout(function() {
-              $("."+selectedClass).fadeIn();
-              $("#portfolio").fadeTo(50, 1);
-            }, 500);
-                
-            });
-        });
-    </script> 
 
   </body>
 </html>

@@ -82,7 +82,8 @@ ArrayList<SellDTO> sellList=(ArrayList<SellDTO>)request.getAttribute("sellList")
 										<td><%=dto.getS_like() %></td>
 	<td><%=dto.getS_view() %></td>
 	<td><%=dateFormat.format(dto.getS_createdate()) %></td>
-	<td><input type="button" value="확인하기" id="checkbtn"onclick="location.href='DealWantList.deal?S_num=<%=dto.getS_num()%>'"></td>
+	<td><a href="javascript:void(window.open('DealWantList.deal?S_num=<%=dto.getS_num()%>', '희망자리스트', 'width=500, height=400,left=500, top=200' ))">
+		<input type="button" value="확인하기" style="background-color:#704A00; color:white; border:none; border-radius: 7px; padding: 3px 7px" ></a>	</td>						
 									</tr>
 									<%
 									}
