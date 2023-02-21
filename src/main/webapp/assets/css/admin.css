@@ -1,6 +1,33 @@
 @charset "UTF-8";
 h3 {
-	margin-top: 180px;
+	margin-top: 200px;
+}
+form {
+	border: none;
+}
+.adSLcontainer {
+	margin-bottom: 20px;
+} /* 제목 */
+.adSLcontainer2 {
+	margin-left: 23%;
+} /* 폼이랑 페이징 전체 묶음 */
+.ad-count {
+	margin-bottom: 8px;
+	color: #42240C;
+} /* 테이블 위 게시글 수 */
+#ckAll, #ck {
+	margin-right: 15px;
+	margin-left: 10px;
+}
+.ad-btn {
+	color: white;
+	border: none;
+	font-size: 16px;
+	font-weight: 500;
+	padding: 5px;
+	background-color: #4B3400;
+	border-radius: 3px;
+	float: right;
 }
 .down-content{
 	margin-top: 20px;
@@ -48,9 +75,6 @@ h3 {
 	position: relative;
 	width: 118px;
 }
-.ad-count {
-	clear: right;
-}
 
 /* List */
 .board-table {
@@ -85,11 +109,6 @@ h3 {
 
 .board-table .th-title {
   width: 250px;
-}
-
-.board-table .th-send {
-  width: 50px;
-  text-align: center;
 }
 
 .board-table .th-writer {
