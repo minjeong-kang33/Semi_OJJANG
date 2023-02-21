@@ -94,7 +94,7 @@ String search=(String)request.getAttribute("search");
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="section-heading">
-						<h3><b>일반회원목록조회</b></h3>
+						<h3><b>일반회원 목록</b></h3>
 						<span>General User List</span>
 					</div>
 				</div>
@@ -155,7 +155,6 @@ String search=(String)request.getAttribute("search");
 										<th scope="col" class="th-writer">이름</th>
 										<th scope="col" class="th-writer">닉네임</th>
 										<th scope="col" class="th-date">가입날짜</th>
-										<th scope="col" class="th-count">상태</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -170,7 +169,6 @@ String search=(String)request.getAttribute("search");
 											<td><%=dto.getM_name() %></td>
 											<td><%=dto.getM_nick() %></td>
 											<td><%=dateFormat.format(dto.getM_createdate()) %></td>
-											<td><%=dto.getM_play() %></td>
 										</tr>
 									<%
 									}
@@ -185,7 +183,7 @@ String search=(String)request.getAttribute("search");
 	if(info==null&&search==null) {
 		if(startPage > pageBlock){
 			%>
-			<a href="AdUserList.ad?pageNum=<%=startPage-pageBlock%>">◁◁ </a>
+			<a href="AdUserList.ad?pageNum=<%=startPage-pageBlock%>" >◁◁ </a>
 			<%
 			}
 		if(currentPage>1) {

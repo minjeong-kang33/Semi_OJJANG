@@ -86,6 +86,7 @@ function fun3() {
 	int pageCount=(Integer)request.getAttribute("pageCount");
 	int adUserReportCount=(Integer)request.getAttribute("adUserReportCount");
 	String info=(String)request.getAttribute("info");
+	String info2=(String)request.getAttribute("info2");
 	String search=(String)request.getAttribute("search");
 	%>
 	
@@ -96,7 +97,7 @@ function fun3() {
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="section-heading">
-						<h3><b>신고회원목록조회</b></h3>
+						<h3><b>신고회원 목록</b></h3>
 						<span>Reported User List</span>
 					</div>
 				</div>
@@ -133,8 +134,8 @@ function fun3() {
 				<%
 			}else {
 				%>
-				<%=info %> ▶ <b><%=search %></b><br>
-				검색결과 : <b><%=adUserReportList.size() %></b>명
+				<%=info2 %> ▶ <b><%=search %></b><br>
+				검색결과 : <b><%=adUserReportCount %></b>명
 				<%
 			}
 			%>
@@ -178,11 +179,19 @@ function fun3() {
 										<td><%=dto.getR_writeNum() %></td>
 										<td><%=dto.getR_title() %></td>
 										<td><%=dto.getM_id() %></td>
-										<td><%=dto.getR_play() %></td>
-									</tr>
+									<%
+									if(dto.getR_play()!=null) {
+									%>
+										<td><span class="ad-out"><%=dto.getR_play() %></span></td>
+									<%
+									}else {
+									%>
+										<td></td>
 									<%
 									}
+									}
 									%>
+									</tr>
 								</tbody>
 							</table>
 
@@ -217,27 +226,27 @@ function fun3() {
 	}else {
 		if(startPage > pageBlock){
 			%>
-			<a href="AdUserReportList.ad?pageNum=<%=startPage-pageBlock%>&search=<%=search %>">◁◁ </a>
+			<a href="AdUserReportList.ad?pageNum=<%=startPage-pageBlock%>&info=<%=info %>&search=<%=search %>">◁◁ </a>
 			<%
 			}
 		if(currentPage>1) {
 			%>
-			<a href="AdUserReportList.ad?pageNum=<%=currentPage-1 %>&search=<%=search %>">◀</a>
+			<a href="AdUserReportList.ad?pageNum=<%=currentPage-1 %>&info=<%=info %>&search=<%=search %>">◀</a>
 			<%
 			}
 		for(int i=startPage;i<=endPage;i++){
 			%>
-			<a href="AdUserReportList.ad?pageNum=<%=i %>&search=<%=search %>"><%=i %></a>
+			<a href="AdUserReportList.ad?pageNum=<%=i %>&info=<%=info %>&search=<%=search %>"><%=i %></a>
 			<%
 			}
 		if(currentPage<pageCount) {
 			%>
-			<a href="AdUserReportList.ad?pageNum=<%=currentPage+1 %>&search=<%=search %>">▶</a>
+			<a href="AdUserReportList.ad?pageNum=<%=currentPage+1 %>&info=<%=info %>&search=<%=search %>">▶</a>
 			<%
 			}
 		if(endPage < pageCount){
 			%>
-			<a href="AdUserReportList.ad?pageNum=<%=startPage+pageBlock%>&search=<%=search %>"> ▷▷</a>
+			<a href="AdUserReportList.ad?pageNum=<%=startPage+pageBlock%>&info=<%=info %>&search=<%=search %>"> ▷▷</a>
 			<%
 		}
 	}

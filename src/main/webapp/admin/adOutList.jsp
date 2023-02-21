@@ -63,7 +63,7 @@ function fun3() {
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="section-heading">
-						<h3><b>탈퇴회원목록조회</b></h3>
+						<h3><b>탈퇴회원 목록</b></h3>
 						<span>Withdrawal User List</span>
 					</div>
 				</div>
@@ -121,7 +121,7 @@ function fun3() {
 									<th scope="col">이름</th>
 									<th scope="col">닉네임</th>
 									<th scope="col">가입날짜</th>
-									<th scope="col">상태</th>
+									<th scope="col">회원상태</th>
 								</tr>
 							</thead>
 	
@@ -136,11 +136,19 @@ function fun3() {
 								<td><%=dto.getM_name() %></td>
 								<td><%=dto.getM_nick() %></td>
 								<td><%=dateFormat.format(dto.getM_createdate()) %></td>
-								<td><%=dto.getM_play() %></td>
-							</tr>
+							<%
+							if("탈퇴".equals(dto.getM_play())) {
+							%>
+								<td><span class="ad-report"><%=dto.getM_play() %></span></td>
+							<%
+							}else {
+							%>
+								<td><span class="ad-out"><%=dto.getM_play() %></span></td>
 							<%
 							}
+							}
 							%>
+							</tr>
 							</tbody>
 						</table>
 

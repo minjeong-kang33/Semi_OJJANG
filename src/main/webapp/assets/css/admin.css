@@ -26,9 +26,9 @@ form {
 	border: none;
 	font-size: 16px;
 	font-weight: 500;
-	padding: 5px 15px;
+	padding: 5px 16px;
 	background-color: #4B3400;
-	border-radius: 3px;
+	border-radius: 12px;
 	float: right;
 }
 .ad-page a {
@@ -58,6 +58,7 @@ form {
 	background: #ffffff;
 	float: right;
 	margin-bottom: 30px;
+	border-radius: 5px;
 }
 .input-search {
 	font-size: 14px;
@@ -83,6 +84,27 @@ form {
 	height: 100%;
 	border: none;
 	margin-left: 3px;
+}
+/* .ad-report-null { */
+/* padding: 12px 0; */
+/* border-top: 1px solid #e7e7e7; */
+/* text-align: center; */
+/* } */
+.ad-report {
+text-align: center;
+background-color:#704A00;
+color:white;
+border:none;
+border-radius: 7px;
+padding: 3px 7px
+}
+.ad-out {
+text-align: center;
+background-color:#343A40;
+color:white;
+border:none;
+border-radius: 7px;
+padding: 3px 7px
 }
 
 /* List */
