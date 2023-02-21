@@ -60,8 +60,9 @@ ArrayList<DealDTO> dealListB1=(ArrayList<DealDTO>)request.getAttribute("dealList
 
 %>	
 <section>
+<form action="ReviewWriteForm.rev" method="post">
 <table border="1">
-<tr><td>판매자</td><td>판매글제목</td><td>구매가격</td><td>카테고리</td><td>구매자</td><td>거래날짜</td></tr>
+<tr><td>판매자</td><td>판매글제목</td><td>구매가격</td><td>카테고리</td><td>구매자</td><td>거래날짜</td><td>리뷰</td></tr>
 
 <%
 for(int i=0;i<dealListS1.size();i++){
@@ -76,13 +77,15 @@ for(int i=0;i<dealListS1.size();i++){
 		<td><%=sdto.getS_price() %></td>
 		<td><%=sdto.getS_category() %></td>
 		<td><%=dto.getD_buy() %></td>
-		<td><%=dateFormat.format(dto.getD_date()) %></td>				
+		<td><%=dateFormat.format(dto.getD_date()) %></td>	
+		<td><input type="submit" value="리뷰쓰기"></td>		
 	</tr>
 	
 <%
 }
 %>
 </table>
+</form>
 <%
 if(currentPage > 1){
 	%>

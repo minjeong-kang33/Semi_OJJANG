@@ -184,6 +184,8 @@ SellDTO dto = (SellDTO)request.getAttribute("dto");
 											<%}%>> <label for="checkbox-btn-2" class="btn">직거래</label>
 										<select name="S_sido1" id="S_sido1"><option><%=dto.getS_sido1()%></option></select>
 										<select name="S_gugun1" id="S_gugun1"><option><%=dto.getS_gugun1()%></option></select>
+											<input type="hidden" name="oldS_sido1" value="<%=dto.getS_sido1() %>">
+											<input type="hidden" name="oldS_gugun1" value="<%=dto.getS_gugun1() %>">
 									</div>
 									<!-- ** 선호거래 체크박스 끝 **-->
 

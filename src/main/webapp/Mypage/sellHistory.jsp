@@ -1,5 +1,3 @@
-
-
 <%@page import="com.itwillbs.deal.db.DealDAO"%>
 <%@page import="com.itwillbs.admin.db.MypageDAO"%>
 <%@page import="com.itwillbs.sell.db.SellDTO"%>
@@ -9,7 +7,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList"%>
-    
+<!DOCTYPE html>    
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -19,32 +17,12 @@
     <link rel="stylesheet" href="assets/css/templatemo-hexashop.css">
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
     <link rel="stylesheet" href="assets/css/lightbox.css"> 
+    <link rel="stylesheet" href="assets/css/sellhistory.css"> 
 <meta charset="UTF-8">
-<title>중고 의류거래: 옺장</title>
 </head>
+
 <body>
-    <body>
-     <!-- ***** 헤더 ***** -->
-  <jsp:include page="../top.jsp" />
-    <!-- ***** 헤더 끝 ***** -->
-    
-    <div class="page-heading about-page-heading" id="top">
-        <div class="container">
-             <div class="inner-content2">
-            
- <!-- ***** 거래내역 시작***** -->
-
-
- <!-- ***** 판매내역조회 시작***** -->
-    
-    <h3>판매내역조회</h3>
 <%
-
-// DealDTO dto=new DealDTO();
-// SellDTO sdto=new SellDTO();
-// MypageDAO dao=new MypageDAO();
-// ArrayList<DealDTO> dealHistory=dao.dealHistory(M_id);
-// ArrayList<SellDTO> sellHistory=dao.sellHistory(M_id);
 String M_id=(String)session.getAttribute("M_id");
 SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy.MM.dd");
 
@@ -57,39 +35,53 @@ int pageCount=(Integer)request.getAttribute("pageCount");
 ArrayList<SellDTO> sellHistory1=(ArrayList<SellDTO>)request.getAttribute("sellHistory1");
 ArrayList<DealDTO> dealHistory1=(ArrayList<DealDTO>)request.getAttribute("dealHistory1");
 %>	
-<section>
-<table border="1">
-<tr><td>판매글제목</td><td>판매가격</td><td>카테고리</td><td>구매자</td><td>거래날짜</td></tr>
-
-<%
-// System.out.println(dealListS.size());
-// System.out.println(dealListB.size());
-for(int i=0;i<dealHistory1.size();i++){
- 	DealDTO dto=dealHistory1.get(i);
-	SellDTO sdto=sellHistory1.get(i);
-	
-%>
-
-	<tr>
-		<td><a href="SellDetails.sell?S_num=<%=sdto.getS_num() %>">
-		<%=sdto.getS_title() %></a></td>
-		<td><%=sdto.getS_price() %></td>
-		<td><%=sdto.getS_category() %></td>
-		<td><%=dto.getD_buy() %>
-		<td><%=dateFormat.format(dto.getD_date()) %></td>
-		
-	</tr>
-
-<%
-}
-%>
-	</table>
-	
-	<!-- ***** 판매내역조회 끝 ***** -->
-	
-<!-- ***** 판매내역 페이징 시작 *****	 -->
-	
-	<%
+     <!-- ***** 헤더 ***** -->
+  <jsp:include page="../top.jsp" />
+    <!-- ***** 헤더 끝 ***** -->
+	<section class="section" id="products">
+		<div class="container"> 
+			<div class="row"> 
+				<div class="col-lg-12"> 
+					<div class="section-heading"> 
+					<!--  게시판제목 -->
+						<h2>리뷰 내역</h2>
+						<span>review list</span>
+					</div>
+					
+						<table>
+							<%
+							for(int i=0;i<dealHistory1.size();i++){
+							 	DealDTO dto=dealHistory1.get(i);
+								SellDTO sdto=sellHistory1.get(i);
+								
+							%>
+							<tr>
+								<td rowspan="4" ><a href="SellDetails.sell?S_num=<%=dto.getS_num()%>">
+									<img src="img/sell/<%=sdto.getS_img() %>" class="S_img_st" width="180px" height="180px"></a></td>
+								<td id="SH_title"><a href="SellDetails.sell?S_num=<%=dto.getS_num()%>"> <%=sdto.getS_title() %> </a></td>
+							</tr>
+							<tr>
+								<td id="SH_price"><%=sdto.getS_price() %>원</td>
+							</tr>
+							<tr>	
+								<td colspan="2" id="SH_buyer"> 구매자 : <%=dto.getD_buy() %> </td>
+							</tr>
+							<tr>
+							<td id="SH_date"> 거래완료일 : <%=dateFormat.format(dto.getD_date())%></td>
+							
+							</tr>
+							<tr><td colspan="3" class="line"></td> <tr>
+							<%
+							}
+							%>
+							
+						</table>
+						<hr>
+						</div>
+				</div>
+				
+				<!--  페이지 번호  -->
+				<%
 if(currentPage > 1){
 	%>
 	<a href="Sellhistory.moi?pageNum1=<%=currentPage-1%>">[1페이지 이전]</a>
@@ -108,19 +100,10 @@ if(currentPage < pageCount){
 }
 
 %>
-</section>
-
-<!-- ***** 판매내역 페이징 끝 ***** -->	
-
-
- <!-- ***** 거래내역 끝***** -->
-
-
-
-	       
-             </div>
-        </div>
-    </div>     <!-- ***** 푸터 시작 ***** -->
+		</div>
+	</section>    
+    
+    <!-- ***** 푸터 시작 ***** -->
    <jsp:include page="../bottom.jsp" />
     <!-- ***** 푸터 끝 ***** -->
 

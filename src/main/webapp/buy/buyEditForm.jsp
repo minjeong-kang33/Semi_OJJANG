@@ -88,7 +88,7 @@ $('document').ready(function() {
     $("select[name^=B_sido1]").change(function() {
      var area = "area"+$("option",$(this)).index($("option:selected",$(this))); // 선택지역의 구군 Array
      var $B_gugun1 = $(this).next(); // 선택영역 군구 객체
-     $("option",$B_gugun1).remove(); // 구군 초기화
+     $("option",$B_gugun1).remove(); // 구군 초기화 
      if(area == "area0")
       $B_gugun1.append("<option value=''>구/군 선택</option>");
      else {
@@ -98,6 +98,7 @@ $('document').ready(function() {
      }
     });
    });
+   
 function fun1() {
 	// 필수조건 - 입력 안 된 경우, 선택 안 된 경우 => 입력하세요 제어=> 전송
 	if(document.frm.B_title.value==""){
@@ -136,7 +137,7 @@ function fun1() {
 <img src="assets/images/buyInsert_title.png" id="buyBoard" width="500px">
 	
 	<!-- ** 옷 카테고리 선택 시작 -->
-<form id="frm" action="BuyEditPro.buy?B_num=<%=B_num %>"  method="post" enctype="multipart/form-data" onsubmit="return fun1()">	
+<form id="frm" name="frm" action="BuyEditPro.buy?B_num=<%=B_num %>"  method="post" enctype="multipart/form-data" onsubmit="return fun1()">	
 	<div class="radio1">
 		<b>카테고리</b>
 		 <input type="radio" id="radio-btn-1" name="B_category" value="outer" <%if(dto.getB_category().equals("outer")){%>checked <%}%>>
@@ -160,7 +161,8 @@ function fun1() {
 		
 		<select name="S_sido1" id="S_sido1"><option><%=dto.getB_sido1() %></option></select>
 		<select name="S_gugun1" id="S_gugun1"><option><%=dto.getB_gugun1() %></option></select>
-			
+			<input type="hidden" name="oldB_sido1" value="<%=dto.getB_sido1() %>">
+			<input type="hidden" name="oldB_gugun1" value="<%=dto.getB_gugun1() %>">
    </div>
    
 <!-- ** 선호거래 체크박스 끝 **-->

@@ -32,6 +32,14 @@ public class BuyEditPro implements Action {
 		if (B_img == null) {
 			B_img = multi.getParameter("oldfile");
 		}
+		if (B_sido1 == null) {
+			B_sido1 = multi.getParameter("oldB_sido1");
+		}
+		if (B_gugun1 == null) {
+			B_gugun1 = multi.getParameter("oldB_gugun1");
+		}
+		
+		
 
 		BuyDTO dto = new BuyDTO();
 		dto.setB_num(num);
