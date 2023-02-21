@@ -20,8 +20,6 @@
 <title>중고 의류거래: 옺장</title>
 </head>
 <body>
-     <!-- ***** 로딩 일단 지금은 비어있음***** -->
-
      <!-- ***** 헤더 ***** -->
   <jsp:include page="../top.jsp" />
     <!-- ***** 헤더 끝 ***** -->
@@ -45,17 +43,18 @@ ArrayList<BuyDTO> buyList=(ArrayList<BuyDTO>)request.getAttribute("buyList");
 %>	
 
 <section class="section" id="products" style="width: 2000px;">
-		<!-- 게시판 제목  -->
+		<!-- ***** 제목 시작 ***** -->
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="section-heading">
-						<h2 style="margin-top: 180px;">구매글 조회</h2>
-						<span>buy</span>
+						<h2 style="margin-top: 180px;">나의 구매 게시글</h2>
+						<span>my sell posts</span>
 					</div>
 				</div>
 			</div>
 		</div>
+		<!-- ***** 제목 끝 ***** -->
 
 		<div class="container" style=" width:100%; padding: 0;">
 			<div class="row">
@@ -80,7 +79,7 @@ ArrayList<BuyDTO> buyList=(ArrayList<BuyDTO>)request.getAttribute("buyList");
 									%>
 									<tr>
 										<td><a href="BuyDetails.buy?B_num=<%=dto.getB_num() %>">
-		<%=dto.getB_title() %></a></td>
+											<%=dto.getB_title() %></a></td>
 										<td><%=dto.getB_category() %></td>
 										<td><%=dto.getB_view() %></td>
 										<td><%=dateFormat.format(dto.getB_time()) %></td>
@@ -121,10 +120,8 @@ if(currentPage < pageCount){
              </div>
         </div>
     </div>
-<!-- 페이징 끝 -->
 </section>
-
-
+<!-- 페이징 끝 -->
 
 	<!-- ***** 푸터 시작 ***** -->
 <jsp:include page="../bottom.jsp" />
