@@ -268,6 +268,7 @@ public class MypageDAO {
 	
 //============================페이징
 	
+
 	public ArrayList<SellDTO> sellList(int startRow, int pageSize, String M_id){
 		System.out.println("SellDAO sellList()");
 		Connection con=null;
@@ -275,15 +276,15 @@ public class MypageDAO {
 		ResultSet rs=null;
 		ArrayList<SellDTO> sellList=new ArrayList<>();
 		try {
-		
+			
 			con=getConnection();
-
+			
 			String sql="select * from sell where M_id=? order by S_num desc limit ?,?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, M_id);
 			pstmt.setInt(2, startRow-1);
 			pstmt.setInt(3, pageSize);
-
+			
 			rs=pstmt.executeQuery();
 			//5
 			while(rs.next()) {
@@ -459,7 +460,7 @@ public class MypageDAO {
 				dto.setS_title(rs.getString("S_title"));
 				dto.setS_text(rs.getString("S_text"));
 				dto.setS_price(rs.getInt("S_price"));
-				
+				dto.setS_img(rs.getString("S_img"));
 				dealListS1.add(dto);
 			}
 		}catch(Exception e) {
@@ -572,6 +573,7 @@ public class MypageDAO {
 		}
 		return count;
 	}
+	
 	
 	
 	
