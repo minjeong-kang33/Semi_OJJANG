@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="assets/css/templatemo-hexashop.css">
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
     <link rel="stylesheet" href="assets/css/lightbox.css">
-    <link href="assets/css/adSellList.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/admin.css" rel="stylesheet" type="text/css">
 <meta charset="UTF-8">
 </head>
 
@@ -64,13 +64,13 @@ function fun2() {
 	int adSellCount=(Integer)request.getAttribute("adSellCount");
 	%>
 	
-<section class="section" id="products" style="width: 2000px;">
+<section class="section" id="products"">
 	<!-- ***** 제목 시작 ***** -->
 	<div class="adSLcontainer">
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="section-heading">
-					<h2>판매글 목록</h2>
+					<h3><b>판매글 목록</b></h3>
 					<span>sales posts list</span>
 				</div>
 			</div>
@@ -78,7 +78,7 @@ function fun2() {
 	</div>
 	<!-- ***** 제목 끝 ***** --> 
 	
-	<div class="adSLcontainer2" style=" width:100%; padding: 0;">
+	<div class="adSLcontainer2" style="width:1200px; padding: 0;">
 		<div class="row">
 				<div class="col-lg-4">
 					<div class="item" style="padding:0;">
@@ -92,7 +92,7 @@ function fun2() {
 		<form name="ckDelete" action="AdSellDelete.ad" method="post" id="ckDelete">
 		<table class="board-table" style="margin-bottom: 30px;">
 			<thead>
-				<tr id="adSH_title">
+				<tr>
 					<th scope="col"><input type="checkbox" id="ckAll" name="ckAll" onclick="fun2()"></th>
 					<th scope="col">판매 글번호</th>
 					<th scope="col">카테고리</th>
@@ -157,10 +157,8 @@ function fun2() {
 	
 </div>
 </div>
- <span class="ad-right">
-		<input type="button" value="게시글 삭제" onclick="fun1()">
-</span>
-</div>	
+		<input class="ad-btn" type="button" value="게시글 삭제" onclick="fun1()">
+</div>
 </section>		
 		
  	
