@@ -139,12 +139,12 @@ function fun2() {
    <%
    if(startPage > pageBlock){
       %>
-      <a href="AdBuyDelete.ad?pageNum=<%=startPage-pageBlock%>">[10페이지 이전]</a>
+      <a href="AdBuyDelete.ad?pageNum=<%=startPage-pageBlock%>">◁◁ </a>
       <%
       }
    if(currentPage>1) {
       %>
-      <a href="AdBuyDelete.ad?pageNum=<%=currentPage-1 %>">[1페이지 이전]</a>
+      <a href="AdBuyDelete.ad?pageNum=<%=currentPage-1 %>">◀</a>
       <%
       }
    for(int i=startPage;i<=endPage;i++){
@@ -154,12 +154,12 @@ function fun2() {
       }
    if(currentPage<pageCount) {
       %>
-      <a href="AdBuyDelete.ad?pageNum=<%=currentPage+1 %>">[1페이지 다음]</a>
+      <a href="AdBuyDelete.ad?pageNum=<%=currentPage+1 %>">▶</a>
       <%
       }
    if(endPage < pageCount){
       %>
-      <a href="AdBuyDelete.ad?pageNum=<%=startPage+pageBlock%>">[10페이지 다음]</a>
+      <a href="AdBuyDelete.ad?pageNum=<%=startPage+pageBlock%>"> ▷▷</a>
       <%
       }
    %>

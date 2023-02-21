@@ -135,6 +135,11 @@ form {
   width: 70px;
 }
 
+.board-table .th-ck {
+  width: 100px;
+  margin-left: 12px;
+}
+
 .board-table .th-count{
   width: 50px;
 }
