@@ -49,9 +49,9 @@ public class AdUserReportList implements Action {
 		
 		if(info!=null) {
 			if(info.equals("R_id")) {
-				info="피신고자아이디";
+				info="피신고자ID";
 			}else {
-				info="신고자아이디";
+				info="신고자ID";
 			}
 		}
 		
