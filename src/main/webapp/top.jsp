@@ -14,8 +14,7 @@
 			<div class="col-12">
 				<nav class="main-nav" >
 					<!-- ***** 로고 시작 ***** -->
-					<a href="Main.me" class="logo"> <img
-						src="assets/images/otzang_logo_top.png" height="60px">
+					<a href="Main.me" class="logo"> <img src="assets/images/otzang_logo_top.png" height="60px" style="display: flex !important">
 					</a>
 					<!-- ***** 로고 끝 ***** -->
 

@@ -1,13 +1,19 @@
 @charset "UTF-8";
 
-.BuyInsert {
+
+h2 {
+	margin-top: 180px;
+}
+
+.down-content{
 	margin-top: 20px;
+}
+
+
+.BuyInsert {
 	margin-left: 35%;
 }
 
-#buyBoard {
-	margin-top: 12%;
-}
 
 input[type=radio] {
 	display: none;
@@ -58,11 +64,3 @@ input[type=checkbox]:checked+label.btn {
 	background: #9FC9F3;
 }
 
-
-.button1 {
-	margin-left: 43%;
-}
-.button2 {
-	margin-left: 80%;
-	background-color: pink;
-}
