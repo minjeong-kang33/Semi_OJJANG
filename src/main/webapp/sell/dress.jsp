@@ -107,7 +107,7 @@
 					<td colspan="2" class="S_title" > <a href="SellDressDetails.sell?S_num=<%=dto.getS_num()%>" > <%=dto.getS_title()%></a></td> <!-- 제목 -->
 				</tr>
 				<tr>
-					<td class="price"><%=dto.getS_price()%>원</td> <td align="right" class="like_id"><input type="image" name="button"  class="heart" src="sell/heart.png" onclick="hartToggle()">
+					<td class="price"><%=dto.getS_price()%>원</td> <td align="right" class="like_id"><input type="image" name="button"  class="heart" src="sell/heart.png" onclick="location.href='LikePro.like?S_num=<%=dto.getS_num() %>'">
 				</tr>
 				<%-- <tr>
 					<td class="S_sido1"><%=dto.getS_sido1()%></td> <td class="S_gugun1"><%=dto.getS_gugun1()%></td> <!-- 구군 -->
