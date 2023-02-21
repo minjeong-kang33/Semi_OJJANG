@@ -44,8 +44,8 @@ ArrayList<DealDTO> dealHistory1=(ArrayList<DealDTO>)request.getAttribute("dealHi
 				<div class="col-lg-12"> 
 					<div class="section-heading"> 
 					<!--  게시판제목 -->
-						<h2>리뷰 내역</h2>
-						<span>review list</span>
+						<h2>판매 내역</h2>
+						<span>Sell list</span>
 					</div>
 					
 						<table>

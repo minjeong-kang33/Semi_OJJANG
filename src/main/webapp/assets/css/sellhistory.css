@@ -1,5 +1,8 @@
 @charset "UTF-8";
 
+h2{
+	margin-top:180px;
+}
 table{
 	margin: auto;
 }
@@ -16,4 +19,7 @@ table{
 
 hr{
 	width: 600px;
+}
+.btn btn-dark{
+	display :inline-block;
 }
