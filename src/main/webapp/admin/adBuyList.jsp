@@ -81,7 +81,7 @@ function fun2() {
          <div class="row">
             <div class="col-lg-12">
                <div class="section-heading">
-                  <h3><b>구매글 목록 조회</b></h3>
+                  <h3><b>구매글 목록</b></h3>
                   <span>purchase posts list</span>
                </div>
             </div>
