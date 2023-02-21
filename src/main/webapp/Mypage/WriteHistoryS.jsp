@@ -17,10 +17,8 @@
     <link rel="stylesheet" href="assets/css/lightbox.css"> 
     <link href="assets/css/buy.css" rel="stylesheet" type="text/css">
 <meta charset="UTF-8">
-<title>중고 의류거래: 옺장</title>
 </head>
 <body>
-    <body>
      <!-- ***** 헤더 ***** -->
   <jsp:include page="../top.jsp" />
     <!-- ***** 헤더 끝 ***** -->
@@ -68,7 +66,7 @@ ArrayList<SellDTO> sellList=(ArrayList<SellDTO>)request.getAttribute("sellList")
 										<th scope="col" class="th-likes">좋아요</th>
 										<th scope="col" class="th-titles">조회수</th>
 										<th scope="col" class="th-dates">등록일</th>
-										<th scope="col" class="th-want">희망</th>
+										<th scope="col" class="th-want">구매희망자 확인 / 거래완료</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -84,7 +82,7 @@ ArrayList<SellDTO> sellList=(ArrayList<SellDTO>)request.getAttribute("sellList")
 										<td><%=dto.getS_like() %></td>
 	<td><%=dto.getS_view() %></td>
 	<td><%=dateFormat.format(dto.getS_createdate()) %></td>
-	<td><input type="button" value="구매희망자 보기"  onclick="location.href='DealWantList.deal?S_num=<%=dto.getS_num()%>'"></td>
+	<td><input type="button" value="확인하기" id="checkbtn"onclick="location.href='DealWantList.deal?S_num=<%=dto.getS_num()%>'"></td>
 									</tr>
 									<%
 									}

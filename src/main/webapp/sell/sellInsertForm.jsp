@@ -18,6 +18,7 @@
 <title>중고 의류거래: 옺장</title>
 
 <script type="text/javascript">
+/* 스마트에디터 시작 */
 var oEditors = [];
 $(function(){
       nhn.husky.EZCreator.createInIFrame({
@@ -42,7 +43,8 @@ $(function(){
           $("#frm").submit();
       });    
 });
-
+/* 스마트에디터 끝 */
+/* 구군, 시도 선택 시작 */
 $('document').ready(function() {
 	 var area0 = ["시/도 선택","서울특별시","인천광역시","대전광역시","광주광역시","대구광역시","울산광역시","부산광역시","경기도","강원도","충청북도","충청남도","전라북도","전라남도","경상북도","경상남도","제주도"];
 	  var area1 = ["강남구","강동구","강북구","강서구","관악구","광진구","구로구","금천구","노원구","도봉구","동대문구","동작구","마포구","서대문구","서초구","성동구","성북구","송파구","양천구","영등포구","용산구","은평구","종로구","중구","중랑구"];
@@ -84,6 +86,8 @@ $('document').ready(function() {
 		     }
 		    });
 		   });
+/* 구군, 시도 선택 끝 */
+/* 입력값 확인 시작 */
 function fun1() {
 	// 필수조건 - 입력 안 된 경우, 선택 안 된 경우 => 입력하세요 제어=> 전송
 	if(document.frm.S_title.value==""){
@@ -102,29 +106,33 @@ function fun1() {
 		alert("선호하는 거래형태를 선택하세요");
 		return false;
 	}
-}	
+}
+/* 입력값 확인 끝 */
+/* 금액 쉼표표시 시작 */
+
+function inputNumberFormat(obj) {
+     obj.value = comma(uncomma(obj.value));
+ }
+ function comma(str) {
+     str = String(str);
+     return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+ }
+ function uncomma(str) {
+     str = String(str);
+     return str.replace(/[^\d]+/g, '');
+ }
+
+/* 금액 쉼표표시 끝 */
 </script>
 </head>
 
 <body>
 <%
-
 String M_id = (String)session.getAttribute("M_id");
-
 %>
-    <!-- ***** 로딩 일단 지금은 비어있음***** -->
-    <div id="preloader">
-        <div class="jumper">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>  
-    
     <!-- ***** 헤더 ***** -->
   <jsp:include page="../top.jsp" />
     <!-- ***** 헤더 끝 ***** -->
-    
     
 	<section class="section" id="products">
 		<!-- 게시판 제목  -->
@@ -133,12 +141,13 @@ String M_id = (String)session.getAttribute("M_id");
 				<div class="col-lg-12">
 					<div class="section-heading">
 						<h2 style="margin-top: 180px;">게시판 글 등록</h2>
-						<span>wirte a post for sale</span>
+						<span>write posts for sale</span>
 					</div>
 				</div>
 			</div>
 		</div>
-
+		<!-- 게시판 끝  -->
+		
 		<div class="container" >
 			<div class="row">
 				<div class="col-lg-4">
@@ -178,7 +187,7 @@ String M_id = (String)session.getAttribute("M_id");
 							<!-- ** 가격 입력 상자 시작 ** -->
 								<div class="price">
 									<b style="margin-right: 108px;">가격</b>
-									<input type="text" id="S_price" name="S_price" placeholder="숫자만 입력하세요" pattern="[0-9]+">원<br>
+									<input type="text" id="S_price" name="S_price" placeholder="숫자만 입력하세요" onkeyup="inputNumberFormat(this)">원<br>
 								</div>
 							<!-- ** 가격 입력 상자 끝 ** -->
 								

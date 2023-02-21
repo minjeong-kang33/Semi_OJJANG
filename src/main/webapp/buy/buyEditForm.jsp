@@ -20,8 +20,6 @@
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
 <meta charset="UTF-8">
 
-<title>중고 의류거래: 옺장</title>
-
 <script type="text/javascript">
 var oEditors = [];
 $(function(){
@@ -129,7 +127,6 @@ function fun1() {
  BuyDTO dto = (BuyDTO)request.getAttribute("dto");
  int B_num = Integer.parseInt(request.getParameter("B_num"));
  String M_id = (String)session.getAttribute("M_id");
-
 
 %>   
 
