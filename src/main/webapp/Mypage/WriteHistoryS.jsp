@@ -45,7 +45,7 @@ ArrayList<SellDTO> sellList=(ArrayList<SellDTO>)request.getAttribute("sellList")
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="section-heading">
-						<h2 style="margin-top: 180px;">판매글 조회</h2>
+						<h2 style="margin-top: 180px;">나의 판매글</h2>
 						<span>sell</span>
 					</div>
 				</div>
