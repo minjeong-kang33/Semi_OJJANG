@@ -17,7 +17,7 @@
 <!--    <link href="assets/css/reviewWriteList.css" rel="stylesheet" type="text/css"> -->
       <link href="assets/css/sell.css" rel="stylesheet" type="text/css">
 <meta charset="UTF-8">
-<title>중고 의류거래: 옺장 - 리뷰작성</title>
+<title>중고 의류거래: 옺장</title>
 
    <script type="text/javascript">     
 

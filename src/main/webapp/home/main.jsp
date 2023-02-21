@@ -17,28 +17,11 @@
     <link href="assets/css/main.css" rel="stylesheet" type="text/css">
     <link href="assets/css/main_searchbar.css" rel="stylesheet" type="text/css">
 <meta charset="UTF-8">
-<title>중고 의류거래: 옺장</title>
-
-   <script type="text/javascript">     
-
-
-    </script>
 </head>
 <body>
 <%
-
 String M_id = (String)session.getAttribute("M_id");
-
 %>
-    <!-- ***** 로딩 일단 지금은 비어있음***** -->
-    <div id="preloader">
-        <div class="jumper">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>  
-    
     <!-- ***** 챗봇 ***** -->
 	<script>
 	(function (){var w=window;if(w.ChannelIO){return w.console.error("ChannelIO script included twice.")}var ch=function(){ch.c(arguments)};ch.q=[];ch.c=function(args){ch.q.push(args)};w.ChannelIO=ch;function l(){if(w.ChannelIOInitialized){return}w.ChannelIOInitialized=true;var s=document.createElement("script");s.type="text/javascript";s.async=true;s.src="https://cdn.channel.io/plugin/ch-plugin-web.js";var x=document.getElementsByTagName("script")[0];if(x.parentNode){x.parentNode.insertBefore(s,x)}}if(document.readyState==="complete"){l()}else{w.addEventListener("DOMContentLoaded",l);w.addEventListener("load",l)}})();
@@ -116,7 +99,7 @@ if(search==null){
 				<div class="col-lg-12">
 					<div class="section-heading" style="text-align: center;">
 						<h2>최신 판매글</h2>
-						<span>recent posts for sale</span>
+						<span>recent posts</span>
 					</div>
 				</div>
 			</div>
@@ -150,15 +133,12 @@ int startPage=(Integer)request.getAttribute("startPage");
 int pageBlock=(Integer)request.getAttribute("pageBlock");
 int endPage=(Integer)request.getAttribute("endPage");
 int pageCount=(Integer)request.getAttribute("pageCount");
-
-
 	%>						
 <table>
-	<tr> <!--  테이블................1칸 -->
+	<tr>
 	<%
 	for(int i=0; i<sellList.size();i++){
 		SellDTO dto = sellList.get(i);
-	
 	%>
 		<td>
 			<table class="item-table">
@@ -167,7 +147,10 @@ int pageCount=(Integer)request.getAttribute("pageCount");
 						<img src="img/sell/<%=dto.getS_img() %>" width=300px height=300px class="goodsImg"></a></td>
 				</tr>
 				<tr>
-					<td colspan="2" class="S_title" ><a href="SellDetails.sell?S_num=<%=dto.getS_num()%>" > <%=dto.getS_title()%></a></td> <!-- 제목 -->
+					<td class="S_category" > <%=dto.getS_category()%></td>
+				</tr>
+				<tr>
+					<td class="S_title" ><a href="SellDetails.sell?S_num=<%=dto.getS_num()%>" > <b><%=dto.getS_title()%></b></a></td> <!-- 제목 -->
 				</tr>
 				<tr>
 					<td class="price"><%=dto.getS_price()%>원</td> <td align="right" class="like_id"><input type="image" name="button" class="heart" src="sell/heart.png" onclick="location.href='LikePro.like'">

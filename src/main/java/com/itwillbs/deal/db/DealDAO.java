@@ -57,6 +57,39 @@ public class DealDAO {
 		return dealList;
 	}//판매내역
 	
+	public ArrayList<DealDTO> dealList(int S_sum){
+		ArrayList<DealDTO> dealList=new ArrayList<DealDTO>();
+		Connection con =null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=getConnection();
+			String sql="select * from deal where S_sum=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, S_sum);
+			
+			rs=pstmt.executeQuery();	
+
+			while(rs.next()) {
+				DealDTO dto=new DealDTO();
+				dto.setD_num(rs.getInt("D_num"));
+				dto.setS_num(rs.getInt("S_num"));
+				dto.setM_id(rs.getString("M_id"));
+				dto.setD_buy(rs.getString("D_buy"));
+				dto.setD_date(rs.getTimestamp("D_date"));
+				
+				dealList.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			
+			if(rs!=null) try { rs.close();} catch (Exception e2) {}
+			if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
+			if(con!=null) try { con.close();} catch (Exception e2) {}
+		}
+		return dealList;
+	}//글 삭제 시 거래중인지 확인
 
 	public ArrayList<DealDTO> dealListB(String M_id){
 		ArrayList<DealDTO> dealList=new ArrayList<DealDTO>();

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>nickCheck.jsp</title>
+<title>중고의류거래: 옺장</title>
 </head>
 <body>
 	<div style="text-align: center">
