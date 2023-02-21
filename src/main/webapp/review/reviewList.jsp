@@ -53,17 +53,29 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
     <!-- ***** 헤더 끝 ***** -->
 
 	<section class="section" id="products">
-		<div class="container"> <!--  댓글부분  -->
-			<div class="row"> <!--  글쓰기 버튼  -->
-				<div class="col-lg-12"> <!--  테이블부분 -->
-					<div class="section-heading"> <!--  테이블 제목부분 -->
-					<!--  게시판제목 -->
-						<h2>리뷰 내역</h2>
-						<span>review list</span>
+
+
+		<!-- 게시판 제목  -->
+		<div class="container" style="padding:0 0;">
+			<div class="row" style="margin-left:0;">
+				<div class="col-lg-12" style="margin-left:0;">
+					<div class="section-heading">
+						<h2>리뷰</h2>
+						<span>review</span>
 					</div>
-					
+				</div>
+			</div>
+		</div>
+
+		<div class="container" style="padding:0 0;">
+			<div class="row" style=" padding:0 0;">
+				<div class="col-lg-4" style="padding:0 0;">
+					<div class="item" style="padding:0 0;" >
+						<div class="down-content" style="width: 800px; padding:0 0;">
+
+
 					<!--  리뷰작성 입력상자 시작 -->
-						<table>
+						<table >
 							<%
 							
 							for(int i=0; i<reviewList.size();i++){
@@ -71,22 +83,24 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 								
 							%>
 							<tr>
-								<td rowspan="4" ><img src="img/review/<%=dto.getRE_img1() %>" class="RE_img_st"></td><td> 제목 : <%=dto.getRE_title() %> </td>
-								<td align="right"> 작성일 : <%=dateFormat.format(dto.getRE_createtime())%></td>
+								<td rowspan="4" ><img src="img/review/<%=dto.getRE_img1() %>" class="RE_img_st"></td><td> <b>제목</b> : <%=dto.getRE_title() %> </td>
+								<td align="right"> <b>작성일</b> : <%=dateFormat.format(dto.getRE_createtime())%></td>
 							</tr>
 							<tr>
-								<td colspan="2"> 글쓴이 : <%=dto.getRE_writer() %> </td>
+								<td colspan="2"> <b>글쓴이</b> : <%=dto.getRE_writer() %> </td>
 							</tr>
 							<tr>	
-								<td colspan="2"> 내용 : <%=dto.getRE_text() %> </td>
+								<td colspan="2"> <b>내용</b> : <%=dto.getRE_text() %> </td>
 							</tr>
 							<tr>
-								<td colspan="2">
-									<span> <% if(dto.getRE_delivery()!=null){%> <%=dto.getRE_delivery()%> <%}%> </span>
-									<span> <% if(dto.getRE_manner()!=null){%> <%=dto.getRE_manner()%> <%}%> </span>
-									<span> <% if(dto.getRE_ProductStatus()!=null){%> <%=dto.getRE_ProductStatus()%> <%}%></span>
-									<span> <% if(dto.getRE_fast()!=null){%> <%=dto.getRE_fast()%> <%}%> </span>
-									<span> <% if(dto.getRE_time()!=null){%> <%=dto.getRE_time()%> <%}%> </span>
+								<td colspan="2" ">
+									
+									<span class="tag1" style="font-size: 15px; color: white; float:left; margin-right: 3px;"> <% if(dto.getRE_delivery()!=null){%> <%=dto.getRE_delivery()%> <%}%> </span>
+									<span class="tag1" style="font-size: 15px; color: white; float:right; margin-right: 100px;"> <% if(dto.getRE_manner()!=null){%> <%=dto.getRE_manner()%> <%}%> </span>
+									<span class="tag1" style="font-size: 15px; color: white; float:left;"> <% if(dto.getRE_ProductStatus()!=null){%> <%=dto.getRE_ProductStatus()%> <%}%></span>
+									<span class="tag1" style="font-size: 15px; color: white; float:right; margin-right: 100px;"> <% if(dto.getRE_fast()!=null){%> <%=dto.getRE_fast()%> <%}%> </span>
+									<span class="tag1" style="font-size: 15px; color: white; float:left;"> <% if(dto.getRE_time()!=null){%> <%=dto.getRE_time()%> <%}%> </span>
+								
 								</td> 
 							</tr>
 							<tr>
@@ -97,8 +111,7 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 							%>
 							
 						</table>
-				</div>
-				
+			<div style="width: 1000px; margin-top: 20px;">					
 				<!--  페이지 번호  -->
 				<%
 				
@@ -110,8 +123,13 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 				}
 				
 				%>
+			</div>
+					</div>
+				</div>
+			</div>
 		</div>
-	</section>
+	</div>
+</section>
 
 	<!-- ***** 푸터 시작 ***** -->
 <jsp:include page="../bottom.jsp" />

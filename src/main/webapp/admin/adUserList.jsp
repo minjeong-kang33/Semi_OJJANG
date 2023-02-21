@@ -1,9 +1,9 @@
+<%@page import="com.itwillbs.member.db.MemberDTO"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="com.itwillbs.member.db.MemberDTO"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="java.text.SimpleDateFormat"%>
-<!DOCTYPE html>
+<%@ page import="java.io.PrintWriter" %>
+<%@ page import="java.util.ArrayList" %>
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,11 +13,12 @@
     <link rel="stylesheet" href="assets/css/templatemo-hexashop.css">
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
     <link rel="stylesheet" href="assets/css/lightbox.css"> 
-    <link href="assets/css/admin.css" rel="stylesheet" type="text/css">
+   <link href="assets/css/admin.css" rel="stylesheet" type="text/css">
 <meta charset="UTF-8">
+<title>중고 의류거래: 옺장</title>
 </head>
 
-    <!-- ***** 스크립트 ***** -->
+	    <!-- ***** 스크립트 ***** -->
 <script>
 function fun1() {
 	let check = false;
@@ -57,46 +58,44 @@ function fun3() {
 }
 </script>
     <!-- ***** 스크립트 끝 ***** -->
-
-<body>
-	<!-- ***** 로딩 일단 지금은 비어있음***** -->
-	<div id="preloader">
-		<div class="jumper">
-			<div></div>
-			<div></div>
-			<div></div>
-		</div>
-	</div>
-	
+    
+    <body>
+    <!-- ***** 로딩 일단 지금은 비어있음***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>  
+    
     <!-- ***** 헤더 ***** -->
   <jsp:include page="../top.jsp" />
     <!-- ***** 헤더 끝 ***** -->
-    
-	<!-- ***** 일반회원목록조회 ***** -->
-	<%
-	MemberDTO dto=new MemberDTO();
-	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 
-	ArrayList<MemberDTO> adUserList=(ArrayList<MemberDTO>)request.getAttribute("adUserList");
-	int currentPage=(Integer)request.getAttribute("currentPage");
-	int startPage=(Integer)request.getAttribute("startPage");
-	int pageBlock=(Integer)request.getAttribute("pageBlock");
-	int endPage=(Integer)request.getAttribute("endPage");
-	int pageCount=(Integer)request.getAttribute("pageCount");
-	int adUserCount=(Integer)request.getAttribute("adUserCount");
-	String info=(String)request.getAttribute("info");
-	String search=(String)request.getAttribute("search");
-	%>
-	
-<section class="section" id="products">
+<% 
+MemberDTO dto=new MemberDTO();
+SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 
+ArrayList<MemberDTO> adUserList=(ArrayList<MemberDTO>)request.getAttribute("adUserList");
+int currentPage=(Integer)request.getAttribute("currentPage");
+int startPage=(Integer)request.getAttribute("startPage");
+int pageBlock=(Integer)request.getAttribute("pageBlock");
+int endPage=(Integer)request.getAttribute("endPage");
+int pageCount=(Integer)request.getAttribute("pageCount");
+int adUserCount=(Integer)request.getAttribute("adUserCount");
+String info=(String)request.getAttribute("info");
+String search=(String)request.getAttribute("search");
+%>
+
+	<section class="section" id="products">
 		<!-- 게시판 제목  -->
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="section-heading">
-						<h3>일반회원목록조회</h3>
-						<span>User List</span>
+						<h3><b>일반회원목록조회</b></h3>
+						<span>General User List</span>
 					</div>
 				</div>
 			</div>
@@ -106,11 +105,10 @@ function fun3() {
 		
 	<div class="col-lg-12">
 		<div class="ad-divsearch">
-		<div class="ad-right">
 			<form action="AdUserList.ad" method="get" name="scfr">
 				<div class="ad-search">
 					<ul class="select-list">
-					<li>
+					<li style="float: right;">
 						<select class="select-search" name="info">
 							<option value="">선택</option>
 							<option value="M_id">아이디</option>
@@ -122,7 +120,6 @@ function fun3() {
 					</li></ul><br>
 				</div>
 			</form>
-		</div>
 		</div>
 	</div>
 	
@@ -143,39 +140,46 @@ function fun3() {
 		%>
 	</div>
 
-<table border="1">
-	<thead>
-		<tr>
-			<th scope="col"><input type="checkbox" id="ckAll" name="ckAll" onclick="fun2()"></th>
-			<th scope="col">번호</th>
-			<th scope="col">아이디</th>
-			<th scope="col">이름</th>
-			<th scope="col">닉네임</th>
-			<th scope="col">가입날짜</th>
-			<th scope="col">상태</th>
-		</tr>
-	</thead>
-	
-	<tbody>
-		<%
-		for(int i=0;i<adUserList.size();i++){
-			dto=adUserList.get(i);
-		%>
-			<tr>
-				<td><input type="checkbox" id="ck" name="ck" value="<%=dto.getM_id() %>"></td>
-				<td><%=i+1 %></td>
-				<td><%=dto.getM_id() %></td>
-				<td><%=dto.getM_name() %></td>
-				<td><%=dto.getM_nick() %></td>
-				<td><%=dateFormat.format(dto.getM_createdate()) %></td>
-				<td><%=dto.getM_play() %></td>
-			</tr>
-		<%
-		}
-		%>
-	</tbody>
-</table>
+		<div class="container" style=" width:100%; padding: 0;">
+			<div class="row">
+				<div class="col-lg-4">
+					<div class="item" style="padding:0;">
 
+						<!-- board list area -->
+						<div id="board-list" style="width: 1200px;float: left; padding:0; margin-right: 40px;">
+							<table class="board-table" style="float: left; margin-bottom: 30px;">
+								<thead>
+									<tr>
+										<th scope="col" class="th-num"><input type="checkbox" id="ckAll" name="ckAll" onclick="fun2()"></th>
+										<th scope="col" class="th-num">번호</th>
+										<th scope="col" class="th-writer">아이디</th>
+										<th scope="col" class="th-writer">이름</th>
+										<th scope="col" class="th-writer">닉네임</th>
+										<th scope="col" class="th-date">가입날짜</th>
+										<th scope="col" class="th-count">상태</th>
+									</tr>
+								</thead>
+								<tbody>
+									<%
+									for(int i=0;i<adUserList.size();i++){
+										dto=adUserList.get(i);
+									%>
+										<tr>
+											<td><input type="checkbox" id="ck" name="ck" value="<%=dto.getM_id() %>"></td>
+											<td><%=i+1 %></td>
+											<td><%=dto.getM_id() %></td>
+											<td><%=dto.getM_name() %></td>
+											<td><%=dto.getM_nick() %></td>
+											<td><%=dateFormat.format(dto.getM_createdate()) %></td>
+											<td><%=dto.getM_play() %></td>
+										</tr>
+									<%
+									}
+									%>
+								</tbody>
+							</table>
+						
+						<div style="margin-top: 30px;">
 	<!-- *** 페이징 *** -->
 	<%
 	if(info==null&&search==null) {
@@ -233,22 +237,25 @@ function fun3() {
 	}
 	%>
 	<!-- *** 페이징 끝 *** -->
-
-	<div class="ad-right">
-		회원 처리 <input type="button" value="강퇴" onclick="fun1()">
+	
+							<!-- 	글 작성 버튼을 오른쪽 아래에 고정 -->
+						<div>
+							<input type="button" class="btn btn-dark" value="강퇴" onclick="fun1()" style="float: right;">
+						</div>
+					 </div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-
-		</form>
+	</form>
 	</div>
-</section>
-	<!-- ***** 일반회원목록조회 끝 ***** -->
-    
-    	<!-- 게시판 내용 여기 넘어가면 안됨.  -->
+	</section>
 
-    
-    
-    <!-- ***** 푸터 시작 ***** -->
-   <jsp:include page="../bottom.jsp" />
+
+
+	<!-- ***** 푸터 시작 ***** -->
+<jsp:include page="../bottom.jsp" />
     <!-- ***** 푸터 끝 ***** -->
 
  <!-- jQuery -->
@@ -289,6 +296,8 @@ function fun3() {
             });
         });
 
-    </script>
+    </script> 
+   
+
 </body>
 </html>

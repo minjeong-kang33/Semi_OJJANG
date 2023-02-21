@@ -1,5 +1,3 @@
-
-
 <%@page import="com.itwillbs.deal.db.DealDAO"%>
 <%@page import="com.itwillbs.admin.db.MypageDAO"%>
 <%@page import="com.itwillbs.sell.db.SellDTO"%>
@@ -18,35 +16,16 @@
     <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
     <link rel="stylesheet" href="assets/css/templatemo-hexashop.css">
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
-    <link rel="stylesheet" href="assets/css/lightbox.css"> 
+   <link rel="stylesheet" href="assets/css/lightbox.css"> 
+    <link rel="stylesheet" href="assets/css/sellhistory.css"> 
+       <link href="assets/css/sell.css" rel="stylesheet" type="text/css">
 <meta charset="UTF-8">
-<title>중고 의류거래: 옺장</title>
 </head>
+
 <body>
-    <body>
-     <!-- ***** 헤더 ***** -->
-  <jsp:include page="../top.jsp" />
-    <!-- ***** 헤더 끝 ***** -->
-    
-    <div class="page-heading about-page-heading" id="top">
-        <div class="container">
-             <div class="inner-content2">
-            
- <!-- ***** 구매내역조회***** -->
-    
-    <h3>구매내역조회</h3>
-    
-    
 <%
 String M_id=(String)session.getAttribute("M_id");
 SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy.MM.dd");
-
-// DealDTO dto=new DealDTO();
-// SellDTO sdto=new SellDTO();
-// DealDAO ddao=new DealDAO();
-// MypageDAO dao=new MypageDAO();
-// ArrayList<DealDTO> dealListB=ddao.dealListB(M_id);
-// ArrayList<SellDTO> dealListS=dao.dealListS(M_id);
 
 int currentPage=(Integer)request.getAttribute("currentPage");
 int startPage=(Integer)request.getAttribute("startPage");
@@ -54,63 +33,84 @@ int pageBlock=(Integer)request.getAttribute("pageBlock");
 int endPage=(Integer)request.getAttribute("endPage");
 int pageCount=(Integer)request.getAttribute("pageCount");
 
-
 ArrayList<SellDTO> dealListS1=(ArrayList<SellDTO>)request.getAttribute("dealListS1");
 ArrayList<DealDTO> dealListB1=(ArrayList<DealDTO>)request.getAttribute("dealListB1");
-
 %>	
-<section>
+     <!-- ***** 헤더 ***** -->
+  <jsp:include page="../top.jsp" />
+    <!-- ***** 헤더 끝 ***** -->
+	<section class="section" id="products">
 <form action="ReviewWriteForm.rev" method="post">
-<table border="1">
-<tr><td>판매자</td><td>판매글제목</td><td>구매가격</td><td>카테고리</td><td>구매자</td><td>거래날짜</td><td>리뷰</td></tr>
+		<div class="container"> 
+			<div class="row"> 
+				<div class="col-lg-12"> 
+					<div class="section-heading"> 
+					<!--  게시판제목 -->
+						<h2>구매 내역</h2>
+						<span>Buy list</span>
+					</div>
+					
+						<table>
+							<%
+							for(int i=0;i<dealListS1.size();i++){
+							DealDTO dto=dealListB1.get(i);
+ 							SellDTO sdto=dealListS1.get(i);
+						 
+								
+							%>
+							<tr>
+								<td rowspan="4"><a href="SellDetails.sell?S_num=<%=sdto.getS_num() %>">
+									<img src="img/sell/<%=sdto.getS_img() %>" class="S_img_st" width="180px" height="180px"></a></td>
+							<td id="SH_title"><a href="SellDetails.sell?S_num=<%=dto.getS_num()%>"> <%=sdto.getS_title() %> </a></td>
+							</tr>
+							<tr>
+								<td id="SH_price"><%=sdto.getS_price() %>원</td>
+							</tr>
+							<tr>	
+								<td colspan="2" id="SH_buyer"> 판매자 : <%=sdto.getM_id() %></td>
+							</tr>
+							<tr>
+							<td id="SH_date"> 거래완료일 : <%=dateFormat.format(dto.getD_date())%>
+							<td><input type="submit" class="btn btn-dark" value="리뷰쓰기"> </td></td>
+							
+							</tr>
+							<tr><td colspan="3" class="line"></td> <tr>
 
-<%
-for(int i=0;i<dealListS1.size();i++){
- 	SellDTO sdto=dealListS1.get(i);
-	DealDTO dto=dealListB1.get(i);
-
-%>
-	<tr>
-		<td><%=sdto.getM_id() %></td>
-		<td><a href="SellDetails.sell?S_num=<%=sdto.getS_num() %>">
-		<%=sdto.getS_title() %></a></td>
-		<td><%=sdto.getS_price() %></td>
-		<td><%=sdto.getS_category() %></td>
-		<td><%=dto.getD_buy() %></td>
-		<td><%=dateFormat.format(dto.getD_date()) %></td>	
-		<td><input type="submit" value="리뷰쓰기"></td>		
-	</tr>
-	
-<%
-}
-%>
-</table>
+		</tr>
+							<%
+							}
+							%>
+							
+						</table>
 </form>
-<%
+						<hr>
+						</div>
+				</div>
+				
+				<!--  페이지 번호  -->
+				<%
 if(currentPage > 1){
 	%>
-	<a href="Buyhistory.moi?pageNum=<%=currentPage-1%>">[1페이지 이전]</a>
+	<a href="Sellhistory.moi?pageNum1=<%=currentPage-1%>">[1페이지 이전]</a>
 	<%
 }
 
 for(int i=startPage;i<=endPage;i++){
 	%>
-	<a href="Buyhistory.moi?pageNum=<%=i%>"><%=i %></a> 
+	<a href="Sellhistory.moi?pageNum1=<%=i%>"><%=i %></a> 
 	<%
 }
 if(currentPage < pageCount){
 	%>
-	<a href="Buyhistory.moi?pageNum=<%=currentPage+1%>">[1페이지 다음]</a>
+	<a href="Sellhistory.moi?pageNum1=<%=currentPage+1%>">[1페이지 다음]</a>
 	<%
 }
 
 %>
-</section>
-	<!-- ***** 구매내역조회 끝 ***** -->
-	       
-             </div>
-        </div>
-    </div>     <!-- ***** 푸터 시작 ***** -->
+		</div>
+	</section>    
+    
+    <!-- ***** 푸터 시작 ***** -->
    <jsp:include page="../bottom.jsp" />
     <!-- ***** 푸터 끝 ***** -->
 

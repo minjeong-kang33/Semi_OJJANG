@@ -70,36 +70,70 @@ String M_id=(String)session.getAttribute("M_id");
   <jsp:include page="../top.jsp" />
     <!-- ***** 헤더 끝 ***** -->
 
-	<section class="section" id="products">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
+	<section class="section" id="products" >
+		<div class="container"style="padding:0 0;">
+			<div class="row" style="margin-left:0;">
+				<div class="col-lg-12" style="margin-left:0;">
 					<div class="section-heading">
 					<!--  게시판제목 -->
 						<h2>후기 작성</h2>
 						<span>review Write</span>
 					</div>
-					
+				</div>
+			</div>
+		</div>
+
+		<div class="container" style="padding:0 0;">
+			<div class="row" style=" padding:0 0;">
+				<div class="col-lg-4" style="padding:0 0;">
+					<div class="item" style="padding:0 0;" >
+						<div class="down-content" style="width: 800px; padding:0 0; background-color: pink;">
+
 					<!--  리뷰작성 입력상자 시작 -->
-					<form id="review" action="ReviewWritePro.rev" method="post" name="reviewWriteBox" class="reviewWriteBox" enctype="multipart/form-data">
+					<form id="review" action="ReviewWritePro.rev" method="post" name="reviewWriteBox" class="reviewWriteBox" enctype="multipart/form-data" style="float: left;">
 						<table>
-						
-						
 							<tr>
-								<th colspan="4">
-								<div class="RE_radio">
-									<input type="radio" id="radio-btn-1" name="RE_delivery"  value="배송이 빨라요" for="radio-btn-1">배송이 빨라요
-									<input type="radio" id="radio-btn-1" name="RE_delivery"  value="배송이 느려터졌어요" for="radio-btn-1">배송이 느려터졌어요
-									<input type="radio" id="radio-btn-4" name="RE_fast"  value="응답이 빨라요">응답이 빨라요
-									<input type="radio" id="radio-btn-4" name="RE_fast"  value="응답이 느려요">응답이 느려요<br>
-									<input type="radio" id="radio-btn-3" name="RE_ProductStatus" value="상품이 설명과 같아요">상품이 설명과 같아요
-									<input type="radio" id="radio-btn-3" name="RE_ProductStatus" value="동일 상품이 맞나요?">동일 상품이 맞나요?
-									<input type="radio" id="radio-btn-2" name="RE_manner" value="친절해요">친절해요
-									<input type="radio" id="radio-btn-2" name="RE_manner" value="불친절해요">불친절해요<br>
-									<input type="radio" id="radio-btn-5" name="RE_time" value="약속시간을 잘 지켜요">약속시간을 잘 지켜요
-									<input type="radio" id="radio-btn-5" name="RE_time" value="약속시간을 지키지 않아요">약속시간을 지키지 않아요
+								<th> 간편<br>후기</th>
+								<th>
+								<div class="RE_radio" colspan="3">
+									<div style="float: left; color:#211701;">
+										<input type="radio" id="radio-btn-1" name="RE_manner" value="친절해요">
+											<label for="radio-btn-1" class="btn">친절해요</label>
+										<input type="radio" id="radio-btn-2" name="RE_manner" value="불친절해요">
+											<label for="radio-btn-2" class="btn">불친절해요</label> | <br>
+									</div>
+									
+									<div style="float: left;color:#211701;">
+										<input type="radio" id="radio-btn-3" name="RE_delivery"  value="배송이 빨라요">
+											<label for="radio-btn-3" class="btn">배송이 빨라요</label>
+										<input type="radio" id="radio-btn-4" name="RE_delivery"  value="배송이 느려요">
+											<label for="radio-btn-4" class="btn">배송이 느려요</label> | <br>
+									</div>
+
+
+									<div>
+										<input type="radio" id="radio-btn-5" name="RE_fast"  value="응답이 빨라요">
+											<label for="radio-btn-5" class="btn">응답이 빨라요</label>
+										<input type="radio" id="radio-btn-6" name="RE_fast"  value="응답이 느려요">
+											<label for="radio-btn-6" class="btn">응답이 느려요</label><br>
+									</div>
+									
+									
+									<div style="float: left;color:#211701;">	
+									<input type="radio" id="radio-btn-7" name="RE_ProductStatus" value="상품이 설명과 같아요">
+										<label for="radio-btn-7" class="btn">상품이 설명과 같아요</label>
+									<input type="radio" id="radio-btn-8" name="RE_ProductStatus" value="상품이 설명과 달라요">
+										<label for="radio-btn-8" class="btn">상품이 설명과 달라요</label> | <br>
+									</div>
+									
+									<div style="float: right;">
+									<input type="radio" id="radio-btn-9" name="RE_time" value="약속시간을 잘 지켜요">
+										<label for="radio-btn-9" class="btn">약속시간을 잘 지켜요</label>
+									<input type="radio" id="radio-btn-10" name="RE_time" value="약속시간을 지키지 않아요">
+										<label for="radio-btn-10" class="btn">약속시간을 지키지 않아요</label>
+									</div>	
 								</div>
-								</th>
+								<th>
 							</tr>
 						
 							<tr>
@@ -115,12 +149,13 @@ String M_id=(String)session.getAttribute("M_id");
 								<th><input type="file" name="RE_img1" ></th>
 							</tr>
 						</table>
-						<div class="btn">
-							<input type="button" value="등록" onclick="fun1()"/>
-							<input type="reset" value="초기화"/>
+						<div class="btn" style="margin-left: 550px;">
+							<input type="button" value="등록"  class="btn btn-dark" style="clear: right;" onclick="fun1()"/>
+							<input type="reset" class="btn btn-dark" style="margin-left: 10px;" value="초기화"/>
 						</div>
 					</form> 
-					
+					</div>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -1,6 +1,33 @@
 @charset "UTF-8";
 h3 {
-	margin-top: 180px;
+	margin-top: 200px;
+}
+form {
+	border: none;
+}
+.adSLcontainer {
+	margin-bottom: 20px;
+} /* 제목 */
+.adSLcontainer2 {
+	margin-left: 23%;
+} /* 폼이랑 페이징 전체 묶음 */
+.ad-count {
+	margin-bottom: 8px;
+	color: #42240C;
+} /* 테이블 위 게시글 수 */
+#ckAll, #ck {
+	margin-right: 15px;
+	margin-left: 10px;
+}
+.ad-btn {
+	color: white;
+	border: none;
+	font-size: 16px;
+	font-weight: 500;
+	padding: 5px;
+	background-color: #4B3400;
+	border-radius: 3px;
+	float: right;
 }
 .down-content{
 	margin-top: 20px;
@@ -20,10 +47,11 @@ h3 {
 }
 .ad-search {
 	height: 28px;
-	width: 350px;
+	width: 370px;
 	border: 1px solid #ABABAB;
 	background: #ffffff;
-	clear: right;
+	float: right;
+	margin-bottom: 30px;
 }
 .input-search {
 	font-size: 14px;
@@ -45,8 +73,79 @@ h3 {
 .select-search {
 	float: left;
 	position: relative;
-	width: 90px;
+	width: 118px;
 }
-.ad-count {
-	clear: right;
+
+/* List */
+.board-table {
+  font-size: 13px;
+  width: 100%;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.board-table a {
+  color: #333;
+  display: inline-block;
+  line-height: 1.4;
+  word-break: break-all;
+  vertical-align: middle;
+}
+.board-table a:hover {
+  text-decoration: underline;
+}
+.board-table th {
+  text-align: center;
+}
+
+.board-table .th-num {
+  width: 25px;
+  text-align: center;
+}
+.board-table .th-category {
+  width: 60px;
+  text-align: center;
+}
+
+.board-table .th-title {
+  width: 250px;
+}
+
+.board-table .th-writer {
+  width: 60px;
+}
+
+.board-table .th-date {
+  width: 70px;
+}
+
+.board-table .th-count{
+  width: 50px;
+}
+
+.board-table th, .board-table td {
+  padding: 12px 0;
+}
+
+.board-table tbody td {
+  border-top: 1px solid #e7e7e7;
+  text-align: center;
+}
+
+.board-table tbody th {
+  padding-left: 28px;
+  padding-right: 14px;
+  border-top: 1px solid #e7e7e7;
+  text-align: left;
+}
+
+.board-table tbody th p{
+  display: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0 0;
+  margin-left: auto;
+  margin-right: auto;
 }

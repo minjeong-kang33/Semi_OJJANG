@@ -1,4 +1,3 @@
-
 <%@page import="com.itwillbs.sell.db.SellDTO"%>
 <%@page import="com.itwillbs.admin.db.MypageDAO"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -33,15 +32,12 @@
 <%
 String M_id=(String)session.getAttribute("M_id");
 SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy.MM.dd");
-
 int currentPage=(Integer)request.getAttribute("currentPage");
 int startPage=(Integer)request.getAttribute("startPage");
 int pageBlock=(Integer)request.getAttribute("pageBlock");
 int endPage=(Integer)request.getAttribute("endPage");
 int pageCount=(Integer)request.getAttribute("pageCount");
-
 ArrayList<SellDTO> sellList=(ArrayList<SellDTO>)request.getAttribute("sellList");
-
 %>	
 <section class="section" id="products" style="width: 2000px;">
 		<!-- 게시판 제목  -->
@@ -49,7 +45,7 @@ ArrayList<SellDTO> sellList=(ArrayList<SellDTO>)request.getAttribute("sellList")
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="section-heading">
-						<h2 style="margin-top: 180px;">판매글 조회</h2>
+						<h2 style="margin-top: 180px;">나의 판매글</h2>
 						<span>sell</span>
 					</div>
 				</div>
@@ -72,6 +68,7 @@ ArrayList<SellDTO> sellList=(ArrayList<SellDTO>)request.getAttribute("sellList")
 										<th scope="col" class="th-likes">좋아요</th>
 										<th scope="col" class="th-titles">조회수</th>
 										<th scope="col" class="th-dates">등록일</th>
+										<th scope="col" class="th-want">희망</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -87,6 +84,7 @@ ArrayList<SellDTO> sellList=(ArrayList<SellDTO>)request.getAttribute("sellList")
 										<td><%=dto.getS_like() %></td>
 	<td><%=dto.getS_view() %></td>
 	<td><%=dateFormat.format(dto.getS_createdate()) %></td>
+	<td><input type="button" value="구매희망자 보기"  onclick="location.href='DealWantList.deal?S_num=<%=dto.getS_num()%>'"></td>
 									</tr>
 									<%
 									}
@@ -100,23 +98,21 @@ ArrayList<SellDTO> sellList=(ArrayList<SellDTO>)request.getAttribute("sellList")
 <%
 if(currentPage > 1){
 	%>
-	<a href="WriteHistoryB.moi?pageNum=<%=currentPage-1%>">[1페이지 이전]</a>
+	<a href="WriteHistoryS.moi?pageNum=<%=currentPage-1%>">[1페이지 이전]</a>
 	<%
 }
-
 for(int i=startPage;i<=endPage;i++){
 	%>
-	<a href="WriteHistoryB.moi?pageNum=<%=i%>"><%=i %></a> 
+	<a href="WriteHistoryS.moi?pageNum=<%=i%>"><%=i %></a> 
 	<%
 }
 if(currentPage < pageCount){
 	%>
-	<a href="WriteHistoryB.moi?pageNum=<%=currentPage+1%>">[1페이지 다음]</a>
+	<a href="WriteHistoryS.moi?pageNum=<%=currentPage+1%>">[1페이지 다음]</a>
 	</div>
 	<%
 	
 }
-
 %>
 
  						</div>
@@ -159,7 +155,6 @@ if(currentPage < pageCount){
     <script src="../assets/js/custom.js"></script>
 
     <script>
-
         $(function() {
             var selectedClass = "";
             $("p").click(function(){
@@ -173,7 +168,6 @@ if(currentPage < pageCount){
                 
             });
         });
-
     </script> 
 
   </body>

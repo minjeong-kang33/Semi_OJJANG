@@ -1,8 +1,8 @@
 @charset "UTF-8";
 
-h2 {
-	margin-top: 10%;
-} /* 제목 */
+/* h2 { */
+/* 	margin-top: 10%; */
+/* } 제목 */
 
 form {
 	border: none;
@@ -16,32 +16,33 @@ form {
 	margin-left: 23%;
 } /* 폼이랑 페이징 전체 묶음 */
 
-#adSH_title {
-	border-bottom: 1px solid #EAE0DA;
-	padding: 20px;
-	width: 750px;
-	margin-bottom: 3px;
-	padding-bottom: 3px;
-} /* thead 묶음 */
+/* #adSH_title { */
+/* 	border-bottom: 1px solid #EAE0DA; */
+/* 	padding: 20px; */
+/* 	width: 750px; */
+/* 	margin-bottom: 3px; */
+/* 	padding-bottom: 3px; */
+/* } thead 묶음 */
 
 .ad-count {
 	margin-bottom: 8px;
 	color: #42240C;
 } /* 테이블 위 게시글 수 */
 
-th, td, tr {
-	margin-right: 15px;
-	text-align: center; 
-	padding: 6px;
-}
+/* th, td, tr { */
+/* 	margin-right: 15px; */
+/* 	text-align: center;  */
+/* 	padding: 6px; */
+/* } */
 
 #ckAll, #ck {
 	margin-right: 15px;
+	margin-left: 10px;
 }
 
-.ad-right {
-	margin-left: 48%;
-}
+/* .ad-right { */
+/* 	margin-left: 48%; */
+/* } */
 
 input {
 	color: white;
