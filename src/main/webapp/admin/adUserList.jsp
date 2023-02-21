@@ -132,7 +132,7 @@ String search=(String)request.getAttribute("search");
 			<%
 		}else {
 			%>
-			<%=info %>▶ <%=search %><br>
+			<%=info %> ▶ <b><%=search %></b><br>
 			검색결과 : <b><%=adUserList.size() %></b>명
 			<%
 		}
