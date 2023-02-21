@@ -106,9 +106,8 @@ String search=(String)request.getAttribute("search");
 	<div class="col-lg-12">
 		<div class="ad-divsearch">
 			<form action="AdUserList.ad" method="get" name="scfr">
-				<div class="ad-search">
-					<ul class="select-list">
-					<li style="float: right;">
+				<ul><li>
+					<div class="ad-search">
 						<select class="select-search" name="info">
 							<option value="">선택</option>
 							<option value="M_id">아이디</option>
@@ -117,8 +116,8 @@ String search=(String)request.getAttribute("search");
 						</select>
 						<input class="input-search" type="text" name="search">
 						<input class="button-search" type="button" value="검색" onclick="fun3()">
-					</li></ul><br>
-				</div>
+					</div>
+				</li></ul>
 			</form>
 		</div>
 	</div>
@@ -133,7 +132,7 @@ String search=(String)request.getAttribute("search");
 			<%
 		}else {
 			%>
-			<%=info %>> <%=search %><br>
+			<%=info %> ▶ <b><%=search %></b><br>
 			검색결과 : <b><%=adUserList.size() %></b>명
 			<%
 		}
@@ -146,7 +145,7 @@ String search=(String)request.getAttribute("search");
 					<div class="item" style="padding:0;">
 
 						<!-- board list area -->
-						<div id="board-list" style="width: 1200px;float: left; padding:0; margin-right: 40px;">
+						<div id="board-list" class="board-list">
 							<table class="board-table" style="float: left; margin-bottom: 30px;">
 								<thead>
 									<tr>
@@ -179,18 +178,19 @@ String search=(String)request.getAttribute("search");
 								</tbody>
 							</table>
 						
-						<div style="margin-top: 30px;">
 	<!-- *** 페이징 *** -->
+	<div>
+	<div class="ad-page">
 	<%
 	if(info==null&&search==null) {
 		if(startPage > pageBlock){
 			%>
-			<a href="AdUserList.ad?pageNum=<%=startPage-pageBlock%>">[10페이지 이전]</a>
+			<a href="AdUserList.ad?pageNum=<%=startPage-pageBlock%>">◁◁ </a>
 			<%
 			}
 		if(currentPage>1) {
 			%>
-			<a href="AdUserList.ad?pageNum=<%=currentPage-1 %>">[1페이지 이전]</a>
+			<a href="AdUserList.ad?pageNum=<%=currentPage-1 %>">◀</a>
 			<%
 			}
 		for(int i=startPage;i<=endPage;i++){
@@ -200,23 +200,23 @@ String search=(String)request.getAttribute("search");
 			}
 		if(currentPage<pageCount) {
 			%>
-			<a href="AdUserList.ad?pageNum=<%=currentPage+1 %>">[1페이지 다음]</a>
+			<a href="AdUserList.ad?pageNum=<%=currentPage+1 %>">▶</a>
 			<%
 			}
 		if(endPage < pageCount){
 			%>
-			<a href="AdUserList.ad?pageNum=<%=startPage+pageBlock%>">[10페이지 다음]</a>
+			<a href="AdUserList.ad?pageNum=<%=startPage+pageBlock%>"> ▷▷</a>
 			<%
 		}
 	}else {
 		if(startPage > pageBlock){
 			%>
-			<a href="AdUserList.ad?pageNum=<%=startPage-pageBlock%>&search=<%=search %>">[10페이지 이전]</a>
+			<a href="AdUserList.ad?pageNum=<%=startPage-pageBlock%>&search=<%=search %>">◁◁ </a>
 			<%
 			}
 		if(currentPage>1) {
 			%>
-			<a href="AdUserList.ad?pageNum=<%=currentPage-1 %>&search=<%=search %>">[1페이지 이전]</a>
+			<a href="AdUserList.ad?pageNum=<%=currentPage-1 %>&search=<%=search %>">◀</a>
 			<%
 			}
 		for(int i=startPage;i<=endPage;i++){
@@ -226,21 +226,22 @@ String search=(String)request.getAttribute("search");
 			}
 		if(currentPage<pageCount) {
 			%>
-			<a href="AdUserList.ad?pageNum=<%=currentPage+1 %>&search=<%=search %>">[1페이지 다음]</a>
+			<a href="AdUserList.ad?pageNum=<%=currentPage+1 %>&search=<%=search %>">▶</a>
 			<%
 			}
 		if(endPage < pageCount){
 			%>
-			<a href="AdUserList.ad?pageNum=<%=startPage+pageBlock%>&search=<%=search %>">[10페이지 다음]</a>
+			<a href="AdUserList.ad?pageNum=<%=startPage+pageBlock%>&search=<%=search %>"> ▷▷</a>
 			<%
 		}
 	}
 	%>
+	</div>
 	<!-- *** 페이징 끝 *** -->
 	
 							<!-- 	글 작성 버튼을 오른쪽 아래에 고정 -->
 						<div>
-							<input type="button" class="btn btn-dark" value="강퇴" onclick="fun1()" style="float: right;">
+							<input type="button" class="ad-btn" value="강퇴" onclick="fun1()">
 						</div>
 					 </div>
 					</div>
