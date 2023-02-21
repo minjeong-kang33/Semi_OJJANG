@@ -105,11 +105,11 @@ function fun2() {
             <thead>
                <tr id="adSH_title">
                   <th scope="col"><input type="checkbox" id="ckAll" name="ckAll" onclick="fun2()"></th>
-                  <th scope="col">구매번호</th>
+                  <th scope="col">구매글 번호</th>
                   <th scope="col">카테고리</th>
-                  <th scope="col">아이디</th>
+                  <th scope="col">작성자</th>
                   <th scope="col">제목</th>
-                  <th scope="col">날짜</th>
+                  <th scope="col">작성일</th>
                </tr>
             </thead>
             
