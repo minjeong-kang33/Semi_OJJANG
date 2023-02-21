@@ -8,10 +8,13 @@ h2 {
 	margin-top: 20px;
 }
 
-input[type=radio]{
+input[type=radio] {
 	display: none;
-	padding: 5px 10px;
-	margin: 5px 10px;
+}
+
+input[type=radio]+label.btn {
+	padding: 5px 8px;
+	margin: 5px 5px;
 	display: inline-block;
 	text-transform: uppercase;
 	font-weight: 500;
@@ -23,22 +26,11 @@ input[type=radio]{
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
+	font-size: 12px;
 }
 
-
-input[type=radio]:checked{
+input[type=radio]:checked+label.btn {
 	background: #9FC9F3;
-}
-.preference {
-	background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 12px;
-    cursor: pointer;
-	border-radius: 8px;
 }
 
 #write {
@@ -57,11 +49,11 @@ input[type=radio]:checked{
 
 .RE_title {
 	height: 30px;
-	width: 400px;
+	width: 600px;
 }
 
 .RE_text {
-	width: 400px;
+	width: 600px;
 }
 
 
@@ -81,14 +73,13 @@ table{
 	margin: 0 auto;
 }
 
-.btn {
-	margin-left: 650px;
-}
-
 
 .row{
 	
 	margin-left:200px;
 }
 
+p{
+	color : #ccc;
+}
 

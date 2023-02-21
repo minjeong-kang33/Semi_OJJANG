@@ -47,7 +47,7 @@ ArrayList<BuyDTO> buyList=(ArrayList<BuyDTO>)request.getAttribute("buyList");
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="section-heading">
-						<h2 style="margin-top: 180px;">나의 구매 게시글</h2>
+						<h2 style="margin-top: 180px;">나의 구매글</h2>
 						<span>my sell posts</span>
 					</div>
 				</div>
