@@ -17,7 +17,7 @@ public class AdUserReportList implements Action {
 		System.out.println("AdUserReportList execute()");
 		request.setCharacterEncoding("utf-8");
 		String info = request.getParameter("info");
-		String info2 = request.getParameter("info");
+		String infoD = null;
 		String search = request.getParameter("search");
 		
 		AdminDAO dao=new AdminDAO();
@@ -48,18 +48,18 @@ public class AdUserReportList implements Action {
 		int pageCount=count/pageSize+(count%pageSize==0?0:1);
 		if(endPage>pageCount){endPage=pageCount;}
 		
-		if(info2!=null) {
-			if(info2.equals("R_id")) {
-				info2="피신고자ID";
+		if(info!=null) {
+			if(info.equals("R_id")) {
+				infoD="피신고자ID";
 			}else {
-				info2="신고자ID";
+				infoD="신고자ID";
 			}
 		}
 		
 		request.setAttribute("adUserReportList", adUserReportList);
 		request.setAttribute("adUserReportCount", count);
 		request.setAttribute("info", info);
-		request.setAttribute("info2", info2);
+		request.setAttribute("infoD", infoD);
 		request.setAttribute("search", search);
 		request.setAttribute("currentPage", currentPage);
 		request.setAttribute("startPage", startPage);

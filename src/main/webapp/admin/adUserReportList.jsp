@@ -86,7 +86,7 @@ function fun3() {
 	int pageCount=(Integer)request.getAttribute("pageCount");
 	int adUserReportCount=(Integer)request.getAttribute("adUserReportCount");
 	String info=(String)request.getAttribute("info");
-	String info2=(String)request.getAttribute("info2");
+	String infoD=(String)request.getAttribute("infoD");
 	String search=(String)request.getAttribute("search");
 	%>
 	
@@ -134,7 +134,7 @@ function fun3() {
 				<%
 			}else {
 				%>
-				<%=info2 %> ▶ <b><%=search %></b><br>
+				<%=infoD %> ▶ <b><%=search %></b><br>
 				검색결과 : <b><%=adUserReportCount %></b>명
 				<%
 			}

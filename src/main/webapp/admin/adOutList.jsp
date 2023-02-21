@@ -53,6 +53,7 @@ function fun3() {
 	int pageCount=(Integer)request.getAttribute("pageCount");
 	int adOutCount=(Integer)request.getAttribute("adOutCount");
 	String info=(String)request.getAttribute("info");
+	String infoD=(String)request.getAttribute("infoD");
 	String search=(String)request.getAttribute("search");
 	%>
 	
@@ -74,7 +75,7 @@ function fun3() {
 		
 	<div class="col-lg-12">
 		<div class="ad-divsearch">
-			<form action="AdOutList.ad" method="post" name="scfr">
+			<form action="AdOutList.ad" method="get" name="scfr">
 				<ul><li>
 					<div class="ad-search">
 						<select class="select-search" name="info">
@@ -99,8 +100,8 @@ function fun3() {
 			<%
 		}else {
 			%>
-			<%=info %> ▶ <b><%=search %></b><br>
-			검색결과 : <b><%=adOutList.size() %></b>명
+			<%=infoD %> ▶ <b><%=search %></b><br>
+			검색결과 : <b><%=adOutCount %></b>명
 			<%
 		}
 		%>
@@ -183,27 +184,27 @@ function fun3() {
 	}else {
 		if(startPage > pageBlock){
 			%>
-			<a href="AdOutList.ad?pageNum=<%=startPage-pageBlock%>&search=<%=search %>">◁◁ </a>
+			<a href="AdOutList.ad?pageNum=<%=startPage-pageBlock%>&info=<%=info %>&search=<%=search %>">◁◁ </a>
 			<%
 			}
 		if(currentPage>1) {
 			%>
-			<a href="AdOutList.ad?pageNum=<%=currentPage-1 %>&search=<%=search %>">◀</a>
+			<a href="AdOutList.ad?pageNum=<%=currentPage-1 %>&info=<%=info %>&search=<%=search %>">◀</a>
 			<%
 			}
 		for(int i=startPage;i<=endPage;i++){
 			%>
-			<a href="AdOutList.ad?pageNum=<%=i %>&search=<%=search %>"><%=i %></a>
+			<a href="AdOutList.ad?pageNum=<%=i %>&info=<%=info %>&search=<%=search %>"><%=i %></a>
 			<%
 			}
 		if(currentPage<pageCount) {
 			%>
-			<a href="AdOutList.ad?pageNum=<%=currentPage+1 %>&search=<%=search %>">▶</a>
+			<a href="AdOutList.ad?pageNum=<%=currentPage+1 %>&info=<%=info %>&search=<%=search %>">▶</a>
 			<%
 			}
 		if(endPage < pageCount){
 			%>
-			<a href="AdOutList.ad?pageNum=<%=startPage+pageBlock%>&search=<%=search %>"> ▷▷</a>
+			<a href="AdOutList.ad?pageNum=<%=startPage+pageBlock%>&info=<%=info %>&search=<%=search %>"> ▷▷</a>
 			<%
 		}
 	}

@@ -96,7 +96,7 @@ function fun2() {
                <div id="board-list" style="width: 1200px;padding:0; margin-right: 40px;">
    
       <div class="ad-count">
-         총 게시글 <b><%=adBuyCount %></b>개
+         총 <b><%=adBuyCount %></b>개
       </div> 
       
       <form name="ckDelete" action="AdBuyDelete.ad" method="post" id="ckDelete">
@@ -166,7 +166,7 @@ function fun2() {
    <!-- *** 페이징 끝 *** -->   
    </div>
    </div>
-    <input class="ad-btn" type="button" value="게시글 삭제" onclick="fun1()">
+    <input class="ad-btn" type="button" value="삭제" onclick="fun1()">
    </div>
 </section>
 

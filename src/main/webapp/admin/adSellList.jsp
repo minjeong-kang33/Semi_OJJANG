@@ -45,6 +45,15 @@ function fun2() {
     <!-- ***** 스크립트 끝 ***** -->
     
 <body>
+   <!-- ***** 로딩 일단 지금은 비어있음***** -->
+   <div id="preloader">
+      <div class="jumper">
+         <div></div>
+         <div></div>
+         <div></div>
+      </div>
+   </div>
+   
     <!-- ***** 헤더 ***** -->
   <jsp:include page="../top.jsp" />
     <!-- ***** 헤더 끝 ***** -->
@@ -86,7 +95,7 @@ function fun2() {
 					<div id="board-list" style="width: 1200px;padding:0; margin-right: 40px;">
 	
 		<div class="ad-count">
-			총 게시글 <b><%=adSellCount %></b>개
+			총 <b><%=adSellCount %></b>개
 		</div> 
 		
 		<form name="ckDelete" action="AdSellDelete.ad" method="post" id="ckDelete">
@@ -157,7 +166,7 @@ function fun2() {
 	
 </div>
 </div>
-		<input class="ad-btn" type="button" value="게시글 삭제" onclick="fun1()">
+		<input class="ad-btn" type="button" value="삭제" onclick="fun1()">
 </div>
 </section>		
 		

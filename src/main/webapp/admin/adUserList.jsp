@@ -85,6 +85,7 @@ int endPage=(Integer)request.getAttribute("endPage");
 int pageCount=(Integer)request.getAttribute("pageCount");
 int adUserCount=(Integer)request.getAttribute("adUserCount");
 String info=(String)request.getAttribute("info");
+String infoD=(String)request.getAttribute("infoD");
 String search=(String)request.getAttribute("search");
 %>
 
@@ -132,8 +133,8 @@ String search=(String)request.getAttribute("search");
 			<%
 		}else {
 			%>
-			<%=info %> ▶ <b><%=search %></b><br>
-			검색결과 : <b><%=adUserList.size() %></b>명
+			<%=infoD %> ▶ <b><%=search %></b><br>
+			검색결과 : <b><%=adUserCount %></b>명
 			<%
 		}
 		%>
@@ -209,27 +210,27 @@ String search=(String)request.getAttribute("search");
 	}else {
 		if(startPage > pageBlock){
 			%>
-			<a href="AdUserList.ad?pageNum=<%=startPage-pageBlock%>&search=<%=search %>">◁◁ </a>
+			<a href="AdUserList.ad?pageNum=<%=startPage-pageBlock%>&info=<%=info %>&search=<%=search %>">◁◁ </a>
 			<%
 			}
 		if(currentPage>1) {
 			%>
-			<a href="AdUserList.ad?pageNum=<%=currentPage-1 %>&search=<%=search %>">◀</a>
+			<a href="AdUserList.ad?pageNum=<%=currentPage-1 %>&info=<%=info %>&search=<%=search %>">◀</a>
 			<%
 			}
 		for(int i=startPage;i<=endPage;i++){
 			%>
-			<a href="AdUserList.ad?pageNum=<%=i %>&search=<%=search %>"><%=i %></a>
+			<a href="AdUserList.ad?pageNum=<%=i %>&info=<%=info %>&search=<%=search %>"><%=i %></a>
 			<%
 			}
 		if(currentPage<pageCount) {
 			%>
-			<a href="AdUserList.ad?pageNum=<%=currentPage+1 %>&search=<%=search %>">▶</a>
+			<a href="AdUserList.ad?pageNum=<%=currentPage+1 %>&info=<%=info %>&search=<%=search %>">▶</a>
 			<%
 			}
 		if(endPage < pageCount){
 			%>
-			<a href="AdUserList.ad?pageNum=<%=startPage+pageBlock%>&search=<%=search %>"> ▷▷</a>
+			<a href="AdUserList.ad?pageNum=<%=startPage+pageBlock%>&info=<%=info %>&search=<%=search %>"> ▷▷</a>
 			<%
 		}
 	}
