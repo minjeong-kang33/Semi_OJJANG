@@ -148,8 +148,10 @@ function fun1(M_id, S_num, R_category, S_title) {
 									// 세션값=id와 글쓴이가 일치하는경우 거래요청 내역보기 버튼 생성
 									if (M_id.equals(dto.getM_id())) {
 								%>
-							<input type="button" class="requestBtn" value="구매희망자 보기" style="margin-bottom: 40px;"
-                      		  onclick="location.href='DealWantList.deal?S_num=<%=dto.getS_num()%>'">
+								<a href="javascript:void(window.open('DealWantList.deal?S_num=<%=dto.getS_num()%>', '희망자리스트', 'width=500, height=400,left=500, top=200' ))">
+								<input type="button" class="requestBtn" value="구매희망자 보기" style="margin-bottom: 40px;"></a>
+<!-- 							<input type="button" class="requestBtn" value="구매희망자 보기" style="margin-bottom: 40px;" -->
+<%--                       		  onclick="location.href='DealWantList.deal?S_num=<%=dto.getS_num()%>'"> --%>
 								<%
 									}
 								}
