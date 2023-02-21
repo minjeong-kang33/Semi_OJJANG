@@ -6,7 +6,7 @@
 <head>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>중고의류거래: 옺장 회원가입</title>
+<title>중고의류거래: 옺장</title>
 <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
 <link rel="stylesheet" href="assets/css/templatemo-hexashop.css">

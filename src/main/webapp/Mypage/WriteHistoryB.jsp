@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="assets/css/lightbox.css"> 
    <link href="assets/css/buy.css" rel="stylesheet" type="text/css">
 <meta charset="UTF-8">
-<title>중고 의류거래: 옺장</title>
 </head>
 <body>
      <!-- ***** 헤더 ***** -->
@@ -62,7 +61,7 @@ ArrayList<BuyDTO> buyList=(ArrayList<BuyDTO>)request.getAttribute("buyList");
 					<div class="item" style="padding:0;">
 
 						<!-- board list area -->
-						<div id="board-list" style="width: 1200px;float: left; padding:0; margin-right: 40px;">
+						<div id="board-list" style="width: 1000px;float: left; padding:0; margin-right: 40px;">
 							<table class="board-table" style="float: left; margin-bottom: 30px;">
 								<thead>
 									<tr>

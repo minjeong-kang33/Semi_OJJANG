@@ -40,7 +40,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="section-heading">
-					<h2>개인 정보 조회</h2>
+					<h2>나의 개인정보</h2>
 					<span>personal information</span>
 				</div>
 			</div>
