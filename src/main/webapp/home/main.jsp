@@ -170,7 +170,7 @@ int pageCount=(Integer)request.getAttribute("pageCount");
 					<td colspan="2" class="S_title" ><a href="SellDetails.sell?S_num=<%=dto.getS_num()%>" > <%=dto.getS_title()%></a></td> <!-- 제목 -->
 				</tr>
 				<tr>
-					<td class="price"><%=dto.getS_price()%>원</td> <td align="right" class="like_id"><input type="image" name="button" class="heart" src="sell/heart.png" onclick="location.href='LikePro.like'">
+					<td class="price"><%=dto.getS_price()%>원</td> <td align="right" class="like_id"><input type="image" name="button" class="heart" src="sell/heart.png" onclick="location.href='LikePro.like?S_num=<%=dto.getS_num() %>'">
 				</tr>
 				<tr>
 					<td colspan="2" class="S_createdate" ><%= dateFormat.format(dto.getS_createdate())+" 작성"%></td> <!-- 게시글 생성일자 -->
