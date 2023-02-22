@@ -139,27 +139,27 @@ function fun2() {
    <%
    if(startPage > pageBlock){
       %>
-      <a href="AdBuyDelete.ad?pageNum=<%=startPage-pageBlock%>">◁◁ </a>
+      <a href="AdBuyList.ad?pageNum=<%=startPage-pageBlock%>">◁◁ </a>
       <%
       }
    if(currentPage>1) {
       %>
-      <a href="AdBuyDelete.ad?pageNum=<%=currentPage-1 %>">◀</a>
+      <a href="AdBuyList.ad?pageNum=<%=currentPage-1 %>">◀</a>
       <%
       }
    for(int i=startPage;i<=endPage;i++){
       %>
-      <a href="AdBuyDelete.ad?pageNum=<%=i %>"><%=i %></a>
+      <a href="AdBuyList.ad?pageNum=<%=i %>"><%=i %></a>
       <%
       }
    if(currentPage<pageCount) {
       %>
-      <a href="AdBuyDelete.ad?pageNum=<%=currentPage+1 %>">▶</a>
+      <a href="AdBuyList.ad?pageNum=<%=currentPage+1 %>">▶</a>
       <%
       }
    if(endPage < pageCount){
       %>
-      <a href="AdBuyDelete.ad?pageNum=<%=startPage+pageBlock%>"> ▷▷</a>
+      <a href="AdBuyList.ad?pageNum=<%=startPage+pageBlock%>"> ▷▷</a>
       <%
       }
    %>
