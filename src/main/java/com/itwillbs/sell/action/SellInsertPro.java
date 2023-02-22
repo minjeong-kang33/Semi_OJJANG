@@ -63,6 +63,7 @@ public class SellInsertPro implements Action{
 		SellDAO dao = new SellDAO();
 		dao.insertSellBoard(dto);
 		
+		//받은 게시글에서 선택된 카테고리의 값이
 		ActionForward forward = new ActionForward();
 		
 		if (dto.getS_category().equals("outer")) {

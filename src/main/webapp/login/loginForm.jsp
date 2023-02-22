@@ -84,15 +84,15 @@
    </form>
 
 
-   <div class="button-group">
+   <!-- <div class="button-group">
       <div>
-         <!-- 카카오 로그인 -->
+         카카오 로그인
          <a onclick="kakaoLogin();"> <img
             src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg"
             width="222" />
          </a>
       </div>
-   </div>
+   </div> -->
 
 
       <div class="login-footer-info">

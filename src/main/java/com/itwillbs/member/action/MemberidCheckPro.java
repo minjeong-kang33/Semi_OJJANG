@@ -19,11 +19,11 @@ public class MemberidCheckPro implements Action {
 		int cnt = dao.duplecateID(M_id);
 		response.setContentType("text/html; charset=UTF-8");
         PrintWriter out = response.getWriter();
-		out.println("입력 ID : <strong>" + M_id + "</stong>");
+		out.println("입력된 ID <strong>" + M_id + "</stong>" + "는");
 			ActionForward forward = new ActionForward();
 			if (cnt == 0) {
 				out.println("<p>사용 가능한 아이디입니다.</p>");
-				out.println("<a href='javascript:apply(\"" + M_id + "\")'>[적용]</a>");
+				out.println("<a href='javascript:apply(\"" + M_id + "\")'>[적용하기]</a>");
 		        out.println("<script type=\"text/javascript\">");
 		        out.println("function apply(M_id) {");
 		        out.println("window.opener.document.getElementById(\"M_id\").value =M_id;");
