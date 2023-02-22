@@ -157,7 +157,6 @@ function fun3() {
 										<th scope="col">신고사유</th>
 										<th scope="col">기타사유</th>
 										<th scope="col">카테고리</th>
-										<th scope="col">글번호</th>
 										<th scope="col">내용</th>
 										<th scope="col">신고자ID</th>
 										<th scope="col">회원상태</th>
@@ -176,7 +175,6 @@ function fun3() {
 										<td><%=dto.getR_type() %></td>
 										<td><%=dto.getR_reason() %></td>
 										<td><%=dto.getR_category() %></td>
-										<td><%=dto.getR_writeNum() %></td>
 										<td><%=dto.getR_title() %></td>
 										<td><%=dto.getM_id() %></td>
 									<%
