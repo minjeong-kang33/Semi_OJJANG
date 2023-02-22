@@ -130,9 +130,25 @@ function fun1() {
 
 %>   
 
-<div class="BuyInsert"> 
-<img src="assets/images/buyInsert_title.png" id="buyBoard" width="500px">
-	
+ <section class="section" id="products">
+      <!-- 게시판 제목  -->
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-12">
+               <div class="section-heading">
+                  <h2>게시판 글 수정</h2>
+                  <span>edit my post</span>
+               </div>
+            </div>
+         </div>
+      </div>
+
+	  <div class="container">
+         <div class="row">
+            <div class="col-lg-4">
+               <div class="item">
+                  <div class="down-content" style="width: 800px; margin-left: 200px">
+                  
 	<!-- ** 옷 카테고리 선택 시작 -->
 <form id="frm" name="frm" action="BuyEditPro.buy?B_num=<%=B_num %>"  method="post" enctype="multipart/form-data" onsubmit="return fun1()">	
 	<div class="radio1">
@@ -186,14 +202,19 @@ function fun1() {
      			<input type="file" name="B_img"><%=dto.getB_img() %>
      			<input type="hidden" name="oldfile" value="<%=dto.getB_img()%>">
 			</div>
-              <div class="button2">
-                <input type="submit" id="save" value="글수정"/>
+              <div class="button2" style="margin-left: 600px;">
+                <input type="submit" id="save" class="btn btn-dark" style="margin-right: 10px;"value="글수정"/>
               </div>
          </td>
      </tr>
 </table>
 </form>
-</div>
+          </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
 <!-- 텍스트박스 입력상자 끝  -->  
 
     <!-- ***** 푸터 시작 ***** -->
