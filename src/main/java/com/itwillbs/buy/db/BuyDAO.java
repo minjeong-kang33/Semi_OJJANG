@@ -189,11 +189,15 @@ public class BuyDAO {
             pstmt.setInt(1, B_num);
             pstmt.executeUpdate();
             	            
-        } catch (Exception e) {
-            e.printStackTrace();
-          }
- 
-    }
+        }  catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
+			if(con!=null) try { con.close();} catch (Exception e2) {}
+		}
+		
+		
+	}
 	
 	public void updateBuyBoard(BuyDTO dto) {
 		Connection con = null;

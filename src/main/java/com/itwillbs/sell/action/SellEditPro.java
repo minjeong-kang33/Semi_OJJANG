@@ -20,7 +20,7 @@ public class SellEditPro implements Action {
 
 		int num = Integer.parseInt(request.getParameter("S_num"));
 		String S_title = multi.getParameter("S_title");
-		int S_price = Integer.parseInt(multi.getParameter("S_price"));
+		String S_price = multi.getParameter("S_price");
 		String S_text = multi.getParameter("S_text");
 		String S_send1 = multi.getParameter("S_send1");
 		String S_send2 = multi.getParameter("S_send2");
