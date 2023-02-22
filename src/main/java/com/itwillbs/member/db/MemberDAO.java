@@ -22,7 +22,7 @@ public class MemberDAO {
 		PreparedStatement pstmt=null;
 		try {
 			con=getConnection();
-			String sql="insert into member(M_id,M_pw,M_name,M_nick,M_gender,M_phone,M_address,M_address2,M_email,M_createdate) values(?,?,?,?,?,?,?,?,?,?)";
+			String sql="insert into member(M_id,M_pw,M_name,M_nick,M_gender,M_phone,M_address,M_address2,M_email,M_createdate,M_admin,M_play) values(?,?,?,?,?,?,?,?,?,?,'U','일반')";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, dto.getM_id());
 			pstmt.setString(2, dto.getM_pw());
