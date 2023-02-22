@@ -65,7 +65,7 @@ function fun3() {
 				<div class="col-lg-12">
 					<div class="section-heading">
 						<h3><b>탈퇴회원 목록</b></h3>
-						<span>Withdrawal User List</span>
+						<span>withdrawal user list</span>
 					</div>
 				</div>
 			</div>

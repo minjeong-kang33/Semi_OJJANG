@@ -96,7 +96,7 @@ String search=(String)request.getAttribute("search");
 				<div class="col-lg-12">
 					<div class="section-heading">
 						<h3><b>일반회원 목록</b></h3>
-						<span>General User List</span>
+						<span>general user list</span>
 					</div>
 				</div>
 			</div>
