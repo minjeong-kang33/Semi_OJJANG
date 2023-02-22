@@ -45,8 +45,8 @@ ArrayList<DealDTO> DealWantList=dao.DealWantList(S_num);
 			<div style="width: 30px;">
 				<div  style="width: 30px;">
 					<div class="section-heading" style="width:200px; margin:30px 140px; text-align: center";>
-						<h2 style="width: 200px">거래</h2>
-						<span>sell</span>
+						<h2 style="width: 200px">구매희망자 목록</h2>
+						<span>buyer list</span>
 					</div>
 				</div>
 			</div>

@@ -22,7 +22,7 @@ public class MembernikCheckPro implements Action {
 			ActionForward forward = new ActionForward();
 			if (cnt == 0) {
 				out.println("<p>사용 가능한 닉네임입니다.</p>");
-				out.println("<a href='javascript:apply(\"" + M_nick + "\")'>[적용]</a>");
+				out.println("<a href='javascript:apply(\"" + M_nick + "\")'>[적용하기]</a>");
 		        out.println("<script type=\"text/javascript\">");
 		        out.println("function apply(M_nick) {");
 		        out.println("window.opener.document.getElementById(\"M_nick\").value =M_nick;");

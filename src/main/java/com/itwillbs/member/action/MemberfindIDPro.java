@@ -29,8 +29,8 @@ public class MemberfindIDPro implements Action {
 			out.println("<input type=\"hidden\" name=\"M_email\" id=\"M_email\" value=\""+M_email+"\">");
 		    out.println("<input type=\"hidden\" name=\"M_pw\" id=\"M_pw\" value=\""+M_pw+"\">");
 		    out.println("<input type=\"hidden\" name=\"M_id\" id=\"M_id\" value=\""+M_id+"\">");
-	        out.println("회원님의 아이디는"+M_id+" 입니다.<br>");
-	        out.println("임시 비밀번호를 발급받으시겠습니까?.<br>");
+	        out.println("회원님의 아이디는 "+M_id+" 입니다.<br><br>");
+	        out.println("임시 비밀번호를 발급 받으시겠습니까?<br><br>");
 	        out.println("<input type=\"submit\" value=\"발급\" class=\"btn btn-danger\">");
 	        out.println("</form>");
 	  

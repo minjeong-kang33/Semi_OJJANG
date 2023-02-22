@@ -55,6 +55,34 @@ public class DealDAO {
 		return dealList;
 	}//판매내역
 	
+	public DealDTO getBoard(int S_num){
+		System.out.println("DealDTO getBoard");
+		DealDTO dto = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con = getConnection();
+			String sql = "select * from deal where S_num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1,S_num);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				dto = new DealDTO();
+				dto.setS_num(rs.getInt("S_num"));
+			}else {
+		}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(rs!=null) try { rs.close();} catch (Exception e2) {}
+			if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
+			if(con!=null) try { con.close();} catch (Exception e2) {}
+		}
+		return dto;
+		
+	}
 
 	
 }

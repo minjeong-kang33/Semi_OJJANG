@@ -50,7 +50,7 @@
 		<fieldset class="joinUpField">
 			<legend>로그인 정보</legend>
 				<ul>
-					<li><label for="userid">아이디</label> <input type="text" id="M_id" name="M_id" size="15" required onclick="idCheck()"> 
+					<li><label for="userid">아이디</label> <input type="text" id="M_id" name="M_id" size="15" required onclick="idCheck()" placeholder="5자 이상 입력하세요"> 
 						<input type="button" value="ID중복확인" id="joinbutton">
 						
 						<script type="text/javascript">
@@ -92,13 +92,13 @@
 					</li>
 					
 					<li><label for="email">이메일</label> 
-						<input type="email" id="M_email" name="M_email" size="30"> 
-						<input type="button" id="joinbutton" value="이메일 인증" onclick="location.href = 'emailSendAction.jsp'"></li>
+						<input type="email" id="M_email" name="M_email" size="30" placeholder="비밀번호 찾기에 이용됩니다"> 
+						<!-- <input type="button" id="joinbutton" value="이메일 인증" onclick="location.href = 'emailSendAction.jsp'"> --></li>
 
 					<li><label for="phone">전화번호</label> 
 						<input type="text" id="M_phone" name="M_phone" size="15"></li>
 					<li><label for="postcode">우편번호</label> <input type="text" id="sample6_postcode" placeholder="우편번호" onclick="DaumPostcode()">
-						<input type="button" value="우편번호 찾기" id="joinbutton"></li>
+						<input type="button" value="우편번호 찾기" id="joinbutton" onclick="DaumPostcode()"></li>
 					<li><label for="address">주소</label> <input type="text" name="M_address" id="M_address" placeholder="주소"></li>
 					<li><label for="address2">상세주소</label> <input type="text" name="M_address2" id="M_address2" placeholder="상세주소"></li>
 				<%@include file="addressMap.jsp"%>
