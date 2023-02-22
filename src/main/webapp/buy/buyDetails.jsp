@@ -210,7 +210,7 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 							"CommentUpdateForm.buy?Co_num="+<%=List.get(i).getCo_num()%>,
 							"updateForm",'width='+ _width+ ', height='+ _height+ ', left='+ _left+ ', top='+ _top);}
 					</script></td>
-				<td width="10"><ahref="CommentDelete.buy?B_num=<%=B_num%>&Co_num=<%=List.get(i).getCo_num()%>"onclick="return delchk();" class="btn">삭제</a> 
+				<td width="10"><a href="CommentDelete.buy?B_num=<%=B_num%>&Co_num=<%=List.get(i).getCo_num()%>"onclick="return delchk();" class="btn">삭제</a> 
 					<script text="text/javascript">
 						function delchk() {
 							return confirm("삭제하시겠습니까?");}
