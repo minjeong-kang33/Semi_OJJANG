@@ -239,7 +239,7 @@ public class MypageDAO {
 				
 				SellDTO dto=new SellDTO();
 				dto.setS_num(rs.getInt("S_num"));
-				dto.setS_price(rs.getInt("S_price"));
+				dto.setS_price(rs.getString("S_price"));
 				dto.setM_id(rs.getString("M_id"));
 				dto.setS_title(rs.getString("S_title"));
 				dto.setS_text(rs.getString("S_text"));
@@ -293,7 +293,7 @@ public class MypageDAO {
 				dto.setM_id(rs.getString("M_id"));
 				dto.setS_num(rs.getInt("S_num"));
 				dto.setS_title(rs.getString("S_title"));
-				dto.setS_price(rs.getInt("S_price"));
+				dto.setS_price(rs.getString("S_price"));
 				dto.setS_text(rs.getString("S_text"));
 				dto.setS_like(rs.getInt("S_like"));
 				dto.setS_view(rs.getInt("S_view"));
@@ -390,7 +390,7 @@ public class MypageDAO {
 				dto.setS_category(rs.getString("S_category"));
 				dto.setS_title(rs.getString("S_title"));
 				dto.setS_text(rs.getString("S_text"));
-				dto.setS_price(rs.getInt("S_price"));
+				dto.setS_price(rs.getString("S_price"));
 			
 				likeList.add(dto);
 			}
@@ -459,7 +459,7 @@ public class MypageDAO {
 				dto.setS_category(rs.getString("S_category"));
 				dto.setS_title(rs.getString("S_title"));
 				dto.setS_text(rs.getString("S_text"));
-				dto.setS_price(rs.getInt("S_price"));
+				dto.setS_price(rs.getString("S_price"));
 				dto.setS_img(rs.getString("S_img"));
 				dealListS1.add(dto);
 			}
@@ -528,7 +528,7 @@ public class MypageDAO {
 				dto.setS_category(rs.getString("S_category"));
 				dto.setS_title(rs.getString("S_title"));
 				dto.setS_text(rs.getString("S_text"));
-				dto.setS_price(rs.getInt("S_price"));
+				dto.setS_price(rs.getString("S_price"));
 				dto.setS_img(rs.getString("S_img"));
 			
 				sellHistory1.add(dto);

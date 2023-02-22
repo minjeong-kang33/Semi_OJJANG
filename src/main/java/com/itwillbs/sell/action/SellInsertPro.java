@@ -28,7 +28,7 @@ public class SellInsertPro implements Action{
 		String M_id = (String)session.getAttribute("M_id");
 		
 		String S_title = multi.getParameter("S_title");
-		int S_price = Integer.parseInt(multi.getParameter("S_price"));
+		String S_price = multi.getParameter("S_price");
 		String S_text = multi.getParameter("S_text");
 		int S_like = 0;
 		int S_view = 0;

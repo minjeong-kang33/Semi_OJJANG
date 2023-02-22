@@ -448,7 +448,7 @@ public class AdminDAO {
 				dto.setS_num(rs.getInt("S_num"));
 				dto.setM_id(rs.getString("M_id"));
 				dto.setS_title(rs.getString("S_title"));
-				dto.setS_price(rs.getInt("S_price"));
+				dto.setS_price(rs.getString("S_price"));
 				dto.setS_createdate(rs.getTimestamp("S_createdate"));
 				dto.setS_category(rs.getString("S_category"));
 				adSellList.add(dto);
