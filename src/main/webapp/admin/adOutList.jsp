@@ -53,6 +53,7 @@ function fun3() {
 	int pageCount=(Integer)request.getAttribute("pageCount");
 	int adOutCount=(Integer)request.getAttribute("adOutCount");
 	String info=(String)request.getAttribute("info");
+	String infoD=(String)request.getAttribute("infoD");
 	String search=(String)request.getAttribute("search");
 	%>
 	
@@ -63,8 +64,8 @@ function fun3() {
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="section-heading">
-						<h3>탈퇴회원목록조회</h3>
-						<span>User List</span>
+						<h3><b>탈퇴회원 목록</b></h3>
+						<span>Withdrawal User List</span>
 					</div>
 				</div>
 			</div>
@@ -74,11 +75,9 @@ function fun3() {
 		
 	<div class="col-lg-12">
 		<div class="ad-divsearch">
-		<div class="ad-right">
-			<form action="AdOutList.ad" method="post" name="scfr">
-				<div class="ad-search">
-					<ul class="select-list">
-					<li>
+			<form action="AdOutList.ad" method="get" name="scfr">
+				<ul><li>
+					<div class="ad-search">
 						<select class="select-search" name="info">
 							<option value="">선택</option>
 							<option value="M_id">아이디</option>
@@ -87,10 +86,9 @@ function fun3() {
 						</select>
 						<input class="input-search" type="text" name="search">
 						<input class="button-search" type="button" value="검색" onclick="fun3()">
-					</li></ul><br>
-				</div>
+					</div>
+				</li></ul>
 			</form>
-		</div>
 		</div>
 	</div>
 	
@@ -102,53 +100,70 @@ function fun3() {
 			<%
 		}else {
 			%>
-			<%=info %>> <%=search %><br>
-			검색결과 : <b><%=adOutList.size() %></b>명
+			<%=infoD %> ▶ <b><%=search %></b><br>
+			검색결과 : <b><%=adOutCount %></b>명
 			<%
 		}
 		%>
 	</div>
 		
-<table border="1">
-	<thead>
-		<tr>
-			<th scope="col">번호</th>
-			<th scope="col">아이디</th>
-			<th scope="col">이름</th>
-			<th scope="col">닉네임</th>
-			<th scope="col">가입날짜</th>
-			<th scope="col">상태</th>
-		</tr>
-	</thead>
+	<div class="container" style=" width:100%; padding: 0;">
+		<div class="row">
+			<div class="col-lg-4">
+				<div class="item" style="padding:0;">
+				
+					<!-- board list area -->
+					<div id="board-list" class="board-list">
+						<table class="board-table" style="float: left; margin-bottom: 30px;">
+							<thead>
+								<tr>
+									<th scope="col">번호</th>
+									<th scope="col">아이디</th>
+									<th scope="col">이름</th>
+									<th scope="col">닉네임</th>
+									<th scope="col">가입날짜</th>
+									<th scope="col">회원상태</th>
+								</tr>
+							</thead>
 	
-	<tbody>
-<%
-for(int i=0;i<adOutList.size();i++){
-	dto=adOutList.get(i);
-%>
-	<tr><td><%=i+1 %></td>
-		<td><%=dto.getM_id() %></td>
-		<td><%=dto.getM_name() %></td>
-		<td><%=dto.getM_nick() %></td>
-		<td><%=dateFormat.format(dto.getM_createdate()) %></td>
-		<td><%=dto.getM_play() %></td></tr>
-<%
-}
-%>
-	</tbody>
-</table>
+							<tbody>
+								<%
+								for(int i=0;i<adOutList.size();i++){
+									dto=adOutList.get(i);
+								%>
+							<tr>
+								<td><%=i+1 %></td>
+								<td><%=dto.getM_id() %></td>
+								<td><%=dto.getM_name() %></td>
+								<td><%=dto.getM_nick() %></td>
+								<td><%=dateFormat.format(dto.getM_createdate()) %></td>
+							<%
+							if("탈퇴".equals(dto.getM_play())) {
+							%>
+								<td><span class="ad-report"><%=dto.getM_play() %></span></td>
+							<%
+							}else {
+							%>
+								<td><span class="ad-out"><%=dto.getM_play() %></span></td>
+							<%
+							}
+							}
+							%>
+							</tr>
+							</tbody>
+						</table>
 
 	<!-- *** 페이징 *** -->
 	<%
 	if(info==null&&search==null) {
 		if(startPage > pageBlock){
 			%>
-			<a href="AdOutList.ad?pageNum=<%=startPage-pageBlock%>">[10페이지 이전]</a>
+			<a href="AdOutList.ad?pageNum=<%=startPage-pageBlock%>">◁◁ </a>
 			<%
 			}
 		if(currentPage>1) {
 			%>
-			<a href="AdOutList.ad?pageNum=<%=currentPage-1 %>">[1페이지 이전]</a>
+			<a href="AdOutList.ad?pageNum=<%=currentPage-1 %>">◀</a>
 			<%
 			}
 		for(int i=startPage;i<=endPage;i++){
@@ -158,45 +173,49 @@ for(int i=0;i<adOutList.size();i++){
 			}
 		if(currentPage<pageCount) {
 			%>
-			<a href="AdOutList.ad?pageNum=<%=currentPage+1 %>">[1페이지 다음]</a>
+			<a href="AdOutList.ad?pageNum=<%=currentPage+1 %>">▶</a>
 			<%
 			}
 		if(endPage < pageCount){
 			%>
-			<a href="AdOutList.ad?pageNum=<%=startPage+pageBlock%>">[10페이지 다음]</a>
+			<a href="AdOutList.ad?pageNum=<%=startPage+pageBlock%>"> ▷▷</a>
 			<%
 		}
 	}else {
 		if(startPage > pageBlock){
 			%>
-			<a href="AdOutList.ad?pageNum=<%=startPage-pageBlock%>&search=<%=search %>">[10페이지 이전]</a>
+			<a href="AdOutList.ad?pageNum=<%=startPage-pageBlock%>&info=<%=info %>&search=<%=search %>">◁◁ </a>
 			<%
 			}
 		if(currentPage>1) {
 			%>
-			<a href="AdOutList.ad?pageNum=<%=currentPage-1 %>&search=<%=search %>">[1페이지 이전]</a>
+			<a href="AdOutList.ad?pageNum=<%=currentPage-1 %>&info=<%=info %>&search=<%=search %>">◀</a>
 			<%
 			}
 		for(int i=startPage;i<=endPage;i++){
 			%>
-			<a href="AdOutList.ad?pageNum=<%=i %>&search=<%=search %>"><%=i %></a>
+			<a href="AdOutList.ad?pageNum=<%=i %>&info=<%=info %>&search=<%=search %>"><%=i %></a>
 			<%
 			}
 		if(currentPage<pageCount) {
 			%>
-			<a href="AdOutList.ad?pageNum=<%=currentPage+1 %>&search=<%=search %>">[1페이지 다음]</a>
+			<a href="AdOutList.ad?pageNum=<%=currentPage+1 %>&info=<%=info %>&search=<%=search %>">▶</a>
 			<%
 			}
 		if(endPage < pageCount){
 			%>
-			<a href="AdOutList.ad?pageNum=<%=startPage+pageBlock%>&search=<%=search %>">[10페이지 다음]</a>
+			<a href="AdOutList.ad?pageNum=<%=startPage+pageBlock%>&info=<%=info %>&search=<%=search %>"> ▷▷</a>
 			<%
 		}
 	}
 	%>
 	<!-- *** 페이징 끝 *** -->
-	
-</div>
+					</div>
+				 </div>
+				</div>
+			</div>
+		</div>
+	</div>
 </section>
     <!-- ***** 탈퇴회원목록조회 끝 ***** -->
     

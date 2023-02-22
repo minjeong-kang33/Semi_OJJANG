@@ -86,6 +86,7 @@ function fun3() {
 	int pageCount=(Integer)request.getAttribute("pageCount");
 	int adUserReportCount=(Integer)request.getAttribute("adUserReportCount");
 	String info=(String)request.getAttribute("info");
+	String infoD=(String)request.getAttribute("infoD");
 	String search=(String)request.getAttribute("search");
 	%>
 	
@@ -96,8 +97,8 @@ function fun3() {
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="section-heading">
-						<h3>신고회원목록조회</h3>
-						<span>User List</span>
+						<h3><b>신고회원 목록</b></h3>
+						<span>Reported User List</span>
 					</div>
 				</div>
 			</div>
@@ -107,22 +108,19 @@ function fun3() {
 		
 	<div class="col-lg-12">
 		<div class="ad-divsearch">
-		<div class="ad-right">
-			<form action="AdUserReportList.ad" method="post" name="scfr">
-				<div class="ad-search">
-					<ul class="select-list">
-					<li>
+			<form action="AdUserReportList.ad" method="get" name="scfr">
+				<ul><li>
+					<div class="ad-search">
 						<select class="select-search" name="info">
 							<option value="">선택</option>
-							<option value="R_id">피신고자아이디</option>
-							<option value="M_id">신고자아이디</option>
+							<option value="R_id">피신고자ID</option>
+							<option value="M_id">신고자ID</option>
 						</select>
 						<input class="input-search" type="text" name="search">
 						<input class="button-search" type="button" value="검색" onclick="fun3()">
-					</li></ul><br>
-				</div>
+					</div>
+				</li></ul>
 			</form>
-		</div>
 		</div>
 	</div>
 	
@@ -136,63 +134,78 @@ function fun3() {
 				<%
 			}else {
 				%>
-				<%=info %>> <%=search %><br>
-				검색결과 : <b><%=adUserReportList.size() %></b>명
+				<%=infoD %> ▶ <b><%=search %></b><br>
+				검색결과 : <b><%=adUserReportCount %></b>명
 				<%
 			}
 			%>
 		</div>
 		
-<table border="1">
-	<thead>
-		<tr>
-			<th scope="col"><input type="checkbox" id="ckAll" name="ckAll" onclick="fun2()"></th>
-			<th scope="col">번호</th>
-			<th scope="col">피신고자아이디</th>
-			<th scope="col">신고사유</th>
-			<th scope="col">기타사유</th>
-			<th scope="col">카테고리</th>
-			<th scope="col">글번호</th>
-			<th scope="col">내용</th>
-			<th scope="col">신고자아이디</th>
-			<th scope="col">회원상태</th>
-		</tr>
-	</thead>
+		<div class="container" style=" width:100%; padding: 0;">
+			<div class="row">
+				<div class="col-lg-4">
+					<div class="item" style="padding:0;">
 
-	<tbody>
-		<%
-		for(int i=0;i<adUserReportList.size();i++){
-			dto=adUserReportList.get(i);
-		%>
-			<tr>
-				<td><input type="checkbox" id="ck" name="ck" value="<%=dto.getR_id() %>"></td>
-				<td><%=i+1 %></td>
-				<td><%=dto.getR_id() %></td>
-				<td><%=dto.getR_type() %></td>
-				<td><%=dto.getR_reason() %></td>
-				<td><%=dto.getR_category() %></td>
-				<td><%=dto.getR_writeNum() %></td>
-				<td><%=dto.getR_title() %></td>
-				<td><%=dto.getM_id() %></td>
-				<td><%=dto.getR_play() %></td>
-			</tr>
-		<%
-		}
-		%>
-	</tbody>
-</table>
+						<!-- board list area -->
+						<div id="board-list" class="board-list">
+							<table class="board-table" style="float: left; margin-bottom: 30px;">
+								<thead>
+									<tr>
+										<th scope="col"><input type="checkbox" id="ckAll" name="ckAll" onclick="fun2()"></th>
+										<th scope="col">번호</th>
+										<th scope="col">피신고자ID</th>
+										<th scope="col">신고사유</th>
+										<th scope="col">기타사유</th>
+										<th scope="col">카테고리</th>
+										<th scope="col">글번호</th>
+										<th scope="col">내용</th>
+										<th scope="col">신고자ID</th>
+										<th scope="col">회원상태</th>
+									</tr>
+								</thead>
+
+								<tbody>
+									<%
+									for(int i=0;i<adUserReportList.size();i++){
+										dto=adUserReportList.get(i);
+										%>
+									<tr>
+										<td><input type="checkbox" id="ck" name="ck" value="<%=dto.getR_id() %>"></td>
+										<td><%=i+1 %></td>
+										<td><%=dto.getR_id() %></td>
+										<td><%=dto.getR_type() %></td>
+										<td><%=dto.getR_reason() %></td>
+										<td><%=dto.getR_category() %></td>
+										<td><%=dto.getR_writeNum() %></td>
+										<td><%=dto.getR_title() %></td>
+										<td><%=dto.getM_id() %></td>
+									<%
+									if(dto.getR_play()!=null) {
+									%>
+										<td><span class="ad-out"><%=dto.getR_play() %></span></td>
+									<%
+									}else {
+									%>
+										<td></td>
+									<%
+									}
+									}
+									%>
+									</tr>
+								</tbody>
+							</table>
 
 	<!-- *** 페이징 *** -->
 	<%
 	if(info==null&&search==null) {
 		if(startPage > pageBlock){
 			%>
-			<a href="AdUserReportList.ad?pageNum=<%=startPage-pageBlock%>">[10페이지 이전]</a>
+			<a href="AdUserReportList.ad?pageNum=<%=startPage-pageBlock%>">◁◁ </a>
 			<%
 			}
 		if(currentPage>1) {
 			%>
-			<a href="AdUserReportList.ad?pageNum=<%=currentPage-1 %>">[1페이지 이전]</a>
+			<a href="AdUserReportList.ad?pageNum=<%=currentPage-1 %>">◀</a>
 			<%
 			}
 		for(int i=startPage;i<=endPage;i++){
@@ -202,48 +215,52 @@ function fun3() {
 			}
 		if(currentPage<pageCount) {
 			%>
-			<a href="AdUserReportList.ad?pageNum=<%=currentPage+1 %>">[1페이지 다음]</a>
+			<a href="AdUserReportList.ad?pageNum=<%=currentPage+1 %>">▶</a>
 			<%
 			}
 		if(endPage < pageCount){
 			%>
-			<a href="AdUserReportList.ad?pageNum=<%=startPage+pageBlock%>">[10페이지 다음]</a>
+			<a href="AdUserReportList.ad?pageNum=<%=startPage+pageBlock%>"> ▷▷</a>
 			<%
 		}
 	}else {
 		if(startPage > pageBlock){
 			%>
-			<a href="AdUserReportList.ad?pageNum=<%=startPage-pageBlock%>&search=<%=search %>">[10페이지 이전]</a>
+			<a href="AdUserReportList.ad?pageNum=<%=startPage-pageBlock%>&info=<%=info %>&search=<%=search %>">◁◁ </a>
 			<%
 			}
 		if(currentPage>1) {
 			%>
-			<a href="AdUserReportList.ad?pageNum=<%=currentPage-1 %>&search=<%=search %>">[1페이지 이전]</a>
+			<a href="AdUserReportList.ad?pageNum=<%=currentPage-1 %>&info=<%=info %>&search=<%=search %>">◀</a>
 			<%
 			}
 		for(int i=startPage;i<=endPage;i++){
 			%>
-			<a href="AdUserReportList.ad?pageNum=<%=i %>&search=<%=search %>"><%=i %></a>
+			<a href="AdUserReportList.ad?pageNum=<%=i %>&info=<%=info %>&search=<%=search %>"><%=i %></a>
 			<%
 			}
 		if(currentPage<pageCount) {
 			%>
-			<a href="AdUserReportList.ad?pageNum=<%=currentPage+1 %>&search=<%=search %>">[1페이지 다음]</a>
+			<a href="AdUserReportList.ad?pageNum=<%=currentPage+1 %>&info=<%=info %>&search=<%=search %>">▶</a>
 			<%
 			}
 		if(endPage < pageCount){
 			%>
-			<a href="AdUserReportList.ad?pageNum=<%=startPage+pageBlock%>&search=<%=search %>">[10페이지 다음]</a>
+			<a href="AdUserReportList.ad?pageNum=<%=startPage+pageBlock%>&info=<%=info %>&search=<%=search %>"> ▷▷</a>
 			<%
 		}
 	}
 	%>
 	<!-- *** 페이징 끝 *** -->
 
-	<div class="ad-right">
-		회원 처리 <input type="button" value="강퇴" onclick="fun1()">
-	</div>
-
+							<div>
+								<input class="ad-btn" type="button" value="강퇴" onclick="fun1()">
+							</div>
+						</div>
+					  </div>
+					</div>
+				</div>
+			</div>
 		</form>
 	</div>
 </section>

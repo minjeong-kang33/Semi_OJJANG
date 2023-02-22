@@ -124,10 +124,10 @@ public class AdminDAO {
 		int count=0;
 		try {
 			con=getConnection();
-			String sql="select count(*) from member where M_play not in ('탈퇴', '강퇴') and like ?";
-			if(info.equals("M_id")) {sql+="M_id";}
-			else if(info.equals("M_name")) {sql+="M_name";}
-			else if(info.equals("M_nick")) {sql+="M_nick";}
+			String sql="select count(*) from member where M_play not in ('탈퇴', '강퇴') and ";
+			if(info.equals("M_id")) {sql+="M_id like ?";}
+			else if(info.equals("M_name")) {sql+="M_name like ?";}
+			else if(info.equals("M_nick")) {sql+="M_nick like ?";}
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, "%"+search+"%");
 			rs=pstmt.executeQuery();
@@ -150,7 +150,7 @@ public class AdminDAO {
 		ResultSet rs=null;
 		try {
 			con=getConnection();
-			String sql="select * from member where M_play in ('탈퇴', '강퇴') order by M_id limit ?, ?";
+			String sql="select * from member where M_play in ('탈퇴', '강퇴') order by M_play desc, M_id limit ?, ?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, startRow-1);
 			pstmt.setInt(2, pageSize);
@@ -179,7 +179,7 @@ public class AdminDAO {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		String Oorder=" like ? order by M_id limit ?, ?";
+		String Oorder=" like ? order by M_play desc, M_id limit ?, ?";
 		try {
 			con=getConnection();
 			String sql="select * from member where M_play in ('탈퇴', '강퇴') and ";
@@ -240,7 +240,7 @@ public class AdminDAO {
 		int count=0;
 		try {
 			con=getConnection();
-			String sql="select count(*) from member where M_play in ('탈퇴', '강퇴') where ";
+			String sql="select count(*) from member where M_play in ('탈퇴', '강퇴') and ";
 			if(info.equals("M_id")) {sql+="M_id like ?";}
 			else if(info.equals("M_name")) {sql+="M_name like ?";}
 			else if(info.equals("M_nick")) {sql+="M_nick like ?";}
@@ -266,7 +266,7 @@ public class AdminDAO {
 		ResultSet rs=null;
 		try {
 			con=getConnection();
-			String sql="select R_type, M_id, R_id, R_reason, R_category, R_writeNum, R_title, ifnull(R_play, '') R_play from report order by R_id desc, R_type limit ?, ?";
+			String sql="select R_type, M_id, R_id, R_reason, R_category, R_writeNum, R_title, R_play from report order by R_id desc, R_type limit ?, ?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, startRow-1);
 			pstmt.setInt(2, pageSize);
@@ -301,7 +301,7 @@ public class AdminDAO {
 		String Rorder=" like ?  order by R_id desc, R_type limit ?, ?";
 		try {
 			con=getConnection();
-			String sql="select R_type, M_id, R_id, R_reason, R_category, R_writeNum, R_title, ifnull(R_play, '') R_play from report where ";
+			String sql="select R_type, M_id, R_id, R_reason, R_category, R_writeNum, R_title, R_play from report where ";
 			if(info.equals("M_id")) {sql+="M_id";}
 			else if(info.equals("R_id")) {sql+="R_id";}
 			sql+=Rorder;

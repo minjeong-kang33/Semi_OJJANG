@@ -17,6 +17,7 @@ public class AdOutList implements Action {
 		System.out.println("AdOutList execute()");
 		request.setCharacterEncoding("utf-8");
 		String info = request.getParameter("info");
+		String infoD = null;
 		String search = request.getParameter("search");
 		
 		AdminDAO dao=new AdminDAO();
@@ -49,17 +50,18 @@ public class AdOutList implements Action {
 		
 		if(info!=null) {
 			if(info.equals("M_id")) {
-				info="아이디";
+				infoD="아이디";
 			}else if(info.equals("M_name")) {
-				info="이름";
+				infoD="이름";
 			}else {
-				info="닉네임";
+				infoD="닉네임";
 			}
 		}
 		
 		request.setAttribute("adOutList", adOutList);
 		request.setAttribute("adOutCount", count);
 		request.setAttribute("info", info);
+		request.setAttribute("infoD", infoD);
 		request.setAttribute("search", search);
 		request.setAttribute("currentPage", currentPage);
 		request.setAttribute("startPage", startPage);

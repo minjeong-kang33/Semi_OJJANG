@@ -14,20 +14,26 @@ form {
 .ad-count {
 	margin-bottom: 8px;
 	color: #42240C;
+	clear: right;
 } /* 테이블 위 게시글 수 */
 #ckAll, #ck {
 	margin-right: 15px;
 	margin-left: 10px;
+	accent-color: #704A00;
 }
 .ad-btn {
 	color: white;
 	border: none;
 	font-size: 16px;
 	font-weight: 500;
-	padding: 5px;
+	padding: 5px 16px;
 	background-color: #4B3400;
-	border-radius: 3px;
+	border-radius: 12px;
 	float: right;
+}
+.ad-page a {
+	margin-top: 30px;
+	color: #4B3400;
 }
 .down-content{
 	margin-top: 20px;
@@ -43,19 +49,20 @@ form {
 	float: right;
 }
 .ad-divsearch {
-	width: 100%;
+	width: 1200px;
 }
 .ad-search {
 	height: 28px;
-	width: 370px;
-	border: 1px solid #ABABAB;
+	width: 330px;
+	border: 1px solid #4B3400;
 	background: #ffffff;
 	float: right;
 	margin-bottom: 30px;
+	border-radius: 5px;
 }
 .input-search {
 	font-size: 14px;
-	width: 200px;
+	width: 155px;
 	padding: 2px 8px;
 	border: 0px;
 	outline: none;
@@ -65,7 +72,7 @@ form {
 	width: 50px;
 	height: 100%;
 	border: 0px;
-	background: #ABABAB;
+	background: #4B3400;
 	outline: none;
 	float: right;
 	color: #ffffff;
@@ -73,10 +80,40 @@ form {
 .select-search {
 	float: left;
 	position: relative;
-	width: 118px;
+	width: 110px;
+	height: 100%;
+	border: none;
+	margin-left: 3px;
+}
+/* .ad-report-null { */
+/* padding: 12px 0; */
+/* border-top: 1px solid #e7e7e7; */
+/* text-align: center; */
+/* } */
+.ad-report {
+text-align: center;
+background-color:#704A00;
+color:white;
+border:none;
+border-radius: 7px;
+padding: 3px 7px
+}
+.ad-out {
+text-align: center;
+background-color:#343A40;
+color:white;
+border:none;
+border-radius: 7px;
+padding: 3px 7px
 }
 
 /* List */
+.board-list {
+	 width: 1200px;
+	 float: left;
+	 padding:0;
+	 margin-right: 40px;
+}
 .board-table {
   font-size: 13px;
   width: 100%;
@@ -99,7 +136,7 @@ form {
 }
 
 .board-table .th-num {
-  width: 25px;
+  width: 5px;
   text-align: center;
 }
 .board-table .th-category {
@@ -117,6 +154,11 @@ form {
 
 .board-table .th-date {
   width: 70px;
+}
+
+.board-table .th-ck {
+  width: 100px;
+  margin-left: 12px;
 }
 
 .board-table .th-count{

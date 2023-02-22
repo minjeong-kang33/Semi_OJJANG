@@ -45,6 +45,15 @@ function fun2() {
     <!-- ***** 스크립트 끝 ***** -->
     
 <body>
+   <!-- ***** 로딩 일단 지금은 비어있음***** -->
+   <div id="preloader">
+      <div class="jumper">
+         <div></div>
+         <div></div>
+         <div></div>
+      </div>
+   </div>
+   
     <!-- ***** 헤더 ***** -->
   <jsp:include page="../top.jsp" />
     <!-- ***** 헤더 끝 ***** -->
@@ -86,14 +95,14 @@ function fun2() {
 					<div id="board-list" style="width: 1200px;padding:0; margin-right: 40px;">
 	
 		<div class="ad-count">
-			총 게시글 <b><%=adSellCount %></b>개
+			총 <b><%=adSellCount %></b>개
 		</div> 
 		
 		<form name="ckDelete" action="AdSellDelete.ad" method="post" id="ckDelete">
 		<table class="board-table" style="margin-bottom: 30px;">
 			<thead>
 				<tr>
-					<th scope="col"><input type="checkbox" id="ckAll" name="ckAll" onclick="fun2()"></th>
+					<th scope="col" class="th-ck"><input type="checkbox" id="ckAll" name="ckAll" onclick="fun2()"></th>
 					<th scope="col">판매 글번호</th>
 					<th scope="col">카테고리</th>
 					<th scope="col">작성자</th>
@@ -129,27 +138,27 @@ function fun2() {
 	<%
 	if(startPage > pageBlock){
 		%>
-		<a href="AdSellList.ad?pageNum=<%=startPage-pageBlock%>">[10페이지 이전]</a>
+		<a href="AdSellList.ad?pageNum=<%=startPage-pageBlock%>">◁◁ </a>
 		<%
 		}
-	 //if(currentPage>1) {
+	 if(currentPage>1) {
 		%>
-		<%-- <a href="AdSellList.ad?pageNum=<%=currentPage-1 %>">[1페이지 이전]</a> --%>
+		<a href="AdSellList.ad?pageNum=<%=currentPage-1 %>">◀</a>
 		<%
-		//} 
+		} 
 	for(int i=startPage;i<=endPage;i++){
 		%>
 		<a href="AdSellList.ad?pageNum=<%=i %>"><%=i %></a>
 		<%
 		}
-	//if(currentPage<pageCount) {
+	if(currentPage<pageCount) {
 		%>
-		<%-- <a href="AdSellList.ad?pageNum=<%=currentPage+1 %>">[1페이지 다음]</a> --%>
+		<a href="AdSellList.ad?pageNum=<%=currentPage+1 %>">▶</a>
 		<%
-		//}
+		}
 	if(endPage < pageCount){
 		%>
-		<a href="AdSellList.ad?pageNum=<%=startPage+pageBlock%>">[10페이지 다음]</a>
+		<a href="AdSellList.ad?pageNum=<%=startPage+pageBlock%>"> ▷▷</a>
 		<%
 		}
 	%>
@@ -157,7 +166,7 @@ function fun2() {
 	
 </div>
 </div>
-		<input class="ad-btn" type="button" value="게시글 삭제" onclick="fun1()">
+		<input class="ad-btn" type="button" value="삭제" onclick="fun1()">
 </div>
 </section>		
 		

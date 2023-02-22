@@ -17,6 +17,7 @@ public class AdUserReportList implements Action {
 		System.out.println("AdUserReportList execute()");
 		request.setCharacterEncoding("utf-8");
 		String info = request.getParameter("info");
+		String infoD = null;
 		String search = request.getParameter("search");
 		
 		AdminDAO dao=new AdminDAO();
@@ -49,15 +50,16 @@ public class AdUserReportList implements Action {
 		
 		if(info!=null) {
 			if(info.equals("R_id")) {
-				info="피신고자아이디";
+				infoD="피신고자ID";
 			}else {
-				info="신고자아이디";
+				infoD="신고자ID";
 			}
 		}
 		
 		request.setAttribute("adUserReportList", adUserReportList);
 		request.setAttribute("adUserReportCount", count);
 		request.setAttribute("info", info);
+		request.setAttribute("infoD", infoD);
 		request.setAttribute("search", search);
 		request.setAttribute("currentPage", currentPage);
 		request.setAttribute("startPage", startPage);

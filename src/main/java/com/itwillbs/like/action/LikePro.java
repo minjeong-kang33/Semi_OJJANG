@@ -34,9 +34,9 @@ public class LikePro implements Action {
 			PrintWriter out=response.getWriter(); //프린트라이트에 쓰기 권한을 받아서 리스폰스 어쩌구에 담음
 			out.println("<script type='text/javascript'>");
 			out.println("alert('찜 완료')");
-			out.println("history.back()");
+			out.println("location.href = document.referrer;");
 			out.println("</script>");
-			out.close();		
+			out.close();
 					
 		}else{
 			dao.cancelLike(S_num, M_id);
@@ -45,10 +45,9 @@ public class LikePro implements Action {
 			PrintWriter out=response.getWriter(); //프린트라이트에 쓰기 권한을 받아서 리스폰스 어쩌구에 담음
 			out.println("<script type='text/javascript'>");
 			out.println("alert('찜 취소')");
-			out.println("history.back()");
+			out.println("location.href = document.referrer;");
 			out.println("</script>");
-			out.close();	
-			forward=null;	
+			out.close();
 			
 //			PrintWriter out=response.getWriter(); //프린트라이트에 쓰기 권한을 받아서 리스폰스 어쩌구에 담음
 //			out.println("<script type='text/javascript'>");
