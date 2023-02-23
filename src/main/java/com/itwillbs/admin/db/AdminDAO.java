@@ -124,7 +124,7 @@ public class AdminDAO {
 		int count=0;
 		try {
 			con=getConnection();
-			String sql="select count(*) from member where M_play not in ('탈퇴', '강퇴') and ";
+			String sql="select count(*) from member where M_play not in ('탈퇴', '강퇴') and M_admin != 'M' and ";
 			if(info.equals("M_id")) {sql+="M_id like ?";}
 			else if(info.equals("M_name")) {sql+="M_name like ?";}
 			else if(info.equals("M_nick")) {sql+="M_nick like ?";}
