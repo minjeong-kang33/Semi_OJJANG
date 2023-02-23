@@ -9,7 +9,7 @@
    if(M_id == null) {
 	  session.setAttribute("messageType", "오류 메시지");
 	  session.setAttribute("messageContent", "현재 로그인이 되어 있지 않습니다.");
-	  response.sendRedirect("../home/main");
+	  response.sendRedirect("Main.me");
 	  return;
    }
 %>
@@ -99,11 +99,11 @@
                <span class="icon-bar"></span>
                <span class="icon-bar"></span>
            </button>
-           <a class="navbar-brand" href="../home/main">  옷장 톡</a>
+           <a class="navbar-brand" href="find.ch">  옷장 톡</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-               <li class="active"><a href="box.jsp">메시지함<span id="unread" class="label label-info"></span></a></li>
+               <li class="active"><a href="box.ch">메시지함<span id="unread" class="label label-info"></span></a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
@@ -114,7 +114,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="profileUpdate.jsp">프로필 수정</a></li>
-                        <li><a href="./loginout.jsp">로그아웃</a></li>
+                           <li><a href="" onClick="window.close()">로그아웃</a></li>
                     </ul>  
                 </li> 
             </ul>

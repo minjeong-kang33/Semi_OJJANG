@@ -133,20 +133,7 @@ public class MemberFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}// 이메일보내기 김광원
-		else if(sPath.equals("/MemberwithdrawalForm.me")){
-			forward=new ActionForward();
-			forward.setPath("withdrawal/withdrawal.jsp");
-			forward.setRedirect(false);
-			
-		}
-		else if(sPath.equals("/MemberwithdrawalPro.me")) {
-			action=new MemberwithdrawalPro();
-			try {
-				forward=action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}// 회원탈퇴
+	
 		
 		
 		/* 여기 위까지 if문 작성 */

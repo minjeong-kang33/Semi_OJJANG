@@ -6,7 +6,7 @@ public class SellDTO {
 		private int S_num;
 		private String M_id;
 		private String S_title;
-		private int S_price;
+		private String S_price;
 		private String S_text;
 		private int S_like;
 		private int S_view;
@@ -36,10 +36,10 @@ public class SellDTO {
 		public void setS_title(String s_title) {
 			S_title = s_title;
 		}
-		public int getS_price() {
+		public String getS_price() {
 			return S_price;
 		}
-		public void setS_price(int s_price) {
+		public void setS_price(String s_price) {
 			S_price = s_price;
 		}
 		public String getS_text() {

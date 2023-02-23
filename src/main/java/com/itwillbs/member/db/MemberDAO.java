@@ -22,7 +22,7 @@ public class MemberDAO {
 		PreparedStatement pstmt=null;
 		try {
 			con=getConnection();
-			String sql="insert into member(M_id,M_pw,M_name,M_nick,M_gender,M_phone,M_address,M_address2,M_email,M_createdate) values(?,?,?,?,?,?,?,?,?,?)";
+			String sql="insert into member(M_id,M_pw,M_name,M_nick,M_gender,M_phone,M_address,M_address2,M_email,M_createdate,M_admin,M_play) values(?,?,?,?,?,?,?,?,?,?,'U','일반')";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, dto.getM_id());
 			pstmt.setString(2, dto.getM_pw());
@@ -379,9 +379,9 @@ public class MemberDAO {
 				rs = pstmt.executeQuery();
 				if (rs.next()) {
 					if(rs.getString("M_Profile").equals("")) {
-						return "http://localhost:8080/images/icon.png";
+						return "http://localhost:8080/SemiProject_OJJANG/images/icon.png";
 					}
-					return "http://localhost:8080/upload/" + rs.getString("M_Profile");
+					return "http://localhost:8080/SemiProject_OJJANG/upload/" + rs.getString("M_Profile");
 				} 
 			} catch(Exception e) {
 				e.printStackTrace();
@@ -394,7 +394,7 @@ public class MemberDAO {
 				    e.printStackTrace();
 				}
 			}
-			return "http://localhost:8080/images/icon.png";
+			return "http://localhost:8080/SemiProject_OJJANG/images/icon.png";
 		}
 		
 		
@@ -437,7 +437,7 @@ public class MemberDAO {
 			try {
 				//1,2 디비연결 메서드
 				con=getConnection();
-				String sql="update member set M_withdrawl = 'O', M_pw=null where M_id =?";
+				String sql="update member set M_play='탈퇴', M_pw=null where M_id =?";
 				pstmt = con.prepareStatement(sql.toString());
 				pstmt.setString(1, M_id); 
 				pstmt.executeUpdate();
@@ -450,6 +450,27 @@ public class MemberDAO {
 				if (rs != null)try {rs.close();} catch (Exception e2) {}
 			}
 		}// Delete
-
+		public String M_playCheck(String M_id) {
+				Connection con=null;
+				PreparedStatement pstmt=null;
+				ResultSet rs=null;
+				String M_play=null;
+				try {
+					con=getConnection();
+					String sql="select M_play from member where M_id=?";
+					pstmt=con.prepareStatement(sql);
+					pstmt.setString(1, M_id);
+					rs=pstmt.executeQuery();
+					if(rs.next()) {
+						M_play=rs.getString("M_play");
+					}
+				}catch(Exception e){
+					e.printStackTrace();
+				}finally {
+					if(con!=null) try {con.close();} catch (Exception e2) {}
+					if(pstmt!=null) try {pstmt.close();} catch (Exception e2) {}
+					if(rs!=null) try {rs.close();} catch (Exception e2) {}
+				} return M_play;
+		}//M_playCheck(), M_play 확인하는 메서드
 	
 }

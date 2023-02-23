@@ -44,7 +44,7 @@ public class SellDAO {
 				pstmt.setInt(1, S_num);  
 				pstmt.setString(2, dto.getM_id()); 
 				pstmt.setString(3, dto.getS_title());
-				pstmt.setInt(4, dto.getS_price());
+				pstmt.setString(4, dto.getS_price());
 				pstmt.setString(5, dto.getS_text());
 				pstmt.setInt(6, dto.getS_like());
 				pstmt.setInt(7, dto.getS_view());
@@ -87,7 +87,7 @@ public class SellDAO {
 				dto.setS_num(rs.getInt("S_num"));
 				dto.setM_id(rs.getString("M_id"));
 				dto.setS_title(rs.getString("S_title"));
-				dto.setS_price(rs.getInt("S_price"));
+				dto.setS_price(rs.getString("S_price"));
 				dto.setS_text(rs.getString("S_text"));
 				dto.setS_like(rs.getInt("S_like"));
 				dto.setS_view(rs.getInt("S_view"));
@@ -133,7 +133,7 @@ public class SellDAO {
 				dto.setS_num(rs.getInt("S_num"));
 				dto.setM_id(rs.getString("M_id"));
 				dto.setS_title(rs.getString("S_title"));
-				dto.setS_price(rs.getInt("S_price"));
+				dto.setS_price(rs.getString("S_price"));
 				dto.setS_text(rs.getString("S_text"));
 				dto.setS_like(rs.getInt("S_like"));
 				dto.setS_view(rs.getInt("S_view"));
@@ -179,7 +179,7 @@ public class SellDAO {
 				dto.setS_num(rs.getInt("S_num"));
 				dto.setM_id(rs.getString("M_id"));
 				dto.setS_title(rs.getString("S_title"));
-				dto.setS_price(rs.getInt("S_price"));
+				dto.setS_price(rs.getString("S_price"));
 				dto.setS_text(rs.getString("S_text"));
 				dto.setS_like(rs.getInt("S_like"));
 				dto.setS_view(rs.getInt("S_view"));
@@ -225,7 +225,7 @@ public class SellDAO {
 				dto.setS_num(rs.getInt("S_num"));
 				dto.setM_id(rs.getString("M_id"));
 				dto.setS_title(rs.getString("S_title"));
-				dto.setS_price(rs.getInt("S_price"));
+				dto.setS_price(rs.getString("S_price"));
 				dto.setS_text(rs.getString("S_text"));
 				dto.setS_like(rs.getInt("S_like"));
 				dto.setS_view(rs.getInt("S_view"));
@@ -271,7 +271,7 @@ public class SellDAO {
 				dto.setS_num(rs.getInt("S_num"));
 				dto.setM_id(rs.getString("M_id"));
 				dto.setS_title(rs.getString("S_title"));
-				dto.setS_price(rs.getInt("S_price"));
+				dto.setS_price(rs.getString("S_price"));
 				dto.setS_text(rs.getString("S_text"));
 				dto.setS_like(rs.getInt("S_like"));
 				dto.setS_view(rs.getInt("S_view"));
@@ -296,7 +296,7 @@ public class SellDAO {
 		return sellDressList;
 	} // sellDressList 끝 (Dress 글목록에서 사용)
 	
-	public int getSellBoardCount() {
+	public int getSellBoardCount(String category) {
 		int count = 0;
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -304,8 +304,9 @@ public class SellDAO {
 		
 		try {
 			con = getConnection();
-			String sql = "select count(*) from sell";
+			String sql = "select count(*) from sell where S_category=?";
 			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1,category);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				count = rs.getInt("count(*)");
@@ -318,6 +319,31 @@ public class SellDAO {
 		}
 		return count;
 	} // getSellBoardCount (페이징에서 사용)
+	
+	public int getSearchCount() {
+		int count = 0;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con = getConnection();
+			String sql = "select count(*) from sell";
+			pstmt = con.prepareStatement(sql);
+	
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				count = rs.getInt("count(*)");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
+			if(con!=null) try { con.close();} catch (Exception e2) {}
+		}
+		return count;
+	} // getSellBoardCount (페이징에서 사용)
+	
 	
 	public SellDTO getSellBoard(int S_num){
 		
@@ -340,7 +366,7 @@ public class SellDAO {
 				dto.setS_num(rs.getInt("S_num"));
 				dto.setM_id(rs.getString("M_id"));
 				dto.setS_title(rs.getString("S_title"));
-				dto.setS_price(rs.getInt("S_price"));
+				dto.setS_price(rs.getString("S_price"));
 				dto.setS_text(rs.getString("S_text"));
 				dto.setS_like(rs.getInt("S_like"));
 				dto.setS_view(rs.getInt("S_view"));
@@ -450,7 +476,7 @@ public class SellDAO {
 				SellDTO dto=new SellDTO();
 				dto.setM_id(rs.getString("M_id"));
 				dto.setS_title(rs.getString("S_title"));
-				dto.setS_price(rs.getInt("S_price"));		
+				dto.setS_price(rs.getString("S_price"));		
 				dto.setS_category(rs.getString("S_category"));
 				
 				dealListS.add(dto);
@@ -474,7 +500,7 @@ public class SellDAO {
 			String sql = "update sell set S_title=?, S_price=?, S_category=?, S_text=?, S_send1=?, S_send2=?, S_sido1=?, S_gugun1=?, S_img=? where S_num=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, dto.getS_title());
-			pstmt.setInt(2, dto.getS_price());
+			pstmt.setString(2, dto.getS_price());
 			pstmt.setString(3, dto.getS_category());
 			pstmt.setString(4, dto.getS_text());
 			pstmt.setString(5, dto.getS_send1());
@@ -556,7 +582,7 @@ public class SellDAO {
 					dto=new SellDTO();
 					dto.setS_img(rs.getString("S_img"));
 					dto.setS_title(rs.getString("S_title"));
-					dto.setS_price(rs.getInt("S_price"));
+					dto.setS_price(rs.getString("S_price"));
 					dto.setS_sido1(rs.getString("S_sido1"));
 					dto.setS_gugun1(rs.getString("S_gugun1"));
 					dto.setS_send1(rs.getString("S_send1"));
@@ -594,7 +620,7 @@ public class SellDAO {
 							dto.setS_num(rs.getInt("S_num"));
 							dto.setM_id(rs.getString("M_id"));
 							dto.setS_title(rs.getString("S_title"));
-							dto.setS_price(rs.getInt("S_price"));
+							dto.setS_price(rs.getString("S_price"));
 							dto.setS_text(rs.getString("S_text"));
 							dto.setS_like(rs.getInt("S_like"));
 							dto.setS_view(rs.getInt("S_view"));

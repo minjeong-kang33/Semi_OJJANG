@@ -1,4 +1,4 @@
-package com.itwillbs.report.db;
+package com.itwillbs.out.db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,7 +8,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-public class ReportDAO {
+public class OutDAO {
 
 	public Connection getConnection() throws Exception{
 		Context init = new InitialContext();
@@ -19,28 +19,28 @@ public class ReportDAO {
 	} //getConnection() 끝
 	
 	
-	public void insertReport(ReportDTO dto) {
+	public void insertOut(OutDTO dto2) {
 		Connection con =null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		
 		try {
 			con=getConnection();
-
-			//신고폼에서 작성되는 Data 등록하기
-			String sql="insert into report values(?,?,?,?,?,?,?,?)";
+			int O_num=1;
+			String sql ="select max(O_num) from outs";
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				O_num=rs.getInt("max(O_num)")+1;
+			}
+			sql="insert into outs(O_num,M_id,O_reason,O_outday) values(?,?,?,?)";
 			pstmt=con.prepareStatement(sql);
 			
-			
-			pstmt.setString(1, dto.getR_type());
-			pstmt.setString(2, dto.getM_id());
-			pstmt.setString(3, dto.getR_id()); // test로 (구매자 땡겨오는거 아직 못해서)
-			pstmt.setString(4, dto.getR_reason());
-			pstmt.setString(5, dto.getR_category());
-			pstmt.setString(6, dto.getR_writeNum());
-			pstmt.setString(7, dto.getR_title());
-			pstmt.setString(8, dto.getR_play());
-			
+			pstmt.setInt(1, O_num);
+			pstmt.setString(2, dto2.getM_id());
+			pstmt.setString(3, dto2.getO_reason());
+			pstmt.setTimestamp(4, dto2.getO_outday());
 			pstmt.executeUpdate();	
 			}
 			catch (Exception e) {
@@ -51,8 +51,7 @@ public class ReportDAO {
 				if (con != null)try {con.close();} catch (Exception e2) {}
 				if(rs!=null) try {rs.close();} catch (Exception e2) {}
 			}
-	} //insertReport()끝 수정중입니다. 
-	
+	} 
 	
 	
 	

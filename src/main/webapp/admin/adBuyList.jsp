@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
     <link rel="stylesheet" href="assets/css/lightbox.css">
     <link href="assets/css/admin.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/adSellList.css" rel="stylesheet" type="text/css">
 <meta charset="UTF-8">
 </head>
 

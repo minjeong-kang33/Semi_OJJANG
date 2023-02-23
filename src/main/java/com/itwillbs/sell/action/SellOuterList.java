@@ -31,12 +31,15 @@ public class SellOuterList implements Action {
 		int startPage = (currentPage - 1) / pageBlock * pageBlock + 1;
 		int endPage = startPage + pageBlock - 1;
 
-		int count = dao.getSellBoardCount();
+		int count = dao.getSellBoardCount("Outer");
 		int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
 
 		if (endPage > pageCount) {
 			endPage = pageCount;
 		}
+		System.out.println(count);
+		System.out.println("endPage"+endPage);
+		System.out.println("pageCount"+pageCount);
 		// 가져온 데이터 담기
 		request.setAttribute("sellouterList", sellouterList);
 

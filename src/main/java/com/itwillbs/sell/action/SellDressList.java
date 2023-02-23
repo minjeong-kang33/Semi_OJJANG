@@ -30,7 +30,7 @@ public class SellDressList implements Action{
 		int startPage = (currentPage - 1) / pageBlock * pageBlock + 1;
 		int endPage = startPage + pageBlock - 1;
 
-		int count = dao.getSellBoardCount();
+		int count = dao.getSellBoardCount("Dress");
 		int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
 
 		if (endPage > pageCount) {
