@@ -49,17 +49,17 @@ String M_id = (String) session.getAttribute("M_id");
 	<!-- ***** 게시판 제목 끝 ***** -->
 	
 	<div class="withdrawal_div">
-	<form action="MemberwithdrawalPro.me" onsubmit="return withdrawCheck()" method="post" name="withdrawal_area" id="withdrawal_area">
+	<form action="OutwithdrawalPro.out" onsubmit="return withdrawCheck()" method="post" name="withdrawal_area" id="withdrawal_area">
 		<fieldset class="withdrawalField">
 			<ul>
 				<li><label>아이디</label> <input type="text" id="M_id" name="M_id" size="15" value="<%= M_id%>" readonly></li>
 				<li><label for="pwd1"> 비밀번호</label> <input type="password" id="M_pw" name="M_pw" size="15" placeholder="비밀번호 확인란" required></li>
-				<li><label for="pwd1"> 탈퇴사유</label><select name="re" id="re">
+				<li><label for="pwd1"> 탈퇴사유</label><select name="O_reason" id="O_reason" required>
 														<option value="0">선택하세요.</option>
-														<option value="1">원하는 상품이 없어요.</option>
-														<option value="2">비매너 사용자를 만났어요.</option>
-														<option value="3">물품이 안팔려요.</option>
-														<option value="4"> 기타 </option>
+														<option value="원하는 상품이 없어요.">원하는 상품이 없어요.</option>
+														<option value="비매너 사용자를 만났어요.">비매너 사용자를 만났어요.</option>
+														<option value="물품이 안팔려요.">물품이 안팔려요.</option>
+														<option value="기타"> 기타 </option>
 													 </select>
 <script type="text/javascript">
 	function withdrawCheck(){
