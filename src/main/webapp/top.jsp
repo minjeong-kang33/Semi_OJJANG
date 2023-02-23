@@ -75,8 +75,6 @@
 								<li><a href="ReviewList.rev">리뷰보기</a></li>
 								<li><a
 									href="javascript:void(window.open('find.ch', '판매자찾기','width=450, height=450'))">판매자찾기</a></li>
-								<li><a
-									href="javascript:void(window.open('box.ch', '메세지함','width=450, height=450'))">메세지함</a></li>
 							</ul></li>
 						<%
                 	  }
