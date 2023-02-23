@@ -98,7 +98,7 @@
                <span class="icon-bar"></span>
                <span class="icon-bar"></span>
            </button>
-           <a class="navbar-brand" href="">옷장 톡</a>
+           <a class="navbar-brand" href="find.ch">옷장 톡</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
@@ -112,7 +112,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="profileUpdate.jsp">프로필 수정</a></li>
-                        <li><a href="logoutAction.jsp">로그아웃</a></li>
+                        <li><a href="" onClick="window.close()">로그아웃</a></li>
                     </ul>  
                 </li> 
             </ul>

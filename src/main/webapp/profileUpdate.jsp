@@ -88,7 +88,7 @@ String M_id = null;
         </div>
     </nav>
     <div class="container">
-        <form method="post" action="./userProfile" enctype="multipart/form-data">
+        <form method="post" action="./MemberProfileServlet" enctype="multipart/form-data">
             <table class="table table-bordered table-hover" style="text-align: center; border: 1px solid #dddddd">
                 <thead>
                     <tr>
@@ -99,12 +99,12 @@ String M_id = null;
                     <tr>
                         <td style="width: 110px;"><h5>아이디</h5></td>
                      <td><h5><%= Member.getM_id()%></h5>
-                        <input type="hidden" name="userID" value="<%= Member.getM_id() %>"></td>
+                        <input type="hidden" name="M_id" value="<%= Member.getM_id() %>"></td>
                     </tr>                                                            
                     <tr>
                         <td style="width: 110px;"><h5>사진 업로드</h5></td>
                         <td colspan="2">
-                        <input type="file" name="userProfile" class="file">  
+                        <input type="file" name="MemberProfile" class="file">  
                             <div class="input-group col-xs-12">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>
                                 <input type="text" class="form-control input-lg" disabled placeholder="이미지를 업로드하세요.">

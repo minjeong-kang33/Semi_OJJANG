@@ -51,22 +51,22 @@ public class ChatBoxServlet extends HttpServlet {
 		if(chatList.size() == 0) return "";
 		for(int i=chatList.size()-1; i>=0; i--) {
 			String unread = "";
-			String userProfile = "";
+			String M_Profile = null;
 			if(M_id.equals(chatList.get(i).getToID())) {
 				unread = chatDAO.getUnreadChat(chatList.get(i).getFromID(), M_id) + "";
 				if(unread.equals("0")) unread = "";
 			}
 			if(M_id.equals(chatList.get(i).getToID())) {
-				userProfile = new MemberDAO().getProfile(chatList.get(i).getFromID());
+				M_Profile = new MemberDAO().getProfile(chatList.get(i).getFromID());
 			} else {
-				userProfile = new MemberDAO().getProfile(chatList.get(i).getToID());
+				M_Profile = new MemberDAO().getProfile(chatList.get(i).getToID());
 			}
 			result.append("[{\"value\": \"" + chatList.get(i).getFromID() + "\"},");
 			result.append("{\"value\": \"" + chatList.get(i).getToID() + "\"},");
 			result.append("{\"value\": \"" + chatList.get(i).getChatContent() + "\"},");
 			result.append("{\"value\": \"" + chatList.get(i).getChatTime() + "\"},");
 			result.append("{\"value\": \"" + unread + "\"},");
-			result.append("{\"value\": \"" + userProfile + "\"}]");
+			result.append("{\"value\": \"" + M_Profile + "\"}]");
 			if(i != 0) result.append(",");
 		}
 		result.append("], \"last\":\"" + chatList.get(chatList.size() - 1).getChatID() + "\"}");
