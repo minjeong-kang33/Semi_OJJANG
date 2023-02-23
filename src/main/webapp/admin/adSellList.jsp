@@ -103,7 +103,7 @@ function fun2() {
 			<thead>
 				<tr>
 					<th scope="col" class="th-ck"><input type="checkbox" id="ckAll" name="ckAll" onclick="fun2()"></th>
-					<th scope="col">판매 글번호</th>
+					<th scope="col">판매글 번호</th>
 					<th scope="col">카테고리</th>
 					<th scope="col">작성자</th>
 					<th scope="col">제목</th>

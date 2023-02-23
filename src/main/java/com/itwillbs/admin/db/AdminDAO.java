@@ -33,7 +33,7 @@ public class AdminDAO {
 		MemberDTO dto=null;
 		try {
 			con=getConnection();
-			String sql="select * from member where M_play not in ('탈퇴', '강퇴') order by M_play desc, M_id limit ?, ?";
+			String sql="select * from member where M_play not in ('탈퇴', '강퇴') and M_admin != 'M' order by M_play desc, M_id limit ?, ?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, startRow-1);
 			pstmt.setInt(2, pageSize);
@@ -66,7 +66,7 @@ public class AdminDAO {
 		String Uorder=" like ? order by M_play desc, M_id limit ?, ?";
 		try {
 			con=getConnection();
-			String sql="select * from member where M_play not in ('탈퇴', '강퇴') and ";
+			String sql="select * from member where M_play not in ('탈퇴', '강퇴') and M_admin != 'M' and ";
 			if(info.equals("M_id")) {sql+="M_id";}
 			else if(info.equals("M_name")) {sql+="M_name";}
 			else if(info.equals("M_nick")) {sql+="M_nick";}
@@ -102,7 +102,7 @@ public class AdminDAO {
 		int count=0;
 		try {
 			con=getConnection();
-			String sql="select count(*) from member where M_play not in ('탈퇴', '강퇴')";
+			String sql="select count(*) from member where M_play not in ('탈퇴', '강퇴') and M_admin != 'M'";
 			pstmt=con.prepareStatement(sql);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
@@ -384,7 +384,7 @@ public class AdminDAO {
 		PreparedStatement pstmt=null;
 		try {
 			con=getConnection();
-			String sql="update member set M_play='강퇴' where M_id=?";
+			String sql="update member set M_play='강퇴', M_pw=null where M_id=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, M_id);
 			pstmt.execute();
@@ -401,7 +401,7 @@ public class AdminDAO {
 		PreparedStatement pstmt=null;
 		try {
 			con=getConnection();
-			String sql="update member set M_play='강퇴' where M_id=?";
+			String sql="update member set M_play='강퇴', M_pw=null where M_id=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, R_id);
 			pstmt.execute();
@@ -489,6 +489,21 @@ public class AdminDAO {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		try {
+			con = getConnection();
+			String sql = "delete from likes where S_num = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, S_num);
+			pstmt.executeUpdate();
+			
+			System.out.println("like canceled");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
+			if(con!=null) try { con.close();} catch (Exception e2) {}
+		}
+		try {
 			con=getConnection();
 			String sql="delete from sell where S_num=?";
 			pstmt=con.prepareStatement(sql);
@@ -561,6 +576,18 @@ public class AdminDAO {
 	public void adBuyDelete(int B_num) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
+		try {
+			con = getConnection();
+			String sql = "delete from comment where B_num = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, B_num);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
+			if(con!=null) try { con.close();} catch (Exception e2) {}
+		}
 		try {
 			con=getConnection();
 			String sql="delete from buy where B_num=?";

@@ -437,7 +437,7 @@ public class MemberDAO {
 			try {
 				//1,2 디비연결 메서드
 				con=getConnection();
-				String sql="update member set M_withdrawl = 'O', M_pw=null where M_id =?";
+				String sql="update member set M_play='탈퇴', M_pw=null where M_id =?";
 				pstmt = con.prepareStatement(sql.toString());
 				pstmt.setString(1, M_id); 
 				pstmt.executeUpdate();
@@ -450,6 +450,27 @@ public class MemberDAO {
 				if (rs != null)try {rs.close();} catch (Exception e2) {}
 			}
 		}// Delete
-
+		public String M_playCheck(String M_id) {
+				Connection con=null;
+				PreparedStatement pstmt=null;
+				ResultSet rs=null;
+				String M_play=null;
+				try {
+					con=getConnection();
+					String sql="select M_play from member where M_id=?";
+					pstmt=con.prepareStatement(sql);
+					pstmt.setString(1, M_id);
+					rs=pstmt.executeQuery();
+					if(rs.next()) {
+						M_play=rs.getString("M_play");
+					}
+				}catch(Exception e){
+					e.printStackTrace();
+				}finally {
+					if(con!=null) try {con.close();} catch (Exception e2) {}
+					if(pstmt!=null) try {pstmt.close();} catch (Exception e2) {}
+					if(rs!=null) try {rs.close();} catch (Exception e2) {}
+				} return M_play;
+		}//M_playCheck(), M_play 확인하는 메서드
 	
 }

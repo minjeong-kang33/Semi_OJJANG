@@ -22,7 +22,7 @@ function fun1() {
 <body>
 <form name="form1">
 <input type="image" src="assets/images/pop2.png" onclick="fun1()"><br>
-<input type="checkbox" name="popup" value="">
+<input type="checkbox" name="popup" value="" style="accent-color: #704A00">
 <font size="2">오늘 하루 그만 보기</font> <input type="button" onclick="fun1()" value="닫기">
 </form>
 </body>

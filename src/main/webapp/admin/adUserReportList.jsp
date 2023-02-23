@@ -98,7 +98,7 @@ function fun3() {
 				<div class="col-lg-12">
 					<div class="section-heading">
 						<h3><b>신고회원 목록</b></h3>
-						<span>Reported User List</span>
+						<span>reported user list</span>
 					</div>
 				</div>
 			</div>

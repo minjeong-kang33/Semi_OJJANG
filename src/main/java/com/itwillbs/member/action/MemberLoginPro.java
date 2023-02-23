@@ -24,6 +24,7 @@ public class MemberLoginPro implements Action{
 		
 		MemberDAO dao = new MemberDAO();
 		MemberDTO dto = dao.M_userCheck(M_id, M_pw);
+		String M_play=dao.M_playCheck(M_id);
 		
 		ActionForward forward = null;
 		
@@ -35,8 +36,25 @@ public class MemberLoginPro implements Action{
 			forward.setPath("Main.me");
 			forward.setRedirect(true);
 			//}
-		}
-			else{
+		} else if("탈퇴".equals(M_play)) {
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script type='text/javascript'>");
+			out.println("alert('탈퇴 회원입니다.');");
+			out.println("history.back();");
+			out.println("</script>");
+			out.close();
+			forward = null;
+		} else if("강퇴".equals(M_play)) {
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script type='text/javascript'>");
+			out.println("alert('강퇴 회원입니다.');");
+			out.println("history.back();");
+			out.println("</script>");
+			out.close();
+			forward = null;	
+		} else{
 				response.setContentType("text/html; charset=UTF-8");
 				PrintWriter out = response.getWriter();
 				out.println("<script type='text/javascript'>");
