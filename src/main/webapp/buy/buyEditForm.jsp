@@ -3,9 +3,6 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
-<!-- 왜..  112행 int B_num = Integer.parseInt(request.getParameter("B_num"));에서
-	java.lang.NumberFormatException: null이 나올까... -->
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -21,6 +18,7 @@
 <meta charset="UTF-8">
 
 <script type="text/javascript">
+/* 스마트에디터 시작 */
 var oEditors = [];
 $(function(){
       nhn.husky.EZCreator.createInIFrame({
@@ -47,13 +45,11 @@ $(function(){
       
 });
 
-<%-- function pasteHTML(filepath){
-     var sHTML = '<img src="<%=request.getContextPath()%>/uploadFolder/'+filepath+'">';
-     oEditors.getById["content"].exec("PASTE_HTML", [sHTML]);
-} --%>
+/* 스마트에디터 끝 */
+/* 구군, 시도 선택 시작 */
      
 $('document').ready(function() {
-    var area0 = ["시/도 선택","서울특별시","인천광역시","대전광역시","광주광역시","대구광역시","울산광역시","부산광역시","경기도","강원도","충청북도","충청남도","전라북도","전라남도","경상북도","경상남도","제주도"];
+    var area0 = ["---------","서울특별시","인천광역시","대전광역시","광주광역시","대구광역시","울산광역시","부산광역시","경기도","강원도","충청북도","충청남도","전라북도","전라남도","경상북도","경상남도","제주도"];
      var area1 = ["강남구","강동구","강북구","강서구","관악구","광진구","구로구","금천구","노원구","도봉구","동대문구","동작구","마포구","서대문구","서초구","성동구","성북구","송파구","양천구","영등포구","용산구","은평구","종로구","중구","중랑구"];
       var area2 = ["계양구","남구","남동구","동구","부평구","서구","연수구","중구","강화군","옹진군"];
       var area3 = ["대덕구","동구","서구","유성구","중구"];
@@ -79,7 +75,7 @@ $('document').ready(function() {
         $.each(eval(area0), function() {
          $selB_sido1.append("<option value='"+this+"'>"+this+"</option>");
         });
-        $selB_sido1.next().append("<option value=''>구/군 선택</option>"); 
+        $selB_sido1.next().append("<option value=''>구/군 선택안함</option>"); 
        });
 
     // 시/도 선택시 구/군 설정
@@ -88,7 +84,7 @@ $('document').ready(function() {
      var $B_gugun1 = $(this).next(); // 선택영역 군구 객체
      $("option",$B_gugun1).remove(); // 구군 초기화 
      if(area == "area0")
-      $B_gugun1.append("<option value=''>구/군 선택</option>");
+      $B_gugun1.append("<option value=''>구/군 선택안함</option>");
      else {
       $.each(eval(area), function() {
        $B_gugun1.append("<option value='"+this+"'>"+this+"</option>");
@@ -96,7 +92,8 @@ $('document').ready(function() {
      }
     });
    });
-   
+/* 구군, 시도 선택 끝 */
+/* 입력값 확인 시작 */   
 function fun1() {
 	// 필수조건 - 입력 안 된 경우, 선택 안 된 경우 => 입력하세요 제어=> 전송
 	if(document.frm.B_title.value==""){
@@ -116,6 +113,7 @@ function fun1() {
 		return false;
 	}
 }
+/* 입력값 확인 끝 */
 </script>
 </head>
 <body>
@@ -172,8 +170,8 @@ function fun1() {
 		<input type="checkbox" id="checkbox-btn-2" name="B_send2" value="direct" <%if(dto.getB_send2()!=null){%>checked <%}%>>
 			<label for="checkbox-btn-2" class="btn" >직거래</label>
 		
-		<select name="S_sido1" id="S_sido1"><option><%=dto.getB_sido1() %></option></select>
-		<select name="S_gugun1" id="S_gugun1"><option><%=dto.getB_gugun1() %></option></select>
+		<select name="B_sido1" id="B_sido1"><option><%=dto.getB_sido1() %></option></select>
+		<select name="B_gugun1" id="B_gugun1"><option><%=dto.getB_gugun1() %></option></select>
 			<input type="hidden" name="oldB_sido1" value="<%=dto.getB_sido1() %>">
 			<input type="hidden" name="oldB_gugun1" value="<%=dto.getB_gugun1() %>">
    </div>
