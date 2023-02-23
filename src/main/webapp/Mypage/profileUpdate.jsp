@@ -77,7 +77,7 @@ MemberDTO dto=(MemberDTO)request.getAttribute("dto");
 				<ul>
 					<li><label for="fullname">이름</label> <input type="text" id="M_name" name="M_name" size="15" value="<%= dto.getM_name()%>" readonly></li>
 					<li><label for="gender">성별</label> <input type="text" id="M_gender" name="M_gender" value="<%= dto.getM_gender()%>" readonly> </li>
-					<li><label for="nickname">닉네임</label><input type="text" id="M_nick" name="M_nick" size="15" value="<%=dto.getM_nick()%>">
+					<li><label for="nickname">닉네임</label><input type="text" id="M_nick" name="M_nick" size="15" value="<%=dto.getM_nick()%>" readonly>
 						<input type="button" value="중복확인"  id="PFcheckbutton"  onclick="nickCheck()">
 						<script type="text/javascript">
 							function nickCheck() {
