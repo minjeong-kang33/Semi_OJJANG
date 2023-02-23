@@ -296,7 +296,7 @@ public class SellDAO {
 		return sellDressList;
 	} // sellDressList 끝 (Dress 글목록에서 사용)
 	
-	public int getSellBoardCount() {
+	public int getSellBoardCount(String category) {
 		int count = 0;
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -304,8 +304,9 @@ public class SellDAO {
 		
 		try {
 			con = getConnection();
-			String sql = "select count(*) from sell";
+			String sql = "select count(*) from sell where S_category=?";
 			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1,category);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				count = rs.getInt("count(*)");
