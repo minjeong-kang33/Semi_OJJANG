@@ -11,6 +11,7 @@ import javax.sql.DataSource;
 
 import com.itwillbs.buy.db.BuyDTO;
 import com.itwillbs.member.db.MemberDTO;
+import com.itwillbs.out.db.OutDTO;
 import com.itwillbs.report.db.ReportDTO;
 import com.itwillbs.sell.db.SellDTO;
 
@@ -143,24 +144,24 @@ public class AdminDAO {
 		} return count;
 	}//adUserCount(info, search)
 	
-	public ArrayList<MemberDTO> adOutList(int startRow, int pageSize) {
-		ArrayList<MemberDTO> adOutList=new ArrayList<MemberDTO>();
+	public ArrayList<OutDTO> adOutList(int startRow, int pageSize) {
+		ArrayList<OutDTO> adOutList=new ArrayList<OutDTO>();
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		try {
 			con=getConnection();
-			String sql="select * from member where M_play in ('탈퇴', '강퇴') order by M_play desc, M_id limit ?, ?";
+			String sql="select m.M_id, m.M_nick, o.O_reason, o.O_outday, m.M_play from outs o right join member m on o.M_id=m.M_id where M_play in ('탈퇴', '강퇴') order by M_play desc, O_outday limit ?, ?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, startRow-1);
 			pstmt.setInt(2, pageSize);
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
-				MemberDTO dto=new MemberDTO();
+				OutDTO dto=new OutDTO();
 				dto.setM_id(rs.getString("M_id"));
-				dto.setM_name(rs.getString("M_name"));
 				dto.setM_nick(rs.getString("M_nick"));
-				dto.setM_createdate(rs.getTimestamp("M_createdate"));
+				dto.setO_reason(rs.getString("O_reason"));
+				dto.setO_outday(rs.getTimestamp("O_outday"));
 				dto.setM_play(rs.getString("M_play"));
 				adOutList.add(dto);
 			}
@@ -174,18 +175,17 @@ public class AdminDAO {
 		return adOutList;
 	}//adOutList()
 	
-	public ArrayList<MemberDTO> adOutList(int startRow, int pageSize, String info, String search) {
-		ArrayList<MemberDTO> adOutList=new ArrayList<MemberDTO>();
+	public ArrayList<OutDTO> adOutList(int startRow, int pageSize, String info, String search) {
+		ArrayList<OutDTO> adOutList=new ArrayList<OutDTO>();
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		String Oorder=" like ? order by M_play desc, M_id limit ?, ?";
+		String Oorder=" like ? order by m.M_play desc, o.O_outday limit ?, ?";
 		try {
 			con=getConnection();
-			String sql="select * from member where M_play in ('탈퇴', '강퇴') and ";
-			if(info.equals("M_id")) {sql+="M_id";}
-			else if(info.equals("M_name")) {sql+="M_name";}
-			else if(info.equals("M_nick")) {sql+="M_nick";}
+			String sql="select m.M_id, m.M_nick, o.O_reason, o.O_outday, m.M_play from outs o right join member m on o.M_id=m.M_id where m.M_play in ('탈퇴', '강퇴') and ";
+			if(info.equals("M_id")) {sql+="m.M_id";}
+			else if(info.equals("M_nick")) {sql+="m.M_nick";}
 			sql+=Oorder;
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, "%"+search+"%");
@@ -193,11 +193,11 @@ public class AdminDAO {
 			pstmt.setInt(3, pageSize);
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
-				MemberDTO dto=new MemberDTO();
+				OutDTO dto=new OutDTO();
 				dto.setM_id(rs.getString("M_id"));
-				dto.setM_name(rs.getString("M_name"));
 				dto.setM_nick(rs.getString("M_nick"));
-				dto.setM_createdate(rs.getTimestamp("M_createdate"));
+				dto.setO_reason(rs.getString("O_reason"));
+				dto.setO_outday(rs.getTimestamp("O_outday"));
 				dto.setM_play(rs.getString("M_play"));
 				adOutList.add(dto);
 			}
@@ -218,7 +218,7 @@ public class AdminDAO {
 		int count=0;
 		try {
 			con=getConnection();
-			String sql="select count(*) from member where M_play in ('탈퇴', '강퇴')";
+			String sql="select count(*) from outs o right join member m on o.M_id=m.M_id where M_play in ('탈퇴', '강퇴')";
 			pstmt=con.prepareStatement(sql);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
@@ -240,10 +240,9 @@ public class AdminDAO {
 		int count=0;
 		try {
 			con=getConnection();
-			String sql="select count(*) from member where M_play in ('탈퇴', '강퇴') and ";
-			if(info.equals("M_id")) {sql+="M_id like ?";}
-			else if(info.equals("M_name")) {sql+="M_name like ?";}
-			else if(info.equals("M_nick")) {sql+="M_nick like ?";}
+			String sql="select count(*) from outs o right join member m on o.M_id=m.M_id where M_play in ('탈퇴', '강퇴') and ";
+			if(info.equals("M_id")) {sql+="m.M_id like ?";}
+			else if(info.equals("M_nick")) {sql+="m.M_nick like ?";}
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, "%"+search+"%");
 			rs=pstmt.executeQuery();
@@ -395,6 +394,61 @@ public class AdminDAO {
 			if(pstmt!=null) try {pstmt.close();} catch (Exception e2) {}
 		}
 	}//adUserDeletePro()
+	
+	public void adOut(String M_id) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=getConnection();
+			int O_num=1;
+			String sql ="select max(O_num) from outs";
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				O_num=rs.getInt("max(O_num)")+1;
+			}
+			sql="insert into outs(O_num,M_id,O_reason) values(?,?,'강퇴')";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, O_num);
+			pstmt.setString(2, M_id);
+			pstmt.executeUpdate();	
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(con!=null) try {con.close();} catch (Exception e2) {}
+			if(pstmt!=null) try {pstmt.close();} catch (Exception e2) {}
+		}
+	}//adOut()
+	
+	public void adOut(OutDTO dto) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=getConnection();
+			int O_num=1;
+			String sql ="select max(O_num) from outs";
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				O_num=rs.getInt("max(O_num)")+1;
+			}
+			sql="insert into outs(O_num,M_id,O_reason) values(?,?,?)";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, O_num);
+			pstmt.setString(2, dto.getM_id());
+			pstmt.setString(3, dto.getO_reason());
+			pstmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(con!=null) try {con.close();} catch (Exception e2) {}
+			if(pstmt!=null) try {pstmt.close();} catch (Exception e2) {}
+		}
+	}//adOut(dto)
 	
 	public void adUserReportDelete(String R_id) {
 		Connection con=null;

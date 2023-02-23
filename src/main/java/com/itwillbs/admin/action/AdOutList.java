@@ -9,6 +9,7 @@ import com.itwillbs.admin.db.AdminDAO;
 import com.itwillbs.member.action.Action;
 import com.itwillbs.member.action.ActionForward;
 import com.itwillbs.member.db.MemberDTO;
+import com.itwillbs.out.db.OutDTO;
 
 public class AdOutList implements Action {
 
@@ -26,7 +27,7 @@ public class AdOutList implements Action {
 		if(pageNum==null){pageNum="1";}
 		int currentPage=Integer.valueOf(pageNum);
 		int startRow=(currentPage-1)*pageSize+1;
-		ArrayList<MemberDTO> adOutList=null;
+		ArrayList<OutDTO> adOutList=null;
 		
 		if(search==null&&info==null) {
 			adOutList=dao.adOutList(startRow,pageSize);

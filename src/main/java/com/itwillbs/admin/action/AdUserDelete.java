@@ -22,6 +22,7 @@ public class AdUserDelete implements Action {
 			for(int i=0;i<M_idArr.length;i++){
 				M_id=M_idArr[i];
 				dao.adUserDeletePro(M_id);
+				dao.adOut(M_id);
 			}
 		}
 		
