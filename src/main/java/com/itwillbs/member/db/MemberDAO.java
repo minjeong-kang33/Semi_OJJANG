@@ -379,9 +379,9 @@ public class MemberDAO {
 				rs = pstmt.executeQuery();
 				if (rs.next()) {
 					if(rs.getString("M_Profile").equals("")) {
-						return "http://localhost:8080/images/icon.png";
+						return "http://localhost:8080/SemiProject_OJJANG/images/icon.png";
 					}
-					return "http://localhost:8080/upload/" + rs.getString("M_Profile");
+					return "http://localhost:8080/SemiProject_OJJANG/upload/" + rs.getString("M_Profile");
 				} 
 			} catch(Exception e) {
 				e.printStackTrace();
@@ -394,7 +394,7 @@ public class MemberDAO {
 				    e.printStackTrace();
 				}
 			}
-			return "http://localhost:8080/images/icon.png";
+			return "http://localhost:8080/SemiProject_OJJANG/images/icon.png";
 		}
 		
 		
