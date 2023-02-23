@@ -320,6 +320,31 @@ public class SellDAO {
 		return count;
 	} // getSellBoardCount (페이징에서 사용)
 	
+	public int getSearchCount() {
+		int count = 0;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con = getConnection();
+			String sql = "select count(*) from sell";
+			pstmt = con.prepareStatement(sql);
+	
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				count = rs.getInt("count(*)");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
+			if(con!=null) try { con.close();} catch (Exception e2) {}
+		}
+		return count;
+	} // getSellBoardCount (페이징에서 사용)
+	
+	
 	public SellDTO getSellBoard(int S_num){
 		
 		boardCnt(S_num);
