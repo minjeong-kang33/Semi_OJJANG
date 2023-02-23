@@ -61,7 +61,7 @@
 						</script>
 					</li>
 					<li><label for="pwd1"> 비밀번호</label> 
-						<input type="password" id="M_pw" name="M_pw" size="15" required onchange="check_pw()">
+						<input type="password" id="M_pw" name="M_pw" size="15" required onchange="check_pw()" maxlength="15">
 					</li>
 					<li><label for="pwd2">비밀번호 확인</label> 
 						<input type="password" id="M_pw2" name="M_pw2" size="15" required onchange="check_pw()">&nbsp;<span id="check"></span></li>
@@ -108,9 +108,14 @@
 		
 		<!-- 전송 버튼 -->
 		<fieldset>
-			<input type="submit" value="회원가입" id="joinbutton2" /> 
+			<input type="submit" value="회원가입" id="joinbutton2" onclick="fun()" /> 
 			<input type="reset" value="초기화" id="joinbutton3" />
 		</fieldset>
+		<script>
+		function fun() {
+		alert("회원가입이 완료되었습니다.");
+		}
+</script>
 		<!-- 전송 버튼 끝-->
 	</form>
 
