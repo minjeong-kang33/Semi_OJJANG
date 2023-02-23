@@ -190,7 +190,7 @@ function fun1(M_id, S_num, R_category, S_title) {
 					if (M_id.equals("admin")) {
 				%>
 				<input type="button" class="btn btn-dark" value="글삭제"
-					onclick="location.href='SellDelete.sell?S_num=<%=dto.getS_num()%>'">
+					onclick="location.href='AdSellDelete2.ad?S_num=<%=dto.getS_num()%>'">
 				<%
 				}
 				}

@@ -169,7 +169,7 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 					// 세션값=id와 글쓴이가 일치해야만 글수정, 글삭제 표시
 					if (M_id.equals("admin")) {
 				%>
-					<input type="button" class="btn btn-dark" value="글삭제"onclick="location.href='BuyDelete.buy?B_num=<%=dto.getB_num() %>'">
+					<input type="button" class="btn btn-dark" value="글삭제"onclick="location.href='AdBuyDelete2.ad?B_num=<%=dto.getB_num() %>'">
 				<%
 					}
 				}
