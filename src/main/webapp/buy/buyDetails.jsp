@@ -26,7 +26,7 @@ function fun1(M_id, B_num, R_category, B_title) {
 	   
     window.open("ReportForm.rpt?R_id=" + M_id + "&R_writeNum="
           + B_num + "&R_category=" + "buy" + "&R_title=" + B_title,
-          "pop", "width=520,height=100");
+          "pop", "width=520,height=340");
  }
  
 </script>
