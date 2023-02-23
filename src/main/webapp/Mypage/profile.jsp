@@ -71,7 +71,7 @@ MemberDTO dto=dao.getMember(M_id);
        <fieldset class="btnss">
     		<button id="profileupdate-btn" onclick="location.href='ProfileUpdateForm.moi'">개인정보 변경</button>
 			<button id="pwupdate-btn" onclick="location.href='PwUpdateForm.moi'">비밀번호 변경</button>
-			<button id="withdraw-btn" onclick="location.href='MemberwithdrawalForm.me'">회원탈퇴</button>
+			<button id="withdraw-btn" onclick="location.href='OutwithdrawalForm.out'">회원탈퇴</button>
     	</fieldset>
     
 	<!-- ***** 회원정보조회 끝 ***** -->

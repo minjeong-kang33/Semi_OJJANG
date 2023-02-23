@@ -179,5 +179,15 @@
    <servlet-name>ReviewFrontController</servlet-name>
    <url-pattern>*.rev</url-pattern>
   </servlet-mapping>
+  <!-- 회원탈퇴 관련 -->
+   <servlet>
+   <servlet-name>OutFrontController</servlet-name>
+   <servlet-class>com.itwillbs.out.action.OutFrontController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+   <servlet-name>OutFrontController</servlet-name>
+   <url-pattern>*.out</url-pattern>
+  </servlet-mapping>
   
 </web-app>
