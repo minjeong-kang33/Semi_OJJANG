@@ -54,7 +54,6 @@
 	    			'<tbody>' +
 	    			'<tr>' +
 	    			'<td style="text-align: center;">' +
-	    			'<img class="media-object img-circle" style="max-width:300px; margin : 0 auto;" src="'+userProfile +'">' +
 	    			'<h3>' + findID + '</h3><a href="chat.jsp?toID=' + encodeURIComponent(findID) + '" class="btn btn-primary pull-right">' + '메시지 보내기</a></td>' +                      
 	    			'</tr>' +
                     '</tbody>');	    			
@@ -102,7 +101,7 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-               <li><a href="box.jsp">메시지함<span id="unread" class="label label-info"></span></a></li>
+               <li><a href="box.ch">메시지함<span id="unread" class="label label-info"></span></a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
@@ -111,8 +110,7 @@
                         aria-expanded="false">회원관리<span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="profileUpdate.jsp">프로필 수정</a></li>
-                        <li><a href="" onClick="window.close()">로그아웃</a></li>
+                        <li><a href="" onClick="window.close()">창닫기</a></li>
                     </ul>  
                 </li> 
             </ul>
