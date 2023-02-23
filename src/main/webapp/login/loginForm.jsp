@@ -69,8 +69,7 @@
      <div class="form-check">
          <div>
             <input type="checkbox" class="form-check-input" id="checkbox" name="checkbox">
-            <label class="form-check-label" for="exampleCheck1">로그인 상태
-               유지</label>
+            <label class="form-check-label" for="exampleCheck1">아이디 기억하기</label>
          </div>
       </div>
       
