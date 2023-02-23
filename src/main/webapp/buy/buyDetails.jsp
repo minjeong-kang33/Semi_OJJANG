@@ -156,7 +156,7 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 		
 				<%if (M_id != null) {
 				// 세션값=id와 글쓴이가 일치해야만 글수정, 글삭제 표시
-					if (M_id.equals(dto.getM_id()) || M_id.equals("admin")) {
+					if (M_id.equals(dto.getM_id())) {
 				%>
 					<input type="button" class="btn btn-dark" value="글수정"onclick="location.href='BuyEditForm.buy?B_num=<%=dto.getB_num()%>'">
 					<input type="button" class="btn btn-dark" value="글삭제"onclick="location.href='BuyDelete.buy?B_num=<%=dto.getB_num() %>'">
@@ -164,8 +164,18 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 					}
 				}
 				%>
+				<%
+				if (M_id != null) {
+					// 세션값=id와 글쓴이가 일치해야만 글수정, 글삭제 표시
+					if (M_id.equals("admin")) {
+				%>
+					<input type="button" class="btn btn-dark" value="글삭제"onclick="location.href='BuyDelete.buy?B_num=<%=dto.getB_num() %>'">
+				<%
+					}
+				}
+				%>
 
-					<button type="button" class="btn btn-dark"onclick="location.href='BuyList.buy'">글목록</button>
+					<button type="button" class="btn btn-dark"onclick="history.back()">글목록</button>
 				<%
 					if(M_id != null){
 						//본인에게는 신고하기 안보임
