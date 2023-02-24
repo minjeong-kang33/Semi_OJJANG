@@ -49,7 +49,7 @@ String M_id = (String) session.getAttribute("M_id");
 	<!-- ***** 게시판 제목 끝 ***** -->
 	
 	<div class="withdrawal_div">
-	<form action="OutwithdrawalPro.out" onsubmit="return withdrawCheck()" method="post" name="withdrawal_area" id="withdrawal_area">
+	<form action="OutwithdrawalPro.out" method="post" name="withdrawal_area" id="withdrawal_area" onsubmit="withdrawCheck()">
 		<fieldset class="withdrawalField">
 			<ul>
 				<li><label>아이디</label> <input type="text" id="M_id" name="M_id" size="15" value="<%= M_id%>" readonly></li>
@@ -61,19 +61,8 @@ String M_id = (String) session.getAttribute("M_id");
 														<option value="물품이 안팔려요.">물품이 안팔려요.</option>
 														<option value="기타"> 기타 </option>
 													 </select>
-<script type="text/javascript">
-	function withdrawCheck(){
-	let M_pw = document.getElementById("M_pw").value;
-	M_pw = M_pw.trim();
-	let message="진행된 내용은 복구되지 않습니다. \n계속 진행 할까요?";
-	if(confirm(message)){
-		return true;
-		else{
-			return false
-		}
-	}
-}
-</script>
+													 
+
 			</ul>
 		<input type="submit" value="회원탈퇴" id="withdrawalbtn">
 	</fieldset>
