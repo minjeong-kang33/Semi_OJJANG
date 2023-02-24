@@ -227,12 +227,14 @@ for(int i=startPage;i<=endPage;i++){
 	<a href="Main.me?pageNum=<%=i%>&search=<%=search%>"><%=i %></a> 
 <%
 }
+  if(currentPage<pageCount) {
 %>
-
+      <a href="Main.me?pageNum=<%=currentPage+1 %>&search=<%=search%>">[1페이지 다음]</a>
 <%
-if(currentPage < pageCount){
-	%>
-<a href="Main.me?pageNum=<%=currentPage+1%>&search=<%=search%>">[1페이지 다음]</a>
+      }
+if(endPage < pageCount){
+%>
+<a href="Main.me?pageNum=<%=startPage+pageBlock%>&search=<%=search%>">[1페이지 끝]</a>
 <%
 }
 %>
