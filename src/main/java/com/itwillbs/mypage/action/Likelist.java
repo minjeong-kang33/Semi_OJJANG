@@ -21,7 +21,7 @@ public class Likelist implements Action {
 		String M_id=(String)session.getAttribute("M_id");
 		
 		MypageDAO dao=new MypageDAO();
-		int pageSize=10;
+		int pageSize=9;
 		String pageNum=request.getParameter("pageNum");
 		if(pageNum==null){
 			pageNum="1";		

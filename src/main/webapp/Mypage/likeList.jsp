@@ -135,22 +135,16 @@ ArrayList<SellDTO> likeList=(ArrayList<SellDTO>)request.getAttribute("likeList")
 				<!--  페이지 번호  -->
 				<%
 
+				
 				for(int i=startPage;i<=endPage;i++){
 					%>
-					<a href="Outer.sell?pageNum=<%=i%>"><%=i%></a>
+					<a href="Likelist.moi?pageNum=<%=i%>"><%=i %></a> 
 					<%
 				}
-				
+
 				%>
-					
-			<!-- 	글 작성 버튼을 오른쪽 아래에 고정 -->
-			<%
-			if(M_id != null){
-			%>
-				<button type="button" class="btn btn-dark" onclick="location.href='SellInsertForm.sell'" style="float:right; margin-left: 500px;">글쓰기</button>
-			<%
-			}
-			%>
+				
+
 			</div>		
 					</div>
 				</div>

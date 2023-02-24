@@ -92,25 +92,41 @@ ArrayList<BuyDTO> buyList=(ArrayList<BuyDTO>)request.getAttribute("buyList");
 	<!-- ***** 작성글 조회(구매) 끝 ***** -->
 	<div style="margin-top: 30px;">
 <!-- 	페이징 시작 -->
+
 <%
-if(currentPage > 1){
-	%>
-	<a href="WriteHistoryB.moi?pageNum=<%=currentPage-1%>">[1페이지 이전]</a>
-	<%
-}
+
 
 for(int i=startPage;i<=endPage;i++){
 	%>
-	<a href="WriteHistoryB.moi?pageNum=<%=i%>"><%=i %></a> 
+	<a href="WritehistoryB.moi?pageNum=<%=i%>"><%=i %></a> 
 	<%
 }
-if(currentPage < pageCount){
+%>
+
+
+
+
+
+
+<%
+// if(currentPage > 1){
 	%>
-	<a href="WriteHistoryB.moi?pageNum=<%=currentPage+1%>">[1페이지 다음]</a>
+<%-- 	<a href="WriteHistoryB.moi?pageNum=<%=currentPage-1%>">[1페이지 이전]</a> --%>
+	<%
+// }
+
+// for(int i=startPage;i<=endPage;i++){
+	%>
+<%-- 	<a href="WriteHistoryB.moi?pageNum=<%=i%>"><%=i %></a>  --%>
+	<%
+// }
+// if(currentPage < pageCount){
+ 	%> 
+<%-- 	<a href="WriteHistoryB.moi?pageNum=<%=currentPage+1%>">[1페이지 다음]</a> --%>
 	</div>
 	<%
 	
-}
+// }
 
 %>
 

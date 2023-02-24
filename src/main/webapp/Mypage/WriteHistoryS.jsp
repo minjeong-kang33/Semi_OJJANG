@@ -95,13 +95,11 @@ ArrayList<SellDTO> sellList=(ArrayList<SellDTO>)request.getAttribute("sellList")
 	<div style="margin-top: 30px;">
 <!-- 	페이징 시작 -->
 <%
-
 for(int i=startPage;i<=endPage;i++){
 	%>
 	<a href="WritehistoryS.moi?pageNum=<%=i%>"><%=i %></a> 
 	<%
 }
-
 %>
 
  						</div>
