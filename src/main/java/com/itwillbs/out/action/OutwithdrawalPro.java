@@ -40,9 +40,11 @@ public class OutwithdrawalPro implements Action {
 			session.invalidate();
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out=response.getWriter();
-			forward=new ActionForward();
-			forward.setPath("Main.me");
-			forward.setRedirect(true);
+			out.println("<script type='text/javascript'>");
+			out.println("alert('탈퇴가 완료되었습니다.');");
+			out.println("location.href='Main.me'");
+			out.println("</script>");
+			out.close();
 		}else{
 			// id,pass 틀림
 			response.setContentType("text/html; charset=UTF-8");
