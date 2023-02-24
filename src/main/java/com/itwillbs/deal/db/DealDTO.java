@@ -2,7 +2,9 @@ package com.itwillbs.deal.db;
 
 import java.sql.Timestamp;
 
-public class DealDTO {
+import com.itwillbs.sell.db.SellDTO;
+
+public class DealDTO extends SellDTO {
 	
 	private int D_num;
 	private int S_num;

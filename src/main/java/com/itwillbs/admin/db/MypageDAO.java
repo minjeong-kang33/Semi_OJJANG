@@ -538,25 +538,36 @@ public class MypageDAO {
 		return sellHistory1;
 	}
 	
-	//S_num값만 가져오기 거래완료 된 거는 희망자 안 보게 (판매글 목록에서)
-	public ArrayList<Integer> sell(String M_id) {
-		ArrayList<Integer> sell=new ArrayList<Integer>();
+	//구매내역2
+	public ArrayList<DealDTO> buyHistory(int startRow, int pageSize,String M_id) {
+		ArrayList<DealDTO> buyHistory=new ArrayList<DealDTO>();
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		int S_num=0;
 		try {
 			con=getConnection();
-			String sql= ("select S_num from sell where M_id=? order by S_num desc");
+			String sql=(" select s.S_img as S_img, s.S_title as S_title, s.S_price as S_price, d.M_id as M_id, d.D_date as D_date, s.S_category as S_category, s.S_num as S_num, d.D_buy as D_buy"
+					+ " from sell s join deal d"
+					+ " on s.S_num=d.S_num"
+					+ " where D_buy=? and D_play='거래완료'"
+					+ " order by d.D_date desc limit ?,?");
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, M_id);
-
+			pstmt.setInt(2, startRow-1);
+			pstmt.setInt(3, pageSize);
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
-				S_num=(rs.getInt("S_num"));
-				
+				DealDTO dto=new DealDTO();
+				dto.setS_num(rs.getInt("S_num"));
+				dto.setM_id(rs.getString("M_id"));
+				dto.setS_category(rs.getString("S_category"));
+				dto.setS_title(rs.getString("S_title"));
+				dto.setS_price(rs.getString("S_price"));
+				dto.setS_img(rs.getString("S_img"));
+				dto.setD_buy(rs.getString("D_buy"));
+				dto.setD_date(rs.getTimestamp("D_date"));
 			
-				sell.add(S_num);
+				buyHistory.add(dto);
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -565,10 +576,12 @@ public class MypageDAO {
 			if(pstmt!=null) try {pstmt.close();} catch (Exception e2) {}
 			if(rs!=null) try {rs.close();} catch (Exception e2) {}
 		}
-		return sell;
+		return buyHistory;
 	}
 	
-	//구매리스트 join
+	
+	
+
 
 	
 	
