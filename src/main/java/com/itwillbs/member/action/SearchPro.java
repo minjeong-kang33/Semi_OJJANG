@@ -20,7 +20,7 @@ public class SearchPro implements Action{
 					pageNum="1";		
 				}
 				int currentPage=Integer.parseInt(pageNum);				
-				int startRow=(currentPage-1)/pageSize*pageSize+1;
+				int startRow=(currentPage-1)*pageSize+1;
 				int endRow=startRow+pageSize-1;
 				
 	
@@ -28,7 +28,13 @@ public class SearchPro implements Action{
 				int pageBlock=10;
 				int startPage=(currentPage-1)/pageBlock*pageBlock+1;
 				int endPage=startPage+pageBlock-1;
-				int count = dao.getSearchCount();
+				int count = 0;
+				if(search!=null) {
+					count = dao.getSearchCount(search);		
+				}else {
+					// 검색어 없음
+					count = dao.getSearchCount();		
+				}
 				int pageCount=count/pageSize+(count%pageSize==0?0:1);
 				if(endPage > pageCount){
 					endPage = pageCount;
@@ -36,7 +42,10 @@ public class SearchPro implements Action{
 				
 				ArrayList<SellDTO> sellList = null;
 				if(search!=null){
+					System.out.println("startRow"+startRow);
 					sellList = dao.getsellSearch(startRow, pageSize, search);
+					System.out.println("pageSize"+pageSize);
+					System.out.println("pageNum"+pageNum);
 				}else{
 					 sellList = dao.getsellList(startRow, pageSize);
 				}
