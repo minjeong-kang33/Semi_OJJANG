@@ -195,7 +195,8 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 <div id="comment" style="text-align: center; width: 900px; margin: 0 auto;">
 	<form method="post" action="CommentAction.buy?B_num=<%=B_num%>">
 		<table style="width: 900px;">
-			<tr><th colspan="3"><p style="font-size: 20px;">댓글<p></th></tr>
+			<tr><th colspan="3"><p style="font-size: 20px;margin-bottom:5px;">댓글<p></th></tr>
+			
 			<%
 				for (int i = List.size() - 1; i >= 0; i--) {
 			%>
@@ -236,13 +237,12 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 			%>
 		<tr>
 		
-		<td colspan="3">
-			<div class="btn-naran">
+		<td colspan="3">	
 					<textarea type="text" class="form-control"placeholder="댓글을 입력하세요." name="Co_text" maxlength="2048"style="width: 800px; height: 100px; font-size: 15px;	display: flex;
 	resize: none;"></textarea>
 			</td>
 			<td valign="bottom"><input type="submit" class="btn btn-dark" value="댓글입력" style="margin-bottom: 30px; margin-left: 30px;">
-			</div></td>
+			</td>
 	</table>
 </form>
 </div>
@@ -255,6 +255,13 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 </div>
 </section>
 
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 	
 	<!-- ***** 푸터 시작 ***** -->
 <jsp:include page="../bottom.jsp" />
