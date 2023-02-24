@@ -1,6 +1,7 @@
 package com.itwillbs.report.action;
 
 import java.io.PrintWriter;
+import java.sql.Timestamp;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,6 +23,7 @@ public class ReportPro implements Action{
 	String R_writeNum = request.getParameter("R_writeNum");
 	String R_title = request.getParameter("R_title");
 	String R_play = request.getParameter("R_play");
+	Timestamp R_date = request.getParameter("R_date");
 	
 	ReportDTO dto = new ReportDTO();
 	dto.setR_type(R_type);
@@ -32,6 +34,7 @@ public class ReportPro implements Action{
 	dto.setR_category(R_category);
 	dto.setR_title(R_title);
 	dto.setR_play(R_play);
+	dto.setR_date(R_date);
 	
 	ReportDAO dao = new ReportDAO();
 	

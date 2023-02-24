@@ -1,6 +1,10 @@
 package com.itwillbs.report.db;
 
-public class ReportDTO {
+import java.sql.Timestamp;
+
+import com.itwillbs.member.db.MemberDTO;
+
+public class ReportDTO extends MemberDTO{
 
 private String R_type;
 private String M_id;
@@ -10,9 +14,16 @@ private String R_writeNum;
 private String R_category;
 private String R_title;
 private String R_play;
+private Timestamp R_date;
 
 
 
+public Timestamp getR_date() {
+	return R_date;
+}
+public void setR_date(Timestamp r_date) {
+	R_date = r_date;
+}
 public String getR_play() {
 	return R_play;
 }
