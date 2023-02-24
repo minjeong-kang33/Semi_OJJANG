@@ -644,7 +644,7 @@ public class MypageDAO {
 			
 			con=getConnection();
 			
-			String sql="select count(*) from like where M_id=?";
+			String sql="select count(*) from likes where M_id=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, M_id);
 			rs=pstmt.executeQuery();

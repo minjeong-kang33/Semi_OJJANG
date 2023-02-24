@@ -89,22 +89,14 @@ ArrayList<DealDTO> dealListB1=(ArrayList<DealDTO>)request.getAttribute("dealList
 				
 				<!--  페이지 번호  -->
 				<%
-if(currentPage > 1){
-	%>
-	<a href="Sellhistory.moi?pageNum1=<%=currentPage-1%>">[1페이지 이전]</a>
-	<%
-}
+
 
 for(int i=startPage;i<=endPage;i++){
 	%>
-	<a href="Sellhistory.moi?pageNum1=<%=i%>"><%=i %></a> 
+	<a href="Buyhistory.moi?pageNum1=<%=i%>"><%=i %></a> 
 	<%
 }
-if(currentPage < pageCount){
-	%>
-	<a href="Sellhistory.moi?pageNum1=<%=currentPage+1%>">[1페이지 다음]</a>
-	<%
-}
+
 
 %>
 		</div>
