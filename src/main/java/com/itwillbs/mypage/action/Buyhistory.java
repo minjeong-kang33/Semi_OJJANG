@@ -28,13 +28,10 @@ public class Buyhistory implements Action {
 		}
 		int currentPage=Integer.parseInt(pageNum);
 		int startRow=(currentPage-1)*pageSize+1;
-//		int endRow = startRow+pageSize-1;
+		int endRow = startRow+pageSize-1;
 
-		ArrayList<DealDTO> dealListB1=dao.dealListB1(startRow, pageSize, M_id);
-		ArrayList<SellDTO> dealListS1=dao.dealListS1(startRow, pageSize, M_id);
-		
-		
-	
+		ArrayList<DealDTO> buyHistory=dao.buyHistory(startRow, pageSize, M_id);
+
 		int pageBlock=10;
 		int startPage=(currentPage-1)/pageBlock*pageBlock+1;
 		int endPage=startPage+pageBlock-1;
@@ -45,8 +42,7 @@ public class Buyhistory implements Action {
 		}
 		
 		// request 가져온 데이터 담기
-		request.setAttribute("dealListB1", dealListB1);		
-		request.setAttribute("dealListS1", dealListS1);		
+		request.setAttribute("buyHistory", buyHistory);
 		request.setAttribute("currentPage", currentPage);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("pageBlock", pageBlock);
