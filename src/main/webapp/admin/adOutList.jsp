@@ -136,7 +136,7 @@ function fun3() {
 								<td><%=dto.getM_id() %></td>
 								<td><%=dto.getM_nick() %></td>
 								<td><%=dto.getO_reason() %></td>
-								<td><%=dto.getO_outday() %></td>
+								<td><%=dateFormat.format(dto.getO_outday()) %></td>
 							<%
 							if("탈퇴".equals(dto.getM_play())) {
 							%>
