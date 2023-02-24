@@ -644,8 +644,35 @@ public class SellDAO {
 					}
 					return getsellSearch;
 				} 
-			
-	
+				//검색카운팅
+				public int getSearchCount(String search) {
+					int count = 0;
+					Connection con = null;
+					PreparedStatement pstmt = null;
+					ResultSet rs = null;
+					
+					try {
+						con = getConnection();
+						String sql = "select count(*) from sell where s_title like ?";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, "%"+search+"%");
+				
+						rs = pstmt.executeQuery();
+						if(rs.next()) {
+							count = rs.getInt("count(*)");
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
+					} finally {
+						if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
+						if(con!=null) try { con.close();} catch (Exception e2) {}
+					}
+					return count;
+				} // getSellBoardCount (페이징에서 사용)
+				
+				
 }
+
+	
 
 
