@@ -1,15 +1,18 @@
 package com.itwillbs.like.db;
 
+import java.sql.Timestamp;
+
 public class LikeDTO {
-	private int like_id;
 	private int S_num;
 	private String M_id;
+	private Timestamp L_date;
+
 	
-	public int getLike_id() {
-		return like_id;
+	public Timestamp getL_date() {
+		return L_date;
 	}
-	public void setLike_id(int like_id) {
-		this.like_id = like_id;
+	public void setL_date(Timestamp l_date) {
+		L_date = l_date;
 	}
 	public int getS_num() {
 		return S_num;

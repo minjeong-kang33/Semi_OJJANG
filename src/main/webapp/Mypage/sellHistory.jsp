@@ -32,8 +32,9 @@ int pageBlock=(Integer)request.getAttribute("pageBlock");
 int endPage=(Integer)request.getAttribute("endPage");
 int pageCount=(Integer)request.getAttribute("pageCount");
 
-ArrayList<SellDTO> sellHistory1=(ArrayList<SellDTO>)request.getAttribute("sellHistory1");
-ArrayList<DealDTO> dealHistory1=(ArrayList<DealDTO>)request.getAttribute("dealHistory1");
+// ArrayList<SellDTO> sellHistory1=(ArrayList<SellDTO>)request.getAttribute("sellHistory1");
+// ArrayList<DealDTO> dealHistory1=(ArrayList<DealDTO>)request.getAttribute("dealHistory1");
+ArrayList<DealDTO> sellHistory=(ArrayList<DealDTO>)request.getAttribute("sellHistory");
 %>	
      <!-- ***** 헤더 ***** -->
   <jsp:include page="../top.jsp" />
@@ -50,18 +51,20 @@ ArrayList<DealDTO> dealHistory1=(ArrayList<DealDTO>)request.getAttribute("dealHi
 					
 						<table>
 							<%
-							for(int i=0;i<dealHistory1.size();i++){
-							 	DealDTO dto=dealHistory1.get(i);
-								SellDTO sdto=sellHistory1.get(i);
+// 							for(int i=0;i<dealHistory1.size();i++){
+// 							 	DealDTO dto=dealHistory1.get(i);
+// 								SellDTO sdto=sellHistory1.get(i);
+							for(int i=0;i<sellHistory.size();i++){
+							 	DealDTO dto=sellHistory.get(i);
 								
 							%>
 							<tr>
 								<td rowspan="4" ><a href="SellDetails.sell?S_num=<%=dto.getS_num()%>">
-									<img src="img/sell/<%=sdto.getS_img() %>" class="S_img_st" width="180px" height="180px"></a></td>
-								<td id="SH_title"><a href="SellDetails.sell?S_num=<%=dto.getS_num()%>"> <%=sdto.getS_title() %> </a></td>
+									<img src="img/sell/<%=dto.getS_img() %>" class="S_img_st" width="180px" height="180px"></a></td>
+								<td id="SH_title"><a href="SellDetails.sell?S_num=<%=dto.getS_num()%>"> <%=dto.getS_title() %> </a></td>
 							</tr>
 							<tr>
-								<td id="SH_price"><%=sdto.getS_price() %>원</td>
+								<td id="SH_price"><%=dto.getS_price() %>원</td>
 							</tr>
 							<tr>	
 								<td colspan="2" id="SH_buyer"> 구매자 : <%=dto.getD_buy() %> </td>
