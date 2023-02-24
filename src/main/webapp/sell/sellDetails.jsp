@@ -84,7 +84,6 @@ function fun1(M_id, S_num, R_category, S_title) {
 							<!--  좋아요, 찜하기 -->
 							<span class="info-like">  
 							<% 
-								
 							if(M_id != null){
 								//본인에게는 거래요청하기 안보임
 								if(!M_id.equals(dto.getM_id())){

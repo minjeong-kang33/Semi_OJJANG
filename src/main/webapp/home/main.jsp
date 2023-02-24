@@ -152,17 +152,24 @@ int pageCount=(Integer)request.getAttribute("pageCount");
 				</tr>
 				<tr>
 					<td class="S_category" > <%=dto.getS_category()%></td> <td align="right" class="like_id"> 
-						<% MypageDAO dao=new MypageDAO();
-						   LikeDTO getLikeDto=dao.getLike(M_id, dto.getS_num());
-						   if(getLikeDto==null){ %>
+							<% 
+							if(M_id != null){
+								//본인에게는 거래요청하기 안보임
+								if(!M_id.equals(dto.getM_id())){
+					
+								   MypageDAO dao=new MypageDAO();
+								   LikeDTO getLikeDto=dao.getLike(M_id, dto.getS_num());
+								   if(getLikeDto==null){ %>
 							<input type="image" name="button" class="heart" src="sell/heart.png" onclick="location.href='LikePro.like?S_num=<%=dto.getS_num() %>'">
 							<%
 						   } else {
 						   %>
 						   <input type="image" name="button" class="heart" src="sell/fullheart.png" onclick="location.href='LikePro.like?S_num=<%=dto.getS_num() %>'">
-							<%
-						   }
-							%>
+									<%
+									  		 }
+										   }	
+										}
+										%>
 				</tr>
 				<tr>
 					<td class="S_title" ><a href="SellDetails.sell?S_num=<%=dto.getS_num()%>" > <b><%=dto.getS_title()%></b></a></td> <!-- 제목 -->
