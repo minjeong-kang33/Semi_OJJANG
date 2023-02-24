@@ -30,8 +30,8 @@ public class Sellhistory implements Action {
 		int startRow=(currentPage-1)*pageSize+1;
 //		int endRow = startRow+pageSize-1;
 
-		ArrayList<DealDTO> dealHistory1=dao.dealHistory1(startRow, pageSize, M_id);
-		ArrayList<SellDTO> sellHistory1=dao.sellHistory1(startRow, pageSize, M_id);
+		ArrayList<DealDTO> sellHistory=dao.sellHistory(startRow, pageSize, M_id);
+
 		
 		
 	
@@ -45,8 +45,7 @@ public class Sellhistory implements Action {
 		}
 		
 		// request 가져온 데이터 담기
-		request.setAttribute("sellHistory1", sellHistory1);		
-		request.setAttribute("dealHistory1", dealHistory1);		
+		request.setAttribute("sellHistory", sellHistory);
 		request.setAttribute("currentPage", currentPage);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("pageBlock", pageBlock);

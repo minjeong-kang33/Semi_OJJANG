@@ -305,8 +305,39 @@ public class DealDAO {
 		return dto;
 	}
 	
+	//판매자가 판매완료 ... 안 보이게..?
 	
-	
+	public ArrayList<DealDTO> CheckDeal3(String M_id, int S_num) {
+		ArrayList<DealDTO> CheckDeal3=new ArrayList<DealDTO>();
+		DealDTO dto=null;
+		Connection con = null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con = getConnection();
+		     String sql="select * from deal where M_id=? and S_num=? and D_play='거래완료'";
+			 pstmt=con.prepareStatement(sql);
+			 pstmt.setString(1,M_id);
+			 pstmt.setInt(2,S_num);
+			 rs=pstmt.executeQuery(); 
+			 
+			 while(rs.next()){
+				dto=new DealDTO(); 
+				dto.setM_id(rs.getString("M_id"));
+				dto.setS_num(rs.getInt("S_num"));
+				CheckDeal3.add(dto);
+			 }
+		}catch (Exception e) {	
+			e.printStackTrace();
+		}
+		finally {
+			if(pstmt!=null)try {pstmt.close();} catch (Exception e2) {}
+			if(con!=null)try {con.close();} catch (Exception e2) {}
+			if(rs!=null)try {rs.close();} catch (Exception e2) {}
+
+		}
+		return CheckDeal3;
+	}
 	
 	
 	
