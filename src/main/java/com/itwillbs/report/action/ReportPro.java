@@ -23,7 +23,8 @@ public class ReportPro implements Action{
 	String R_writeNum = request.getParameter("R_writeNum");
 	String R_title = request.getParameter("R_title");
 	String R_play = request.getParameter("R_play");
-	Timestamp R_date = request.getParameter("R_date");
+	Timestamp R_date = new Timestamp(System.currentTimeMillis());
+	
 	
 	ReportDTO dto = new ReportDTO();
 	dto.setR_type(R_type);
@@ -44,6 +45,7 @@ public class ReportPro implements Action{
 	
 	PrintWriter out = response.getWriter(); // 이거 맞나?
       out.println("<script>");
+      out.println("alert('신고가 완료되었습니다.')");
       out.println("window.close();");
       out.println("</script>");
       out.close();
