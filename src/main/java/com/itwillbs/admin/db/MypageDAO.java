@@ -28,7 +28,8 @@ public class MypageDAO {
 	
 	//================like===========================================
 	
-	//likePro_insertlike
+//	//likePro_insertlike
+	
 	public void insertlike(int S_num, String M_id) {
 		Connection con = null;
 		PreparedStatement pstmt=null;
@@ -36,19 +37,11 @@ public class MypageDAO {
 		
 		try {
 			con=getConnection();
-		
-			int Like_id=1;
-			String sql ="select max(Like_id) from likes";
-			pstmt=con.prepareStatement(sql);
-			rs=pstmt.executeQuery();
-			if(rs.next()) {
-				Like_id=rs.getInt("max(Like_id)")+1;}
 			
-			sql="insert into likes(Like_id,S_num,M_id) values(?,?,?)";
+			String sql="insert into likes(S_num,M_id) values(?,?)";
 			pstmt=con.prepareStatement(sql);	
-			pstmt.setInt(1,Like_id);
-			pstmt.setInt(2, S_num);
-			pstmt.setString(3, M_id);			
+			pstmt.setInt(1, S_num);
+			pstmt.setString(2, M_id);			
 			pstmt.executeUpdate();	
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -59,6 +52,8 @@ public class MypageDAO {
 			}
 		
 	}	//insertlike
+
+	
 
 	//likePro_insertlike
 	public void insertlike_S_like(int S_num) {
@@ -542,6 +537,40 @@ public class MypageDAO {
 		}
 		return sellHistory1;
 	}
+	
+	//S_num값만 가져오기 거래완료 된 거는 희망자 안 보게 (판매글 목록에서)
+	public ArrayList<Integer> sell(String M_id) {
+		ArrayList<Integer> sell=new ArrayList<Integer>();
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		int S_num=0;
+		try {
+			con=getConnection();
+			String sql= ("select S_num from sell where M_id=? order by S_num desc");
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, M_id);
+
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				S_num=(rs.getInt("S_num"));
+				
+			
+				sell.add(S_num);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(con!=null) try {con.close();} catch (Exception e2) {}
+			if(pstmt!=null) try {pstmt.close();} catch (Exception e2) {}
+			if(rs!=null) try {rs.close();} catch (Exception e2) {}
+		}
+		return sell;
+	}
+	
+	//구매리스트 join
+
+	
 	
 // Count=============================================================
 	
