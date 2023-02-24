@@ -194,7 +194,7 @@ function fun1(M_id, S_num, R_category, S_title) {
 				%>
 				<input type="button" class="btn btn-dark" value="글수정" style="margin-right: 10px;"
 					onclick="location.href='SellEditForm.sell?S_num=<%=dto.getS_num()%>'">
-				<input type="button" class="btn btn-dark" value="글삭제"
+				<input type="button" class="btn btn-dark" value="글삭제" 
 					onclick="location.href='SellDelete.sell?S_num=<%=dto.getS_num()%>'">
 				<%
 				}
@@ -205,7 +205,7 @@ function fun1(M_id, S_num, R_category, S_title) {
 					// 세션값=id와 글쓴이가 일치해야만 글수정, 글삭제 표시
 					if (M_id.equals("admin")) {
 				%>
-				<input type="button" class="btn btn-dark" value="글삭제"
+				<input type="button" class="btn btn-dark" value="글삭제" style="margin-right: 10px;"
 					onclick="location.href='AdSellDelete2.ad?S_num=<%=dto.getS_num()%>'">
 				<%
 				}
