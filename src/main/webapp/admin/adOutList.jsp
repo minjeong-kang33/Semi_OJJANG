@@ -1,8 +1,9 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="com.itwillbs.out.db.OutDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="com.itwillbs.member.db.MemberDTO"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="java.text.SimpleDateFormat"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,10 +43,10 @@ function fun3() {
     
 	<!-- ***** 탈퇴회원목록조회 ***** -->
 	<%
-	MemberDTO dto=new MemberDTO();
+	OutDTO dto=new OutDTO();
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 
-	ArrayList<MemberDTO> adOutList=(ArrayList<MemberDTO>)request.getAttribute("adOutList");
+	ArrayList<OutDTO> adOutList=(ArrayList<OutDTO>)request.getAttribute("adOutList");
 	int currentPage=(Integer)request.getAttribute("currentPage");
 	int startPage=(Integer)request.getAttribute("startPage");
 	int pageBlock=(Integer)request.getAttribute("pageBlock");
@@ -81,7 +82,6 @@ function fun3() {
 						<select class="select-search" name="info">
 							<option value="">선택</option>
 							<option value="M_id">아이디</option>
-							<option value="M_name">이름</option>
 							<option value="M_nick">닉네임</option>
 						</select>
 						<input class="input-search" type="text" name="search">
@@ -119,9 +119,9 @@ function fun3() {
 								<tr>
 									<th scope="col">번호</th>
 									<th scope="col">아이디</th>
-									<th scope="col">이름</th>
 									<th scope="col">닉네임</th>
-									<th scope="col">가입날짜</th>
+									<th scope="col">사유</th>
+									<th scope="col">탈퇴날짜</th>
 									<th scope="col">회원상태</th>
 								</tr>
 							</thead>
@@ -134,9 +134,9 @@ function fun3() {
 							<tr>
 								<td><%=i+1 %></td>
 								<td><%=dto.getM_id() %></td>
-								<td><%=dto.getM_name() %></td>
 								<td><%=dto.getM_nick() %></td>
-								<td><%=dateFormat.format(dto.getM_createdate()) %></td>
+								<td><%=dto.getO_reason() %></td>
+								<td><%=dto.getO_outday() %></td>
 							<%
 							if("탈퇴".equals(dto.getM_play())) {
 							%>

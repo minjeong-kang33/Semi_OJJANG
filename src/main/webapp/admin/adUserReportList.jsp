@@ -151,7 +151,6 @@ function fun3() {
 							<table class="board-table" style="float: left; margin-bottom: 30px;">
 								<thead>
 									<tr>
-										<th scope="col"><input type="checkbox" id="ckAll" name="ckAll" onclick="fun2()"></th>
 										<th scope="col">번호</th>
 										<th scope="col">피신고자ID</th>
 										<th scope="col">신고사유</th>
@@ -169,7 +168,6 @@ function fun3() {
 										dto=adUserReportList.get(i);
 										%>
 									<tr>
-										<td><input type="checkbox" id="ck" name="ck" value="<%=dto.getR_id() %>"></td>
 										<td><%=i+1 %></td>
 										<td><%=dto.getR_id() %></td>
 										<td><%=dto.getR_type() %></td>
@@ -184,7 +182,10 @@ function fun3() {
 									<%
 									}else {
 									%>
-										<td></td>
+										<td><input class="ad-report" type="submit" value="강퇴하기">
+											<input type="hidden" name="R_id" value="<%=dto.getR_id() %>">
+											<input type="hidden" name="R_type" value="<%=dto.getR_type() %>">
+										</td>
 									<%
 									}
 									}
@@ -250,10 +251,6 @@ function fun3() {
 	}
 	%>
 	<!-- *** 페이징 끝 *** -->
-
-							<div>
-								<input class="ad-btn" type="button" value="강퇴" onclick="fun1()">
-							</div>
 						</div>
 					  </div>
 					</div>

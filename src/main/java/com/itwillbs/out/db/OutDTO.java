@@ -2,7 +2,9 @@ package com.itwillbs.out.db;
 
 import java.sql.Timestamp;
 
-public class OutDTO {
+import com.itwillbs.member.db.MemberDTO;
+
+public class OutDTO extends MemberDTO {
 
 private int O_num;
 private String M_id;
