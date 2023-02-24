@@ -1,3 +1,5 @@
+<%@page import="com.itwillbs.like.db.LikeDTO"%>
+<%@page import="com.itwillbs.admin.db.MypageDAO"%>
 <%@page import="com.itwillbs.sell.db.SellDTO"%>
 <%@page import="com.itwillbs.sell.db.SellDAO"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -81,11 +83,26 @@ function fun1(M_id, S_num, R_category, S_title) {
 							
 							<!--  좋아요, 찜하기 -->
 							<span class="info-like">  
-								<%if(M_id != null){//글쓴이에게는 찜하기 안보임
-									if(!M_id.equals(dto.getM_id())){%>
+							<% 
+								
+							if(M_id != null){
+								//본인에게는 거래요청하기 안보임
+								if(!M_id.equals(dto.getM_id())){
+					
+								   MypageDAO dao=new MypageDAO();
+								   LikeDTO getLikeDto=dao.getLike(M_id, dto.getS_num());
+								   if(getLikeDto==null){ %>
 								<button type="button" onclick="location.href='LikePro.like?S_num=<%=dto.getS_num() %>'" class="heartbtn"><img src="sell/heart.png" alt="찜하기" class="heart"></button>
-									<%}
-										}%>
+									
+									<%
+									   } else {
+									   %>
+								<button type="button" onclick="location.href='LikePro.like?S_num=<%=dto.getS_num() %>'" class="heartbtn"><img src="sell/fullheart.png" alt="찜하기" class="heart"></button>	   
+									<%
+									  		 }
+										   }	
+										}
+										%>
 							</span></span><br> 
 							<span class="info-title"><%=dto.getS_title()%></span> <br> <!-- 글제목 -->
 							<span class="info-price"><%=dto.getS_price()%>원</span> <!-- 가격 -->
