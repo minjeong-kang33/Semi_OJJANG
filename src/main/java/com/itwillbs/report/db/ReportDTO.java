@@ -13,7 +13,6 @@ private String R_reason;
 private String R_writeNum;
 private String R_category;
 private String R_title;
-private String R_play;
 private Timestamp R_date;
 
 
@@ -23,12 +22,6 @@ public Timestamp getR_date() {
 }
 public void setR_date(Timestamp r_date) {
 	R_date = r_date;
-}
-public String getR_play() {
-	return R_play;
-}
-public void setR_play(String r_play) {
-	R_play = r_play;
 }
 public String getR_title() {
 	return R_title;
