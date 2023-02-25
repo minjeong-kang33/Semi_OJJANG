@@ -265,7 +265,7 @@ public class AdminDAO {
 		ResultSet rs=null;
 		try {
 			con=getConnection();
-			String sql="select R_type, M_id, R_id, R_reason, R_category, R_writeNum, R_title, R_play from report order by R_play, R_writeNum limit ?, ?";
+			String sql="select R_type, M_id, R_id, R_reason, R_category, R_writeNum, R_title, R_play, R_date from report order by R_play, R_writeNum limit ?, ?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, startRow-1);
 			pstmt.setInt(2, pageSize);
@@ -280,6 +280,7 @@ public class AdminDAO {
 				dto.setR_category(rs.getString("R_category"));
 				dto.setR_title(rs.getString("R_title"));
 				dto.setR_play(rs.getString("R_play"));
+				dto.setR_date(rs.getTimestamp("R_date"));
 				adUserReportList.add(dto);
 			}
 		}catch(Exception e) {
