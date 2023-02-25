@@ -131,7 +131,7 @@ function fun3() {
 										<th scope="col">번호</th>
 										<th scope="col">피신고자ID</th>
 										<th scope="col">신고사유</th>
-										<th scope="col">기타사유</th>
+										<th scope="col" class="th-title">기타사유</th>
 										<th scope="col">카테고리</th>
 										<th scope="col">내용</th>
 										<th scope="col">신고날짜</th>
