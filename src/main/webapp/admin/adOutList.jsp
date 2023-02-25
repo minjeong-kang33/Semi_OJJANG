@@ -140,11 +140,11 @@ function fun3() {
 							<%
 							if("탈퇴".equals(dto.getM_play())) {
 							%>
-								<td><span class="ad-report"><%=dto.getM_play() %></span></td>
+								<td><span class="ad-report"><%=dto.getM_play() %>회원</span></td>
 							<%
 							}else {
 							%>
-								<td><span class="ad-out"><%=dto.getM_play() %></span></td>
+								<td><span class="ad-out"><%=dto.getM_play() %>회원</span></td>
 							<%
 							}
 							}

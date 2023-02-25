@@ -127,6 +127,13 @@ public class AdminFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}//노은주
+			
+		}else if(sPath.equals("/AdOutForm.ad")) {
+			forward=new ActionForward();
+			forward.setPath("/admin/adOutForm.jsp");
+			forward.setRedirect(false);
+			//노은주
+			
 		}
 		
 		

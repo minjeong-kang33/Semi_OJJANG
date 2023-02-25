@@ -19,29 +19,6 @@
 
     <!-- ***** 스크립트 ***** -->
 <script>
-function fun1() {
-	let check = false;
-	with(document.ckDelete) {
-		if(ck.length==undefined) {
-			if(ck.checked) { check = true; }
-		} else {
-			for(let i=0;i<ck.length;i++) {
-				if(ck[i].checked) { check = true; } }
-		} if(!check) {
-		alert("강퇴할 멤버를 선택하세요");
-			return;
-		} else {
-			if(confirm("강퇴처리 하시겠습니까?")) { submit(); }
-		} } }
-
-function fun2() {
-	if($("input:checked[id='ckAll']").prop("checked")) {
-	 $("input[type=checkbox]").prop("checked", true); 
-	}else {
-	 $("input[type=checkbox]").prop("checked", false); 
-	}
-}
-
 function fun3() {
 	if(document.scfr.info.value=="") {
 		alert("검색목록을 선택하세요")
@@ -157,8 +134,9 @@ function fun3() {
 										<th scope="col">기타사유</th>
 										<th scope="col">카테고리</th>
 										<th scope="col">내용</th>
+										<th scope="col">신고날짜</th>
 										<th scope="col">신고자ID</th>
-										<th scope="col">회원상태</th>
+										<th scope="col">강퇴</th>
 									</tr>
 								</thead>
 
@@ -174,17 +152,17 @@ function fun3() {
 										<td><%=dto.getR_reason() %></td>
 										<td><%=dto.getR_category() %></td>
 										<td><%=dto.getR_title() %></td>
+										<td><%=dateFormat.format(dto.getR_date()) %></td>
 										<td><%=dto.getM_id() %></td>
 									<%
-									if(dto.getR_play()!=null) {
+									if("강퇴".equals(dto.getM_play())) {
 									%>
-										<td><span class="ad-out"><%=dto.getR_play() %></span></td>
+										<td><span class="ad-out">강퇴완료</span></td>
 									<%
 									}else {
 									%>
-										<td><input class="ad-report" type="submit" value="강퇴하기">
-											<input type="hidden" name="R_id" value="<%=dto.getR_id() %>">
-											<input type="hidden" name="R_type" value="<%=dto.getR_type() %>">
+										<td><input class="ad-report" type="button" value="강퇴하기"
+													onclick="location.href='AdUserReportDelete.ad?R_id=<%=dto.getR_id() %>&R_type=<%=dto.getR_type() %>'">
 										</td>
 									<%
 									}
