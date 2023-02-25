@@ -22,7 +22,6 @@ public class ReportPro implements Action{
 	String R_category = request.getParameter("R_category");
 	String R_writeNum = request.getParameter("R_writeNum");
 	String R_title = request.getParameter("R_title");
-	String R_play = request.getParameter("R_play");
 	Timestamp R_date = new Timestamp(System.currentTimeMillis());
 	
 	
@@ -34,7 +33,6 @@ public class ReportPro implements Action{
 	dto.setR_writeNum(R_writeNum);
 	dto.setR_category(R_category);
 	dto.setR_title(R_title);
-	dto.setR_play(R_play);
 	dto.setR_date(R_date);
 	
 	ReportDAO dao = new ReportDAO();
