@@ -20,27 +20,8 @@
 
 	    <!-- ***** 스크립트 ***** -->
 <script>
-function fun1() {
-	let check = false;
-	with(document.ckDelete) {
-		if(ck.length==undefined) {
-			if(ck.checked) { check = true; }
-		} else {
-			for(let i=0;i<ck.length;i++) {
-				if(ck[i].checked) { check = true; } }
-		} if(!check) {
-		alert("강퇴할 멤버를 선택하세요");
-			return;
-		} else {
-			if(confirm("강퇴처리 하시겠습니까?")) { submit(); }
-		} } }
-
-function fun2() {
-	if($("input:checked[id='ckAll']").prop("checked")) {
-	 $("input[type=checkbox]").prop("checked", true); 
-	}else {
-	 $("input[type=checkbox]").prop("checked", false); 
-	}
+function fun1(M_id) {
+    window.open("AdOutForm.ad?M_id=" + M_id, "pop", "width=520, height=250");
 }
 
 function fun3() {
@@ -123,7 +104,7 @@ String search=(String)request.getAttribute("search");
 		</div>
 	</div>
 	
-<form name="ckDelete" action="AdUserDelete.ad" method="post">
+<form name="ckDelete" action="AdOutForm.ad" method="post">
 
 	<div class="ad-count">
 		<%
@@ -150,12 +131,12 @@ String search=(String)request.getAttribute("search");
 							<table class="board-table" style="float: left; margin-bottom: 30px;">
 								<thead>
 									<tr>
-										<th scope="col" class="th-num"><input type="checkbox" id="ckAll" name="ckAll" onclick="fun2()"></th>
 										<th scope="col" class="th-num">번호</th>
 										<th scope="col" class="th-writer">아이디</th>
 										<th scope="col" class="th-writer">이름</th>
 										<th scope="col" class="th-writer">닉네임</th>
 										<th scope="col" class="th-date">가입날짜</th>
+										<th scope="col" class="th-num">강퇴</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -164,12 +145,12 @@ String search=(String)request.getAttribute("search");
 										dto=adUserList.get(i);
 									%>
 										<tr>
-											<td><input type="checkbox" id="ck" name="ck" value="<%=dto.getM_id() %>"></td>
 											<td><%=i+1 %></td>
 											<td><%=dto.getM_id() %></td>
 											<td><%=dto.getM_name() %></td>
 											<td><%=dto.getM_nick() %></td>
 											<td><%=dateFormat.format(dto.getM_createdate()) %></td>
+											<td><input type="button" class="ad-report" value="강퇴" onclick="fun1('<%=dto.getM_id() %>')"></td>
 										</tr>
 									<%
 									}
@@ -237,11 +218,6 @@ String search=(String)request.getAttribute("search");
 	%>
 	</div>
 	<!-- *** 페이징 끝 *** -->
-	
-							<!-- 	글 작성 버튼을 오른쪽 아래에 고정 -->
-						<div>
-							<input type="button" class="ad-btn" value="강퇴" onclick="fun1()">
-						</div>
 					 </div>
 					</div>
 				</div>

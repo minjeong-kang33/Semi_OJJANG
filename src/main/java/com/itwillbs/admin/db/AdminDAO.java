@@ -151,7 +151,7 @@ public class AdminDAO {
 		ResultSet rs=null;
 		try {
 			con=getConnection();
-			String sql="select m.M_id, m.M_nick, o.O_reason, o.O_outday, m.M_play from outs o right join member m on o.M_id=m.M_id where M_play in ('탈퇴', '강퇴') order by M_play desc, O_outday limit ?, ?";
+			String sql="select m.M_id, m.M_nick, o.O_reason, o.O_outday, m.M_play from outs o join member m on o.M_id=m.M_id where M_play in ('탈퇴', '강퇴') order by M_play desc, O_outday limit ?, ?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, startRow-1);
 			pstmt.setInt(2, pageSize);
@@ -183,7 +183,7 @@ public class AdminDAO {
 		String Oorder=" like ? order by m.M_play desc, o.O_outday limit ?, ?";
 		try {
 			con=getConnection();
-			String sql="select m.M_id, m.M_nick, o.O_reason, o.O_outday, m.M_play from outs o right join member m on o.M_id=m.M_id where m.M_play in ('탈퇴', '강퇴') and ";
+			String sql="select m.M_id, m.M_nick, o.O_reason, o.O_outday, m.M_play from outs o join member m on o.M_id=m.M_id where m.M_play in ('탈퇴', '강퇴') and ";
 			if(info.equals("M_id")) {sql+="m.M_id";}
 			else if(info.equals("M_nick")) {sql+="m.M_nick";}
 			sql+=Oorder;
@@ -394,33 +394,6 @@ public class AdminDAO {
 			if(pstmt!=null) try {pstmt.close();} catch (Exception e2) {}
 		}
 	}//adUserDeletePro()
-	
-	public void adOut(String M_id) {
-		Connection con=null;
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		try {
-			con=getConnection();
-			int O_num=1;
-			String sql ="select max(O_num) from outs";
-			pstmt=con.prepareStatement(sql);
-			rs=pstmt.executeQuery();
-			
-			if(rs.next()) {
-				O_num=rs.getInt("max(O_num)")+1;
-			}
-			sql="insert into outs(O_num,M_id,O_reason) values(?,?,'강퇴')";
-			pstmt=con.prepareStatement(sql);
-			pstmt.setInt(1, O_num);
-			pstmt.setString(2, M_id);
-			pstmt.executeUpdate();	
-		}catch(Exception e) {
-			e.printStackTrace();
-		}finally {
-			if(con!=null) try {con.close();} catch (Exception e2) {}
-			if(pstmt!=null) try {pstmt.close();} catch (Exception e2) {}
-		}
-	}//adOut(M_id)
 	
 	public void adOut(String R_id, String R_type) {
 		Connection con=null;
