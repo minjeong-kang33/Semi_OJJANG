@@ -20,16 +20,8 @@ public class AdUserReportDelete implements Action {
 		String R_id=request.getParameter("R_id");
 		String R_type=request.getParameter("R_type");
 		
-		System.out.println(R_id);
-		System.out.println(R_type);
-		
-		OutDTO dto=new OutDTO();
-		dto.setM_id(R_id);
-		dto.setO_reason(R_type);
-		
-//		dao.adUserReportDelete(R_id);
-//		dao.adUserReportOut(R_id);
-//		dao.adOut(dto);
+		dao.adUserReportDelete(R_id);
+		dao.adOut(R_id, R_type);
 		
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out=response.getWriter();

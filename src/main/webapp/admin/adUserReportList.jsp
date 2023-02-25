@@ -152,12 +152,12 @@ function fun3() {
 										<td><%=dto.getR_reason() %></td>
 										<td><%=dto.getR_category() %></td>
 										<td><%=dto.getR_title() %></td>
-										<td><%=dto.getR_date() %></td>
+										<td><%=dateFormat.format(dto.getR_date()) %></td>
 										<td><%=dto.getM_id() %></td>
 									<%
-									if(dto.getR_play()!=null) {
+									if("강퇴".equals(dto.getM_play())) {
 									%>
-										<td><span class="ad-out"><%=dto.getR_play() %></span></td>
+										<td><span class="ad-out">강퇴완료</span></td>
 									<%
 									}else {
 									%>
