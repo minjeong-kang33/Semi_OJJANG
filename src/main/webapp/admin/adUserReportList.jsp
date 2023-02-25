@@ -136,7 +136,7 @@ function fun3() {
 										<th scope="col">내용</th>
 										<th scope="col">신고날짜</th>
 										<th scope="col">신고자ID</th>
-										<th scope="col">회원상태</th>
+										<th scope="col">강퇴</th>
 									</tr>
 								</thead>
 
