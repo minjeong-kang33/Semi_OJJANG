@@ -76,11 +76,11 @@
 			<legend>개인 정보</legend>
 				<ul>
 					<li><label for="fullname">이름</label> <input type="text" id="M_name" name="M_name" size="15" required></li>
-					<li><label for="gender">성별</label> 
-					<input type="radio" name="M_gender" id="남" value="남"> 남 
-					<input type="radio" name="M_gender" id="여" value="여"> 여</li>
+					<li><label for="gender" >성별</label> 
+					<input type="radio" name="M_gender" id="남" value="남" required> 남 
+					<input type="radio" name="M_gender" id="여" value="여" required> 여</li>
 					<li><label for="nickname">닉네임</label> 
-						<input type="text" id="M_nick" name="M_nick" size="15" required onclick="nickCheck()"> 
+						<input type="text" id="M_nick" name="M_nick" size="15" required onclick="nickCheck()" required> 
 						<input type="button" value="중복확인"  id="joinbutton">
 						
 						<script type="text/javascript">
@@ -92,12 +92,12 @@
 					</li>
 					
 					<li><label for="email">이메일</label> 
-						<input type="email" id="M_email" name="M_email" size="30" placeholder="비밀번호 찾기에 이용됩니다"> 
+						<input type="email" id="M_email" name="M_email" size="30" placeholder="비밀번호 찾기에 이용됩니다" required> 
 						<!-- <input type="button" id="joinbutton" value="이메일 인증" onclick="location.href = 'emailSendAction.jsp'"> --></li>
 
 					<li><label for="phone">전화번호</label> 
 						<input type="text" id="M_phone" name="M_phone" size="15"></li>
-					<li><label for="postcode">우편번호</label> <input type="text" id="sample6_postcode" placeholder="우편번호" onclick="DaumPostcode()">
+					<li><label for="postcode">우편번호</label> <input type="text" id="sample6_postcode" placeholder="우편번호" onclick="DaumPostcode()" required> 
 						<input type="button" value="우편번호 찾기" id="joinbutton" onclick="DaumPostcode()"></li>
 					<li><label for="address">주소</label> <input type="text" name="M_address" id="M_address" placeholder="주소"></li>
 					<li><label for="address2">상세주소</label> <input type="text" name="M_address2" id="M_address2" placeholder="상세주소"></li>
@@ -111,11 +111,7 @@
 			<input type="submit" value="회원가입" id="joinbutton2" onclick="fun()" /> 
 			<input type="reset" value="초기화" id="joinbutton3" />
 		</fieldset>
-		<script>
-		function fun() {
-		alert("회원가입이 완료되었습니다.");
-		}
-</script>
+		
 		<!-- 전송 버튼 끝-->
 	</form>
 
