@@ -55,8 +55,12 @@
 						
 						<script type="text/javascript">
 						function idCheck() {
-							window.open("MemberidCheckForm.me", "nickwin",
-									"width=450, height=150");
+							  var _width = '450';
+							    var _height = '150';
+							    var _left = Math.ceil(( window.screen.width - _width )/2);
+							    var _top = Math.ceil(( window.screen.height - _height )/2); 
+							window.open("MemberidCheckForm.me", "idwin",
+									'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );
 						}
 						</script>
 					</li>
@@ -85,8 +89,12 @@
 						
 						<script type="text/javascript">
 							function nickCheck() {
+								 var _width = '450';
+								    var _height = '150';
+								    var _left = Math.ceil(( window.screen.width - _width )/2);
+								    var _top = Math.ceil(( window.screen.height - _height )/2); 
 								window.open("MembernikCheckForm.me", "nickwin",
-									"width=450, height=150");
+										'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top);
 							}
 						</script>
 					</li>
