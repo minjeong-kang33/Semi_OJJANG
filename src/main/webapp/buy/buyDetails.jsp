@@ -173,7 +173,7 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 					if (M_id.equals("admin")) {
 				%>
 					<input type="button" class="btn btn-dark" value="글삭제"onclick="location.href='AdBuyDelete2.ad?B_num=<%=dto.getB_num() %>'">
-				<button type="button" class="btn btn-dark"onclick="history.back()">글목록</button>
+					<button type="button" class="btn btn-dark"onclick="history.back()">글목록</button>
             <%
                }
             }
@@ -193,7 +193,6 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 					}
 				}
 				 %>
-					<button type="button" class="btn btn-dark"onclick="location.href='BuyList.buy'">글목록</button>
 				 		<hr style="width: 940px; margin-left: 55px;">
 				</div>
 		<br><br>		
