@@ -212,8 +212,8 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 					<script text="text/javascript">
 						function coupdate(Co_num) {
 						//	수정팝업창 크기 조절과 팝업 위치 조절
-							var _width = '600';
-							var _height = '300';
+							var _width = '700';
+							var _height = '320';
 							var _left = Math.ceil((window.screen.width - _width) / 2);
 							var _top = Math.ceil((window.screen.height - _height) / 2);
 							window.name = "buydetails";
