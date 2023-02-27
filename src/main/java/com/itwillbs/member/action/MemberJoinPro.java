@@ -1,5 +1,6 @@
 package com.itwillbs.member.action;
 
+import java.io.PrintWriter;
 import java.sql.Timestamp;
 
 import javax.servlet.http.HttpServletRequest;
@@ -43,10 +44,14 @@ public class MemberJoinPro implements Action {
 
 		MemberDAO dao=new MemberDAO();
 		dao.insertMembers(dto);
-		ActionForward forward=new ActionForward();
-		forward.setPath("MemberLoginForm.me");
-		forward.setRedirect(true);
-		return forward;
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out=response.getWriter();
+		out.println("<script type='text/javascript'>");
+		out.println("alert('회원가입이 완료되었습니다.');");
+		out.println("location.href='MemberLoginForm.me'");
+		out.println("</script>");
+		out.close();
+		return null;
 	}
 
 }
