@@ -26,7 +26,7 @@
 
             
  <!-- ***** 작성글 조회(판매) 시작 ***** -->
-    
+   
 <%
 String M_id=(String)session.getAttribute("M_id");
 SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy.MM.dd");
@@ -91,7 +91,7 @@ ArrayList<SellDTO> sellList=(ArrayList<SellDTO>)request.getAttribute("sellList")
 								</tbody>
 							</table>
 	
-	<!-- ***** 작성글 조회(구매) 끝 ***** -->
+	<!-- ***** 작성글 조회(구매) 끝! ***** -->
 	<div style="margin-top: 30px;">
 <!-- 	페이징 시작 -->
 <%
