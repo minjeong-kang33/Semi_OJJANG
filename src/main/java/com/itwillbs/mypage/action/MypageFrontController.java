@@ -72,23 +72,7 @@ public class MypageFrontController extends HttpServlet{
 			forward=new ActionForward();
 			forward.setPath("Mypage/profile.jsp");
 			forward.setRedirect(false);
-			
-		
-//			action=new Profile();
-//			try {
-//				forward=action.execute(request, response);
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}//박은지
-			
-		}else if(sPath.equals("/Writehistory.moi")) {
-			action=new Writehistory();
-			try {
-				forward=action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}//박은지
-			
+
 		}else if(sPath.equals("/WritehistoryB.moi")) {
 			action=new WritehistoryB();
 			try {
