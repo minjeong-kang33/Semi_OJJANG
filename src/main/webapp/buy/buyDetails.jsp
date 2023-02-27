@@ -23,10 +23,13 @@
 <script type="text/javascript">
 
 function fun1(M_id, B_num, R_category, B_title) {
-	   
+	var _width = '460';
+	var _height = '340';
+	var _left = Math.ceil((window.screen.width - _width) / 2);
+	var _top = Math.ceil((window.screen.height - _height) / 2);
     window.open("ReportForm.rpt?R_id=" + M_id + "&R_writeNum="
           + B_num + "&R_category=" + "buy" + "&R_title=" + B_title,
-          "pop", "width=520,height=340");
+          "pop",'width='+ _width+ ', height='+ _height+ ', left='+ _left+ ', top='+ _top);
  }
  
 </script>
@@ -170,12 +173,16 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 					if (M_id.equals("admin")) {
 				%>
 					<input type="button" class="btn btn-dark" value="글삭제"onclick="location.href='AdBuyDelete2.ad?B_num=<%=dto.getB_num() %>'">
+				<button type="button" class="btn btn-dark"onclick="history.back()">글목록</button>
+            <%
+               }
+            }
+                  
+            if (!"admin".equals(M_id)) {
+				%>
+				<button type="button" class="btn btn-dark"onclick="location.href='BuyList.buy'">글목록</button>
 				<%
 					}
-				}
-				%>
-
-				<%
 					if(M_id != null){
 						//본인에게는 신고하기 안보임
 						if(!M_id.equals(dto.getM_id())){
