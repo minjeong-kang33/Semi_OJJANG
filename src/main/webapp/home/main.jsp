@@ -184,6 +184,7 @@ int pageCount=(Integer)request.getAttribute("pageCount");
 					<td colspan="2" class="S_send"> <% if(dto.getS_send1()!=null&&dto.getS_send2()!=null){%> <%= "<b>택배거래</b>, <b>직거래</b>"%><%}
 						else if(dto.getS_send1()!=null){%> <%= "<b>택배거래</b>"%><%}
 						else if(dto.getS_send2()!=null){%> <%= "<b>직거래</b>"%><%}%> </td> <!-- 선호거래유형 -->
+	
 				</tr>
 				<tr>
 					<td colspan="2"> <% if(dto.getS_send2()!=null){%> <img src="sell/location_icon.png" class="location"><%= dto.getS_sido1()%><%} else { %>　<%}%> </td>
