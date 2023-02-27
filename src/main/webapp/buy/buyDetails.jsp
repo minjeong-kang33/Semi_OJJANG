@@ -175,7 +175,6 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 				}
 				%>
 
-					<button type="button" class="btn btn-dark"onclick="location.href='BuyList.buy'">글목록</button>
 				<%
 					if(M_id != null){
 						//본인에게는 신고하기 안보임
@@ -187,6 +186,7 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 					}
 				}
 				 %>
+					<button type="button" class="btn btn-dark"onclick="location.href='BuyList.buy'">글목록</button>
 				 		<hr style="width: 940px; margin-left: 55px;">
 				</div>
 		<br><br>		
