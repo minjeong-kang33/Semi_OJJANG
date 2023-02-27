@@ -61,7 +61,7 @@
 						</script>
 					</li>
 					<li><label for="pwd1"> 비밀번호</label> 
-						<input type="password" id="M_pw" name="M_pw" size="15" required onchange="check_pw()" maxlength="15">
+						<input type="password" id="M_pw" name="M_pw" size="15" required title="비밀번호는 6~15자를 입력하세요." onchange="check_pw()" pattern=".{6,15}" placeholder="6자 이상 입력하세요.">
 					</li>
 					<li><label for="pwd2">비밀번호 확인</label> 
 						<input type="password" id="M_pw2" name="M_pw2" size="15" required onchange="check_pw()">&nbsp;<span id="check"></span></li>
