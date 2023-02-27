@@ -176,7 +176,6 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 				}
 						
 				if (!"admin".equals(M_id)) {
-					
 				%>
 					<button type="button" class="btn btn-dark"onclick="location.href='BuyList.buy'">글목록</button>
 				<%
