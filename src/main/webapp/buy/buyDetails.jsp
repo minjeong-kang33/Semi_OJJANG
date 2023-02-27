@@ -173,12 +173,16 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 					if (M_id.equals("admin")) {
 				%>
 					<input type="button" class="btn btn-dark" value="글삭제"onclick="location.href='AdBuyDelete2.ad?B_num=<%=dto.getB_num() %>'">
+				<button type="button" class="btn btn-dark"onclick="history.back()">글목록</button>
+            <%
+               }
+            }
+                  
+            if (!"admin".equals(M_id)) {
+				%>
+				<button type="button" class="btn btn-dark"onclick="location.href='BuyList.buy'">글목록</button>
 				<%
 					}
-				}
-				%>
-
-				<%
 					if(M_id != null){
 						//본인에게는 신고하기 안보임
 						if(!M_id.equals(dto.getM_id())){
