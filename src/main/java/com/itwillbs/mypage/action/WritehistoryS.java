@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.itwillbs.admin.db.MypageDAO;
+import com.itwillbs.deal.db.DealDAO;
+import com.itwillbs.deal.db.DealDTO;
 import com.itwillbs.member.action.Action;
 import com.itwillbs.member.action.ActionForward;
 import com.itwillbs.sell.db.SellDTO;
@@ -20,6 +22,8 @@ public class WritehistoryS implements Action {
 		String M_id=(String)session.getAttribute("M_id");
 		
 		MypageDAO dao=new MypageDAO();
+		DealDAO dao2=new DealDAO();
+		
 		int pageSize=10;
 		String pageNum=request.getParameter("pageNum");
 		if(pageNum==null){
@@ -29,7 +33,10 @@ public class WritehistoryS implements Action {
 		int startRow=(currentPage-1)*pageSize+1;
 		int endRow = startRow+pageSize-1;
 
-		ArrayList<SellDTO> sellList=dao.sellList(startRow, pageSize, M_id);
+		ArrayList<SellDTO> sellList=dao.sellList(startRow, pageSize, M_id);		
+		ArrayList<DealDTO> CheckDeal3=null;
+			
+		
 		
 		int pageBlock=10;
 		int startPage=(currentPage-1)/pageBlock*pageBlock+1;
@@ -47,6 +54,8 @@ public class WritehistoryS implements Action {
 		request.setAttribute("pageBlock", pageBlock);
 		request.setAttribute("endPage", endPage);
 		request.setAttribute("pageCount", pageCount);
+		request.setAttribute("CheckDeal3", CheckDeal3);
+		
 		
 		// 이동
 		ActionForward forward=new ActionForward();
