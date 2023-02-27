@@ -93,7 +93,7 @@
 								    var _height = '150';
 								    var _left = Math.ceil(( window.screen.width - _width )/2);
 								    var _top = Math.ceil(( window.screen.height - _height )/2); 
-								window.open("MembernikCheckForm.me", "nickwin",
+								window.open("MembernikCheckForm.me","nickwin",
 										'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top);
 							}
 						</script>
