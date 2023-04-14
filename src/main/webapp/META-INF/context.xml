@@ -6,9 +6,9 @@
 			 auth="Container"
 			 type="javax.sql.DataSource"
 			 driverClassName="com.mysql.cj.jdbc.Driver"
-			 url="jdbc:mysql://db.itwillbs.dev:3306/class1_221020_team1"
-			 username="class1_221020_team1"
-			 password="1234"		 
+			 url="jdbc:mysql://localhost/itwillbs18"
+			 username="itwillbs18"
+			 password="itwillbs8030909"		 
 			 
 			 
 			 
